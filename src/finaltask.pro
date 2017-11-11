@@ -25,19 +25,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp
 
-HEADERS  += \
-    libworld/world_global.h \
-    libworld/world.h
-
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/libworld/release/ -lworld
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/libworld/debug/ -lworld
-else:unix: LIBS += -L$$PWD/libworld/ -lworld
-
-INCLUDEPATH += $$PWD/libworld
-DEPENDPATH += $$PWD/libworld
-
-DISTFILES += \
-    libworld/libworld.so \
-    libworld/libworld.so.1 \
-    libworld/libworld.so.1.0 \
-    libworld/libworld.so.1.0.0
+LIBS += -L../libworld/ -lworld
+INCLUDEPATH += ../libworld/
+DEPENDPATH += ../libworld/
