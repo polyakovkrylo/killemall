@@ -24,6 +24,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp
+HEADERS += \
+           ../libworld/world.h
+
 
 LIBS += -L../libworld/ -lworld
 INCLUDEPATH += ../libworld/
