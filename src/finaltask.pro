@@ -23,9 +23,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    model/worldmodel.cpp
 HEADERS += \
-           ../libworld/world.h
+           ../libworld/world.h \
+    model/worldmodel.h
 
 
 LIBS += -L../libworld/ -lworld
