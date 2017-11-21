@@ -12,9 +12,18 @@ This is an implementation of Media Processing course's final project.
 
 ## TODO
 
-* [ ] Derive UML diagram
-* [ ] Implement Model package
-* [ ] Implement Controller package
-* [ ] Implement View package
-  * [ ] Implement GraphicView
-  * [ ] Implement TerminalView
+* [ ] Modeling
+  * [x] Architechture
+  * [x] Model package
+  * [ ] Controller package
+  * [ ] View package
+    * [ ] AbstractView
+    * [ ] GraphicsView
+    * [ ] TerminalView
+* [ ] Implementing
+  * [ ] Model package
+  * [ ] Controller package
+  * [ ] View package
+    * [ ] AbstractView
+    * [ ] GraphicsView
+    * [ ] TerminalView

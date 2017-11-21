@@ -31,3 +31,6 @@ HEADERS += \
 LIBS += -L../libworld/ -lworld
 INCLUDEPATH += ../libworld/
 DEPENDPATH += ../libworld/
+
+DISTFILES += \
+    finaltask.qmodel
