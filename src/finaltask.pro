@@ -34,3 +34,6 @@ DEPENDPATH += ../libworld/
 
 DISTFILES += \
     finaltask.qmodel
+
+RESOURCES += \
+    res.qrc
