@@ -1,6 +1,7 @@
 #include <QApplication>
 #include "model/worldmodel.h"
 #include "graphicsview/worldgraphicsview.h"
+#include "terminalview/worldterminalview.h"
 
 int main(int argc, char *argv[])
 {
@@ -14,6 +15,11 @@ int main(int argc, char *argv[])
     v.setModel(&m);
 
     v.show();
+
+    WorldTerminalView t;
+    t.resize(640, 480);
+    t.setModel(&m);
+    t.show();
 
     m.getProtagonist()->setPos(200,200);
 

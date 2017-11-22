@@ -25,11 +25,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp \
     model/worldmodel.cpp \
-    graphicsview/worldgraphicsview.cpp
+    graphicsview/worldgraphicsview.cpp \
+    terminalview/worldterminalview.cpp
 HEADERS += \
            ../libworld/world.h \
     model/worldmodel.h \
-    graphicsview/worldgraphicsview.h
+    graphicsview/worldgraphicsview.h \
+    terminalview/worldterminalview.h
 
 
 LIBS += -L../libworld/ -lworld
