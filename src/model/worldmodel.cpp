@@ -11,10 +11,14 @@ WorldModel::WorldModel(QObject *parent) : QObject(parent)
 void WorldModel::init(const QString &filename, int enemies, int healthpacks)
 {
     World w;
-    world_ = w.createWorld(filename);
+    level_ = filename;
+    world_ = w.createWorld(level_);
+    rows_ = w.getRows();
+    columns_ = w.getCols();
     enemies_ = w.getEnemies(enemies);
     healthpacks_ = w.getHealthPacks(healthpacks);
     protagonist_ = w.getProtagonist();
+    emit reload();
 }
 
 void WorldModel::attackEnemy(const std::unique_ptr<Enemy> &enemy)

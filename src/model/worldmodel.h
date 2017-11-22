@@ -15,6 +15,9 @@ public:
     inline const std::vector<std::unique_ptr<Enemy>> & getEnemies() const {return enemies_;}
     inline const std::vector<std::unique_ptr<Tile>> & getHealthpacks() const {return healthpacks_;}
     inline const std::unique_ptr<Protagonist> & getProtagonist() const {return protagonist_;}
+    inline const QString & getLevel() const {return level_;}
+    inline int getRows() const {return rows_;}
+    inline int getColumns() const {return columns_;}
     void attackEnemy(const std::unique_ptr<Enemy> &enemy);
     void useHealthpack(const std::unique_ptr<Tile> &pack);
 
@@ -23,11 +26,14 @@ private:
     std::vector<std::unique_ptr<Enemy>> enemies_;
     std::vector<std::unique_ptr<Tile>> healthpacks_;
     std::unique_ptr<Protagonist> protagonist_;
+    QString level_;
+    int rows_;
+    int columns_;
 
 signals:
     void reload();
-    void healthpackUsed(const std::unique_ptr<Tile> &pack);
-    void enemyDefeated(const std::unique_ptr<Enemy> &enemy);
+    void healthpackUsed(int x, int y);
+    void enemyDefeated(int x, int y);
     void healthLevelChanged(float value);
     void energyLevelChanged(float value);
 
