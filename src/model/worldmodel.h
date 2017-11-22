@@ -37,7 +37,8 @@ signals:
     void healthLevelChanged(float value);
     void energyLevelChanged(float value);
 
-
+public slots:
+    void move(int x,int y);
 };
 
 #endif // WORLDMODEL_H

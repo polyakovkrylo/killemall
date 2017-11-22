@@ -31,3 +31,9 @@ void WorldModel::useHealthpack(const std::unique_ptr<Tile> &pack)
     Q_UNUSED(pack);
 }
 
+void WorldModel::move(int x, int y)
+{
+    Q_UNUSED(x);
+    Q_UNUSED(y);
+}
+
