@@ -22,6 +22,8 @@ This is an implementation of Media Processing course's final project.
 * [ ] Implementing
   * [ ] Model package
   * [ ] Controller package
+    * [x] AbstractController
+    * [ ] AStarController
   * [ ] View package
     * [x] GraphicsView
     * [ ] TerminalView

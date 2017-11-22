@@ -5,7 +5,7 @@ using std::unique_ptr;
 
 WorldModel::WorldModel(QObject *parent) : QObject(parent)
 {
-
+    controller_ = unique_ptr<WorldAbstractController>(WorldControllerFactory::createController(this));
 }
 
 void WorldModel::init(const QString &filename, int enemies, int healthpacks)
