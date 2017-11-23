@@ -34,8 +34,8 @@ signals:
     void reload();
     void healthpackUsed(int x, int y);
     void enemyDefeated(int x, int y);
-    void healthLevelChanged(float value);
-    void energyLevelChanged(float value);
+    void healthLevelChanged(int value);
+    void energyLevelChanged(int value);
 
 public slots:
     void move(int x,int y);
