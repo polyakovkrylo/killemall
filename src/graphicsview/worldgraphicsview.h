@@ -4,6 +4,8 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
+#include <QProgressBar>
+#include <QLabel>
 
 #include "model/worldmodel.h"
 
@@ -21,7 +23,8 @@ public:
 private:
     QGraphicsScene* scene_;
     QGraphicsEllipseItem* protagonist_;
-
+    QProgressBar* healthBar_;
+    QProgressBar* energyBar_;
 
 public slots:
     void onProtagonistPositionChanged(int x, int y);

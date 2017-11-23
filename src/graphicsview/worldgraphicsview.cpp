@@ -3,6 +3,23 @@
 WorldGraphicsView::WorldGraphicsView(QWidget *parent) :
     QGraphicsView(parent), scene_{nullptr}
 {
+    healthBar_ = new QProgressBar(this);
+    energyBar_ = new QProgressBar(this);
+    QLabel *lh =  new QLabel("Health", this);
+    QLabel *le =  new QLabel("Energy", this);
+
+    healthBar_->setStyleSheet("QProgressBar::chunk{background-color:green;}");
+    energyBar_->setStyleSheet("QProgressBar::chunk{background-color:yellow;}");
+    healthBar_->setTextVisible(false);
+    energyBar_->setTextVisible(false);
+
+    lh->setAlignment(Qt::AlignCenter);
+    le->setAlignment(Qt::AlignCenter);
+
+    healthBar_->setGeometry(10,10,100,20);
+    energyBar_->setGeometry(10,40,100,20);
+    lh->setGeometry(healthBar_->geometry());
+    le->setGeometry(energyBar_->geometry());
 }
 
 void WorldGraphicsView::setModel(const WorldModel *model)
@@ -44,6 +61,8 @@ void WorldGraphicsView::setModel(const WorldModel *model)
     connect(model, SIGNAL(reload()),this, SLOT(onReload()));
     connect(model, SIGNAL(healthpackUsed(int,int)), this, SLOT(onHealthpackUsed(int,int)));
     connect(model, SIGNAL(enemyDefeated(int,int)), this, SLOT(onEnemyDefeated(int,int)));
+    connect(model,SIGNAL(healthLevelChanged(float)),healthBar_,SLOT(setValue(int)));
+    connect(model,SIGNAL(energyLevelChanged(float)),energyBar_,SLOT(setValue(int)));
 
     setScene(scene_);
     centerOn(protagonist_);
