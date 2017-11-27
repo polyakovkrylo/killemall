@@ -37,6 +37,21 @@ void WorldGraphicsView::setModel(const WorldModel *model)
 
     //draw enemies with the center at tile's x and y
     for(auto &e: model->getEnemies()) {
+        // draw poison area if the enemy is of type PEnemy
+        Enemy* en = e.get();
+        PEnemy* pe= dynamic_cast<PEnemy*>(en);
+        if(pe != nullptr){
+            QGraphicsEllipseItem *it = scene_->addEllipse(QRectF(e->getXPos()-itemSize_*1.5,
+                                                                 e->getYPos()-itemSize_*1.5,
+                                                                 itemSize_*3,itemSize_*3),
+                                                          QPen(Qt::transparent),QBrush());
+            connect(pe, &PEnemy::poisonLevelUpdated, [=](int value) {
+                // Set alpha channel as doubled poison level
+                it->setBrush(QColor(230,230,0,value*2));
+             } );
+        }
+
+        //draw enemy with the center at tile's x and y
         scene_->addEllipse(QRectF(e->getXPos()-itemSize_/2,e->getYPos()-itemSize_/2,
                                   itemSize_,itemSize_),
                            QPen(), QBrush(Qt::red));
