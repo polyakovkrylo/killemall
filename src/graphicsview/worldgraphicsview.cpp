@@ -37,46 +37,49 @@ void WorldGraphicsView::setModel(const WorldModel *model)
 
     //draw enemies with the center at tile's x and y
     for(auto &e: model->getEnemies()) {
-        scene_->addEllipse(QRectF(e->getXPos()-itemSize/2,e->getYPos()-itemSize/2,
-                                  itemSize,itemSize),
+        scene_->addEllipse(QRectF(e->getXPos()-itemSize_/2,e->getYPos()-itemSize_/2,
+                                  itemSize_,itemSize_),
                            QPen(), QBrush(Qt::red));
     }
 
     //draw health packs with the center at tile's x and y
     for(auto &p: model->getHealthpacks()) {
-        scene_->addEllipse(QRectF(p->getXPos()-itemSize/2,p->getYPos()-itemSize/2,
-                                  itemSize,itemSize),
+        scene_->addEllipse(QRectF(p->getXPos()-itemSize_/2,p->getYPos()-itemSize_/2,
+                                  itemSize_,itemSize_),
                            QPen(), QBrush(Qt::green));
     }
 
     //draw protagonist with the center at tile's x and y
     auto &p = model->getProtagonist();
-    protagonist_ = scene_->addEllipse(QRectF(p->getXPos()-itemSize/2,
-                                             p->getYPos()-itemSize/2,
-                                             itemSize,itemSize),
+    protagonist_ = scene_->addEllipse(QRectF(p->getXPos()-itemSize_/2,
+                                             p->getYPos()-itemSize_/2,
+                                             itemSize_,itemSize_),
                                       QPen(), QBrush(Qt::blue));
+
+    healthBar_->setValue(p->getHealth());
+    energyBar_->setValue(p->getEnergy());
 
     connect(p.get(), SIGNAL(posChanged(int,int)),
             this, SLOT(onProtagonistPositionChanged(int,int)));
     connect(model, SIGNAL(reload()),this, SLOT(onReload()));
     connect(model, SIGNAL(healthpackUsed(int,int)), this, SLOT(onHealthpackUsed(int,int)));
     connect(model, SIGNAL(enemyDefeated(int,int)), this, SLOT(onEnemyDefeated(int,int)));
-    connect(model,SIGNAL(healthLevelChanged(float)),healthBar_,SLOT(setValue(int)));
-    connect(model,SIGNAL(energyLevelChanged(float)),energyBar_,SLOT(setValue(int)));
+    connect(model,SIGNAL(healthLevelChanged(int)),healthBar_,SLOT(setValue(int)));
+    connect(model,SIGNAL(energyLevelChanged(int)),energyBar_,SLOT(setValue(int)));
 
     setScene(scene_);
     centerOn(protagonist_);
 }
 
-QGraphicsItem *WorldGraphicsView::itemAt(QRect itemRect)
+QGraphicsItem *WorldGraphicsView::itemAt(QPoint itemCenter)
 {
     //looking for an item with that fits the rectangle
     QGraphicsItem* item = nullptr;
-    for(QGraphicsItem* it: items(itemRect.x(),item->y())){
+    for(QGraphicsItem* it: items(itemCenter)){
         if(it == protagonist_) {
             continue;
         }
-        if(it->boundingRect() == itemRect) {
+        if(it->boundingRect().center() == itemCenter) {
             item = it;
             break;
         }
@@ -94,15 +97,13 @@ void WorldGraphicsView::onProtagonistPositionChanged(int x, int y)
 void WorldGraphicsView::onEnemyDefeated(int x, int y)
 {
     //find an enemy with the center at the given position and paint it gray
-    QRect itemRect = QRect(x-itemSize/2, y-itemSize/2,itemSize,itemSize);
-    qgraphicsitem_cast<QGraphicsEllipseItem*>(itemAt(itemRect))->setBrush(Qt::gray);
+    qgraphicsitem_cast<QGraphicsEllipseItem*>(itemAt(QPoint(x,y)))->setBrush(Qt::gray);
 }
 
 void WorldGraphicsView::onHealthpackUsed(int x, int y)
 {
     //find an enemy with the center at the given position and remove it
-    QRect itemRect = QRect(x-itemSize/2, y-itemSize/2,itemSize,itemSize);
-    scene_->removeItem(itemAt(itemRect));
+    scene_->removeItem(itemAt(QPoint(x,y)));
 }
 
 void WorldGraphicsView::onReload()

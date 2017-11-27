@@ -16,15 +16,15 @@ public:
     WorldGraphicsView(QWidget *parent = 0);
 
     void setModel(const WorldModel *model);
-    QGraphicsItem *itemAt(QRect itemRect);
 
-    const int itemSize{10};
+    QGraphicsItem *itemAt(QPoint itemCenter);
 
 private:
     QGraphicsScene* scene_;
     QGraphicsEllipseItem* protagonist_;
     QProgressBar* healthBar_;
     QProgressBar* energyBar_;
+    const int itemSize_{10};
 
 public slots:
     void onProtagonistPositionChanged(int x, int y);

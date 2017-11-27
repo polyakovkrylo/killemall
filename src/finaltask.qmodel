@@ -774,7 +774,7 @@
                                     <object>{7e93d7d2-997c-40b4-acfd-48e990f3fb8b}</object>
                                     <name>WorldModel</name>
                                     <pos>x:240;y:325</pos>
-                                    <rect>x:-220;y:-165;w:440;h:330</rect>
+                                    <rect>x:-220;y:-180;w:440;h:360</rect>
                                     <visual-role>0</visual-role>
                                    </DObject>
                                   </base-DObject>
@@ -834,7 +834,7 @@
                                     <object>{abcff250-9b2a-4cc6-8cf9-d7a3144902d0}</object>
                                     <context>controller</context>
                                     <name>WorldAbstractController</name>
-                                    <pos>x:85;y:585</pos>
+                                    <pos>x:240;y:640</pos>
                                     <rect>x:-75;y:-30;w:150;h:60</rect>
                                     <visual-role>0</visual-role>
                                    </DObject>
@@ -877,7 +877,7 @@
                                </item>
                               </qlist>
                              </elements>
-                             <last-modified>1511281859024</last-modified>
+                             <last-modified>1511455095872</last-modified>
                              <toolbarid>General</toolbarid>
                             </MDiagram>
                            </base-MDiagram>
@@ -986,7 +986,7 @@
                             <qlist>
                              <item>
                               <MClassMember>
-                               <uid>{48c8cdb0-0045-442f-ba2d-b73c714bd95e}</uid>
+                               <uid>{609028e6-bcc9-4056-9398-7342c2326360}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <properties>3</properties>
@@ -995,7 +995,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{554013f3-3646-48b6-b55a-328c510010c2}</uid>
+                               <uid>{2132fec8-1839-49d9-b6c9-42c8efa15481}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>WorldModel* model_</declaration>
@@ -1654,7 +1654,7 @@
                             <qlist>
                              <item>
                               <MClassMember>
-                               <uid>{128ddf0f-947f-465a-b6c2-999aac1505eb}</uid>
+                               <uid>{22cb7836-42d3-4fe8-b11b-173e52d20dca}</uid>
                                <visibility>1</visibility>
                                <type>1</type>
                                <declaration>const int itemSize</declaration>
@@ -1662,7 +1662,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{bfbc059a-f1f5-4e84-9fcf-72164649064c}</uid>
+                               <uid>{a0011fde-30b5-45bd-b590-8023f21b23f8}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <declaration>void setModel(const WorldModel *model)</declaration>
@@ -1670,7 +1670,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{3cee2e59-cdce-4629-a720-2bad7e03a47a}</uid>
+                               <uid>{86824d66-a5d7-45a2-9732-4d6ae0cc8e20}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <declaration>QGraphicsItem *itemAt(QRect itemRect)</declaration>
@@ -1678,7 +1678,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{3645d4be-bd24-49b0-8f0b-a54617f95f5f}</uid>
+                               <uid>{576dd98c-0492-445e-8286-c30506c7065b}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>QGraphicsScene* scene_</declaration>
@@ -1686,7 +1686,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{1ec1e22a-a29a-492f-a673-bd1b19f87a69}</uid>
+                               <uid>{f05c3c76-759a-48b5-9a79-16530b2c3a7d}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>QGraphicsEllipseItem* protagonist_</declaration>
@@ -1694,7 +1694,23 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{a320f6c9-6eb7-4edc-ab8d-66011b70ae4b}</uid>
+                               <uid>{75a22f6c-14b7-43f8-b256-103c4c8a4ed8}</uid>
+                               <visibility>3</visibility>
+                               <type>1</type>
+                               <declaration>QProgressBar* healthBar_</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{b1b59e22-9093-457e-a54b-bca16ca2c878}</uid>
+                               <visibility>3</visibility>
+                               <type>1</type>
+                               <declaration>QProgressBar* energyBar_</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{219b3385-c1ec-4f01-8324-6b7bc7e5c499}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>WorldModel* model</declaration>
@@ -1702,7 +1718,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{0caf7532-caf4-4c78-84d7-3b60bf532497}</uid>
+                               <uid>{8a2d15b2-2f92-49a8-b122-f11570f1e18c}</uid>
                                <visibility>7</visibility>
                                <type>2</type>
                                <declaration>void onProtogonistPositionChanged(QPoint pos)</declaration>
@@ -1710,7 +1726,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{4a54d07a-c520-43e9-892c-ac9722b22be2}</uid>
+                               <uid>{71e2970a-2023-4dc8-94a8-30fc2471e4e9}</uid>
                                <visibility>7</visibility>
                                <type>2</type>
                                <declaration>void onEnemyDefeated(int x,int y)</declaration>
@@ -1718,7 +1734,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{d9ca6462-76ad-46f3-9cd5-595322f825f0}</uid>
+                               <uid>{00760c73-8201-4b02-9631-2bd982b30690}</uid>
                                <visibility>7</visibility>
                                <type>2</type>
                                <declaration>void onHealthPackUsed(int x,int y)</declaration>
@@ -1726,7 +1742,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{175e786c-3b9b-4f96-a54a-14e3c5baabaf}</uid>
+                               <uid>{b8ec5263-c6f7-4899-a5df-b81f62c687c3}</uid>
                                <visibility>7</visibility>
                                <type>2</type>
                                <declaration>void onReload()</declaration>
@@ -1772,7 +1788,7 @@
                                     <object>{070e708f-ed92-4a5a-8716-9e5864427267}</object>
                                     <name>WorldGraphicsView</name>
                                     <pos>x:365;y:395</pos>
-                                    <rect>x:-150;y:-100;w:300;h:200</rect>
+                                    <rect>x:-150;y:-110;w:300;h:220</rect>
                                     <visual-role>0</visual-role>
                                    </DObject>
                                   </base-DObject>
