@@ -22,6 +22,10 @@ public:
 
     virtual void keyPressEvent(QKeyEvent *e) override;
 
+    virtual void mousePressEvent(QMouseEvent *e) override;
+
+    virtual void mouseMoveEvent(QMouseEvent *e) override;
+
 private:
     WorldModel* model_;
     QGraphicsScene* scene_;

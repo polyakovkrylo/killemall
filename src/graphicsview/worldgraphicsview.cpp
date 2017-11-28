@@ -123,6 +123,18 @@ void WorldGraphicsView::keyPressEvent(QKeyEvent *e)
     model_->move(x,y);
 }
 
+void WorldGraphicsView::mousePressEvent(QMouseEvent *e)
+{
+    if(e->button() == Qt::LeftButton){
+        model_->move(mapToScene(e->pos()).toPoint());
+    }
+}
+
+void WorldGraphicsView::mouseMoveEvent(QMouseEvent *e)
+{
+    mousePressEvent(e);
+}
+
 void WorldGraphicsView::onProtagonistPositionChanged(int x, int y)
 {
     //move protagonist and center view
