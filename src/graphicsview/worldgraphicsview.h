@@ -6,6 +6,7 @@
 #include <QGraphicsPixmapItem>
 #include <QProgressBar>
 #include <QLabel>
+#include <QKeyEvent>
 
 #include "model/worldmodel.h"
 
@@ -15,11 +16,14 @@ class WorldGraphicsView : public QGraphicsView
 public:
     WorldGraphicsView(QWidget *parent = 0);
 
-    void setModel(const WorldModel *model);
+    void setModel(WorldModel *model);
 
     QGraphicsItem *itemAt(QPoint itemCenter);
 
+    virtual void keyPressEvent(QKeyEvent *e) override;
+
 private:
+    WorldModel* model_;
     QGraphicsScene* scene_;
     QGraphicsEllipseItem* protagonist_;
     QProgressBar* healthBar_;

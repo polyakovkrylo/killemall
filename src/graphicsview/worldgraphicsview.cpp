@@ -1,7 +1,7 @@
 #include "worldgraphicsview.h"
 
 WorldGraphicsView::WorldGraphicsView(QWidget *parent) :
-    QGraphicsView(parent), scene_{nullptr}
+    QGraphicsView(parent), model_{nullptr}, scene_{nullptr}
 {
     healthBar_ = new QProgressBar(this);
     energyBar_ = new QProgressBar(this);
@@ -22,11 +22,11 @@ WorldGraphicsView::WorldGraphicsView(QWidget *parent) :
     le->setGeometry(energyBar_->geometry());
 }
 
-void WorldGraphicsView::setModel(const WorldModel *model)
+void WorldGraphicsView::setModel(WorldModel *model)
 {
+    model_ = model;
     //reset scene
     if(scene_ != nullptr) {
-        setScene(nullptr);
         scene_->deleteLater();
     }
 
@@ -100,6 +100,27 @@ QGraphicsItem *WorldGraphicsView::itemAt(QPoint itemCenter)
         }
     }
     return item;
+}
+
+void WorldGraphicsView::keyPressEvent(QKeyEvent *e)
+{
+    int x = model_->getProtagonist()->getXPos();
+    int y = model_->getProtagonist()->getYPos();
+    switch(e->key()) {
+    case Qt::Key_Up:
+        y--;
+        break;
+    case Qt::Key_Down:
+        y++;
+        break;
+    case Qt::Key_Right:
+        x++;
+        break;
+    case Qt::Key_Left:
+        x--;
+        break;
+    }
+    model_->move(x,y);
 }
 
 void WorldGraphicsView::onProtagonistPositionChanged(int x, int y)
