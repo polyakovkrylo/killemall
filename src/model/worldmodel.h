@@ -39,6 +39,7 @@ signals:
 
 public slots:
     void move(int x,int y);
+    void move(const QPoint &pos);
 };
 
 #endif // WORLDMODEL_H

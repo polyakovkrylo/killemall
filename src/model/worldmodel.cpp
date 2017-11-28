@@ -37,3 +37,8 @@ void WorldModel::move(int x, int y)
     Q_UNUSED(y);
 }
 
+void WorldModel::move(const QPoint &pos)
+{
+    move(pos.x(), pos.y());
+}
+

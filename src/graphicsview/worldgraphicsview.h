@@ -4,6 +4,9 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
+#include <QProgressBar>
+#include <QLabel>
+#include <QKeyEvent>
 
 #include "model/worldmodel.h"
 
@@ -13,15 +16,23 @@ class WorldGraphicsView : public QGraphicsView
 public:
     WorldGraphicsView(QWidget *parent = 0);
 
-    void setModel(const WorldModel *model);
-    QGraphicsItem *itemAt(QRect itemRect);
+    void setModel(WorldModel *model);
 
-    const int itemSize{10};
+    QGraphicsItem *itemAt(QPoint itemCenter);
+
+    virtual void keyPressEvent(QKeyEvent *e) override;
+
+    virtual void mousePressEvent(QMouseEvent *e) override;
+
+    virtual void mouseMoveEvent(QMouseEvent *e) override;
 
 private:
+    WorldModel* model_;
     QGraphicsScene* scene_;
     QGraphicsEllipseItem* protagonist_;
-
+    QProgressBar* healthBar_;
+    QProgressBar* energyBar_;
+    const int itemSize_{10};
 
 public slots:
     void onProtagonistPositionChanged(int x, int y);
