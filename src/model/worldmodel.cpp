@@ -1,3 +1,15 @@
+/*!
+ * \file worldmodel.cpp
+ *
+ * WorldModel class definition
+ *
+ * \version 1.0
+ *
+ * \author Vladimir Poliakov
+ * \author Brian Segers
+ * \author Kasper De Volder
+ */
+
 #include "worldmodel.h"
 
 using std::vector;

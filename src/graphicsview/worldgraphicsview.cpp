@@ -1,3 +1,15 @@
+/*!
+ * \file worldgraphicsview.cpp
+ *
+ * WorldGraphicsView class definition
+ *
+ * \version 1.0
+ *
+ * \author Vladimir Poliakov
+ * \author Brian Segers
+ * \author Kasper De Volder
+ */
+
 #include "worldgraphicsview.h"
 
 WorldGraphicsView::WorldGraphicsView(QWidget *parent) :
