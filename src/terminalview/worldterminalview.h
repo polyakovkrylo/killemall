@@ -7,6 +7,7 @@
 #include <QtWidgets>
 #include <iostream>
 #include <QString>
+#include <sstream>
 
 #include "model/worldmodel.h"
 
@@ -16,6 +17,8 @@ class WorldTerminalView : public QWidget
 public:
     WorldTerminalView(QWidget *parent = 0);
     void setModel(const WorldModel *m);
+    std::vector<float> findNearestEnemy();    //return vector with (x,y,strength) of nearest enemy to protagonist
+    std::vector<float> findNearestHealth();   //return vector with (x,y,strength) of nearest healthpack to protagonist
 
 private:
     //QProcess* proc;
@@ -26,9 +29,10 @@ private:
 public:
     void executeCmd(std::string &cmd);
 
-public slots:
-    //void slotDataOnStdout();
+public slots:    
     void slotReturnPressed();
+    void onEnemyDefeated(int x,int y);
+    void onHealthpackUsed(int x,int y);
 };
 
 #endif // WORLDTERMINALVIEW_H
