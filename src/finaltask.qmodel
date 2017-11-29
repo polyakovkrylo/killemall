@@ -229,8 +229,8 @@
                          </base-DElement>
                          <object>{cd440b0a-e1be-4085-bebe-43b30508643b}</object>
                          <name>terminalview</name>
-                         <pos>x:145;y:455</pos>
-                         <rect>x:-105;y:-75;w:210;h:150</rect>
+                         <pos>x:145;y:450</pos>
+                         <rect>x:-105;y:-70;w:210;h:140</rect>
                          <auto-sized>false</auto-sized>
                          <visual-role>0</visual-role>
                         </DObject>
@@ -379,6 +379,7 @@
                          <object>{2ac76dc9-15aa-49da-89cc-5e468644ec08}</object>
                          <a>{76cee5f4-8eeb-4a06-a999-18b649d8f006}</a>
                          <b>{bcfab504-1f33-43b7-a741-98a7c3b8856c}</b>
+                         <name>creates</name>
                         </DRelation>
                        </base-DRelation>
                       </DDependency>
@@ -397,6 +398,7 @@
                          <object>{34cfb77b-3ea2-44a7-8bed-5ced6dcc03a3}</object>
                          <a>{45e1ec5c-784c-44fe-9589-9031df9ba3f0}</a>
                          <b>{76cee5f4-8eeb-4a06-a999-18b649d8f006}</b>
+                         <name>uses</name>
                         </DRelation>
                        </base-DRelation>
                       </DDependency>
@@ -565,6 +567,7 @@
                                           <uid>{34cfb77b-3ea2-44a7-8bed-5ced6dcc03a3}</uid>
                                          </MElement>
                                         </base-MElement>
+                                        <name>uses</name>
                                         <a>{7e93d7d2-997c-40b4-acfd-48e990f3fb8b}</a>
                                         <b>{757225c9-1803-40c1-9ef7-a6451aaa0fd4}</b>
                                        </MRelation>
@@ -1369,7 +1372,7 @@
                                     </base-DElement>
                                     <object>{757225c9-1803-40c1-9ef7-a6451aaa0fd4}</object>
                                     <name>WorldControllerFactory</name>
-                                    <pos>x:-195;y:-90</pos>
+                                    <pos>x:-145;y:-250</pos>
                                     <rect>x:-290;y:-35;w:580;h:70</rect>
                                     <visual-role>0</visual-role>
                                    </DObject>
@@ -1391,6 +1394,7 @@
                                     <object>{2ac76dc9-15aa-49da-89cc-5e468644ec08}</object>
                                     <a>{bed067e2-67d6-458f-b252-50aa31217449}</a>
                                     <b>{30b9d024-df13-4c4d-a664-0ea4fc0f0171}</b>
+                                    <name>creates</name>
                                    </DRelation>
                                   </base-DRelation>
                                  </DDependency>
@@ -1413,11 +1417,12 @@
                                      </qlist>
                                     </stereotypes>
                                     <name>ControllerType</name>
-                                    <pos>x:-195;y:-225</pos>
-                                    <rect>x:-50;y:-30;w:100;h:60</rect>
+                                    <pos>x:-145;y:-390</pos>
+                                    <rect>x:-50;y:-40;w:100;h:80</rect>
                                     <visual-role>0</visual-role>
                                    </DObject>
                                   </base-DObject>
+                                  <show-all-members>true</show-all-members>
                                  </DClass>
                                 </instance>
                                </item>
@@ -1434,6 +1439,7 @@
                                     <object>{861c1fef-ad97-424c-912e-fd18c908d33a}</object>
                                     <a>{bed067e2-67d6-458f-b252-50aa31217449}</a>
                                     <b>{1a380551-47fb-4271-9872-d6f8e808c5c8}</b>
+                                    <name>uses</name>
                                    </DRelation>
                                   </base-DRelation>
                                  </DDependency>
@@ -1647,6 +1653,7 @@
                                           <uid>{2ac76dc9-15aa-49da-89cc-5e468644ec08}</uid>
                                          </MElement>
                                         </base-MElement>
+                                        <name>creates</name>
                                         <a>{757225c9-1803-40c1-9ef7-a6451aaa0fd4}</a>
                                         <b>{abcff250-9b2a-4cc6-8cf9-d7a3144902d0}</b>
                                        </MRelation>
@@ -1669,6 +1676,7 @@
                                           <uid>{861c1fef-ad97-424c-912e-fd18c908d33a}</uid>
                                          </MElement>
                                         </base-MElement>
+                                        <name>uses</name>
                                         <a>{757225c9-1803-40c1-9ef7-a6451aaa0fd4}</a>
                                         <b>{098a548f-4f70-4af5-90d1-2bfeb25b67ee}</b>
                                        </MRelation>
@@ -1727,7 +1735,8 @@
                             <qlist>
                              <item>
                               <MClassMember>
-                               <uid>{c1d13f24-4e78-4cfb-af5b-1c62084651c7}</uid>
+                               <uid>{f74fd08a-67a1-4e87-9afb-13ed61ba8149}</uid>
+                               <visibility>1</visibility>
                                <type>1</type>
                                <declaration>int AStar</declaration>
                               </MClassMember>
@@ -2274,7 +2283,7 @@
                                     </base-DElement>
                                     <object>{070e708f-ed92-4a5a-8716-9e5864427267}</object>
                                     <name>WorldGraphicsView</name>
-                                    <pos>x:365;y:395</pos>
+                                    <pos>x:315;y:345</pos>
                                     <rect>x:-150;y:-115;w:300;h:230</rect>
                                     <visual-role>0</visual-role>
                                    </DObject>
@@ -2391,7 +2400,7 @@
                                     <object>{cc4a205b-0e02-4e42-9b05-8b8573d478ba}</object>
                                     <context>qt</context>
                                     <name>QGraphicsView</name>
-                                    <pos>x:515;y:160</pos>
+                                    <pos>x:465;y:110</pos>
                                     <rect>x:-50;y:-30;w:100;h:60</rect>
                                     <visual-role>6</visual-role>
                                     <visual-role2>2</visual-role2>
