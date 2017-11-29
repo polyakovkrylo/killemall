@@ -18,7 +18,7 @@ public:
     inline const std::vector<std::unique_ptr<Tile>> & getHealthpacks() const {return healthpacks_;}
     inline const std::unique_ptr<Protagonist> & getProtagonist() const {return protagonist_;}
     inline const std::unique_ptr<WorldAbstractController> & getController() const {return controller_;}
-    inline const QString & getLevel() const {return level_;}
+    inline const QImage & getLevel() const {return level_;}
     inline int getRows() const {return rows_;}
     inline int getColumns() const {return columns_;}
     void attackEnemy(const std::unique_ptr<Enemy> &enemy);
@@ -30,7 +30,7 @@ private:
     std::vector<std::unique_ptr<Tile>> healthpacks_;
     std::unique_ptr<Protagonist> protagonist_;
     std::unique_ptr<WorldAbstractController> controller_;
-    QString level_;
+    QImage level_;
     int rows_;
     int columns_;
 

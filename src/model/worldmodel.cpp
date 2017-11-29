@@ -11,8 +11,8 @@ WorldModel::WorldModel(QObject *parent) : QObject(parent)
 void WorldModel::init(const QString &filename, int enemies, int healthpacks)
 {
     World w;
-    level_ = filename;
-    world_ = w.createWorld(level_);
+    level_ = QImage(filename);
+    world_ = w.createWorld(filename);
     rows_ = w.getRows();
     columns_ = w.getCols();
     enemies_ = w.getEnemies(enemies);
