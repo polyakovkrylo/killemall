@@ -3,15 +3,17 @@
 
 #include <QObject>
 
+#include "path.h"
+
 class WorldModel;
 
 class WorldAbstractController
 {
 public:
     explicit WorldAbstractController(WorldModel *model);
-    virtual void findPath(int x,int y) = 0;
+    virtual Path findPath(int x,int y) = 0;
 
-private:
+protected:
     WorldModel* model_;
 };
 

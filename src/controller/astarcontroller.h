@@ -7,7 +7,10 @@ class AStarController : public WorldAbstractController
 {
 public:
     AStarController(WorldModel* model);
-    virtual void findPath(int x,int y);
+    virtual Path findPath(int x,int y) override;
+
+private:
+    Path aStarAlgorithm(QPoint start, QPoint target);
 };
 
 #endif // ASTARCONTROLLER_H

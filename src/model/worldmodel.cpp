@@ -33,8 +33,7 @@ void WorldModel::useHealthpack(const std::unique_ptr<Tile> &pack)
 
 void WorldModel::move(int x, int y)
 {
-    Q_UNUSED(x);
-    Q_UNUSED(y);
+    controller_->findPath(x,y);
 }
 
 void WorldModel::move(const QPoint &pos)
