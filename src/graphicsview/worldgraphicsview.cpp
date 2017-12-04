@@ -90,7 +90,7 @@ QGraphicsItem *WorldGraphicsView::itemAt(QPoint itemCenter)
 {
     //looking for an item with that fits the rectangle
     QGraphicsItem* item = nullptr;
-    for(QGraphicsItem* it: items(itemCenter)){
+    for(QGraphicsItem* it: items(mapFromScene(itemCenter))){
         if(it == protagonist_) {
             continue;
         }
@@ -145,7 +145,9 @@ void WorldGraphicsView::onProtagonistPositionChanged(int x, int y)
 void WorldGraphicsView::onEnemyDefeated(int x, int y)
 {
     //find an enemy with the center at the given position and paint it gray
-    qgraphicsitem_cast<QGraphicsEllipseItem*>(itemAt(QPoint(x,y)))->setBrush(Qt::gray);
+    QGraphicsEllipseItem* it = qgraphicsitem_cast<QGraphicsEllipseItem*>(itemAt(QPoint(x,y)));
+    if(it != nullptr)
+        it->setBrush(Qt::gray);
 }
 
 void WorldGraphicsView::onHealthpackUsed(int x, int y)

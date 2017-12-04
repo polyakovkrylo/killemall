@@ -21,8 +21,6 @@ public:
     inline const QImage & getLevel() const {return level_;}
     inline int getRows() const {return rows_;}
     inline int getColumns() const {return columns_;}
-    void attackEnemy(const std::unique_ptr<Enemy> &enemy);
-    void useHealthpack(const std::unique_ptr<Tile> &pack);
 
 private:
     std::vector<std::unique_ptr<Tile>> world_;
@@ -33,6 +31,7 @@ private:
     QImage level_;
     int rows_;
     int columns_;
+    const int activeRadius_{5};
 
 signals:
     void reload();
@@ -44,6 +43,8 @@ signals:
 public slots:
     void move(int x,int y);
     void move(const QPoint &pos);
+    void attackEnemy(int x, int y);
+    void useHealthpack(int x, int y);
 };
 
 #endif // WORLDMODEL_H
