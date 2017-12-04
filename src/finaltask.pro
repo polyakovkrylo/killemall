@@ -28,16 +28,14 @@ SOURCES += main.cpp \
     graphicsview/worldgraphicsview.cpp \
     controller/worldabstractcontroller.cpp \
     controller/worldcontrollerfactory.cpp \
-    controller/astarcontroller.cpp \
-    controller/path.cpp
+    controller/astarcontroller.cpp
 HEADERS += \
            ../libworld/world.h \
     model/worldmodel.h \
     graphicsview/worldgraphicsview.h \
     controller/worldabstractcontroller.h \
     controller/worldcontrollerfactory.h \
-    controller/astarcontroller.h \
-    controller/path.h
+    controller/astarcontroller.h
 
 
 LIBS += -L../libworld/ -lworld

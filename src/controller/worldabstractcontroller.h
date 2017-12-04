@@ -2,19 +2,31 @@
 #define WORLDABSTRACTCONTROLLER_H
 
 #include <QObject>
-
-#include "path.h"
+#include <QVector>
+#include <QTimer>
 
 class WorldModel;
 
-class WorldAbstractController
+struct Path {
+    double cost;
+    QVector<QPoint> steps;
+};
+
+class WorldAbstractController : public QObject
 {
+    Q_OBJECT
 public:
     explicit WorldAbstractController(WorldModel *model);
-    virtual Path findPath(int x,int y) = 0;
+    void move(const QPoint &from, const QPoint& to);
+    virtual bool findPath(const QPoint &from, const QPoint& to) = 0;
+    inline const Path &currentPath() {return path_;}
 
 protected:
     WorldModel* model_;
+    Path path_;
+
+private slots:
+    void animatePath();
 };
 
 #endif // WORLDABSTRACTCONTROLLER_H

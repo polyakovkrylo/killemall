@@ -545,7 +545,7 @@
                             <qlist>
                              <item>
                               <MClassMember>
-                               <uid>{d55e6092-bbb7-47dd-8600-b5e526426d47}</uid>
+                               <uid>{42bcfe8e-665d-46aa-8da1-7eac0b879ab2}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <declaration>void init(const QString &amp;filename, int enemies = 20, int healthpacks = 20)</declaration>
@@ -553,7 +553,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{59838b4d-798f-48a5-ae38-01d884d9ccb8}</uid>
+                               <uid>{0496b4e2-ce40-4f07-babb-1a5bdea1fa13}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <properties>4</properties>
@@ -562,7 +562,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{349ba987-0fa4-4ace-b9f2-62c9aec4d6b2}</uid>
+                               <uid>{65cc7f35-749a-4a75-8655-c99568bead35}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <properties>4</properties>
@@ -571,7 +571,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{4a3c57bf-054a-487f-95ac-3a06ad5a3ebc}</uid>
+                               <uid>{5f0e3bc8-52d8-463d-b0e2-8923e38d2de0}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <properties>4</properties>
@@ -580,7 +580,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{16139e97-34e5-4948-9305-c5cbf06d1ff0}</uid>
+                               <uid>{6f8232c2-a5b0-4693-a11e-93a7d5dfd927}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <properties>4</properties>
@@ -589,7 +589,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{562c5643-7776-4190-898e-4bd89828c650}</uid>
+                               <uid>{381f910c-0bdd-4d52-bad4-0bca1a7ef333}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <properties>4</properties>
@@ -598,7 +598,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{12e4aedc-6c08-4ede-9fbb-529159623ae6}</uid>
+                               <uid>{864d4deb-8858-4e4b-b75a-13f4e6a7408f}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <properties>4</properties>
@@ -607,7 +607,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{0cc4259e-162a-4f36-ab10-84f906d623d2}</uid>
+                               <uid>{3fc4ea3b-f8d0-4a7a-b9d0-3da8ecbe42ce}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <properties>4</properties>
@@ -616,23 +616,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{70d59cc8-9aa7-401d-ba6f-5ab342329c74}</uid>
-                               <visibility>1</visibility>
-                               <type>2</type>
-                               <declaration>void attackEnemy(const std::unique_ptr&lt;Enemy&gt; &amp;enemy)</declaration>
-                              </MClassMember>
-                             </item>
-                             <item>
-                              <MClassMember>
-                               <uid>{9e347e76-9822-44f2-ba14-c25bc877eb22}</uid>
-                               <visibility>1</visibility>
-                               <type>2</type>
-                               <declaration>void useHealthpack(const std::unique_ptr&lt;Tile&gt; &amp;pack)</declaration>
-                              </MClassMember>
-                             </item>
-                             <item>
-                              <MClassMember>
-                               <uid>{6e654452-17c2-4394-a6db-7089b9653171}</uid>
+                               <uid>{cc2f22f4-f17d-4b77-a6df-a77ee44c9d1e}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>std::vector&lt;std::unique_ptr&lt;Tile&gt;&gt; world_</declaration>
@@ -640,7 +624,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{b9859a6e-1b85-462f-af55-17fe24645620}</uid>
+                               <uid>{5a274a33-23b5-42cd-8e89-f0d890f36690}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>std::vector&lt;std::unique_ptr&lt;Enemy&gt;&gt; enemies_</declaration>
@@ -648,7 +632,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{55cc0c5f-422f-4678-bd42-d9bc2be0d50a}</uid>
+                               <uid>{be4b757c-8faf-465b-83bc-f410a15acdd4}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>std::vector&lt;std::unique_ptr&lt;Tile&gt;&gt; healthpacks_</declaration>
@@ -656,7 +640,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{24af6dcb-041c-473e-a845-edf7d2989a75}</uid>
+                               <uid>{be513257-2756-410b-a334-5e3d5960a38c}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>std::unique_ptr&lt;Protagonist&gt; protagonist_</declaration>
@@ -664,7 +648,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{e5a60658-1735-41ed-86a3-c63a2dd4a92a}</uid>
+                               <uid>{c63e4a14-6212-46b5-847e-5a4c01221e54}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>int rows_</declaration>
@@ -672,7 +656,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{a0aaca7c-f379-42ab-9cd3-3e9198103807}</uid>
+                               <uid>{1d84a3a9-afa3-4d00-8670-1249b6fb6031}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>int columns_</declaration>
@@ -680,7 +664,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{934d561a-e804-4978-b0e1-202e4485d58d}</uid>
+                               <uid>{e2fabcaa-06de-4f2a-a003-76b52c79e4d9}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>std::unique_ptr&lt;WorldAbstractController&gt; controller_</declaration>
@@ -688,7 +672,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{7b87b170-326b-4724-9bad-5c5bb33e0a83}</uid>
+                               <uid>{2dbf0612-ea96-4fc3-ba6b-17a735c7c247}</uid>
                                <visibility>4</visibility>
                                <type>2</type>
                                <declaration>void reload()</declaration>
@@ -696,7 +680,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{b2e217d6-1032-4841-a719-294a0f84c0a1}</uid>
+                               <uid>{8b54361c-45d7-43ea-b3b0-4f0b638a14e3}</uid>
                                <visibility>4</visibility>
                                <type>2</type>
                                <declaration>void healthpackUsed(int x, int y)</declaration>
@@ -704,7 +688,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{fab580c3-d075-41ad-aaa0-880db01c994e}</uid>
+                               <uid>{0296079d-9668-4c82-b514-b4ed231a4024}</uid>
                                <visibility>4</visibility>
                                <type>2</type>
                                <declaration>void enemyDefeated(int x, int y)</declaration>
@@ -712,7 +696,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{4ceeee0f-07d6-4698-8170-de88a28621c4}</uid>
+                               <uid>{f37d1df1-b389-4569-8110-08532a7ad7c6}</uid>
                                <visibility>4</visibility>
                                <type>2</type>
                                <declaration>void healthLevelChanged(float value)</declaration>
@@ -720,7 +704,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{be497a65-bfd7-4929-b2ab-2aeccc9d445d}</uid>
+                               <uid>{418be128-742d-400f-a78c-552d60b405ce}</uid>
                                <visibility>4</visibility>
                                <type>2</type>
                                <declaration>void energyLevelChanged(float value)</declaration>
@@ -728,7 +712,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{368ac12a-7851-4325-bac4-4cc5fc7c1ca8}</uid>
+                               <uid>{f6a5b21e-cc1b-4b2d-baff-57f6f5227b50}</uid>
                                <visibility>7</visibility>
                                <type>2</type>
                                <declaration>void move(int x,int y)</declaration>
@@ -736,10 +720,26 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{28983e3c-49d2-442f-a276-c4d968205940}</uid>
+                               <uid>{b2b29ac2-9089-446d-b0fd-a84430dab58a}</uid>
                                <visibility>7</visibility>
                                <type>2</type>
                                <declaration>void move(const QPoint &amp;pos)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{bb827e24-2b3d-421c-b534-71c37fee88c9}</uid>
+                               <visibility>7</visibility>
+                               <type>2</type>
+                               <declaration>void attackEnemy(int x, int y)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{87ab1d51-429f-49f9-a8ba-c296138943f3}</uid>
+                               <visibility>7</visibility>
+                               <type>2</type>
+                               <declaration>void useHealthpack(int x, int y)</declaration>
                               </MClassMember>
                              </item>
                             </qlist>
@@ -984,6 +984,42 @@
                                    </target>
                                   </handle>
                                  </item>
+                                 <item>
+                                  <handle>
+                                   <uid>{7c38fd04-c890-4bc9-ba2f-c4eb28468140}</uid>
+                                   <target>
+                                    <instance type="MAssociation">
+                                     <MAssociation>
+                                      <base-MRelation>
+                                       <MRelation>
+                                        <base-MElement>
+                                         <MElement>
+                                          <uid>{7c38fd04-c890-4bc9-ba2f-c4eb28468140}</uid>
+                                         </MElement>
+                                        </base-MElement>
+                                        <name>hasCurrentPath</name>
+                                        <a>{abcff250-9b2a-4cc6-8cf9-d7a3144902d0}</a>
+                                        <b>{e0822ff4-9221-4e32-be8d-66bf0a0590ee}</b>
+                                       </MRelation>
+                                      </base-MRelation>
+                                      <a>
+                                       <MAssociationEnd>
+                                        <name>path</name>
+                                        <cardinality>1</cardinality>
+                                        <navigable>true</navigable>
+                                        <kind>2</kind>
+                                       </MAssociationEnd>
+                                      </a>
+                                      <b>
+                                       <MAssociationEnd>
+                                        <cardinality>1</cardinality>
+                                       </MAssociationEnd>
+                                      </b>
+                                     </MAssociation>
+                                    </instance>
+                                   </target>
+                                  </handle>
+                                 </item>
                                 </qlist>
                                </handles>
                               </handles>
@@ -994,19 +1030,51 @@
                             <qlist>
                              <item>
                               <MClassMember>
-                               <uid>{609028e6-bcc9-4056-9398-7342c2326360}</uid>
+                               <uid>{f2f25d1c-53ff-4dff-b3e8-77c20f6b1622}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
-                               <properties>3</properties>
-                               <declaration>void findPath(int x,int y)</declaration>
+                               <declaration>void move(const QPoint &amp;from, const QPoint&amp; to)</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{2132fec8-1839-49d9-b6c9-42c8efa15481}</uid>
-                               <visibility>3</visibility>
+                               <uid>{279d7dec-4ead-4b21-aca6-015b61081235}</uid>
+                               <visibility>1</visibility>
+                               <type>2</type>
+                               <properties>3</properties>
+                               <declaration>bool findPath(const QPoint &amp;from, const QPoint&amp; to)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{850f8702-1355-4d12-82c3-6af0c1cad59b}</uid>
+                               <visibility>1</visibility>
+                               <type>2</type>
+                               <declaration>const Path &amp;currentPath()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{595167bc-9016-4d77-a599-e2b2372a5129}</uid>
+                               <visibility>2</visibility>
                                <type>1</type>
                                <declaration>WorldModel* model_</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{2e18fc68-4dec-430a-a6a4-41c20e1f1211}</uid>
+                               <visibility>2</visibility>
+                               <type>1</type>
+                               <declaration>Path path_</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{88f6e4a3-f4a1-42bb-b364-d2d0d32c5317}</uid>
+                               <visibility>5</visibility>
+                               <type>2</type>
+                               <declaration>void animatePath()</declaration>
                               </MClassMember>
                              </item>
                             </qlist>
@@ -1049,7 +1117,7 @@
                                     <object>{abcff250-9b2a-4cc6-8cf9-d7a3144902d0}</object>
                                     <name>WorldAbstractController</name>
                                     <pos>x:-195;y:45</pos>
-                                    <rect>x:-115;y:-45;w:230;h:90</rect>
+                                    <rect>x:-190;y:-70;w:380;h:140</rect>
                                     <visual-role>0</visual-role>
                                    </DObject>
                                   </base-DObject>
@@ -1069,7 +1137,7 @@
                                     </base-DElement>
                                     <object>{eb394d80-0b57-4fb7-a8a8-6ffcc5e4fcfd}</object>
                                     <name>AStarController</name>
-                                    <pos>x:-195;y:180</pos>
+                                    <pos>x:-325;y:265</pos>
                                     <rect>x:-125;y:-35;w:250;h:70</rect>
                                     <visual-role>0</visual-role>
                                    </DObject>
@@ -1178,9 +1246,67 @@
                                  </DDependency>
                                 </instance>
                                </item>
+                               <item>
+                                <instance type="DClass">
+                                 <DClass>
+                                  <base-DObject>
+                                   <DObject>
+                                    <base-DElement>
+                                     <DElement>
+                                      <uid>{95c8a71d-47a0-4206-a5de-76e24f190faf}</uid>
+                                     </DElement>
+                                    </base-DElement>
+                                    <object>{e0822ff4-9221-4e32-be8d-66bf0a0590ee}</object>
+                                    <stereotypes>
+                                     <qlist>
+                                      <item>struct</item>
+                                     </qlist>
+                                    </stereotypes>
+                                    <name>Path</name>
+                                    <pos>x:10;y:265</pos>
+                                    <rect>x:-75;y:-45;w:150;h:90</rect>
+                                    <visual-role>0</visual-role>
+                                   </DObject>
+                                  </base-DObject>
+                                  <show-all-members>true</show-all-members>
+                                 </DClass>
+                                </instance>
+                               </item>
+                               <item>
+                                <instance type="DAssociation">
+                                 <DAssociation>
+                                  <base-DRelation>
+                                   <DRelation>
+                                    <base-DElement>
+                                     <DElement>
+                                      <uid>{0bb7ed86-40fa-4818-a5de-cc8279cec0e6}</uid>
+                                     </DElement>
+                                    </base-DElement>
+                                    <object>{7c38fd04-c890-4bc9-ba2f-c4eb28468140}</object>
+                                    <a>{30b9d024-df13-4c4d-a664-0ea4fc0f0171}</a>
+                                    <b>{95c8a71d-47a0-4206-a5de-76e24f190faf}</b>
+                                    <name>hasCurrentPath</name>
+                                   </DRelation>
+                                  </base-DRelation>
+                                  <a>
+                                   <DAssociationEnd>
+                                    <name>path</name>
+                                    <cradinality>1</cradinality>
+                                    <navigable>true</navigable>
+                                    <kind>2</kind>
+                                   </DAssociationEnd>
+                                  </a>
+                                  <b>
+                                   <DAssociationEnd>
+                                    <cradinality>1</cradinality>
+                                   </DAssociationEnd>
+                                  </b>
+                                 </DAssociation>
+                                </instance>
+                               </item>
                               </qlist>
                              </elements>
-                             <last-modified>1511357348768</last-modified>
+                             <last-modified>1512390518111</last-modified>
                              <toolbarid>General</toolbarid>
                             </MDiagram>
                            </base-MDiagram>
@@ -1239,7 +1365,7 @@
                             <qlist>
                              <item>
                               <MClassMember>
-                               <uid>{02deb8fc-648e-40b9-b93c-9c4e4971eb28}</uid>
+                               <uid>{a05787cd-6137-46f1-b00e-74233c16b1c6}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <properties>9</properties>
@@ -1367,6 +1493,50 @@
                                <uid>{c1d13f24-4e78-4cfb-af5b-1c62084651c7}</uid>
                                <type>1</type>
                                <declaration>int AStar</declaration>
+                              </MClassMember>
+                             </item>
+                            </qlist>
+                           </members>
+                          </MClass>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                      <item>
+                       <handle>
+                        <uid>{e0822ff4-9221-4e32-be8d-66bf0a0590ee}</uid>
+                        <target>
+                         <instance type="MClass">
+                          <MClass>
+                           <base-MObject>
+                            <MObject>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{e0822ff4-9221-4e32-be8d-66bf0a0590ee}</uid>
+                               <stereotypes>
+                                <qlist>
+                                 <item>struct</item>
+                                </qlist>
+                               </stereotypes>
+                              </MElement>
+                             </base-MElement>
+                             <name>Path</name>
+                            </MObject>
+                           </base-MObject>
+                           <members>
+                            <qlist>
+                             <item>
+                              <MClassMember>
+                               <uid>{902ae008-b419-4401-b2f5-0bbbde605a2f}</uid>
+                               <type>1</type>
+                               <declaration>double cost</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{bc9c3323-1059-4dc3-92ad-a1b5f32ff6dd}</uid>
+                               <type>1</type>
+                               <declaration>QVector&lt;QPoint&gt; steps</declaration>
                               </MClassMember>
                              </item>
                             </qlist>

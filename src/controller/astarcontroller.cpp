@@ -7,28 +7,21 @@ AStarController::AStarController(WorldModel *model) :
 
 }
 
-Path AStarController::findPath(int x, int y)
+bool AStarController::findPath(const QPoint &from, const QPoint &to)
 {
-    QPoint protPlace(model_->getProtagonist()->getXPos(),
-                     model_->getProtagonist()->getYPos());
-    QPoint targetPlace(x,y);
+    Q_UNUSED(from);
+    int targetValue=model_->getLevel().pixelColor(to).lightness();
 
-    int targetValue=model_->getLevel().pixelColor(x,y).lightness();
+    bool scs = false;
 
-    Path p;
     if(targetValue>0)
     {
-        p = aStarAlgorithm(protPlace,targetPlace);
-    }
-    else
-    {
-        p = Path();
+        // AStar implementation
+        // Dummy implementation for testing only
+        path_.steps.clear();
+        path_.steps.push_back(to);
+        scs = true;
     }
 
-    return p;
-}
-
-Path AStarController::aStarAlgorithm(QPoint start, QPoint target)
-{
-    return Path();
+    return scs;
 }
