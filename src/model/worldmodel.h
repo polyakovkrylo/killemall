@@ -21,6 +21,8 @@ public:
     inline const QImage & getLevel() const {return level_;}
     inline int getRows() const {return rows_;}
     inline int getColumns() const {return columns_;}
+    void setHealthLevel(float value);
+    void setEnergyLevel(float value);
 
 private:
     std::vector<std::unique_ptr<Tile>> world_;
@@ -32,6 +34,7 @@ private:
     int rows_;
     int columns_;
     const int activeRadius_{5};
+    const int poisonRadius_{5};
 
 signals:
     void reload();
@@ -41,10 +44,11 @@ signals:
     void energyLevelChanged(int value);
 
 public slots:
-    void move(int x,int y);
-    void move(const QPoint &pos);
     void attackEnemy(int x, int y);
     void useHealthpack(int x, int y);
+    void onPEnemyPoisonLevelChanged(int value);
+    void move(int x,int y);
+    void move(const QPoint &pos);
 };
 
 #endif // WORLDMODEL_H

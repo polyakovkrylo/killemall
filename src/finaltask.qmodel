@@ -545,7 +545,7 @@
                             <qlist>
                              <item>
                               <MClassMember>
-                               <uid>{42bcfe8e-665d-46aa-8da1-7eac0b879ab2}</uid>
+                               <uid>{db4fb036-1065-4e3c-8648-26d8097c92bf}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <declaration>void init(const QString &amp;filename, int enemies = 20, int healthpacks = 20)</declaration>
@@ -553,7 +553,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{0496b4e2-ce40-4f07-babb-1a5bdea1fa13}</uid>
+                               <uid>{8db6be7c-5143-4d45-9680-7ce2c7ac3d10}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <properties>4</properties>
@@ -562,7 +562,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{65cc7f35-749a-4a75-8655-c99568bead35}</uid>
+                               <uid>{79fd52bb-625a-4633-ba1f-3ffd63018fbd}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <properties>4</properties>
@@ -571,7 +571,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{5f0e3bc8-52d8-463d-b0e2-8923e38d2de0}</uid>
+                               <uid>{3f32ae54-265b-49bb-95c3-991a2d2718a5}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <properties>4</properties>
@@ -580,7 +580,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{6f8232c2-a5b0-4693-a11e-93a7d5dfd927}</uid>
+                               <uid>{4c0db053-fb9a-4027-a7d9-a449e24e1e21}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <properties>4</properties>
@@ -589,7 +589,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{381f910c-0bdd-4d52-bad4-0bca1a7ef333}</uid>
+                               <uid>{3a8bd6fc-3278-4ba3-a177-b554926ebef6}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <properties>4</properties>
@@ -598,7 +598,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{864d4deb-8858-4e4b-b75a-13f4e6a7408f}</uid>
+                               <uid>{841516d2-e800-40c0-a6cd-7e2017d06a96}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <properties>4</properties>
@@ -607,7 +607,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{3fc4ea3b-f8d0-4a7a-b9d0-3da8ecbe42ce}</uid>
+                               <uid>{e55b22ee-469e-4844-b99b-892ed30f4f4a}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <properties>4</properties>
@@ -616,7 +616,23 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{cc2f22f4-f17d-4b77-a6df-a77ee44c9d1e}</uid>
+                               <uid>{40c086a7-d53b-4a74-b566-594eb84e3445}</uid>
+                               <visibility>1</visibility>
+                               <type>2</type>
+                               <declaration>void setHealthLevel(float value)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{1d23dc35-20e8-4a40-af7e-6e3f0931c58e}</uid>
+                               <visibility>1</visibility>
+                               <type>2</type>
+                               <declaration>void setEnergyLevel(float value)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{b04a47cd-eb0a-4001-8a18-db1850a5241b}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>std::vector&lt;std::unique_ptr&lt;Tile&gt;&gt; world_</declaration>
@@ -624,7 +640,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{5a274a33-23b5-42cd-8e89-f0d890f36690}</uid>
+                               <uid>{8bdbf2c4-fe97-4556-9046-5a9de4b881c1}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>std::vector&lt;std::unique_ptr&lt;Enemy&gt;&gt; enemies_</declaration>
@@ -632,7 +648,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{be4b757c-8faf-465b-83bc-f410a15acdd4}</uid>
+                               <uid>{bcc4351c-0204-4d29-b7e1-9dcb6f030772}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>std::vector&lt;std::unique_ptr&lt;Tile&gt;&gt; healthpacks_</declaration>
@@ -640,7 +656,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{be513257-2756-410b-a334-5e3d5960a38c}</uid>
+                               <uid>{1c545cc8-fb71-4e7e-8cb6-2047b82640df}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>std::unique_ptr&lt;Protagonist&gt; protagonist_</declaration>
@@ -648,7 +664,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{c63e4a14-6212-46b5-847e-5a4c01221e54}</uid>
+                               <uid>{63016db6-1003-489d-a0ef-5f3dfddb0e72}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>int rows_</declaration>
@@ -656,7 +672,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{1d84a3a9-afa3-4d00-8670-1249b6fb6031}</uid>
+                               <uid>{4174e636-7f9f-4d60-839d-40328b565be2}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>int columns_</declaration>
@@ -664,7 +680,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{e2fabcaa-06de-4f2a-a003-76b52c79e4d9}</uid>
+                               <uid>{625a69ed-9eb5-4273-9f61-793a5912586e}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>std::unique_ptr&lt;WorldAbstractController&gt; controller_</declaration>
@@ -672,7 +688,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{2dbf0612-ea96-4fc3-ba6b-17a735c7c247}</uid>
+                               <uid>{2cc8af70-57e3-40b8-a261-c801e4b12a6f}</uid>
                                <visibility>4</visibility>
                                <type>2</type>
                                <declaration>void reload()</declaration>
@@ -680,7 +696,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{8b54361c-45d7-43ea-b3b0-4f0b638a14e3}</uid>
+                               <uid>{c75ec2d9-eba4-4b3a-a771-74ac2c664cf7}</uid>
                                <visibility>4</visibility>
                                <type>2</type>
                                <declaration>void healthpackUsed(int x, int y)</declaration>
@@ -688,7 +704,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{0296079d-9668-4c82-b514-b4ed231a4024}</uid>
+                               <uid>{2b5e394d-bf30-4b80-a44f-3bdeb6f61c11}</uid>
                                <visibility>4</visibility>
                                <type>2</type>
                                <declaration>void enemyDefeated(int x, int y)</declaration>
@@ -696,7 +712,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{f37d1df1-b389-4569-8110-08532a7ad7c6}</uid>
+                               <uid>{bdcc71a4-54ff-4507-afe1-03ec8a73d549}</uid>
                                <visibility>4</visibility>
                                <type>2</type>
                                <declaration>void healthLevelChanged(float value)</declaration>
@@ -704,7 +720,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{418be128-742d-400f-a78c-552d60b405ce}</uid>
+                               <uid>{8f0dc612-cbb8-4421-9088-c89f8ee7e0f3}</uid>
                                <visibility>4</visibility>
                                <type>2</type>
                                <declaration>void energyLevelChanged(float value)</declaration>
@@ -712,23 +728,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{f6a5b21e-cc1b-4b2d-baff-57f6f5227b50}</uid>
-                               <visibility>7</visibility>
-                               <type>2</type>
-                               <declaration>void move(int x,int y)</declaration>
-                              </MClassMember>
-                             </item>
-                             <item>
-                              <MClassMember>
-                               <uid>{b2b29ac2-9089-446d-b0fd-a84430dab58a}</uid>
-                               <visibility>7</visibility>
-                               <type>2</type>
-                               <declaration>void move(const QPoint &amp;pos)</declaration>
-                              </MClassMember>
-                             </item>
-                             <item>
-                              <MClassMember>
-                               <uid>{bb827e24-2b3d-421c-b534-71c37fee88c9}</uid>
+                               <uid>{dbdc2b18-4668-46bf-a67f-7aff702df861}</uid>
                                <visibility>7</visibility>
                                <type>2</type>
                                <declaration>void attackEnemy(int x, int y)</declaration>
@@ -736,10 +736,34 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{87ab1d51-429f-49f9-a8ba-c296138943f3}</uid>
+                               <uid>{783a5c9c-dc67-4fb5-a026-0b5b38cfaad8}</uid>
                                <visibility>7</visibility>
                                <type>2</type>
                                <declaration>void useHealthpack(int x, int y)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{f4d95fee-c204-49a1-8f27-11898439d590}</uid>
+                               <visibility>7</visibility>
+                               <type>2</type>
+                               <declaration>void onPEnemyPosionLevelChanged(int value)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{972a01bd-7987-49ca-9538-91b980efc362}</uid>
+                               <visibility>7</visibility>
+                               <type>2</type>
+                               <declaration>void move(int x,int y)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{65ef2b2a-e4f9-4278-b2e2-54023e7bdbe7}</uid>
+                               <visibility>7</visibility>
+                               <type>2</type>
+                               <declaration>void move(const QPoint &amp;pos)</declaration>
                               </MClassMember>
                              </item>
                             </qlist>
@@ -781,8 +805,8 @@
                                     </base-DElement>
                                     <object>{7e93d7d2-997c-40b4-acfd-48e990f3fb8b}</object>
                                     <name>WorldModel</name>
-                                    <pos>x:240;y:325</pos>
-                                    <rect>x:-220;y:-190;w:440;h:380</rect>
+                                    <pos>x:240;y:335</pos>
+                                    <rect>x:-220;y:-210;w:440;h:420</rect>
                                     <visual-role>0</visual-role>
                                    </DObject>
                                   </base-DObject>
@@ -803,7 +827,7 @@
                                     <object>{844fe1cb-3985-44e9-8dd7-4d274f3d0840}</object>
                                     <context>main</context>
                                     <name>libworld</name>
-                                    <pos>x:240;y:85</pos>
+                                    <pos>x:240;y:60</pos>
                                     <rect>x:-50;y:-35;w:100;h:70</rect>
                                     <visual-role>0</visual-role>
                                    </DObject>
@@ -842,7 +866,7 @@
                                     <object>{abcff250-9b2a-4cc6-8cf9-d7a3144902d0}</object>
                                     <context>controller</context>
                                     <name>WorldAbstractController</name>
-                                    <pos>x:240;y:640</pos>
+                                    <pos>x:240;y:675</pos>
                                     <rect>x:-75;y:-30;w:150;h:60</rect>
                                     <visual-role>0</visual-role>
                                    </DObject>
@@ -885,7 +909,7 @@
                                </item>
                               </qlist>
                              </elements>
-                             <last-modified>1511455095872</last-modified>
+                             <last-modified>1512468783816</last-modified>
                              <toolbarid>General</toolbarid>
                             </MDiagram>
                            </base-MDiagram>
@@ -1030,7 +1054,7 @@
                             <qlist>
                              <item>
                               <MClassMember>
-                               <uid>{f2f25d1c-53ff-4dff-b3e8-77c20f6b1622}</uid>
+                               <uid>{b51b3e82-2cd9-4ea4-9829-69166a4e74ac}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <declaration>void move(const QPoint &amp;from, const QPoint&amp; to)</declaration>
@@ -1038,7 +1062,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{279d7dec-4ead-4b21-aca6-015b61081235}</uid>
+                               <uid>{87946c1c-b3df-4f7e-901b-1ccc15305a73}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <properties>3</properties>
@@ -1047,7 +1071,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{850f8702-1355-4d12-82c3-6af0c1cad59b}</uid>
+                               <uid>{34af5c2f-3d67-4c18-9a08-30f1d89e5797}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <declaration>const Path &amp;currentPath()</declaration>
@@ -1055,7 +1079,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{595167bc-9016-4d77-a599-e2b2372a5129}</uid>
+                               <uid>{1eba85dc-f1e9-46c4-bba9-9297cec54688}</uid>
                                <visibility>2</visibility>
                                <type>1</type>
                                <declaration>WorldModel* model_</declaration>
@@ -1063,7 +1087,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{2e18fc68-4dec-430a-a6a4-41c20e1f1211}</uid>
+                               <uid>{b70c708a-4095-4226-8969-559061d80815}</uid>
                                <visibility>2</visibility>
                                <type>1</type>
                                <declaration>Path path_</declaration>
@@ -1071,7 +1095,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{88f6e4a3-f4a1-42bb-b364-d2d0d32c5317}</uid>
+                               <uid>{364af2bc-3d1f-43b9-854b-90257c1902cd}</uid>
                                <visibility>5</visibility>
                                <type>2</type>
                                <declaration>void animatePath()</declaration>
