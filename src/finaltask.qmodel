@@ -252,7 +252,7 @@
                          <context>terminalview</context>
                          <name>WorldTerminalView</name>
                          <pos>x:140;y:475</pos>
-                         <rect>x:-65;y:-30;w:130;h:60</rect>
+                         <rect>x:-60;y:-30;w:120;h:60</rect>
                          <visual-role>0</visual-role>
                         </DObject>
                        </base-DObject>
@@ -1793,7 +1793,7 @@
                                <uid>{e455686d-fefb-4cd4-a24e-8281c70f44d6}</uid>
                               </MElement>
                              </base-MElement>
-                             <name>QGraphicsEllipseItem</name>
+                             <name>QGraphicsPixmapItem</name>
                             </MObject>
                            </base-MObject>
                           </MClass>
@@ -2071,6 +2071,7 @@
                                <uid>{38f95be1-cd0f-4d96-91a8-207d5b50d310}</uid>
                                <visibility>7</visibility>
                                <type>2</type>
+                               <properties>9</properties>
                                <declaration>void onProtogonistPositionChanged(QPoint pos)</declaration>
                               </MClassMember>
                              </item>
@@ -2160,7 +2161,7 @@
                                     <context>qt</context>
                                     <name>QGraphicScene</name>
                                     <pos>x:190;y:160</pos>
-                                    <rect>x:-55;y:-30;w:110;h:60</rect>
+                                    <rect>x:-50;y:-30;w:100;h:60</rect>
                                     <visual-role>6</visual-role>
                                     <visual-role2>2</visual-role2>
                                    </DObject>
@@ -2212,9 +2213,9 @@
                                     </base-DElement>
                                     <object>{e455686d-fefb-4cd4-a24e-8281c70f44d6}</object>
                                     <context>qt</context>
-                                    <name>QGraphicsEllipseItem</name>
+                                    <name>QGraphicsPixmapItem</name>
                                     <pos>x:365;y:610</pos>
-                                    <rect>x:-70;y:-30;w:140;h:60</rect>
+                                    <rect>x:-65;y:-30;w:130;h:60</rect>
                                     <visual-role>6</visual-role>
                                     <visual-role2>2</visual-role2>
                                    </DObject>
@@ -2283,7 +2284,7 @@
                                </item>
                               </qlist>
                              </elements>
-                             <last-modified>1511345405010</last-modified>
+                             <last-modified>1512300988532</last-modified>
                              <toolbarid>Classes</toolbarid>
                             </MDiagram>
                            </base-MDiagram>
@@ -3338,12 +3339,142 @@
                                    </target>
                                   </handle>
                                  </item>
+                                 <item>
+                                  <handle>
+                                   <uid>{35f6ef67-5821-4b0d-a20c-9da6cb76789e}</uid>
+                                   <target>
+                                    <instance type="MInheritance">
+                                     <MInheritance>
+                                      <base-MRelation>
+                                       <MRelation>
+                                        <base-MElement>
+                                         <MElement>
+                                          <uid>{35f6ef67-5821-4b0d-a20c-9da6cb76789e}</uid>
+                                         </MElement>
+                                        </base-MElement>
+                                        <a>{c1acee68-c285-487e-8d1d-9f4dfd644e55}</a>
+                                        <b>{4393223f-86ab-4379-bc02-ba49932d4608}</b>
+                                       </MRelation>
+                                      </base-MRelation>
+                                     </MInheritance>
+                                    </instance>
+                                   </target>
+                                  </handle>
+                                 </item>
                                 </qlist>
                                </handles>
                               </handles>
                              </relations>
                             </MObject>
                            </base-MObject>
+                           <members>
+                            <qlist>
+                             <item>
+                              <MClassMember>
+                               <uid>{629c542f-03fc-4b97-9ad0-c7bdaa606d43}</uid>
+                               <visibility>1</visibility>
+                               <type>2</type>
+                               <declaration>void setModel(const WorldModel *m)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{44aa9c65-e132-4c48-b708-cdfcfcef05bc}</uid>
+                               <visibility>1</visibility>
+                               <type>2</type>
+                               <declaration>std::vector&lt;float&gt; findNearestEnemy()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{1053eb0b-24bf-4a09-94d6-302656d7b1bc}</uid>
+                               <visibility>1</visibility>
+                               <type>2</type>
+                               <declaration>std::vector&lt;float&gt; findNearestHealth()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{18a0f21e-882e-444f-999c-7e6aa9e42d18}</uid>
+                               <visibility>1</visibility>
+                               <type>2</type>
+                               <declaration>void executeCmd(std::string &amp;cmd)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{fa6234d4-be08-4347-b4c7-bfcde33a8e2a}</uid>
+                               <visibility>1</visibility>
+                               <type>2</type>
+                               <declaration>void help()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{e1529960-b85e-404a-bee3-e9a4dc8c93e0}</uid>
+                               <visibility>1</visibility>
+                               <type>2</type>
+                               <declaration>void findProtag()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{0fb5a11e-b69f-4892-a2dd-abd8d10fe515}</uid>
+                               <visibility>1</visibility>
+                               <type>2</type>
+                               <declaration>void statusProtag()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{4becf322-947e-460f-9a42-2325dffe7dd6}</uid>
+                               <visibility>1</visibility>
+                               <type>2</type>
+                               <declaration>void findHealth()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{af899b42-2c46-48ac-b1b9-2979272f5039}</uid>
+                               <visibility>1</visibility>
+                               <type>2</type>
+                               <declaration>void findEnemy()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{fbffa09d-f2eb-4f35-ba5e-898d9930eb5e}</uid>
+                               <visibility>1</visibility>
+                               <type>2</type>
+                               <declaration>void move(std::string &amp;cmd)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{fbf005d6-ca33-4064-82b3-765f8806f40c}</uid>
+                               <visibility>7</visibility>
+                               <type>2</type>
+                               <declaration>void onReturnPressed()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{72a3251b-bf41-4e13-9178-23db4ff77ac6}</uid>
+                               <visibility>7</visibility>
+                               <type>2</type>
+                               <declaration>void onEnemyDefeated(int x,int y)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{05598353-b6bc-409f-a40d-81216db84695}</uid>
+                               <visibility>7</visibility>
+                               <type>2</type>
+                               <declaration>void onHealthpackUsed(int x,int y)</declaration>
+                              </MClassMember>
+                             </item>
+                            </qlist>
+                           </members>
                           </MClass>
                          </instance>
                         </target>
@@ -3367,6 +3498,71 @@
                                <name>terminalview</name>
                               </MObject>
                              </base-MObject>
+                             <elements>
+                              <qlist>
+                               <item>
+                                <instance type="DClass">
+                                 <DClass>
+                                  <base-DObject>
+                                   <DObject>
+                                    <base-DElement>
+                                     <DElement>
+                                      <uid>{51027bfc-ff41-4239-81ae-e13c1869a791}</uid>
+                                     </DElement>
+                                    </base-DElement>
+                                    <object>{c1acee68-c285-487e-8d1d-9f4dfd644e55}</object>
+                                    <name>WorldTerminalView</name>
+                                    <pos>x:380;y:330</pos>
+                                    <rect>x:-110;y:-115;w:220;h:230</rect>
+                                    <visual-role>0</visual-role>
+                                   </DObject>
+                                  </base-DObject>
+                                  <show-all-members>true</show-all-members>
+                                 </DClass>
+                                </instance>
+                               </item>
+                               <item>
+                                <instance type="DClass">
+                                 <DClass>
+                                  <base-DObject>
+                                   <DObject>
+                                    <base-DElement>
+                                     <DElement>
+                                      <uid>{5ae910a9-e2a0-4785-b302-0f4f8e2efd88}</uid>
+                                     </DElement>
+                                    </base-DElement>
+                                    <object>{4393223f-86ab-4379-bc02-ba49932d4608}</object>
+                                    <context>qt</context>
+                                    <name>QWidget</name>
+                                    <pos>x:460;y:100</pos>
+                                    <rect>x:-40;y:-30;w:80;h:60</rect>
+                                    <visual-role>6</visual-role>
+                                   </DObject>
+                                  </base-DObject>
+                                 </DClass>
+                                </instance>
+                               </item>
+                               <item>
+                                <instance type="DInheritance">
+                                 <DInheritance>
+                                  <base-DRelation>
+                                   <DRelation>
+                                    <base-DElement>
+                                     <DElement>
+                                      <uid>{fc2cf745-f98c-4db9-9d3a-a1dd5ebb6ff1}</uid>
+                                     </DElement>
+                                    </base-DElement>
+                                    <object>{35f6ef67-5821-4b0d-a20c-9da6cb76789e}</object>
+                                    <a>{51027bfc-ff41-4239-81ae-e13c1869a791}</a>
+                                    <b>{5ae910a9-e2a0-4785-b302-0f4f8e2efd88}</b>
+                                   </DRelation>
+                                  </base-DRelation>
+                                 </DInheritance>
+                                </instance>
+                               </item>
+                              </qlist>
+                             </elements>
+                             <last-modified>1512556709028</last-modified>
                              <toolbarid>General</toolbarid>
                             </MDiagram>
                            </base-MDiagram>
