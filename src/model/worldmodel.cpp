@@ -5,40 +5,97 @@ using std::unique_ptr;
 
 WorldModel::WorldModel(QObject *parent) : QObject(parent)
 {
-
+    controller_ = unique_ptr<WorldAbstractController>(WorldControllerFactory::createController(this));
 }
 
 void WorldModel::init(const QString &filename, int enemies, int healthpacks)
 {
-    World w;
-    level_ = filename;
-    world_ = w.createWorld(level_);
-    rows_ = w.getRows();
-    columns_ = w.getCols();
-    enemies_ = w.getEnemies(enemies);
-    healthpacks_ = w.getHealthPacks(healthpacks);
-    protagonist_ = w.getProtagonist();
+    world_ = unique_ptr<UWorld>(new UWorld(filename));
+    level_ = QImage(filename);
+
+    for(auto &e: world_->createEnemies(enemies)) {
+        // separate regular and posioned enemies and stroe them in different vectors
+        UPEnemy* pe = dynamic_cast<UPEnemy*>(e);
+        if(pe != nullptr) {
+            pEnemies_.push_back(unique_ptr<UPEnemy>(pe));
+            connect(pe,SIGNAL(areaPoisoned(int,QRect)), this, SLOT(poisonArea(int,QRect)));
+            connect(pe,&UPEnemy::dead,[=](){
+                emit enemyDefeated(pe->getXPos(),pe->getYPos());
+            });
+        } else {
+            UEnemy* re = dynamic_cast<UEnemy*>(e);
+            enemies_.push_back(unique_ptr<UEnemy>(re));
+            connect(re,&UEnemy::dead,[=](){
+                emit enemyDefeated(re->getXPos(),re->getYPos());
+            });
+        }
+    }
+
+    healthpacks_ = world_->createHealthpacks(healthpacks);
+    // connect each healthpack to  healthpackUsed() signal
+    for(auto &h: healthpacks_) {
+        UHealthPack* hp = h.get();
+        connect(hp,&UHealthPack::used,[=](){
+            emit healthpackUsed(hp->getXPos(),hp->getYPos());
+        });
+    }
+    protagonist_ = world_->createProtagonist();
+
+    // optional implementation is to attack enemies and get health packs only
+    // while standing (when movement is finished)
+    connect(protagonist_.get(), SIGNAL(posChanged(int,int)), this, SLOT(attackEnemy(int,int)));
+    connect(protagonist_.get(), SIGNAL(posChanged(int,int)), this, SLOT(useHealthpack(int,int)));
+
     emit reload();
 }
 
-void WorldModel::attackEnemy(const std::unique_ptr<Enemy> &enemy)
+void WorldModel::attackEnemy(int x, int y)
 {
-    Q_UNUSED(enemy);
+    for(auto &e: enemies_){
+        if(e->area().contains(x,y)) {
+            // if the enemy is within the area, attack him
+            float dmg = e->attack();
+            protagonist_->updateHealth(-dmg);
+            // TODO: add removing of defeated enemies
+        }
+    }
+
+    for(auto &pe: pEnemies_){
+        if(pe->area().contains(x,y)) {
+            // if the enemy is within the area, attack him
+            pe->poison();
+            // TODO: add removing of defeated enemies
+        }
+    }
 }
 
-void WorldModel::useHealthpack(const std::unique_ptr<Tile> &pack)
+void WorldModel::useHealthpack(int x, int y)
 {
-    Q_UNUSED(pack);
+    for(auto &h: healthpacks_){
+        // if the health pack is within the area, use it
+        if(h->area().contains(x,y)) {
+            protagonist_->updateHealth(h->use());
+            // TODO: add removing of used healthpack
+        }
+    }
+}
+
+void WorldModel::poisonArea(int value, QRect rect)
+{
+    // if the hero is inside the area, decrease his health level
+    if(rect.contains(protagonist_->getXPos(),protagonist_->getYPos())) {
+        protagonist_->updateHealth(-value);
+    }
 }
 
 void WorldModel::move(int x, int y)
 {
-    Q_UNUSED(x);
-    Q_UNUSED(y);
+    move(QPoint(x,y));
 }
 
 void WorldModel::move(const QPoint &pos)
 {
-    move(pos.x(), pos.y());
+    QPoint from(protagonist_->getXPos(),protagonist_->getYPos());
+    controller_->move(from,pos);
 }
 
