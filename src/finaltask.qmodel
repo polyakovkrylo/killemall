@@ -2403,7 +2403,7 @@
                             <qlist>
                              <item>
                               <MClassMember>
-                               <uid>{0897cd53-d8ee-4767-b2a5-d1d808ea1066}</uid>
+                               <uid>{629c542f-03fc-4b97-9ad0-c7bdaa606d43}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <declaration>void setModel(const WorldModel *m)</declaration>
@@ -2411,7 +2411,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{a6ad0d95-210d-4cb9-ba01-00163139cd29}</uid>
+                               <uid>{44aa9c65-e132-4c48-b708-cdfcfcef05bc}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <declaration>std::vector&lt;float&gt; findNearestEnemy()</declaration>
@@ -2419,7 +2419,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{4d8f307e-01c3-4603-9bf8-2c6022884401}</uid>
+                               <uid>{1053eb0b-24bf-4a09-94d6-302656d7b1bc}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <declaration>std::vector&lt;float&gt; findNearestHealth()</declaration>
@@ -2427,7 +2427,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{a749f1a2-2c37-4fac-b9ba-2a9074bd946b}</uid>
+                               <uid>{18a0f21e-882e-444f-999c-7e6aa9e42d18}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <declaration>void executeCmd(std::string &amp;cmd)</declaration>
@@ -2435,7 +2435,55 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{3a902b6b-a8f8-4abe-9548-33e0d95968be}</uid>
+                               <uid>{fa6234d4-be08-4347-b4c7-bfcde33a8e2a}</uid>
+                               <visibility>1</visibility>
+                               <type>2</type>
+                               <declaration>void help()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{e1529960-b85e-404a-bee3-e9a4dc8c93e0}</uid>
+                               <visibility>1</visibility>
+                               <type>2</type>
+                               <declaration>void findProtag()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{0fb5a11e-b69f-4892-a2dd-abd8d10fe515}</uid>
+                               <visibility>1</visibility>
+                               <type>2</type>
+                               <declaration>void statusProtag()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{4becf322-947e-460f-9a42-2325dffe7dd6}</uid>
+                               <visibility>1</visibility>
+                               <type>2</type>
+                               <declaration>void findHealth()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{af899b42-2c46-48ac-b1b9-2979272f5039}</uid>
+                               <visibility>1</visibility>
+                               <type>2</type>
+                               <declaration>void findEnemy()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{fbffa09d-f2eb-4f35-ba5e-898d9930eb5e}</uid>
+                               <visibility>1</visibility>
+                               <type>2</type>
+                               <declaration>void move(std::string &amp;cmd)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{fbf005d6-ca33-4064-82b3-765f8806f40c}</uid>
                                <visibility>7</visibility>
                                <type>2</type>
                                <declaration>void onReturnPressed()</declaration>
@@ -2443,7 +2491,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{721194e3-5c26-4d65-a52b-54d2385d523f}</uid>
+                               <uid>{72a3251b-bf41-4e13-9178-23db4ff77ac6}</uid>
                                <visibility>7</visibility>
                                <type>2</type>
                                <declaration>void onEnemyDefeated(int x,int y)</declaration>
@@ -2451,7 +2499,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{09b71e44-5b7e-48c7-a335-187d2a1e2bbe}</uid>
+                               <uid>{05598353-b6bc-409f-a40d-81216db84695}</uid>
                                <visibility>7</visibility>
                                <type>2</type>
                                <declaration>void onHealthpackUsed(int x,int y)</declaration>
@@ -2497,7 +2545,7 @@
                                     <object>{c1acee68-c285-487e-8d1d-9f4dfd644e55}</object>
                                     <name>WorldTerminalView</name>
                                     <pos>x:380;y:330</pos>
-                                    <rect>x:-110;y:-75;w:220;h:150</rect>
+                                    <rect>x:-110;y:-115;w:220;h:230</rect>
                                     <visual-role>0</visual-role>
                                    </DObject>
                                   </base-DObject>
