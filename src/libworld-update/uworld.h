@@ -7,7 +7,7 @@ class UHealthPack : public QObject, public Tile
 {
     Q_OBJECT
 public:
-    UHealthPack(int x, int y, float healthPoints, int radius = 10);
+    UHealthPack(int x, int y, float healthPoints, int radius = 5);
     float use();
     inline const QRect &area() const{return area_;}
 
@@ -23,7 +23,7 @@ class UEnemy : public QObject, public Enemy
 {
     Q_OBJECT
 public:
-    explicit UEnemy(int xPosition, int yPosition, float strength, int radius = 10);
+    explicit UEnemy(int xPosition, int yPosition, float strength, int radius = 5);
     float attack();
     inline const QRect &area() const {return area_;}
 
@@ -37,24 +37,31 @@ signals:
 
 class UPEnemy : public PEnemy
 {
+    Q_OBJECT
 public:
     UPEnemy(int x, int y, float strength,
-            int radius = 10, int poisonRadius = 20);
+            int radius = 5, int poisonRadius = 10);
     inline const QRect &area() {return area_;}
     inline const QRect &poisonArea() {return poisonArea_;}
     float attack();
 private:
     QRect area_;
     QRect poisonArea_;
+signals:
+    void areaPoisoned(int value, QRect area);
 };
 
 class UProtagonist : public Protagonist
 {
     Q_OBJECT
 public:
-    UProtagonist();
+    UProtagonist(int radius = 5);
     void updateHealth(int diff);
     void updateEnergy(int diff);
+    inline const QRect &area() const {return area_;}
+
+private:
+    QRect area_;
 
 signals:
     void healthLevelChanged(int value);
@@ -68,7 +75,7 @@ class UWorld
 {
 public:
     UWorld(QString filename);
-    std::vector<std::unique_ptr<Enemy>> createEnemies(unsigned int enemies);
+    std::vector<Enemy*> createEnemies(unsigned int enemies);
     std::vector<std::unique_ptr<UHealthPack> > createHealthpacks(unsigned int packs);
     std::unique_ptr<UProtagonist> createProtagonist();
 

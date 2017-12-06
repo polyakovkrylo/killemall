@@ -10,22 +10,36 @@ WorldModel::WorldModel(QObject *parent) : QObject(parent)
 
 void WorldModel::init(const QString &filename, int enemies, int healthpacks)
 {
-    World w;
+    world_ = unique_ptr<UWorld>(new UWorld(filename));
     level_ = QImage(filename);
-    world_ = w.createWorld(filename);
-    rows_ = w.getRows();
-    columns_ = w.getCols();
-    enemies_ = w.getEnemies(enemies);
-    healthpacks_ = w.getHealthPacks(healthpacks);
-    protagonist_ = w.getProtagonist();
 
-    for(auto &e: enemies_) {
-        Enemy* re = e.get();
-        PEnemy* pe = dynamic_cast<PEnemy*>(re);
-        if(pe) {
-            connect(pe,SIGNAL(poisonLevelUpdated(int)), this, SLOT(onPEnemyPoisonLevelChanged(int)));
+    for(auto &e: world_->createEnemies(enemies)) {
+        // separate regular and posioned enemies and stroe them in different vectors
+        UPEnemy* pe = dynamic_cast<UPEnemy*>(e);
+        if(pe != nullptr) {
+            pEnemies_.push_back(unique_ptr<UPEnemy>(pe));
+            connect(pe,SIGNAL(areaPoisoned(int,QRect)), this, SLOT(poisonArea(int,QRect)));
+            connect(pe,&UPEnemy::dead,[=](){
+                emit enemyDefeated(pe->getXPos(),pe->getYPos());
+            });
+        } else {
+            UEnemy* re = dynamic_cast<UEnemy*>(e);
+            enemies_.push_back(unique_ptr<UEnemy>(re));
+            connect(re,&UEnemy::dead,[=](){
+                emit enemyDefeated(re->getXPos(),re->getYPos());
+            });
         }
     }
+
+    healthpacks_ = world_->createHealthpacks(healthpacks);
+    // connect each healthpack to  healthpackUsed() signal
+    for(auto &h: healthpacks_) {
+        UHealthPack* hp = h.get();
+        connect(hp,&UHealthPack::used,[=](){
+            emit healthpackUsed(hp->getXPos(),hp->getYPos());
+        });
+    }
+    protagonist_ = world_->createProtagonist();
 
     // optional implementation is to attack enemies and get health packs only
     // while standing (when movement is finished)
@@ -35,83 +49,42 @@ void WorldModel::init(const QString &filename, int enemies, int healthpacks)
     emit reload();
 }
 
-void WorldModel::setHealthLevel(float value)
-{
-    // TODO: if HP is below 0 emit a signal that game is lost
-    if(value<0)
-        value=0;
-    // increase not higher than 100 hp
-    else if(value>100)
-        value=100;
-    protagonist_->setHealth(value);
-    emit healthLevelChanged(value);
-
-}
-
-void WorldModel::setEnergyLevel(float value)
-{
-    // TODO: if energy is below 0 emit a signal
-    if(value<0)
-        value=0;
-    // increase not higher than 100 hp
-    else if(value>100)
-        value=100;
-    protagonist_->setEnergy(value);
-    emit energyLevelChanged(value);
-}
-
 void WorldModel::attackEnemy(int x, int y)
 {
-    // get protagonist area
-    QRect rect(QPoint(x-activeRadius_,y-activeRadius_),
-               QPoint(x+activeRadius_,y+activeRadius_));
     for(auto &e: enemies_){
-        int x = e->getXPos();
-        int y = e->getYPos();
-        if(rect.contains(x,y)) {
+        if(e->area().contains(x,y)) {
             // if the enemy is within the area, attack him
-            e->setDefeated(true);
-            emit enemyDefeated(x,y);
-            // if the enemy is poisoned, start posion() slot
-            Enemy* re = e.get();
-            PEnemy* pe = dynamic_cast<PEnemy*>(re);
-            if(pe) {
-                pe->poison();
-            } else {
-                // otherwise just decrease the health level
-                setHealthLevel(protagonist_->getHealth() - e->getValue());
-            }
-            // TODO: add removing of defeated enemy
+            float dmg = e->attack();
+            protagonist_->updateHealth(-dmg);
+            // TODO: add removing of defeated enemies
+        }
+    }
+
+    for(auto &pe: pEnemies_){
+        if(pe->area().contains(x,y)) {
+            // if the enemy is within the area, attack him
+            pe->poison();
+            // TODO: add removing of defeated enemies
         }
     }
 }
 
 void WorldModel::useHealthpack(int x, int y)
 {
-    // get protagonist area
-    QRect rect(QPoint(x-activeRadius_,y-activeRadius_),
-               QPoint(x+activeRadius_,y+activeRadius_));
     for(auto &h: healthpacks_){
         // if the health pack is within the area, use it
-        int x = h->getXPos();
-        int y = h->getYPos();
-        if(rect.contains(x,y)) {
-            setHealthLevel(protagonist_->getHealth() + h->getValue());
-            emit healthpackUsed(x,y);
+        if(h->area().contains(x,y)) {
+            protagonist_->updateHealth(h->use());
             // TODO: add removing of used healthpack
         }
     }
 }
 
-void WorldModel::onPEnemyPoisonLevelChanged(int value)
+void WorldModel::poisonArea(int value, QRect rect)
 {
-    // get poison area
-    PEnemy *p = qobject_cast<PEnemy*>(sender());
-    QRect rect(QPoint(p->getXPos()-poisonRadius_,p->getYPos()-poisonRadius_),
-                 QPoint(p->getXPos()+poisonRadius_,p->getYPos()+poisonRadius_));
     // if the hero is inside the area, decrease his health level
     if(rect.contains(protagonist_->getXPos(),protagonist_->getYPos())) {
-        setHealthLevel(protagonist_->getHealth() - value);
+        protagonist_->updateHealth(-value);
     }
 }
 

@@ -32,12 +32,9 @@ private:
     QGraphicsEllipseItem* protagonist_;
     QProgressBar* healthBar_;
     QProgressBar* energyBar_;
-    const int itemSize_{10};
 
 public slots:
     void onProtagonistPositionChanged(int x, int y);
-    void onEnemyDefeated(int x,int y);
-    void onHealthpackUsed(int x,int y);
     void onReload();
 
 };

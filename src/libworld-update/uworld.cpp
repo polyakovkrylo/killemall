@@ -5,7 +5,7 @@ using std::vector;
 
 //=============== Health pack =============================
 UHealthPack::UHealthPack(int x, int y, float healthPoints, int radius):
-    Tile(x,y,healthPoints), area_(x-radius, y-radius, x+radius, y+radius)
+    Tile(x,y,healthPoints), area_(x-radius, y-radius, radius*2, radius*2)
 {
 
 }
@@ -18,7 +18,7 @@ float UHealthPack::use()
 
 //===================== Enemy =============================
 UEnemy::UEnemy(int x, int y, float strength, int radius) :
-    Enemy(x,y,strength), area_(x-radius, y-radius, x+radius, y+radius)
+    Enemy(x,y,strength), area_(x-radius, y-radius, radius*2, radius*2)
 {
 
 }
@@ -33,14 +33,17 @@ float UEnemy::attack()
 UPEnemy::UPEnemy(int x, int y, float strength,
                  int radius, int poisonRadius) :
     PEnemy(x,y,strength),
-    area_(x-radius, y-radius, x+radius, y+radius),
-    poisonArea_(x-poisonRadius, y-poisonRadius, x+poisonRadius, y+poisonRadius)
+    area_(x-radius, y-radius, radius*2, radius*2),
+    poisonArea_(x-poisonRadius, y-poisonRadius, poisonRadius*2, poisonRadius*2)
 {
-
+    connect(this, &PEnemy::poisonLevelUpdated, [=] (int value) {
+        emit areaPoisoned(value,poisonArea_);
+    });
 }
 
 //================== Protagonist ==========================
-UProtagonist::UProtagonist()
+UProtagonist::UProtagonist(int radius):
+    area_(-radius, -radius, radius*2, radius*2)
 {
 
 }
@@ -72,20 +75,22 @@ UWorld::UWorld(QString filename)
     map_ = world_.createWorld(filename);
 }
 
-vector<unique_ptr<Enemy> > UWorld::createEnemies(unsigned int enemies)
+vector<Enemy*> UWorld::createEnemies(unsigned int enemies)
 {
-    vector<unique_ptr<Enemy>> v;
+    vector<Enemy*> v;
     v.reserve(enemies);
     for(auto &e: world_.getEnemies(enemies)) {
-        Enemy* re = e.get();
+        Enemy* ptr;
+        Enemy* re = e.release();
         PEnemy* pe = dynamic_cast<PEnemy*>(re);
-        if(pe) {
+        if(pe != nullptr) {
             // create UPEnemy for each PEnemy
-            v.push_back(unique_ptr<Enemy>(new UPEnemy(pe->getXPos(), pe->getYPos(), pe->getValue())));
+            ptr = new UPEnemy(pe->getXPos(), pe->getYPos(), pe->getValue());
         } else {
             // create UEnemy for each Enemy
-            v.push_back(unique_ptr<Enemy>(new UEnemy(pe->getXPos(), pe->getYPos(), pe->getValue())));
+            ptr = new UEnemy(re->getXPos(), re->getYPos(), re->getValue());
         }
+        v.push_back(ptr);
     }
     return v;
 }
