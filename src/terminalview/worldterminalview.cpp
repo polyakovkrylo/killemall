@@ -15,8 +15,6 @@ WorldTerminalView::WorldTerminalView(QWidget *parent) : QWidget(parent)
 
     connect(cmdLine, SIGNAL(returnPressed()), this, SLOT(onReturnPressed()));
     connect(enterBtn, SIGNAL(clicked()), this, SLOT(onReturnPressed()));
-    connect(model, SIGNAL(enemyDefeated(int,int)), this, SLOT(onEnemyDefeated(int,int)));
-    connect(model, SIGNAL(healthpackUsed(int,int)), this, SLOT(onHealthpackUsed(int,int)));
 
     //Layout setup
     QHBoxLayout* phbxLayout = new QHBoxLayout;
@@ -34,16 +32,23 @@ WorldTerminalView::WorldTerminalView(QWidget *parent) : QWidget(parent)
 void WorldTerminalView::setModel(const WorldModel *m)
 {
     model = m;
+    connect(model, SIGNAL(enemyDefeated(int,int)), this, SLOT(onEnemyDefeated(int,int)));
+    connect(model, SIGNAL(healthpackUsed(int,int)), this, SLOT(onHealthpackUsed(int,int)));
+
 }
 
 std::vector<float> WorldTerminalView::findNearestEnemy()
 {
-
+    //for testing
+    std::vector<float> enemy = {45, 39, 13.6};
+    return enemy;
 }
 
 std::vector<float> WorldTerminalView::findNearestHealth()
 {
-
+    //for testing
+    std::vector<float> hp = {103, 8, 55.5};
+    return hp;
 }
 
 void WorldTerminalView::onReturnPressed()
@@ -83,9 +88,10 @@ void WorldTerminalView::executeCmd(std::string &cmd)
     if(cmd == "help") output->append("List of commands:\n"
                                      "find protag\n"
                                      "status protag\n"
-                                     "locate nearest enemy\n"
-                                     "locate nearest healthpack"
-                                     "move(x,y)");
+                                     "find enemy\n"
+                                     "find healthpack\n"
+                                     "move(x,y)\n"
+                                     "switch view\n");
     else if(cmd == "find protag") output->append("Protagonist is located at (" +
                                                  QString::number(model->getProtagonist()->getXPos()) + "," +
                                                  QString::number(model->getProtagonist()->getYPos()) + ")");
@@ -109,13 +115,25 @@ void WorldTerminalView::executeCmd(std::string &cmd)
                                                                    QString::number(coords.at(1)) + ")");
         /*else output->append("Location unreachable");*/
     }
-    else if(cmd == "locate nearest enemy") {
+    else if(cmd == "find enemy") {
         std::vector<float> enemy = findNearestEnemy();
-        output->append("Nearest enemy found at (");
+        output->append("Nearest enemy found at (" +
+                       QString::number(enemy.at(0)) + "," +
+                       QString::number(enemy.at(1)) + "), " +
+                       "with strength " +
+                       QString::number(enemy.at(2)));
+
     }
-    else if(cmd == "locate nearest healthpack") {
-        std::vector<float> enemy = findNearestHealth();
-        output->append("Nearest healthpack found at (");
+    else if(cmd == "find healthpack") {
+        std::vector<float> hp = findNearestHealth();
+        output->append("Nearest healthpack found at (" +
+                       QString::number(hp.at(0)) + "," +
+                       QString::number(hp.at(1)) + "), " +
+                       "with value " +
+                       QString::number(hp.at(2)));
+    }
+    else if(cmd == "switch view") {
+        //switch the view to GraphicsView
     }
     else output->append("Invalid cmd, type 'help' to see all commands");
 

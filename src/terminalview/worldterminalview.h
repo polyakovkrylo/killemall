@@ -30,7 +30,7 @@ public:
     void executeCmd(std::string &cmd);
 
 public slots:    
-    void slotReturnPressed();
+    void onReturnPressed();
     void onEnemyDefeated(int x,int y);
     void onHealthpackUsed(int x,int y);
 };
