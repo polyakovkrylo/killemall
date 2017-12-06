@@ -19,15 +19,12 @@ public:
     void setModel(const WorldModel *m);
     std::vector<float> findNearestEnemy();    //return vector with (x,y,strength) of nearest enemy to protagonist
     std::vector<float> findNearestHealth();   //return vector with (x,y,strength) of nearest healthpack to protagonist
+    void executeCmd(std::string &cmd);
 
-private:
-    //QProcess* proc;
+private:    
     QLineEdit* cmdLine;
     QTextEdit* output;
-    const WorldModel* model;
-
-public:
-    void executeCmd(std::string &cmd);
+    const WorldModel* model;    
 
 public slots:    
     void onReturnPressed();
