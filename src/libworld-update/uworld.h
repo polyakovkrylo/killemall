@@ -43,7 +43,6 @@ public:
             int radius = 5, int poisonRadius = 10);
     inline const QRect &area() {return area_;}
     inline const QRect &poisonArea() {return poisonArea_;}
-    float attack();
 private:
     QRect area_;
     QRect poisonArea_;

@@ -81,7 +81,7 @@ vector<Enemy*> UWorld::createEnemies(unsigned int enemies)
     v.reserve(enemies);
     for(auto &e: world_.getEnemies(enemies)) {
         Enemy* ptr;
-        Enemy* re = e.release();
+        Enemy* re = e.get();
         PEnemy* pe = dynamic_cast<PEnemy*>(re);
         if(pe != nullptr) {
             // create UPEnemy for each PEnemy
