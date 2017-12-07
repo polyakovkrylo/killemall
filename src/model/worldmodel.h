@@ -29,22 +29,42 @@ public:
     /*!
      * \brief Initialization of the model
      *
-     * Creates the world, enemies, health packs and protagonist and
-     * stores it in separate containers, assignes level name to level_
+     * Creates the world, enemies, poisoned enemies,
+     * health packs and protagonist and stores it in separate
+     * containers, create level image and stores it in level_
      *
      * \param filename level image filename
      * \param enemies number of enemies to create
      * \param healthpacks number of healthpacks to create
      */
     void init(QString filename = "", int enemies = 0, int healthpacks = 0);
-    inline const std::unique_ptr<UWorld> & getWorld() const {return world_;}
+    void init(const QString &filename, int enemies = 20, int healthpacks = 20);    
+    /*!
+     * \brief Returns vector of unique pointers to regular enemies
+     */
     inline const std::vector<std::unique_ptr<UEnemy>> & getEnemies() const {return enemies_;}
+    /*!
+     * \brief Returns vector of unique pointers to poisoned enemies
+     */
     inline const std::vector<std::unique_ptr<UPEnemy>> & getPEnemies() const {return pEnemies_;}
+    /*!
+     * \brief Returns vector of unique pointers to health packs
+     */
     inline const std::vector<std::unique_ptr<UHealthPack>> & getHealthpacks() const {return healthpacks_;}
+    /*!
+     * \brief Returns unique pointer to protagonist
+     */
     inline const std::unique_ptr<UProtagonist> & getProtagonist() const {return protagonist_;}
+    /*!
+     * \brief Returns unique pointer to controller
+     */
     inline const std::unique_ptr<WorldAbstractController> & getController() const {return controller_;}
     inline const QString & getLevel() const {return level_;}
     inline bool ready() const {return ready_;}
+    /*!
+     * \brief Returns level map image
+     */
+    inline const QImage & getLevel() const {return level_;}
 
 private:
     std::unique_ptr<UWorld> world_;
@@ -82,20 +102,45 @@ signals:
     void protagonistDead();
 
 public slots:
+    /*!
+     * \brief Attack an enemy at the position
+     *
+     * Attacks any enemy that occupies the given position
+     */
     void attackEnemy();
+    /*!
+     * \brief Use a health pack at the position
+     *
+     * Uses any health pack that occupies the given position
+     */
     void useHealthpack();
+    /*!
+     * \brief Spead the poison slot
+     *
+     * Decreases protagonist health if he is within
+     * connected to each poisoned enemy
+     * the poisoned area. This slot is automatically
+     * \param value damage
+     * \param rect poisoned area
+     */
     void poisonArea(int value, QRect rect);
-    void move(int x,int y);
-
     /*!
      * \brief Move the protagonist to a certain position
      *
-     * This is an overloaded function
+     * This is an overloaded function.
      *
-     * \sa move(int x,int y)
+     * \sa move(const QPos &pos)
      *
      * \param x vertical coordinate of a new position
      * \param y horizontal coordinate of a new position
+     */
+    void move(int x,int y);
+    /*!
+     * \brief Move the protagonist to a certain position
+     *
+     * \sa move(int x,int y)
+     *
+     * \param pos target position
      */
     void move(const QPoint &pos);
 };

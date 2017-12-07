@@ -50,7 +50,7 @@ public:
      * \brief Set the data model
      *
      * Every time a new model is set, the view
-     * reinitializes the scene in accordance
+     * re-initializes the scene in accordance
      * with a given model.
      *
      * \param model model to be set
@@ -91,7 +91,21 @@ private:
     QProgressBar* energyBar_;
 
 public slots:
+    /*!
+     * \brief Update protagonist position
+     *
+     * Move protagonist item to a given point
+     * and centers the view on this position
+     * \param x horizontal coordinate
+     * \param y vertical coordinate
+     */
     void onProtagonistPositionChanged(int x, int y);
+    /*!
+     * \brief Reload the model slot
+     *
+     * Re-initializes the scene in accordance
+     * with a given model.
+     */
     void reloadScene();
 
 };
