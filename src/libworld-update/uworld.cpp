@@ -1,3 +1,15 @@
+/*!
+ * \file uworld.cpp
+ *
+ * libworld-update classes definition
+ *
+ * \version 1.0
+ *
+ * \author Vladimir Poliakov
+ * \author Brian Segers
+ * \author Kasper De Volder
+ */
+
 #include "uworld.h"
 
 using std::unique_ptr;
