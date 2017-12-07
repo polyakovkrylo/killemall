@@ -16,6 +16,19 @@
 #include "libworld-update/uworld.h"
 #include "controller/worldcontrollerfactory.h"
 
+/*!
+ * \defgroup model
+ *
+ * \brief Model component implementation
+ */
+
+/*!
+ * \ingroup model
+ * \brief Model component implementation
+ *
+ * Stores all the objects created in the world
+ * and enables their interactions.
+ */
 class WorldModel : public QObject
 {
     Q_OBJECT

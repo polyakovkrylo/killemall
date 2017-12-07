@@ -78,7 +78,7 @@ public:
     virtual void mousePressEvent(QMouseEvent *e) override;
 
     /*!
-     * \brief Mouse press event handler
+     * \brief Mouse move event handler
      * \param e mouse event
      */
     virtual void mouseMoveEvent(QMouseEvent *e) override;

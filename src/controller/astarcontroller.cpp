@@ -1,3 +1,15 @@
+/*!
+ * \file astarcontroller.cpp
+ *
+ * WorldControllerFactory class definition
+ *
+ * \version 1.0
+ *
+ * \author Vladimir Poliakov
+ * \author Brian Segers
+ * \author Kasper De Volder
+ */
+
 #include "astarcontroller.h"
 #include "model/worldmodel.h"
 
