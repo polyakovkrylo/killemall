@@ -16,9 +16,10 @@ void WorldAbstractController::move(const QPoint &from, const QPoint &to)
 
 void WorldAbstractController::animatePath()
 {
+    // move protagonist along the path till the path is done
     if(!path_.steps.empty()) {
         QPoint pos(path_.steps.takeFirst());
         model_->getProtagonist()->setPos(pos.x(),pos.y());
-        QTimer::singleShot(100, this, SLOT(animatePath()));
+        QTimer::singleShot(10, this, SLOT(animatePath()));
     }
 }
