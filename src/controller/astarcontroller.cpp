@@ -15,6 +15,11 @@ AStarController::AStarController(WorldModel *model) :
 
 bool AStarController::findPath(const QPoint &from, const QPoint &to)
 {
+    // stop animation, clear path steps and nodes from last pathfining
+    animation_.stop();
+    path_.steps.clear();
+    clearNodes();
+
     int targetValue=model_->getLevel().pixelColor(to).lightness();
 
     bool pathFound = false;
@@ -56,8 +61,6 @@ bool AStarController::findPath(const QPoint &from, const QPoint &to)
                 node = node->prev;
             }
         }
-
-        clearNodes();
     }
 
     return pathFound;
@@ -85,6 +88,7 @@ void AStarController::init()
 
 void AStarController::clearNodes()
 {
+    // mark all nodes as non-visited
     for(auto &n: nodes_) {
         n->visited = false;
     }
