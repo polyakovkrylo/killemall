@@ -25,6 +25,9 @@ protected:
     WorldModel* model_;
     Path path_;
 
+public slots:
+    virtual void init()=0;
+
 private slots:
     void animatePath();
 };

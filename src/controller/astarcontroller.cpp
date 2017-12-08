@@ -25,3 +25,7 @@ bool AStarController::findPath(const QPoint &from, const QPoint &to)
 
     return scs;
 }
+
+void AStarController::init()
+{
+}

@@ -15,7 +15,5 @@ int main(int argc, char *argv[])
 
     v.show();
 
-    m.getProtagonist()->setPos(200,200);
-
     return a.exec();
 }
