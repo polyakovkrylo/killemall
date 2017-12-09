@@ -12,8 +12,10 @@ UHealthPack::UHealthPack(int x, int y, float healthPoints, int radius):
 
 float UHealthPack::use()
 {
+    float hp = getValue();
+    setValue(0.0);
     emit used();
-    return getValue();
+    return hp;
 }
 
 //===================== Enemy =============================
@@ -25,6 +27,7 @@ UEnemy::UEnemy(int x, int y, float strength, int radius) :
 
 float UEnemy::attack()
 {
+    setDefeated(true);
     emit dead();
     return getValue();
 }
@@ -81,6 +84,7 @@ vector<Enemy*> UWorld::createEnemies(unsigned int enemies)
     v.reserve(enemies);
     for(auto &e: world_.getEnemies(enemies)) {
         Enemy* ptr;
+        // get not release, these instances should be deleted
         Enemy* re = e.get();
         PEnemy* pe = dynamic_cast<PEnemy*>(re);
         if(pe != nullptr) {
