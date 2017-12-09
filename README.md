@@ -1,4 +1,4 @@
-# Shoot em all
+# Shoot 'Em All
 
 ## Description
 
@@ -15,15 +15,15 @@ This is an implementation of Media Processing course's final project.
 * [ ] Modeling
   * [x] Architechture
   * [x] Model package
-  * [ ] Controller package
-  * [ ] View package
-    * [ ] AbstractView
-    * [ ] GraphicsView
+  * [x] Controller package
+  * [x] View package
+    * [x] GraphicsView
     * [ ] TerminalView
 * [ ] Implementing
   * [ ] Model package
   * [ ] Controller package
+    * [x] AbstractController
+    * [ ] AStarController
   * [ ] View package
-    * [ ] AbstractView
-    * [ ] GraphicsView
+    * [x] GraphicsView
     * [ ] TerminalView
