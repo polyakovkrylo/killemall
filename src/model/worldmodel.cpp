@@ -52,19 +52,17 @@ void WorldModel::init(const QString &filename, int enemies, int healthpacks)
 void WorldModel::attackEnemy(int x, int y)
 {
     for(auto &e: enemies_){
-        if(e->area().contains(x,y)) {
+        if(e->area().contains(x,y) && !e->getDefeated()) {
             // if the enemy is within the area, attack him
             float dmg = e->attack();
             protagonist_->updateHealth(-dmg);
-            // TODO: add removing of defeated enemies
         }
     }
 
     for(auto &pe: pEnemies_){
-        if(pe->area().contains(x,y)) {
+        if(pe->area().contains(x,y) && !pe->getDefeated()) {
             // if the enemy is within the area, attack him
             pe->poison();
-            // TODO: add removing of defeated enemies
         }
     }
 }
@@ -73,9 +71,8 @@ void WorldModel::useHealthpack(int x, int y)
 {
     for(auto &h: healthpacks_){
         // if the health pack is within the area, use it
-        if(h->area().contains(x,y)) {
+        if(h->area().contains(x,y) && h->getValue()) {
             protagonist_->updateHealth(h->use());
-            // TODO: add removing of used healthpack
         }
     }
 }
