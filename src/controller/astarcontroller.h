@@ -20,7 +20,7 @@ struct Node
 
 class CompareCost{
 public:
-    bool operator()(std::shared_ptr<Node >const & t1, std::shared_ptr<Node> const & t2){
+    inline bool operator()(Node* &t1, Node* &t2) const{
         return t1->pathCost > t2->pathCost;
     }
 };
@@ -32,7 +32,7 @@ inline uint qHash (const QPoint & key)
 
 class AStarController : public WorldAbstractController
 {
-    using NodeQueue = std::priority_queue<std::shared_ptr<Node>, std::vector<std::shared_ptr<Node>>, CompareCost>;
+    using NodeQueue = std::priority_queue<Node *, std::vector<Node *>, CompareCost>;
 public:
     AStarController(WorldModel* model);
     virtual bool findPath(const QPoint &from, const QPoint &to) override;
@@ -41,10 +41,10 @@ public:
 private:
     QHash<const QPoint,std::shared_ptr<Node>> nodes_;
     void findNeighbours(Node *node,
-                        std::vector<std::shared_ptr<Node>> &neighbours);
+                        std::vector<Node *> &neighbours);
     void addNeighbours(NodeQueue &openNodes,
                        Node *node,
-                       std::vector<std::shared_ptr<Node>> &neighbours);
+                       std::vector<Node *> &neighbours);
 };
 
 #endif // ASTARCONTROLLER_H

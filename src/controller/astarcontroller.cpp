@@ -2,7 +2,6 @@
 #include "model/worldmodel.h"
 
 using std::vector;
-using std::unique_ptr;
 using std::priority_queue;
 using std::shared_ptr;
 using std::make_shared;
@@ -29,16 +28,16 @@ bool AStarController::findPath(const QPoint &from, const QPoint &to)
     {
         // declare queue of open nodes and neighbours vector
         NodeQueue openNodes;
-        openNodes.push(nodes_[from]);
-        vector<shared_ptr<Node>> nebrs;
-        nebrs.reserve(4);
         // working node
-        Node* node = nullptr;
+        Node* node = nodes_[from].get();
+        openNodes.push(node);
+        vector<Node*> nebrs;
+        nebrs.reserve(4);
 
         while(!openNodes.empty() && !pathFound)
         {
             // pick the node with lowest pathCost from openNodes
-            node = openNodes.top().get();
+            node = openNodes.top();
             openNodes.pop();
             // break if the target is reached
             if(node->x==to.x() && node->y==to.y()){
@@ -94,28 +93,28 @@ void AStarController::clearNodes()
     }
 }
 
-void AStarController::findNeighbours(Node *node, std::vector<std::shared_ptr<Node> > &neighbours)
+void AStarController::findNeighbours(Node *node, vector<Node *> &neighbours)
 {
     // add neigbour if one exists
-    auto &right = nodes_.value(QPoint(node->x+1,node->y));
+    auto right = nodes_.value(QPoint(node->x+1,node->y)).get();
     if(right)
         neighbours.push_back(right);
 
-    auto &left = nodes_.value(QPoint(node->x-1,node->y));
+    auto left = nodes_.value(QPoint(node->x-1,node->y)).get();
     if(left)
         neighbours.push_back(left);
 
-    auto &bottom = nodes_.value(QPoint(node->x,node->y+1));
+    auto bottom = nodes_.value(QPoint(node->x,node->y+1)).get();
     if(bottom)
         neighbours.push_back(bottom);
 
-    auto &top = nodes_.value(QPoint(node->x,node->y-1));
+    auto top = nodes_.value(QPoint(node->x,node->y-1)).get();
     if(top)
         neighbours.push_back(top);
 }
 
 void AStarController::addNeighbours(NodeQueue &openNodes,
-                                    Node *node, vector<shared_ptr<Node>> &neighbours)
+                                    Node *node, vector<Node *> &neighbours)
 {
     for(auto &n: neighbours) {
         // update node if it is non-black and not visited
