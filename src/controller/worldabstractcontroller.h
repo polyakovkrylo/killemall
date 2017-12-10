@@ -59,7 +59,7 @@ struct Path {
  * model controller. In order to implement a new
  * controller, this class should be inherited,
  * its type should be added to ControllerType,
- * and findPath should be re-implemented
+ * init and findPath should be re-implemented
  */
 class WorldAbstractController : public QObject
 {
@@ -110,6 +110,10 @@ protected:
     const float minCost_{0.1f};
 
 public slots:
+    /*!
+     * \brief Initialization of the controller
+     * \note This is a virtual function to be implemented by successors
+     */
     virtual void init()=0;
     void setAnimationSpeed(int value);
 

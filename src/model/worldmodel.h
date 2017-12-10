@@ -51,7 +51,9 @@ public:
      * \param healthpacks number of healthpacks to create
      */
     void init(QString filename = "", int enemies = 0, int healthpacks = 0);
-    void init(const QString &filename, int enemies = 20, int healthpacks = 20);    
+    /*!
+     * \brief Return World instance of the model
+     */
     /*!
      * \brief Returns vector of unique pointers to regular enemies
      */

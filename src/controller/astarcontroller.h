@@ -18,6 +18,14 @@
 #include "worldabstractcontroller.h"
 #include "world.h"
 
+/*!
+ * \ingroup controller
+ * \brief The Node struct
+ *
+ * Contains information about tiles visit flag,
+ * energy costs, postion, pointers to its neigbours
+ * and predicessors
+ */
 struct Node
 {
     bool visited;
@@ -31,6 +39,13 @@ struct Node
     Node* prev;
 };
 
+/*!
+ * \ingroup controller
+ * \brief Node comparison functor
+ *
+ * Defines a more preferable node among two to
+ * prioritize in a queue
+ */
 class CompareCost{
 public:
     inline bool operator()(Node* &t1, Node* &t2) const{
@@ -63,7 +78,15 @@ public:
      * \return true if the path was find, false otherwise
      */
     virtual bool findPath(const QPoint &from, const QPoint &to, float maxCost = INFINITY) override;
+    /*!
+     * \brief Initialization function
+     *
+     * Creates a node vector matrix from world's tiles
+     */
     virtual void init() override;
+    /*!
+     * \brief Marks each node in node vector matrix as not visited
+     */
     void clearNodes();
 private:
     std::vector<std::vector<std::shared_ptr<Node>>> nodes_;

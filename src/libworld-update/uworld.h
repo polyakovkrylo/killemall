@@ -199,6 +199,9 @@ public:
      * \param filename path to map image
      */
     UWorld(QString filename);
+    /*!
+     * \brief Return map tiles
+     */
     inline const std::vector<std::unique_ptr<Tile>> &getMap() const {return map_;}
     inline int getCols() const {return world_.getCols();}
     inline int getRows() const {return world_.getRows();}
