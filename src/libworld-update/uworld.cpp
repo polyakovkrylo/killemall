@@ -1,6 +1,7 @@
 #include "uworld.h"
 
 using std::unique_ptr;
+using std::shared_ptr;
 using std::vector;
 using std::isinf;
 
@@ -102,13 +103,13 @@ vector<Enemy*> UWorld::createEnemies(unsigned int enemies)
     return v;
 }
 
-vector<unique_ptr<UHealthPack>> UWorld::createHealthpacks(unsigned int packs)
+vector<shared_ptr<UHealthPack>> UWorld::createHealthpacks(unsigned int packs)
 {
-    vector<unique_ptr<UHealthPack>> v;
+    vector<shared_ptr<UHealthPack>> v;
     v.reserve(packs);
     for(auto &h: world_.getHealthPacks(packs)) {
         // create UHealthPack for each health pack
-        v.push_back(unique_ptr<UHealthPack>(new UHealthPack(h->getXPos(), h->getYPos(), h->getValue())));
+        v.push_back(shared_ptr<UHealthPack>(new UHealthPack(h->getXPos(), h->getYPos(), h->getValue())));
     }
     return v;
 }
