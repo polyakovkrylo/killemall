@@ -29,7 +29,8 @@ SOURCES += main.cpp \
     controller/worldabstractcontroller.cpp \
     controller/worldcontrollerfactory.cpp \
     controller/astarcontroller.cpp \
-    libworld-update/uworld.cpp
+    libworld-update/uworld.cpp \
+    terminalview/worldterminalview.cpp
 HEADERS += \
            ../libworld/world.h \
     model/worldmodel.h \
@@ -37,7 +38,8 @@ HEADERS += \
     controller/worldabstractcontroller.h \
     controller/worldcontrollerfactory.h \
     controller/astarcontroller.h \
-    libworld-update/uworld.h
+    libworld-update/uworld.h \
+    terminalview/worldterminalview.h
 
 
 LIBS += -L../libworld/ -lworld

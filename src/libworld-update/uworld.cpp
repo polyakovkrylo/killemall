@@ -1,6 +1,7 @@
 #include "uworld.h"
 
 using std::unique_ptr;
+using std::shared_ptr;
 using std::vector;
 using std::isinf;
 
@@ -13,8 +14,10 @@ UHealthPack::UHealthPack(int x, int y, float healthPoints, int radius):
 
 float UHealthPack::use()
 {
+    float hp = getValue();
+    setValue(0.0);
     emit used();
-    return getValue();
+    return hp;
 }
 
 //===================== Enemy =============================
@@ -26,6 +29,7 @@ UEnemy::UEnemy(int x, int y, float strength, int radius) :
 
 float UEnemy::attack()
 {
+    setDefeated(true);
     emit dead();
     return getValue();
 }
@@ -84,7 +88,8 @@ vector<Enemy*> UWorld::createEnemies(unsigned int enemies)
     v.reserve(enemies);
     for(auto &e: world_.getEnemies(enemies)) {
         Enemy* ptr;
-        Enemy* re = e.release();
+        // get not release, these instances should be deleted
+        Enemy* re = e.get();
         PEnemy* pe = dynamic_cast<PEnemy*>(re);
         if(pe != nullptr) {
             // create UPEnemy for each PEnemy
@@ -98,13 +103,13 @@ vector<Enemy*> UWorld::createEnemies(unsigned int enemies)
     return v;
 }
 
-vector<unique_ptr<UHealthPack>> UWorld::createHealthpacks(unsigned int packs)
+vector<shared_ptr<UHealthPack>> UWorld::createHealthpacks(unsigned int packs)
 {
-    vector<unique_ptr<UHealthPack>> v;
+    vector<shared_ptr<UHealthPack>> v;
     v.reserve(packs);
     for(auto &h: world_.getHealthPacks(packs)) {
         // create UHealthPack for each health pack
-        v.push_back(unique_ptr<UHealthPack>(new UHealthPack(h->getXPos(), h->getYPos(), h->getValue())));
+        v.push_back(shared_ptr<UHealthPack>(new UHealthPack(h->getXPos(), h->getYPos(), h->getValue())));
     }
     return v;
 }
