@@ -1,11 +1,20 @@
 #ifndef WORLDABSTRACTCONTROLLER_H
 #define WORLDABSTRACTCONTROLLER_H
 
+#include <memory>
 #include <QObject>
 #include <QVector>
 #include <QTimer>
 
 class WorldModel;
+class Tile;
+
+enum ObjectType {
+    HealthPack,
+    RegularEnemy,
+    PoisonedEnemy,
+    AnyEnemy
+};
 
 struct Path {
     double cost;
@@ -18,7 +27,7 @@ class WorldAbstractController : public QObject
 public:
     explicit WorldAbstractController(WorldModel *model);
     void move(const QPoint &from, const QPoint& to);
-    virtual bool findPath(const QPoint &from, const QPoint& to) = 0;
+    const std::shared_ptr<Tile> findClosest(ObjectType type, float minValue = 0.0f, float maxValue = 100.0f);
     virtual bool findPath(const QPoint &from, const QPoint& to, float maxCost = INFINITY) = 0;
     inline const Path &currentPath() {return path_;}
 
