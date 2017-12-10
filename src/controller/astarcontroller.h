@@ -14,7 +14,7 @@ struct Node
     float pathCost;
     int x;
     int y;
-    Node* neighbours[4];
+    std::array<Node*,4> neighbours;
     Node* prev;
 };
 

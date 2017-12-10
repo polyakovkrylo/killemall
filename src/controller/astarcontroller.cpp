@@ -110,8 +110,7 @@ void AStarController::clearNodes()
 
 void AStarController::addNeighbours(NodeQueue &openNodes, Node *node)
 {
-    for(int i = 0; i < 4; i++) {
-        Node* nebr = node->neighbours[i];
+    for(auto &nebr: node->neighbours) {
         // if a neighbour exists
         if(nebr) {
             // update node if it is non-black and not visited
