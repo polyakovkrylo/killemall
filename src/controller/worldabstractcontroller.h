@@ -24,6 +24,10 @@ public:
 protected:
     WorldModel* model_;
     Path path_;
+    QTimer animation_;
+
+public slots:
+    virtual void init()=0;
 
 private slots:
     void animatePath();

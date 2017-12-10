@@ -21,7 +21,5 @@ int main(int argc, char *argv[])
     t.setModel(&m);
     t.show();
 
-    m.getProtagonist()->setPos(200,200);
-
     return a.exec();
 }

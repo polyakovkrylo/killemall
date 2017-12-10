@@ -2,6 +2,7 @@
 
 using std::unique_ptr;
 using std::vector;
+using std::isinf;
 
 //=============== Health pack =============================
 UHealthPack::UHealthPack(int x, int y, float healthPoints, int radius):
@@ -75,7 +76,9 @@ void UProtagonist::updateEnergy(int diff)
 //===================== World =============================
 UWorld::UWorld(QString filename)
 {
-    map_ = world_.createWorld(filename);
+    for(auto &t: world_.createWorld(filename)) {
+        map_.push_back(std::move(t));
+    }
 }
 
 vector<Enemy*> UWorld::createEnemies(unsigned int enemies)
@@ -115,7 +118,7 @@ unique_ptr<UProtagonist> UWorld::createProtagonist()
     auto p = unique_ptr<UProtagonist>(new UProtagonist);
     // find first point on the map with non-zero value and move the protagonist there
     for(auto &t: map_) {
-        if(t->getValue()) {
+        if(!isinf(t->getValue())) {
             p->setPos(t->getXPos(), t->getYPos());
             break;
         }
