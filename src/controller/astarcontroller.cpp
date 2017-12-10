@@ -29,7 +29,7 @@ bool AStarController::findPath(const QPoint &from, const QPoint &to)
         // declare queue of open nodes and neighbours vector
         NodeQueue openNodes;
         // working node
-        Node* node = nodes_[from].get();
+        Node* node = nodes_.at(from.x()).at(from.y()).get();
         openNodes.push(node);
 
         while(!openNodes.empty() && !pathFound)
@@ -62,38 +62,49 @@ bool AStarController::findPath(const QPoint &from, const QPoint &to)
 void AStarController::init()
 {
     auto &tiles = model_->getWorld()->getMap();
-    // clear from the previous map nodes
+    // clear vector from previous map nodes
     nodes_.clear();
-    nodes_.reserve(tiles.size());
-    for(auto &t: tiles) {
-        // create node for each map tile
-        Node n = {
-                false,  //visited
-                1.0f/t->getValue(),  //nodeCost
-                0.0f,           //pathCost
-                t->getXPos(),   //x
-                t->getYPos(),   //y
-                {nullptr},      //neighbours
-                nullptr         //prev
-        };
-        nodes_[QPoint(t->getXPos(),t->getYPos())] = make_shared<Node>(n);
+    nodes_.reserve(model_->getLevel().width());
+
+    // iterate through columns
+    for(int i = 0; i < model_->getLevel().width(); ++i) {
+        // add column vector
+        vector<shared_ptr<Node>> vec;
+        vec.reserve(model_->getLevel().height());
+        nodes_.push_back(std::move(vec));
+        for(int j = 0; j < model_->getLevel().height(); ++j) {
+            // create node for each map tile
+            nodes_.back().push_back(make_shared<Node>(Node()));
+        }
     }
 
-    for(auto &t: tiles) {
-        int x = t->getXPos();
-        int y = t->getYPos();
-        nodes_.value(QPoint(x,y))->neighbours[0] = nodes_.value(QPoint(x+1,y)).get();
-        nodes_.value(QPoint(x,y))->neighbours[1] = nodes_.value(QPoint(x-1,y)).get();
-        nodes_.value(QPoint(x,y))->neighbours[2] = nodes_.value(QPoint(x,y+1)).get();
-        nodes_.value(QPoint(x,y))->neighbours[3] = nodes_.value(QPoint(x,y-1)).get();
+#pragma omp parallel for num_threads(8)
+    for(auto it = tiles.begin(); it < tiles.end(); ++it) {
+        // update node parameters
+        Node* n = nodes_.at((*it)->getXPos()).at((*it)->getYPos()).get();
+        n->visited = false;
+        n->x = (*it)->getXPos();
+        n->y = (*it)->getYPos();
+        n->nodeCost = 1.0f/(*it)->getValue();
+        // check and add neighbours
+        try{n->neighbours[0] = nodes_.at(n->x+1).at(n->y).get();}
+        catch(std::out_of_range){n->neighbours[3] = nullptr;}
+        try{n->neighbours[1] = nodes_.at(n->x-1).at(n->y).get();}
+        catch(std::out_of_range){n->neighbours[3] = nullptr;}
+        try{n->neighbours[2] = nodes_.at(n->x).at(n->y+1).get();}
+        catch(std::out_of_range){n->neighbours[3] = nullptr;}
+        try{n->neighbours[3] = nodes_.at(n->x).at(n->y-1).get();}
+        catch(std::out_of_range){n->neighbours[3] = nullptr;}
     }
 }
 
 void AStarController::clearNodes()
 {
     // mark all nodes as non-visited
-    for(auto &n: nodes_) {
-        n->visited = false;
+    for(auto &vec: nodes_) {
+        for(auto &n: vec) {
+            n->visited = false;
+        }
     }
 }
 

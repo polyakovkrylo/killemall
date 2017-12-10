@@ -3,7 +3,6 @@
 
 #include <omp.h>
 #include <queue>
-#include <QHash>
 
 #include "worldabstractcontroller.h"
 #include "world.h"
@@ -26,11 +25,6 @@ public:
     }
 };
 
-inline uint qHash (const QPoint & key)
-{
-    return qHash (static_cast <qint64> (key.x () ) << 32 | key.y () );
-}
-
 class AStarController : public WorldAbstractController
 {
     using NodeQueue = std::priority_queue<Node *, std::vector<Node *>, CompareCost>;
@@ -40,7 +34,7 @@ public:
     virtual void init() override;
     void clearNodes();
 private:
-    QHash<const QPoint,std::shared_ptr<Node>> nodes_;
+    std::vector<std::vector<std::shared_ptr<Node>>> nodes_;
     void addNeighbours(NodeQueue &openNodes, Node *node);
 };
 

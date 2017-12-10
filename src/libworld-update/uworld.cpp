@@ -73,7 +73,9 @@ void UProtagonist::updateEnergy(int diff)
 //===================== World =============================
 UWorld::UWorld(QString filename)
 {
-    map_ = world_.createWorld(filename);
+    for(auto &t: world_.createWorld(filename)) {
+        map_.push_back(std::move(t));
+    }
 }
 
 vector<Enemy*> UWorld::createEnemies(unsigned int enemies)

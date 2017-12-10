@@ -49,3 +49,6 @@ DISTFILES += \
 
 RESOURCES += \
     res.qrc
+
+QMAKE_CXXFLAGS += -fopenmp
+QMAKE_LFLAGS += -fopenmp
