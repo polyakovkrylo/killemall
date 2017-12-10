@@ -2,6 +2,7 @@
 
 using std::unique_ptr;
 using std::vector;
+using std::isinf;
 
 //=============== Health pack =============================
 UHealthPack::UHealthPack(int x, int y, float healthPoints, int radius):
@@ -12,8 +13,10 @@ UHealthPack::UHealthPack(int x, int y, float healthPoints, int radius):
 
 float UHealthPack::use()
 {
+    float hp = getValue();
+    setValue(0.0);
     emit used();
-    return getValue();
+    return hp;
 }
 
 //===================== Enemy =============================
@@ -25,6 +28,7 @@ UEnemy::UEnemy(int x, int y, float strength, int radius) :
 
 float UEnemy::attack()
 {
+    setDefeated(true);
     emit dead();
     return getValue();
 }
@@ -72,7 +76,9 @@ void UProtagonist::updateEnergy(int diff)
 //===================== World =============================
 UWorld::UWorld(QString filename)
 {
-    map_ = world_.createWorld(filename);
+    for(auto &t: world_.createWorld(filename)) {
+        map_.push_back(std::move(t));
+    }
 }
 
 vector<Enemy*> UWorld::createEnemies(unsigned int enemies)
@@ -81,6 +87,7 @@ vector<Enemy*> UWorld::createEnemies(unsigned int enemies)
     v.reserve(enemies);
     for(auto &e: world_.getEnemies(enemies)) {
         Enemy* ptr;
+        // get not release, these instances should be deleted
         Enemy* re = e.get();
         PEnemy* pe = dynamic_cast<PEnemy*>(re);
         if(pe != nullptr) {
@@ -111,7 +118,7 @@ unique_ptr<UProtagonist> UWorld::createProtagonist()
     auto p = unique_ptr<UProtagonist>(new UProtagonist);
     // find first point on the map with non-zero value and move the protagonist there
     for(auto &t: map_) {
-        if(t->getValue()) {
+        if(!isinf(t->getValue())) {
             p->setPos(t->getXPos(), t->getYPos());
             break;
         }

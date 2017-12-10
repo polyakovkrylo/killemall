@@ -13,6 +13,7 @@ public:
     explicit WorldModel(QObject *parent = 0);
 
     void init(const QString &filename, int enemies = 20, int healthpacks = 20);
+    inline const std::unique_ptr<UWorld> & getWorld() const {return world_;}
     inline const std::vector<std::unique_ptr<UEnemy>> & getEnemies() const {return enemies_;}
     inline const std::vector<std::unique_ptr<UPEnemy>> & getPEnemies() const {return pEnemies_;}
     inline const std::vector<std::unique_ptr<UHealthPack>> & getHealthpacks() const {return healthpacks_;}
