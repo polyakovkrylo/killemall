@@ -11,7 +11,13 @@ WorldAbstractController::WorldAbstractController(WorldModel *model) :
 
 void WorldAbstractController::move(const QPoint &from, const QPoint &to)
 {
-    bool scs = findPath(from, to);
+    bool scs = false;
+    if(path_.steps.back() == to)
+        // if it is the same path as last time, then just move
+        scs = true;
+    else
+        // otherwise try to find a path
+        scs =findPath(from, to);
     if(scs)
         animatePath();
 }
