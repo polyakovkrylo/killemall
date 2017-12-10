@@ -2,6 +2,7 @@
 
 using std::vector;
 using std::unique_ptr;
+using std::shared_ptr;
 
 WorldModel::WorldModel(QObject *parent) : QObject(parent)
 {
@@ -17,14 +18,14 @@ void WorldModel::init(const QString &filename, int enemies, int healthpacks)
         // separate regular and posioned enemies and stroe them in different vectors
         UPEnemy* pe = dynamic_cast<UPEnemy*>(e);
         if(pe != nullptr) {
-            pEnemies_.push_back(unique_ptr<UPEnemy>(pe));
+            pEnemies_.push_back(shared_ptr<UPEnemy>(pe));
             connect(pe,SIGNAL(areaPoisoned(int,QRect)), this, SLOT(poisonArea(int,QRect)));
             connect(pe,&UPEnemy::dead,[=](){
                 emit enemyDefeated(pe->getXPos(),pe->getYPos());
             });
         } else {
             UEnemy* re = dynamic_cast<UEnemy*>(e);
-            enemies_.push_back(unique_ptr<UEnemy>(re));
+            enemies_.push_back(shared_ptr<UEnemy>(re));
             connect(re,&UEnemy::dead,[=](){
                 emit enemyDefeated(re->getXPos(),re->getYPos());
             });

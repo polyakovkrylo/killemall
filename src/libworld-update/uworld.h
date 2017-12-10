@@ -75,7 +75,7 @@ class UWorld
 public:
     UWorld(QString filename);
     std::vector<Enemy*> createEnemies(unsigned int enemies);
-    std::vector<std::unique_ptr<UHealthPack> > createHealthpacks(unsigned int packs);
+    std::vector<std::shared_ptr<UHealthPack> > createHealthpacks(unsigned int packs);
     std::unique_ptr<UProtagonist> createProtagonist();
 
 private:
