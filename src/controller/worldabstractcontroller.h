@@ -19,12 +19,14 @@ public:
     explicit WorldAbstractController(WorldModel *model);
     void move(const QPoint &from, const QPoint& to);
     virtual bool findPath(const QPoint &from, const QPoint& to) = 0;
+    virtual bool findPath(const QPoint &from, const QPoint& to, float maxCost = INFINITY) = 0;
     inline const Path &currentPath() {return path_;}
 
 protected:
     WorldModel* model_;
     Path path_;
     QTimer animation_;
+    const float costOffset_{0.01f};
 
 public slots:
     virtual void init()=0;
