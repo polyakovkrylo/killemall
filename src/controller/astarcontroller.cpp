@@ -31,8 +31,6 @@ bool AStarController::findPath(const QPoint &from, const QPoint &to)
         // working node
         Node* node = nodes_[from].get();
         openNodes.push(node);
-        vector<Node*> nebrs;
-        nebrs.reserve(4);
 
         while(!openNodes.empty() && !pathFound)
         {
@@ -44,12 +42,8 @@ bool AStarController::findPath(const QPoint &from, const QPoint &to)
                 pathFound=true;
                 break;
             }
-            // find neighbours of the node and store them in nebrs
-            findNeighbours(node,nebrs);
             // update non-black neighbours and add them to open nodes
-            addNeighbours(openNodes,node,nebrs);
-            // clear nebrs for next iteration
-            nebrs.clear();
+            addNeighbours(openNodes,node);
         }
 
         if(pathFound) {
@@ -79,9 +73,19 @@ void AStarController::init()
                 0.0f,           //pathCost
                 t->getXPos(),   //x
                 t->getYPos(),   //y
+                {nullptr},      //neighbours
                 nullptr         //prev
         };
         nodes_[QPoint(t->getXPos(),t->getYPos())] = make_shared<Node>(n);
+    }
+
+    for(auto &t: tiles) {
+        int x = t->getXPos();
+        int y = t->getYPos();
+        nodes_.value(QPoint(x,y))->neighbours[0] = nodes_.value(QPoint(x+1,y)).get();
+        nodes_.value(QPoint(x,y))->neighbours[1] = nodes_.value(QPoint(x-1,y)).get();
+        nodes_.value(QPoint(x,y))->neighbours[2] = nodes_.value(QPoint(x,y+1)).get();
+        nodes_.value(QPoint(x,y))->neighbours[3] = nodes_.value(QPoint(x,y-1)).get();
     }
 }
 
@@ -93,37 +97,20 @@ void AStarController::clearNodes()
     }
 }
 
-void AStarController::findNeighbours(Node *node, vector<Node *> &neighbours)
+void AStarController::addNeighbours(NodeQueue &openNodes, Node *node)
 {
-    // add neigbour if one exists
-    auto right = nodes_.value(QPoint(node->x+1,node->y)).get();
-    if(right)
-        neighbours.push_back(right);
-
-    auto left = nodes_.value(QPoint(node->x-1,node->y)).get();
-    if(left)
-        neighbours.push_back(left);
-
-    auto bottom = nodes_.value(QPoint(node->x,node->y+1)).get();
-    if(bottom)
-        neighbours.push_back(bottom);
-
-    auto top = nodes_.value(QPoint(node->x,node->y-1)).get();
-    if(top)
-        neighbours.push_back(top);
-}
-
-void AStarController::addNeighbours(NodeQueue &openNodes,
-                                    Node *node, vector<Node *> &neighbours)
-{
-    for(auto &n: neighbours) {
-        // update node if it is non-black and not visited
-        if(n->nodeCost && !n->visited){
-            n->pathCost = n->nodeCost + node->pathCost;
-            n->visited = true;
-            n->prev = node;
-            // add node to open nodes
-            openNodes.push(n);
+    for(int i = 0; i < 4; i++) {
+        Node* nebr = node->neighbours[i];
+        // if a neighbour exists
+        if(nebr) {
+            // update node if it is non-black and not visited
+            if(nebr->nodeCost && !nebr->visited){
+                nebr->pathCost = nebr->nodeCost + node->pathCost;
+                nebr->visited = true;
+                nebr->prev = node;
+                // add node to open nodes
+                openNodes.push(nebr);
+            }
         }
     }
 }

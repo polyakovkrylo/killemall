@@ -15,6 +15,7 @@ struct Node
     float pathCost;
     int x;
     int y;
+    Node* neighbours[4];
     Node* prev;
 };
 
@@ -40,11 +41,7 @@ public:
     void clearNodes();
 private:
     QHash<const QPoint,std::shared_ptr<Node>> nodes_;
-    void findNeighbours(Node *node,
-                        std::vector<Node *> &neighbours);
-    void addNeighbours(NodeQueue &openNodes,
-                       Node *node,
-                       std::vector<Node *> &neighbours);
+    void addNeighbours(NodeQueue &openNodes, Node *node);
 };
 
 #endif // ASTARCONTROLLER_H
