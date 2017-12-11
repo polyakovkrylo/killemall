@@ -31,6 +31,7 @@ bool AStarController::findPath(const QPoint &from, const QPoint &to, float maxCo
         NodeQueue openNodes;
         // working node
         Node* node = nodes_.at(from.x()).at(from.y()).get();
+        node->pathCost = 0;
         openNodes.push(node);
 
         while(!openNodes.empty() && !pathFound)
@@ -89,9 +90,7 @@ void AStarController::init()
         n->visited = false;
         n->x = (*it)->getXPos();
         n->y = (*it)->getYPos();
-        auto pass =(*it)->getValue();
-        // all tiles except black should have some cost, so we use some offset
-        n->nodeCost = !isinf(pass) ? 1.0f/pass + costOffset_ : 0;
+        n->nodeCost = calculateCost((*it)->getValue());
         // check and add neighbours
         try{n->neighbours[0] = nodes_.at(n->x+1).at(n->y).get();}
         catch(std::out_of_range){n->neighbours[3] = nullptr;}

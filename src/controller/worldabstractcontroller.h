@@ -32,10 +32,11 @@ public:
     inline const Path &currentPath() {return path_;}
 
 protected:
+    inline float calculateCost(float tile) {return !std::isinf(tile) ? (0.01f/tile + costOffset_) : 0;}
     WorldModel* model_;
     Path path_;
     QTimer animation_;
-    const float costOffset_{0.01f};
+    const float costOffset_{0.1f};
 
 public slots:
     virtual void init()=0;
