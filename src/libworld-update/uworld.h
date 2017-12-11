@@ -76,7 +76,7 @@ public:
     UWorld(QString filename);
     inline const std::vector<std::unique_ptr<Tile>> &getMap() const {return map_;}
     std::vector<Enemy*> createEnemies(unsigned int enemies);
-    std::vector<std::unique_ptr<UHealthPack> > createHealthpacks(unsigned int packs);
+    std::vector<std::shared_ptr<UHealthPack> > createHealthpacks(unsigned int packs);
     std::unique_ptr<UProtagonist> createProtagonist();
 
 private:
