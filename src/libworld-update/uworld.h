@@ -55,8 +55,8 @@ class UProtagonist : public Protagonist
     Q_OBJECT
 public:
     UProtagonist(int radius = 5);
-    void updateHealth(int diff);
-    void updateEnergy(int diff);
+    void updateHealth(float diff);
+    void updateEnergy(float diff);
     inline const QRect &area() const {return area_;}
 
 private:
@@ -67,6 +67,8 @@ signals:
     void energyLevelChanged(int value);
     void dead();
 
+public slots:
+    void restoreEnergy();
 };
 
 

@@ -14,8 +14,9 @@ UHealthPack::UHealthPack(int x, int y, float healthPoints, int radius):
 float UHealthPack::use()
 {
     float hp = getValue();
+    if(hp)
+        emit used();
     setValue(0.0);
-    emit used();
     return hp;
 }
 
@@ -28,9 +29,13 @@ UEnemy::UEnemy(int x, int y, float strength, int radius) :
 
 float UEnemy::attack()
 {
-    setDefeated(true);
-    emit dead();
-    return getValue();
+    if(!getDefeated()) {
+        setDefeated(true);
+        emit dead();
+        return getValue();
+    } else {
+        return 0.0f;
+    }
 }
 
 //==================== PEnemy =============================
@@ -52,7 +57,7 @@ UProtagonist::UProtagonist(int radius):
 
 }
 
-void UProtagonist::updateHealth(int diff)
+void UProtagonist::updateHealth(float diff)
 {
     float hp = getHealth() + diff;
     // health should be between 0 and 100
@@ -66,11 +71,22 @@ void UProtagonist::updateHealth(int diff)
     emit healthLevelChanged(hp);
 }
 
-void UProtagonist::updateEnergy(int diff)
+void UProtagonist::updateEnergy(float diff)
 {
     float en = getEnergy() + diff;
+    if(en < 0){
+        en = 0;
+        emit dead();
+    } else if(en > 100) {
+        en = 100;
+    }
     setEnergy(en);
-    emit healthLevelChanged(en);
+    emit energyLevelChanged(en);
+}
+
+void UProtagonist::restoreEnergy()
+{
+    updateEnergy(100);
 }
 
 //===================== World =============================
