@@ -21,12 +21,14 @@ void WorldModel::init(const QString &filename, int enemies, int healthpacks)
             pEnemies_.push_back(shared_ptr<UPEnemy>(pe));
             connect(pe,SIGNAL(areaPoisoned(int,QRect)), this, SLOT(poisonArea(int,QRect)));
             connect(pe,&UPEnemy::dead,[=](){
+                protagonist_->restoreEnergy();
                 emit enemyDefeated(pe->getXPos(),pe->getYPos());
             });
         } else {
             UEnemy* re = dynamic_cast<UEnemy*>(e);
             enemies_.push_back(shared_ptr<UEnemy>(re));
             connect(re,&UEnemy::dead,[=](){
+                protagonist_->restoreEnergy();
                 emit enemyDefeated(re->getXPos(),re->getYPos());
             });
         }
@@ -37,6 +39,7 @@ void WorldModel::init(const QString &filename, int enemies, int healthpacks)
     for(auto &h: healthpacks_) {
         UHealthPack* hp = h.get();
         connect(hp,&UHealthPack::used,[=](){
+            protagonist_->restoreEnergy();
             emit healthpackUsed(hp->getXPos(),hp->getYPos());
         });
     }
