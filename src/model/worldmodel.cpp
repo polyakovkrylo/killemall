@@ -22,12 +22,14 @@ void WorldModel::init(const QString &filename, int enemies, int healthpacks)
             pEnemies_.push_back(shared_ptr<UPEnemy>(pe));
             connect(pe,SIGNAL(areaPoisoned(int,QRect)), this, SLOT(poisonArea(int,QRect)));
             connect(pe,&UPEnemy::dead,[=](){
+                protagonist_->restoreEnergy();
                 emit enemyDefeated(pe->getXPos(),pe->getYPos());
             });
         } else {
             UEnemy* re = dynamic_cast<UEnemy*>(e);
             enemies_.push_back(shared_ptr<UEnemy>(re));
             connect(re,&UEnemy::dead,[=](){
+                protagonist_->restoreEnergy();
                 emit enemyDefeated(re->getXPos(),re->getYPos());
             });
         }
@@ -38,6 +40,7 @@ void WorldModel::init(const QString &filename, int enemies, int healthpacks)
     for(auto &h: healthpacks_) {
         UHealthPack* hp = h.get();
         connect(hp,&UHealthPack::used,[=](){
+            protagonist_->restoreEnergy();
             emit healthpackUsed(hp->getXPos(),hp->getYPos());
         });
     }
@@ -54,7 +57,7 @@ void WorldModel::init(const QString &filename, int enemies, int healthpacks)
 void WorldModel::attackEnemy(int x, int y)
 {
     for(auto &e: enemies_){
-        if(e->area().contains(x,y) && !e->getDefeated()) {
+        if(e->area().contains(x,y)) {
             // if the enemy is within the area, attack him
             float dmg = e->attack();
             protagonist_->updateHealth(-dmg);
@@ -62,7 +65,7 @@ void WorldModel::attackEnemy(int x, int y)
     }
 
     for(auto &pe: pEnemies_){
-        if(pe->area().contains(x,y) && !pe->getDefeated()) {
+        if(pe->area().contains(x,y)) {
             // if the enemy is within the area, attack him
             pe->poison();
         }
@@ -73,7 +76,7 @@ void WorldModel::useHealthpack(int x, int y)
 {
     for(auto &h: healthpacks_){
         // if the health pack is within the area, use it
-        if(h->area().contains(x,y) && h->getValue()) {
+        if(h->area().contains(x,y)) {
             protagonist_->updateHealth(h->use());
         }
     }
