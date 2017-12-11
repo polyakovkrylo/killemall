@@ -1160,7 +1160,7 @@
                                           <uid>{7c38fd04-c890-4bc9-ba2f-c4eb28468140}</uid>
                                          </MElement>
                                         </base-MElement>
-                                        <name>hasCurrentPath</name>
+                                        <name>currentPath</name>
                                         <a>{abcff250-9b2a-4cc6-8cf9-d7a3144902d0}</a>
                                         <b>{e0822ff4-9221-4e32-be8d-66bf0a0590ee}</b>
                                        </MRelation>
@@ -1183,6 +1183,28 @@
                                    </target>
                                   </handle>
                                  </item>
+                                 <item>
+                                  <handle>
+                                   <uid>{671766da-5cc1-41f3-8304-2e118e342bc4}</uid>
+                                   <target>
+                                    <instance type="MDependency">
+                                     <MDependency>
+                                      <base-MRelation>
+                                       <MRelation>
+                                        <base-MElement>
+                                         <MElement>
+                                          <uid>{671766da-5cc1-41f3-8304-2e118e342bc4}</uid>
+                                         </MElement>
+                                        </base-MElement>
+                                        <a>{abcff250-9b2a-4cc6-8cf9-d7a3144902d0}</a>
+                                        <b>{db87e42e-6c6e-4dca-beb3-33b09f614d18}</b>
+                                       </MRelation>
+                                      </base-MRelation>
+                                     </MDependency>
+                                    </instance>
+                                   </target>
+                                  </handle>
+                                 </item>
                                 </qlist>
                                </handles>
                               </handles>
@@ -1193,7 +1215,7 @@
                             <qlist>
                              <item>
                               <MClassMember>
-                               <uid>{b51b3e82-2cd9-4ea4-9829-69166a4e74ac}</uid>
+                               <uid>{489634f1-f4cd-432e-96fc-e953b0f7896d}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <declaration>void move(const QPoint &amp;from, const QPoint&amp; to)</declaration>
@@ -1201,7 +1223,15 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{87946c1c-b3df-4f7e-901b-1ccc15305a73}</uid>
+                               <uid>{69262262-6ec0-4ec9-a872-7ffcefca6373}</uid>
+                               <visibility>1</visibility>
+                               <type>2</type>
+                               <declaration>std::unique_ptr&lt;Tile&gt; findClosestObject(ObjectType type, float minValue, float maxValue)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{0383dc67-a4e7-4ddd-9001-f95f4ffa9ee2}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <properties>3</properties>
@@ -1210,7 +1240,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{34af5c2f-3d67-4c18-9a08-30f1d89e5797}</uid>
+                               <uid>{105debcd-6862-4000-87f5-be03f6c42ccd}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <declaration>const Path &amp;currentPath()</declaration>
@@ -1218,7 +1248,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{1eba85dc-f1e9-46c4-bba9-9297cec54688}</uid>
+                               <uid>{a5cb7965-7480-4013-876b-9b750582a478}</uid>
                                <visibility>2</visibility>
                                <type>1</type>
                                <declaration>WorldModel* model_</declaration>
@@ -1226,7 +1256,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{b70c708a-4095-4226-8969-559061d80815}</uid>
+                               <uid>{aff55bf9-3dc1-481c-82d7-3ae7d90950c2}</uid>
                                <visibility>2</visibility>
                                <type>1</type>
                                <declaration>Path path_</declaration>
@@ -1234,7 +1264,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{364af2bc-3d1f-43b9-854b-90257c1902cd}</uid>
+                               <uid>{68c9f473-966b-4ca6-b3ac-4dcee0df15b0}</uid>
                                <visibility>5</visibility>
                                <type>2</type>
                                <declaration>void animatePath()</declaration>
@@ -1279,8 +1309,8 @@
                                     </base-DElement>
                                     <object>{abcff250-9b2a-4cc6-8cf9-d7a3144902d0}</object>
                                     <name>WorldAbstractController</name>
-                                    <pos>x:-195;y:45</pos>
-                                    <rect>x:-190;y:-70;w:380;h:140</rect>
+                                    <pos>x:-195;y:75</pos>
+                                    <rect>x:-265;y:-80;w:530;h:160</rect>
                                     <visual-role>0</visual-role>
                                    </DObject>
                                   </base-DObject>
@@ -1426,7 +1456,7 @@
                                      </qlist>
                                     </stereotypes>
                                     <name>Path</name>
-                                    <pos>x:10;y:265</pos>
+                                    <pos>x:55;y:275</pos>
                                     <rect>x:-75;y:-45;w:150;h:90</rect>
                                     <visual-role>0</visual-role>
                                    </DObject>
@@ -1448,7 +1478,7 @@
                                     <object>{7c38fd04-c890-4bc9-ba2f-c4eb28468140}</object>
                                     <a>{30b9d024-df13-4c4d-a664-0ea4fc0f0171}</a>
                                     <b>{95c8a71d-47a0-4206-a5de-76e24f190faf}</b>
-                                    <name>hasCurrentPath</name>
+                                    <name>currentPath</name>
                                    </DRelation>
                                   </base-DRelation>
                                   <a>
@@ -1467,9 +1497,53 @@
                                  </DAssociation>
                                 </instance>
                                </item>
+                               <item>
+                                <instance type="DClass">
+                                 <DClass>
+                                  <base-DObject>
+                                   <DObject>
+                                    <base-DElement>
+                                     <DElement>
+                                      <uid>{53606bb0-2c09-4886-a9dc-1c0ecdc81f6e}</uid>
+                                     </DElement>
+                                    </base-DElement>
+                                    <object>{db87e42e-6c6e-4dca-beb3-33b09f614d18}</object>
+                                    <stereotypes>
+                                     <qlist>
+                                      <item>enum</item>
+                                     </qlist>
+                                    </stereotypes>
+                                    <name>ObjectType</name>
+                                    <pos>x:180;y:75</pos>
+                                    <rect>x:-70;y:-60;w:140;h:120</rect>
+                                    <visual-role>0</visual-role>
+                                   </DObject>
+                                  </base-DObject>
+                                  <show-all-members>true</show-all-members>
+                                 </DClass>
+                                </instance>
+                               </item>
+                               <item>
+                                <instance type="DDependency">
+                                 <DDependency>
+                                  <base-DRelation>
+                                   <DRelation>
+                                    <base-DElement>
+                                     <DElement>
+                                      <uid>{004c7e0d-979d-4816-b060-07dc1b677ac8}</uid>
+                                     </DElement>
+                                    </base-DElement>
+                                    <object>{671766da-5cc1-41f3-8304-2e118e342bc4}</object>
+                                    <a>{30b9d024-df13-4c4d-a664-0ea4fc0f0171}</a>
+                                    <b>{53606bb0-2c09-4886-a9dc-1c0ecdc81f6e}</b>
+                                   </DRelation>
+                                  </base-DRelation>
+                                 </DDependency>
+                                </instance>
+                               </item>
                               </qlist>
                              </elements>
-                             <last-modified>1512390518111</last-modified>
+                             <last-modified>1512941822806</last-modified>
                              <toolbarid>General</toolbarid>
                             </MDiagram>
                            </base-MDiagram>
@@ -1690,16 +1764,78 @@
                             <qlist>
                              <item>
                               <MClassMember>
-                               <uid>{902ae008-b419-4401-b2f5-0bbbde605a2f}</uid>
+                               <uid>{1dca40c6-676f-4834-809b-cf0c3e5935dd}</uid>
                                <type>1</type>
                                <declaration>double cost</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{bc9c3323-1059-4dc3-92ad-a1b5f32ff6dd}</uid>
+                               <uid>{ef55264d-f7f0-41be-993d-26f53dc1b7d5}</uid>
                                <type>1</type>
                                <declaration>QVector&lt;QPoint&gt; steps</declaration>
+                              </MClassMember>
+                             </item>
+                            </qlist>
+                           </members>
+                          </MClass>
+                         </instance>
+                        </target>
+                       </handle>
+                      </item>
+                      <item>
+                       <handle>
+                        <uid>{db87e42e-6c6e-4dca-beb3-33b09f614d18}</uid>
+                        <target>
+                         <instance type="MClass">
+                          <MClass>
+                           <base-MObject>
+                            <MObject>
+                             <base-MElement>
+                              <MElement>
+                               <uid>{db87e42e-6c6e-4dca-beb3-33b09f614d18}</uid>
+                               <stereotypes>
+                                <qlist>
+                                 <item>enum</item>
+                                </qlist>
+                               </stereotypes>
+                              </MElement>
+                             </base-MElement>
+                             <name>ObjectType</name>
+                            </MObject>
+                           </base-MObject>
+                           <members>
+                            <qlist>
+                             <item>
+                              <MClassMember>
+                               <uid>{62246fa9-b0f8-43c0-8198-1592f0c11f5d}</uid>
+                               <visibility>1</visibility>
+                               <type>1</type>
+                               <declaration>int HealthPack</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{44dfb088-4a22-4e27-a149-81d471627715}</uid>
+                               <visibility>1</visibility>
+                               <type>1</type>
+                               <declaration>int AnyEnemy</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{6726fb16-626f-4bc8-940f-e6624d323f98}</uid>
+                               <visibility>1</visibility>
+                               <type>1</type>
+                               <declaration>int RegularEnemy</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{f59d1328-152a-4aad-a145-c857acb48304}</uid>
+                               <visibility>1</visibility>
+                               <type>1</type>
+                               <declaration>int PoisonedEnemy</declaration>
                               </MClassMember>
                              </item>
                             </qlist>

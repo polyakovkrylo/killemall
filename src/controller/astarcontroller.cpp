@@ -5,6 +5,7 @@ using std::vector;
 using std::priority_queue;
 using std::shared_ptr;
 using std::make_shared;
+using std::isinf;
 
 AStarController::AStarController(WorldModel *model) :
     WorldAbstractController(model)
@@ -12,7 +13,7 @@ AStarController::AStarController(WorldModel *model) :
 
 }
 
-bool AStarController::findPath(const QPoint &from, const QPoint &to)
+bool AStarController::findPath(const QPoint &from, const QPoint &to, float maxCost)
 {
     // stop animation, clear path steps and nodes from last pathfining
     animation_.stop();
@@ -37,6 +38,9 @@ bool AStarController::findPath(const QPoint &from, const QPoint &to)
             // pick the node with lowest pathCost from openNodes
             node = openNodes.top();
             openNodes.pop();
+            // break if maxCost was reached
+            if(node->pathCost > maxCost)
+                break;
             // break if the target is reached
             if(node->x==to.x() && node->y==to.y()){
                 pathFound=true;
@@ -85,7 +89,9 @@ void AStarController::init()
         n->visited = false;
         n->x = (*it)->getXPos();
         n->y = (*it)->getYPos();
-        n->nodeCost = 1.0f/(*it)->getValue();
+        auto pass =(*it)->getValue();
+        // all tiles except black should have some cost, so we use some offset
+        n->nodeCost = !isinf(pass) ? 1.0f/pass + costOffset_ : 0;
         // check and add neighbours
         try{n->neighbours[0] = nodes_.at(n->x+1).at(n->y).get();}
         catch(std::out_of_range){n->neighbours[3] = nullptr;}

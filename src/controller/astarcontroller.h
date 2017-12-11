@@ -30,7 +30,7 @@ class AStarController : public WorldAbstractController
     using NodeQueue = std::priority_queue<Node *, std::vector<Node *>, CompareCost>;
 public:
     AStarController(WorldModel* model);
-    virtual bool findPath(const QPoint &from, const QPoint &to) override;
+    virtual bool findPath(const QPoint &from, const QPoint &to, float maxCost = INFINITY) override;
     virtual void init() override;
     void clearNodes();
 private:
