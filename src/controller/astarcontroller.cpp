@@ -5,6 +5,7 @@ using std::vector;
 using std::priority_queue;
 using std::shared_ptr;
 using std::make_shared;
+using std::isinf;
 
 AStarController::AStarController(WorldModel *model) :
     WorldAbstractController(model)
@@ -88,8 +89,9 @@ void AStarController::init()
         n->visited = false;
         n->x = (*it)->getXPos();
         n->y = (*it)->getYPos();
-        // even white tiles should have some cost, so we use some offset
-        n->nodeCost = 1.0f/(*it)->getValue() + costOffset_;
+        auto pass =(*it)->getValue();
+        // all tiles except black should have some cost, so we use some offset
+        n->nodeCost = !isinf(pass) ? 1.0f/pass + costOffset_ : 0;
         // check and add neighbours
         try{n->neighbours[0] = nodes_.at(n->x+1).at(n->y).get();}
         catch(std::out_of_range){n->neighbours[3] = nullptr;}
