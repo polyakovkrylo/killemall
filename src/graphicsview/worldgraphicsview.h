@@ -18,8 +18,6 @@ public:
 
     void setModel(WorldModel *model);
 
-    QGraphicsItem *itemAt(QPoint itemCenter);
-
     virtual void keyPressEvent(QKeyEvent *e) override;
 
     virtual void mousePressEvent(QMouseEvent *e) override;

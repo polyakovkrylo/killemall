@@ -34,6 +34,7 @@ void WorldGraphicsView::setModel(WorldModel *model)
     QImage back(model->getLevel());
     scene_ = new QGraphicsScene(QRectF(0,0,back.width(),back.height()),this);
     scene_->setBackgroundBrush(back);
+    setMaximumSize(back.size());
 
     //draw enemies and connect them to lambda slot
     for(auto &e: model->getEnemies()) {
@@ -83,22 +84,6 @@ void WorldGraphicsView::setModel(WorldModel *model)
 
     setScene(scene_);
     centerOn(protagonist_);
-}
-
-QGraphicsItem *WorldGraphicsView::itemAt(QPoint itemCenter)
-{
-    //looking for an item with that fits the rectangle
-    QGraphicsItem* item = nullptr;
-    for(QGraphicsItem* it: items(mapFromScene(itemCenter))){
-        if(it == protagonist_) {
-            continue;
-        }
-        if(it->boundingRect().center() == itemCenter) {
-            item = it;
-            break;
-        }
-    }
-    return item;
 }
 
 void WorldGraphicsView::keyPressEvent(QKeyEvent *e)
