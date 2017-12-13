@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file>img/level1.png</file>
+        <file>img/level2.png</file>
+        <file>img/level3.png</file>
+        <file>img/level4.png</file>
     </qresource>
 </RCC>

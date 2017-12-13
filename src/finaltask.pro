@@ -26,11 +26,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp \
     model/worldmodel.cpp \
     graphicsview/worldgraphicsview.cpp \
+    controller/worldabstractcontroller.cpp \
+    controller/worldcontrollerfactory.cpp \
+    controller/astarcontroller.cpp \
+    libworld-update/uworld.cpp \
     terminalview/worldterminalview.cpp
 HEADERS += \
            ../libworld/world.h \
     model/worldmodel.h \
     graphicsview/worldgraphicsview.h \
+    controller/worldabstractcontroller.h \
+    controller/worldcontrollerfactory.h \
+    controller/astarcontroller.h \
+    libworld-update/uworld.h \
     terminalview/worldterminalview.h
 
 
@@ -43,3 +51,6 @@ DISTFILES += \
 
 RESOURCES += \
     res.qrc
+
+QMAKE_CXXFLAGS += -fopenmp
+QMAKE_LFLAGS += -fopenmp
