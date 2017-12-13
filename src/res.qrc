@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file>img/level1.png</file>
+        <file>img/maze2.png</file>
+        <file>img/maze3.png</file>
+        <file>img/worldmap4.png</file>
     </qresource>
 </RCC>

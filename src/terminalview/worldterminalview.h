@@ -27,7 +27,7 @@ public:
     void findEnemy();
     void move(std::string &cmd);
 
-private:    
+private:
     QLineEdit* cmdLine;
     QTextEdit* output;
     const WorldModel* model;    

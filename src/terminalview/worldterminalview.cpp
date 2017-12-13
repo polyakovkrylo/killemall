@@ -1,7 +1,7 @@
 #include "worldterminalview.h"
 
 WorldTerminalView::WorldTerminalView(QWidget *parent) : QWidget(parent)
-{        
+{
     output = new QTextEdit;
     output->setReadOnly(true);
 
