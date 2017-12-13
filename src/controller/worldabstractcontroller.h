@@ -27,6 +27,8 @@ protected:
 
 private slots:
     void animatePath();
+    void setAnimationSpeed(int);
+    void setOptimizationLevel(int);
 };
 
 #endif // WORLDABSTRACTCONTROLLER_H

@@ -12,7 +12,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     loadWorld = new Popup;
     connect(ui->actionLoad_world, SIGNAL(triggered(bool)), loadWorld, SLOT(exec()));
-    connect(loadWorld, SIGNAL(accepted()), this, SLOT(onPopupClosed()));    
+    connect(loadWorld, SIGNAL(accepted()), this, SLOT(onPopupClosed()));
+
+    emit ui->actionLoad_world->triggered(true);
 }
 
 void MainWindow::setModel(WorldModel *m)
@@ -20,7 +22,7 @@ void MainWindow::setModel(WorldModel *m)
     model = m;
     tv->setModel(model);
     gv->setModel(model);
-    connect(ui->speedSlider, SIGNAL(sliderMoved(int)), model->getController(), SLOT(setAnimationSpeed(int speed)));
+    connect(ui->speedSlider, SIGNAL(sliderMoved(int)), model->getController().get(), SLOT(setAnimationSpeed(int)));
 }
 
 MainWindow::~MainWindow()
@@ -51,9 +53,11 @@ void MainWindow::onPopupClosed()
     case maze3: filename = ":/img/maze3.png"; break;
     case worldmap: filename = ":/img/worldmap4.png"; break;
     default: filename = ":/img/worldmap4.png"; break;
-    }
-    model = new WorldModel();
-    model->init(filename, vals.enemies, vals.healthpacks);
-    tv->setModel(model);
-    gv->setModel(model);
+    }    
+    //Destroy previous model?
+    WorldModel *m = new WorldModel();
+    m->init(filename, vals.enemies, vals.healthpacks);
+    setModel(m);
+    tv->clearOutput();
+
 }

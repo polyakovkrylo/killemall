@@ -22,3 +22,13 @@ void WorldAbstractController::animatePath()
         QTimer::singleShot(100, this, SLOT(animatePath()));
     }
 }
+
+void WorldAbstractController::setAnimationSpeed(int)
+{
+    //TODO: implement setting animation speed
+}
+
+void WorldAbstractController::setOptimizationLevel(int)
+{
+    //TODO: implement setting of optimization level
+}

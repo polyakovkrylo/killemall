@@ -8,8 +8,8 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    WorldModel m;
-    m.init(":/img/level1.png");
+    //WorldModel m;
+    //m.init(":/img/level1.png");
 
     /*WorldGraphicsView v;
     v.resize(300,300);
@@ -23,10 +23,10 @@ int main(int argc, char *argv[])
     t.show();*/
 
     MainWindow mw;
-    mw.setModel(&m);
+    //mw.setModel(&m);
     mw.show();
 
-    m.getProtagonist()->setPos(200,200);
+    //m.getProtagonist()->setPos(200,200);
 
     return a.exec();
 }

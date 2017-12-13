@@ -19,6 +19,7 @@ public:
     void setModel(const WorldModel *m);
     std::vector<float> findNearestEnemy();    //return vector with (x,y,strength) of nearest enemy to protagonist
     std::vector<float> findNearestHealth();   //return vector with (x,y,value) of nearest healthpack to protagonist
+    void clearOutput();
     void executeCmd(std::string &cmd);
     void help();
     void findProtag();

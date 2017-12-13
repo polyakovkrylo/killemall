@@ -51,6 +51,11 @@ std::vector<float> WorldTerminalView::findNearestHealth()
     return hp;
 }
 
+void WorldTerminalView::clearOutput()
+{
+    output->clear();
+}
+
 void WorldTerminalView::onReturnPressed()
 {
     std::string strCommand = "";
