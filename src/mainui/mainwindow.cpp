@@ -58,6 +58,7 @@ void MainWindow::onPopupClosed()
     WorldModel *m = new WorldModel();
     m->init(filename, vals.enemies, vals.healthpacks);
     setModel(m);
+    model->getController().get()->setOptimizationLevel(vals.optimization);
     tv->clearOutput();
 
 }

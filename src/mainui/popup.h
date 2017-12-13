@@ -9,6 +9,7 @@ struct Values {
     int map;
     int healthpacks;
     int enemies;
+    int optimization;
 };
 
 namespace Ui {

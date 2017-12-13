@@ -13,5 +13,6 @@ Values Popup::getValues()
     vals.map = ui->chooseWorld->currentIndex();
     vals.healthpacks = ui->nrHealth->value();
     vals.enemies = ui->nrEnemies->value();
+    vals.optimization = ui->optimizationSlider->value();
     return vals;
 }

@@ -20,6 +20,7 @@ public:
     void move(const QPoint &from, const QPoint& to);
     virtual bool findPath(const QPoint &from, const QPoint& to) = 0;
     inline const Path &currentPath() {return path_;}
+    void setOptimizationLevel(int);
 
 protected:
     WorldModel* model_;
@@ -28,7 +29,7 @@ protected:
 private slots:
     void animatePath();
     void setAnimationSpeed(int);
-    void setOptimizationLevel(int);
+
 };
 
 #endif // WORLDABSTRACTCONTROLLER_H
