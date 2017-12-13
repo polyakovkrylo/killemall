@@ -30,7 +30,9 @@ SOURCES += main.cpp \
     controller/worldcontrollerfactory.cpp \
     controller/astarcontroller.cpp \
     libworld-update/uworld.cpp \
-    terminalview/worldterminalview.cpp
+    terminalview/worldterminalview.cpp \
+    mainui/mainwindow.cpp \
+    mainui/popup.cpp
 HEADERS += \
            ../libworld/world.h \
     model/worldmodel.h \
@@ -39,7 +41,9 @@ HEADERS += \
     controller/worldcontrollerfactory.h \
     controller/astarcontroller.h \
     libworld-update/uworld.h \
-    terminalview/worldterminalview.h
+    terminalview/worldterminalview.h \
+    mainui/mainwindow.h \
+    mainui/popup.h
 
 
 LIBS += -L../libworld/ -lworld
@@ -51,3 +55,7 @@ DISTFILES += \
 
 RESOURCES += \
     res.qrc
+
+FORMS += \
+    mainui/mainwindow.ui \
+    mainui/popup.ui
