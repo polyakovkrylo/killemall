@@ -31,7 +31,7 @@ bool AStarController::findPath(const QPoint &from, const QPoint &to, float maxCo
         NodeQueue openNodes;
         // working node
         Node* node = nodes_.at(from.x()).at(from.y()).get();
-        node->pathCost = 0;
+        node->g = 0;
         openNodes.push(node);
 
         while(!openNodes.empty() && !pathFound)
@@ -40,7 +40,7 @@ bool AStarController::findPath(const QPoint &from, const QPoint &to, float maxCo
             node = openNodes.top();
             openNodes.pop();
             // break if maxCost was reached
-            if(node->pathCost > maxCost)
+            if(node->g > maxCost)
                 break;
             // break if the target is reached
             if(node->x==to.x() && node->y==to.y()){
@@ -48,11 +48,11 @@ bool AStarController::findPath(const QPoint &from, const QPoint &to, float maxCo
                 break;
             }
             // update non-black neighbours and add them to open nodes
-            addNeighbours(openNodes,node);
+            addNeighbours(openNodes,node,to);
         }
 
         if(pathFound) {
-            path_.cost = node->pathCost;
+            path_.cost = node->g;
             // re-create path from the last node
             while(node->x!=from.x() || node->y!=from.y()){
                 path_.steps.push_front(QPoint(node->x,node->y));
@@ -113,14 +113,18 @@ void AStarController::clearNodes()
     }
 }
 
-void AStarController::addNeighbours(NodeQueue &openNodes, Node *node)
+void AStarController::addNeighbours(NodeQueue &openNodes, Node *node, const QPoint &destination)
 {
     for(auto &nebr: node->neighbours) {
         // if a neighbour exists
         if(nebr) {
             // update node if it is non-black and not visited
             if(nebr->nodeCost && !nebr->visited){
-                nebr->pathCost = nebr->nodeCost + node->pathCost;
+                // calculate path cost and minimal destination cost
+                nebr->g = nebr->nodeCost + node->g;
+                nebr->h = minCost_*(QPoint(nebr->x,nebr->y)-destination).manhattanLength();
+                // rate f is a weighted sum of path cost and minimal destination cost
+                nebr->f = nebr->g + optimization_*node->h;
                 nebr->visited = true;
                 nebr->prev = node;
                 // add node to open nodes
