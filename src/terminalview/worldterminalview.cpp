@@ -82,20 +82,30 @@ void WorldTerminalView::onHealthpackUsed(int x, int y)
 
 void WorldTerminalView::onHealthLevelChanged(int value)
 {
-    output->setTextColor(QColor(0,255,0));
-    output->append(QString("Health updated: %1 HP").arg(value));
+    output->setTextColor(QColor(0,155,0));
+    message = QString("Health updated: %1 HP").arg(value);
+    output->append(message);
 }
 
 void WorldTerminalView::onEnergyLevelChanged(int value)
 {
     output->setTextColor(QColor(155,155,0));
-    output->append(QString("Energy updated: %1 EP").arg(value));
+    message = QString("Energy updated: %1 EP").arg(value);
+    output->append(message);
 }
 
 void WorldTerminalView::onPositionChanged(int x, int y)
 {
+    // clear the previous line if it's about the protagonist position
+    if(message.contains("Protagonist position changed:")) {
+        output->moveCursor(QTextCursor::End, QTextCursor::MoveAnchor);
+        output->moveCursor(QTextCursor::StartOfLine, QTextCursor::KeepAnchor);
+        output->textCursor().removeSelectedText();
+        output->textCursor().deletePreviousChar();
+    }
     output->setTextColor(QColor(0,0,255));
-    output->append(QString("Protagonist position changed: (%1,%2)").arg(x).arg(y));
+    message = QString("Protagonist position changed: (%1,%2)").arg(x).arg(y);
+    output->append(message);
 }
 
 void WorldTerminalView::executeCmd(std::string &cmd)

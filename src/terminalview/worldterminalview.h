@@ -30,7 +30,8 @@ public:
 private:    
     QLineEdit* cmdLine;
     QTextEdit* output;
-    const WorldModel* model;    
+    const WorldModel* model;
+    QString message;
 
 public slots:    
     void onReturnPressed();
