@@ -36,6 +36,9 @@ public slots:
     void onReturnPressed();
     void onEnemyDefeated(int x,int y);
     void onHealthpackUsed(int x,int y);
+    void onHealthLevelChanged(int value);
+    void onEnergyLevelChanged(int value);
+    void onPositionChanged(int x, int y);
 };
 
 #endif // WORLDTERMINALVIEW_H

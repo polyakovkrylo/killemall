@@ -34,6 +34,9 @@ void WorldTerminalView::setModel(const WorldModel *m)
     model = m;
     connect(model, SIGNAL(enemyDefeated(int,int)), this, SLOT(onEnemyDefeated(int,int)));
     connect(model, SIGNAL(healthpackUsed(int,int)), this, SLOT(onHealthpackUsed(int,int)));
+    connect(model->getProtagonist().get(), SIGNAL(healthLevelChanged(int)), this, SLOT(onHealthLevelChanged(int)));
+    connect(model->getProtagonist().get(), SIGNAL(energyLevelChanged(int)), this, SLOT(onEnergyLevelChanged(int)));
+    connect(model->getProtagonist().get(), SIGNAL(posChanged(int,int)), this, SLOT(onPositionChanged(int,int)));
 
 }
 
@@ -65,8 +68,7 @@ void WorldTerminalView::onEnemyDefeated(int x, int y)
     output->append("Enemy defeated at (" +
                    QString::number(x) + "," +
                    QString::number(y) +
-                   "), protagonist health: " +
-                   QString::number(model->getProtagonist()->getHealth()));
+                   ")");
 }
 
 void WorldTerminalView::onHealthpackUsed(int x, int y)
@@ -75,8 +77,25 @@ void WorldTerminalView::onHealthpackUsed(int x, int y)
     output->append("Healthpack picked up at (" +
                    QString::number(x) + "," +
                    QString::number(y) +
-                   "), protagonist health: " +
-                   QString::number(model->getProtagonist()->getHealth()));
+                   ")");
+}
+
+void WorldTerminalView::onHealthLevelChanged(int value)
+{
+    output->setTextColor(QColor(0,255,0));
+    output->append(QString("Health updated: %1 HP").arg(value));
+}
+
+void WorldTerminalView::onEnergyLevelChanged(int value)
+{
+    output->setTextColor(QColor(155,155,0));
+    output->append(QString("Energy updated: %1 EP").arg(value));
+}
+
+void WorldTerminalView::onPositionChanged(int x, int y)
+{
+    output->setTextColor(QColor(0,0,255));
+    output->append(QString("Protagonist position changed: (%1,%2)").arg(x).arg(y));
 }
 
 void WorldTerminalView::executeCmd(std::string &cmd)
