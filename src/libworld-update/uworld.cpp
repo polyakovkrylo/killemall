@@ -2,8 +2,8 @@
 
 using std::unique_ptr;
 using std::shared_ptr;
-using std::vector;
 using std::isinf;
+using std::dynamic_pointer_cast;
 
 //=============== Health pack =============================
 UHealthPack::UHealthPack(int x, int y, float healthPoints, int radius):
@@ -49,6 +49,14 @@ UPEnemy::UPEnemy(int x, int y, float strength,
     connect(this, &PEnemy::poisonLevelUpdated, [=] (int value) {
         emit areaPoisoned(value,poisonArea_);
     });
+}
+
+void UPEnemy::attack()
+{
+    if(!getDefeated()) {
+        setDefeated(true);
+        poison();
+    }
 }
 
 //================== Protagonist ==========================
@@ -98,30 +106,25 @@ UWorld::UWorld(QString filename)
     }
 }
 
-vector<Enemy*> UWorld::createEnemies(unsigned int enemies)
+QVector<shared_ptr<Enemy>> UWorld::createEnemies(unsigned int enemies)
 {
-    vector<Enemy*> v;
+    QVector<shared_ptr<Enemy>> v;
     v.reserve(enemies);
     for(auto &e: world_.getEnemies(enemies)) {
-        Enemy* ptr;
-        // get not release, these instances should be deleted
-        Enemy* re = e.get();
-        PEnemy* pe = dynamic_cast<PEnemy*>(re);
-        if(pe != nullptr) {
+        if(dynamic_cast<PEnemy*>((Enemy*)e.get())) {
             // create UPEnemy for each PEnemy
-            ptr = new UPEnemy(pe->getXPos(), pe->getYPos(), pe->getValue());
+            v.push_back(shared_ptr<Enemy>(new UEnemy(e->getXPos(), e->getYPos(), e->getValue())));
         } else {
             // create UEnemy for each Enemy
-            ptr = new UEnemy(re->getXPos(), re->getYPos(), re->getValue());
+            v.push_back(shared_ptr<Enemy>(new UPEnemy(e->getXPos(), e->getYPos(), e->getValue())));
         }
-        v.push_back(ptr);
     }
     return v;
 }
 
-vector<shared_ptr<UHealthPack>> UWorld::createHealthpacks(unsigned int packs)
+QVector<std::shared_ptr<UHealthPack> > UWorld::createHealthpacks(unsigned int packs)
 {
-    vector<shared_ptr<UHealthPack>> v;
+    QVector<shared_ptr<UHealthPack>> v;
     v.reserve(packs);
     for(auto &h: world_.getHealthPacks(packs)) {
         // create UHealthPack for each health pack
