@@ -35,6 +35,7 @@ public slots:
     void onHealthLevelChanged(int value);
     void onEnergyLevelChanged(int value);
     void onPositionChanged(int x, int y);
+    void reloadView();
 };
 
 #endif // WORLDTERMINALVIEW_H

@@ -1,6 +1,7 @@
 #include "worldterminalview.h"
 
-WorldTerminalView::WorldTerminalView(QWidget *parent) : QWidget(parent)
+WorldTerminalView::WorldTerminalView(QWidget *parent) :
+    QWidget(parent), model{nullptr}
 {        
     output = new QTextEdit;
     output->setReadOnly(true);
@@ -31,14 +32,17 @@ WorldTerminalView::WorldTerminalView(QWidget *parent) : QWidget(parent)
 
 void WorldTerminalView::setModel(WorldModel *m)
 {
-    output->clear();
+    // disconnect old model's signals
+    if(model) {
+        disconnect(model,SIGNAL(reload()),this,SLOT(reloadView()));
+        disconnect(model, SIGNAL(enemyDefeated(int,int)), this, SLOT(onEnemyDefeated(int,int)));
+        disconnect(model, SIGNAL(healthpackUsed(int,int)), this, SLOT(onHealthpackUsed(int,int)));
+        disconnect(model->getProtagonist().get(), SIGNAL(healthLevelChanged(int)), this, SLOT(onHealthLevelChanged(int)));
+        disconnect(model->getProtagonist().get(), SIGNAL(energyLevelChanged(int)), this, SLOT(onEnergyLevelChanged(int)));
+        disconnect(model->getProtagonist().get(), SIGNAL(posChanged(int,int)), this, SLOT(onPositionChanged(int,int)));
+    }
     model = m;
-    connect(model, SIGNAL(enemyDefeated(int,int)), this, SLOT(onEnemyDefeated(int,int)));
-    connect(model, SIGNAL(healthpackUsed(int,int)), this, SLOT(onHealthpackUsed(int,int)));
-    connect(model->getProtagonist().get(), SIGNAL(healthLevelChanged(int)), this, SLOT(onHealthLevelChanged(int)));
-    connect(model->getProtagonist().get(), SIGNAL(energyLevelChanged(int)), this, SLOT(onEnergyLevelChanged(int)));
-    connect(model->getProtagonist().get(), SIGNAL(posChanged(int,int)), this, SLOT(onPositionChanged(int,int)));
-
+    reloadView();
 }
 
 void WorldTerminalView::onReturnPressed()
@@ -96,6 +100,16 @@ void WorldTerminalView::onPositionChanged(int x, int y)
     output->setTextColor(QColor(0,0,255));
     message = QString("Protagonist position changed: (%1,%2)").arg(x).arg(y);
     output->append(message);
+}
+
+void WorldTerminalView::reloadView()
+{
+    output->clear();
+    connect(model, SIGNAL(enemyDefeated(int,int)), this, SLOT(onEnemyDefeated(int,int)));
+    connect(model, SIGNAL(healthpackUsed(int,int)), this, SLOT(onHealthpackUsed(int,int)));
+    connect(model->getProtagonist().get(), SIGNAL(healthLevelChanged(int)), this, SLOT(onHealthLevelChanged(int)));
+    connect(model->getProtagonist().get(), SIGNAL(energyLevelChanged(int)), this, SLOT(onEnergyLevelChanged(int)));
+    connect(model->getProtagonist().get(), SIGNAL(posChanged(int,int)), this, SLOT(onPositionChanged(int,int)));
 }
 
 void WorldTerminalView::executeCmd(QString &cmd, QStringList args)
