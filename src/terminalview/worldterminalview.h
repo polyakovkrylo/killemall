@@ -16,7 +16,7 @@ class WorldTerminalView : public QWidget
     Q_OBJECT
 public:
     WorldTerminalView(QWidget *parent = 0);
-    void setModel(const WorldModel *m);
+    void setModel(WorldModel *m);
     void executeCmd(QString &cmd, QStringList args);
     void help(QString command);
     void find(QString object, float value);
@@ -25,7 +25,7 @@ public:
 private:    
     QLineEdit* cmdLine;
     QTextEdit* output;
-    const WorldModel* model;
+    WorldModel* model;
     QString message;
 
 public slots:    

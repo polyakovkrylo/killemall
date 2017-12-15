@@ -29,7 +29,7 @@ WorldTerminalView::WorldTerminalView(QWidget *parent) : QWidget(parent)
     cmdLine->setFocus();
 }
 
-void WorldTerminalView::setModel(const WorldModel *m)
+void WorldTerminalView::setModel(WorldModel *m)
 {
     output->clear();
     model = m;
@@ -44,6 +44,7 @@ void WorldTerminalView::setModel(const WorldModel *m)
 void WorldTerminalView::onReturnPressed()
 {
     QString txt = cmdLine->text();
+    output->setTextColor(Qt::darkGray);
     output->append("\n>" + txt + "\n");
     QStringList list = txt.split(' ', QString::SkipEmptyParts);
     QString cmd = list.takeFirst();
@@ -99,11 +100,11 @@ void WorldTerminalView::onPositionChanged(int x, int y)
 
 void WorldTerminalView::executeCmd(QString &cmd, QStringList args)
 {    
-    output->setTextColor(Qt::darkGray);
     output->setTextColor(Qt::black);
     if(cmd == "help") help(args.value(0));
     else if(cmd == "find") find(args.value(0),args.value(1).toFloat());
     else if(cmd == "info") printInfo(args.value(0));
+    else if(cmd == "move") model->move(args.value(0).toInt(),args.value(1).toInt());
     else output->append("Invalid cmd, type 'help' to see all commands");
 
 }
