@@ -111,10 +111,10 @@ QVector<shared_ptr<Enemy>> UWorld::createEnemies(unsigned int enemies)
     for(auto &e: world_.getEnemies(enemies)) {
         if(dynamic_cast<PEnemy*>((Enemy*)e.get())) {
             // create UPEnemy for each PEnemy
-            v.push_back(shared_ptr<Enemy>(new UEnemy(e->getXPos(), e->getYPos(), e->getValue())));
+            v.push_back(shared_ptr<Enemy>(new UPEnemy(e->getXPos(), e->getYPos(), e->getValue())));
         } else {
             // create UEnemy for each Enemy
-            v.push_back(shared_ptr<Enemy>(new UPEnemy(e->getXPos(), e->getYPos(), e->getValue())));
+            v.push_back(shared_ptr<Enemy>(new UEnemy(e->getXPos(), e->getYPos(), e->getValue())));
         }
     }
     return v;
