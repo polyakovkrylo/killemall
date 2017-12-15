@@ -78,4 +78,61 @@ void WorldGraphicsView::onProtagonistPositionChanged(int x, int y)
 
 void WorldGraphicsView::reloadScene()
 {
+    // reset scene
+    if(scene_ != nullptr)
+        scene_->deleteLater();
+
+    // create scene and draw background
+    QImage back(model_->getLevel());
+    scene_ = new QGraphicsScene(QRectF(0,0,back.width(),back.height()),this);
+    scene_->setBackgroundBrush(back);
+    setMaximumSize(back.size());
+
+    // draw enemies and connect them to lambda slot
+    for(auto &e: model_->getEnemies()) {
+        QGraphicsEllipseItem *eIt = scene_->addEllipse(e->area(),QPen(),QBrush(Qt::red));
+        connect(e.get(), &UEnemy::dead, [=]() {
+            // mark enemy as defeated
+            eIt->setBrush(Qt::gray);
+        } );
+    }
+
+    // draw enemies and connect them to lambda slot for dead poisonLevelChanged slots
+    for(auto &pe: model_->getPEnemies()) {
+        QGraphicsEllipseItem *peIt = scene_->addEllipse(pe->area(),QPen(),QBrush(Qt::red));
+        connect(pe.get(), &UPEnemy::dead, [=]() {
+            // mark enemy as defeated
+            peIt->setBrush(Qt::gray);
+        } );
+        // draw poison area
+        QGraphicsEllipseItem *pIt = scene_->addEllipse(pe->poisonArea(),
+                                                       QPen(Qt::transparent),QBrush());
+        connect(pe.get(), &UPEnemy::poisonLevelUpdated, [=](int value) {
+            // Set alpha channel as doubled poison level
+            pIt->setBrush(QColor(230,230,0,value*2));
+        } );
+    }
+
+    //draw health packs with the center at tile's x and y
+    for(auto &p: model_->getHealthpacks()) {
+        QGraphicsEllipseItem *it = scene_->addEllipse(p->area(), QPen(), QBrush(Qt::green));
+        connect(p.get(), &UHealthPack::used, [=]() {
+            // Delete used  health pack
+            scene_->removeItem(it);
+        } );
+    }
+
+    //draw protagonist with the center at tile's x and y
+    auto &p = model_->getProtagonist();
+    protagonist_ = scene_->addEllipse(p->area(), QPen(), QBrush(Qt::blue));
+
+    healthBar_->setValue(p->getHealth());
+    energyBar_->setValue(p->getEnergy());
+
+    connect(p.get(), SIGNAL(posChanged(int,int)), this, SLOT(onProtagonistPositionChanged(int,int)));
+    connect(p.get(),SIGNAL(healthLevelChanged(int)),healthBar_,SLOT(setValue(int)));
+    connect(p.get(),SIGNAL(energyLevelChanged(int)),energyBar_,SLOT(setValue(int)));
+
+    setScene(scene_);
+    centerOn(protagonist_);
 }
