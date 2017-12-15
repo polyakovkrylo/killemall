@@ -73,7 +73,7 @@ void WorldGraphicsView::onProtagonistPositionChanged(int x, int y)
 {
     //move protagonist and center view
     protagonist_->setPos(x,y);
-    centerOn(protagonist_);
+    ensureVisible(protagonist_, 100, 100);
 }
 
 void WorldGraphicsView::reloadScene()
@@ -130,8 +130,8 @@ void WorldGraphicsView::reloadScene()
     energyBar_->setValue(p->getEnergy());
 
     connect(p.get(), SIGNAL(posChanged(int,int)), this, SLOT(onProtagonistPositionChanged(int,int)));
-    connect(p.get(),SIGNAL(healthLevelChanged(int)),healthBar_,SLOT(setValue(int)));
-    connect(p.get(),SIGNAL(energyLevelChanged(int)),energyBar_,SLOT(setValue(int)));
+    connect(p.get(), SIGNAL(healthLevelChanged(int)), healthBar_, SLOT(setValue(int)));
+    connect(p.get(), SIGNAL(energyLevelChanged(int)), energyBar_, SLOT(setValue(int)));
 
     setScene(scene_);
     centerOn(protagonist_);
