@@ -20,7 +20,14 @@ bool AStarController::findPath(const QPoint &from, const QPoint &to, float maxCo
     path_.steps.clear();
     clearNodes();
 
-    int targetValue=model_->getLevel().pixelColor(to).lightness();
+    float targetValue = 0;
+    try{
+        auto &node = nodes_.at(to.x()).at(to.y());
+        targetValue = node->nodeCost;
+    }
+    catch(std::out_of_range){
+        // leave targetValue equal to 0
+    }
 
     bool pathFound = false;
 
@@ -69,15 +76,15 @@ void AStarController::init()
     auto &tiles = model_->getWorld()->getMap();
     // clear vector from previous map nodes
     nodes_.clear();
-    nodes_.reserve(model_->getLevel().width());
+    nodes_.reserve(model_->getWorld()->getCols());
 
     // iterate through columns
-    for(int i = 0; i < model_->getLevel().width(); ++i) {
+    for(int i = 0; i < model_->getWorld()->getCols();++i) {
         // add column vector
         vector<shared_ptr<Node>> vec;
-        vec.reserve(model_->getLevel().height());
+        vec.reserve(model_->getWorld()->getRows());
         nodes_.push_back(std::move(vec));
-        for(int j = 0; j < model_->getLevel().height(); ++j) {
+        for(int j = 0; j < model_->getWorld()->getRows(); ++j) {
             // create node for each map tile
             nodes_.back().push_back(make_shared<Node>(Node()));
         }
