@@ -102,6 +102,7 @@ void WorldTerminalView::executeCmd(QString &cmd, QStringList args)
     output->setTextColor(Qt::darkGray);
     output->setTextColor(Qt::black);
     if(cmd == "help") help(args.value(0));
+    else if(cmd == "find") find(args.value(0),args.value(1).toFloat());
     else output->append("Invalid cmd, type 'help' to see all commands");
 
 }
@@ -145,6 +146,50 @@ void WorldTerminalView::help(QString command)
                       "y    Vertical position\n"
                       );
     }
+    output->setTextColor(Qt::black);
+    output->append(msg);
+}
+
+void WorldTerminalView::find(QString object, float value)
+{
+    QString msg;
+    Tile* t = nullptr;
+    QString obj;
+    QString param;
+
+    // if looking for an enemy
+    if(object.endsWith("e")) {
+        // set strength to max if it was not set
+        param = QString("strength");
+        if(value == 0)
+            value = 100.0f;
+        if(object == "e"){
+            obj = "enemy";
+            t = model->getController()->findClosest(AnyEnemy,0.0f,value).get();
+        } else if(object == "re"){
+            obj = QString("regular enemy");
+            t = model->getController()->findClosest(RegularEnemy,0.0f,value).get();
+        } else if(object == "pe"){
+            obj = QString("poisoned enemy");
+            t = model->getController()->findClosest(PoisonedEnemy,0.0f,value).get();
+        }
+    }
+    //if looking for a health pack
+    else if(object == "h") {
+        obj = QString("health pack");
+        param = QString("HP");
+        t = model->getController()->findClosest(PoisonedEnemy,value,0.0f).get();
+    }
+
+    // print info if an object was find
+    if(t) {
+        msg = QString("Closest %1 with %2 %3 at position (%4,%5)")
+                .arg(obj).arg(param).arg(t->getValue()).arg(t->getXPos()).arg(t->getYPos());
+    }
+    else {
+        msg = QString("Could not find a suitible object");
+    }
+
     output->setTextColor(Qt::black);
     output->append(msg);
 }

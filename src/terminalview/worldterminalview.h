@@ -19,6 +19,7 @@ public:
     void setModel(const WorldModel *m);
     void executeCmd(QString &cmd, QStringList args);
     void help(QString command);
+    void find(QString object, float value);
 
 private:    
     QLineEdit* cmdLine;
