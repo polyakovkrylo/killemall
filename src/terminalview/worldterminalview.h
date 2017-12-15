@@ -20,6 +20,7 @@ public:
     void executeCmd(QString &cmd, QStringList args);
     void help(QString command);
     void find(QString object, float value);
+    void printInfo(QString object);
 
 private:    
     QLineEdit* cmdLine;

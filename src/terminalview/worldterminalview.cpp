@@ -103,6 +103,7 @@ void WorldTerminalView::executeCmd(QString &cmd, QStringList args)
     output->setTextColor(Qt::black);
     if(cmd == "help") help(args.value(0));
     else if(cmd == "find") find(args.value(0),args.value(1).toFloat());
+    else if(cmd == "info") printInfo(args.value(0));
     else output->append("Invalid cmd, type 'help' to see all commands");
 
 }
@@ -113,7 +114,7 @@ void WorldTerminalView::help(QString command)
     if(command.isEmpty()){
         msg = QString("List of commands (type 'help [command]' to get more information):\n\n"
                       "find <object> [ value ] \t Find enemy or health pack\n"
-                      "status <object> \t Get information about health packs, enemies and protagonist\n"
+                      "info <object> \t Get information about health packs, enemies and protagonist\n"
                       "move <x> <y> \t Move protagonist to the position");
     }
     else if(command == "find") {
@@ -127,7 +128,7 @@ void WorldTerminalView::help(QString command)
                       "h    Health pack"
                       );
     }
-    else if(command == "status") {
+    else if(command == "info") {
         msg = QString("Print information about the object(objects):\n\n"
                       "Syntax: status <object> \n\n"
                       "Objects:\n"
@@ -190,6 +191,39 @@ void WorldTerminalView::find(QString object, float value)
         msg = QString("Could not find a suitible object");
     }
 
+    output->setTextColor(Qt::black);
+    output->append(msg);
+}
+
+void WorldTerminalView::printInfo(QString object)
+{
+    QString msg;
+    if(object == "p"){
+        auto &p = model->getProtagonist();
+        msg = QString("Protagonist is at (%1,%2)\n"
+                      "Health level: %3\n"
+                      "Energy level: %4")
+                .arg(p->getXPos()).arg(p->getYPos())
+                .arg(p->getHealth()).arg(p->getEnergy());
+    }
+    else if(object == "e") {
+        msg = QString("Number of enemies alive: %1")
+                .arg(model->getEnemies().size() + model->getPEnemies().size());
+    }
+    else if(object == "pe") {
+        msg = QString("Number of poisoned enemies alive: %1").arg(model->getPEnemies().size());
+    }
+    else if(object == "re") {
+        msg = QString("Number of regular enemies alive: %1").arg(model->getEnemies().size());
+    }
+    else if(object == "h") {
+        msg = QString("Number of health packs left: %1").arg(model->getHealthpacks().size());
+    }
+    else {
+        printInfo("p");
+        printInfo("e");
+        printInfo("h");
+    }
     output->setTextColor(Qt::black);
     output->append(msg);
 }
