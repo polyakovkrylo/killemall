@@ -14,6 +14,7 @@ void WorldModel::init(const QString &filename, int enemies, int healthpacks)
 {
     world_ = unique_ptr<UWorld>(new UWorld(filename));
     level_ = QImage(filename);
+    controller_->init();
 
     for(auto &e: world_->createEnemies(enemies)) {
         // separate regular and posioned enemies and stroe them in different vectors

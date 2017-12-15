@@ -107,19 +107,18 @@ void WorldGraphicsView::keyPressEvent(QKeyEvent *e)
     int y = model_->getProtagonist()->getYPos();
     switch(e->key()) {
     case Qt::Key_Up:
-        y--;
+        model_->move(x,--y);
         break;
     case Qt::Key_Down:
-        y++;
+        model_->move(x,++y);
         break;
     case Qt::Key_Right:
-        x++;
+        model_->move(++x,y);
         break;
     case Qt::Key_Left:
-        x--;
+        model_->move(--x,y);
         break;
     }
-    model_->move(x,y);
 }
 
 void WorldGraphicsView::mousePressEvent(QMouseEvent *e)
