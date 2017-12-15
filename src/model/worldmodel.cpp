@@ -5,16 +5,29 @@ using std::unique_ptr;
 using std::shared_ptr;
 using std::dynamic_pointer_cast;
 
-WorldModel::WorldModel(QObject *parent) : QObject(parent)
+WorldModel::WorldModel(QObject *parent) :
+    QObject(parent), level_{":/img/level1.png"}, numOfEnemies_{20}, numOfHealthpacks_{20}
 {
     controller_ = unique_ptr<WorldAbstractController>(WorldControllerFactory::createController(this));
 }
 
-void WorldModel::init(const QString &filename, int enemies, int healthpacks)
+void WorldModel::init(QString filename, int enemies, int healthpacks)
 {
-    world_ = unique_ptr<UWorld>(new UWorld(filename));
-    level_ = QImage(filename);
-    controller_->init();
+    // If args were not set then set them to last values
+    if(filename.isEmpty()) filename = level_;
+    if(!enemies) enemies = numOfEnemies_;
+    if(!healthpacks) healthpacks = numOfHealthpacks_;
+
+    // Re-init the map if it's first time or if the map has changed
+    if(level_ != filename || !world_.get()) {
+        world_.reset(new UWorld(filename));
+        level_ = filename;
+        controller_->init();
+    }
+
+    // remember amount of enemies and healthpack for further restart
+    numOfEnemies_ = enemies;
+    numOfHealthpacks_ = healthpacks;
 
     for(auto &e: world_->createEnemies(enemies)) {
         // separate regular and posioned enemies and stroe them in different vectors
