@@ -11,7 +11,9 @@ struct Node
 {
     bool visited;
     float nodeCost;
-    float pathCost;
+    float g;        // path cost
+    float h;        // min destination cost
+    float f;        // path rate
     int x;
     int y;
     std::array<Node*,4> neighbours;
@@ -21,7 +23,7 @@ struct Node
 class CompareCost{
 public:
     inline bool operator()(Node* &t1, Node* &t2) const{
-        return t1->pathCost > t2->pathCost;
+        return t1->f > t2->f;
     }
 };
 
@@ -35,7 +37,7 @@ public:
     void clearNodes();
 private:
     std::vector<std::vector<std::shared_ptr<Node>>> nodes_;
-    void addNeighbours(NodeQueue &openNodes, Node *node);
+    void addNeighbours(NodeQueue &openNodes, Node *node, const QPoint &destination);
 };
 
 #endif // ASTARCONTROLLER_H

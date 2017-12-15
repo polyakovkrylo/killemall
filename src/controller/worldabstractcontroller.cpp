@@ -21,8 +21,10 @@ void WorldAbstractController::move(const QPoint &from, const QPoint &to)
     else
         // otherwise try to find a path
         scs =findPath(from, to);
-    if(scs)
+    if(scs) {
+        model_->getProtagonist()->updateEnergy(-path_.cost);
         animatePath();
+    }
 }
 
 const shared_ptr<Tile> WorldAbstractController::findClosest(ObjectType type, float minValue, float maxValue)
@@ -73,7 +75,7 @@ const shared_ptr<Tile> WorldAbstractController::findClosest(ObjectType type, flo
         // check if the object can ever be better than the closest found
         QPoint to(obj->getXPos(), obj->getYPos());
         QPoint p = from - to;
-        if(path_.cost < p.manhattanLength()*costOffset_)
+        if(path_.cost < p.manhattanLength()*minCost_)
             continue;
 
         // check if the object is closer than the closest so far
