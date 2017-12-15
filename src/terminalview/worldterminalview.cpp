@@ -31,6 +31,7 @@ WorldTerminalView::WorldTerminalView(QWidget *parent) : QWidget(parent)
 
 void WorldTerminalView::setModel(const WorldModel *m)
 {
+    output->clear();
     model = m;
     connect(model, SIGNAL(enemyDefeated(int,int)), this, SLOT(onEnemyDefeated(int,int)));
     connect(model, SIGNAL(healthpackUsed(int,int)), this, SLOT(onHealthpackUsed(int,int)));
@@ -40,25 +41,13 @@ void WorldTerminalView::setModel(const WorldModel *m)
 
 }
 
-std::vector<float> WorldTerminalView::findNearestEnemy()
-{
-    //for testing
-    std::vector<float> enemy = {45, 39, 13.6};    
-    return enemy;
-}
-
-std::vector<float> WorldTerminalView::findNearestHealth()
-{
-    //for testing
-    std::vector<float> hp = {103, 8, 55.5};    
-    return hp;
-}
-
 void WorldTerminalView::onReturnPressed()
 {
-    std::string strCommand = "";
-    strCommand += cmdLine->text().toStdString();
-    executeCmd(strCommand);
+    QString txt = cmdLine->text();
+    output->append("\n>" + txt + "\n");
+    QStringList list = txt.split(' ', QString::SkipEmptyParts);
+    QString cmd = list.takeFirst();
+    executeCmd(cmd,list);
     cmdLine->clear();
 }
 
@@ -108,80 +97,54 @@ void WorldTerminalView::onPositionChanged(int x, int y)
     output->append(message);
 }
 
-void WorldTerminalView::executeCmd(std::string &cmd)
+void WorldTerminalView::executeCmd(QString &cmd, QStringList args)
 {    
-    output->setTextColor(QColor(0,0,0));
-    output->append(">" + QString::fromStdString(cmd));
-    output->setTextColor(QColor(255,0,0));
-    if(cmd == "help") help();
-    else if(cmd == "find protag") findProtag();
-    else if(cmd == "status protag") statusProtag();
-    else if(cmd.compare(0, 5, "move(", 5) == 0) move(cmd);
-    else if(cmd == "find enemy") findEnemy();
-    else if(cmd == "find healthpack") findHealth();
+    output->setTextColor(Qt::darkGray);
+    output->setTextColor(Qt::black);
+    if(cmd == "help") help(args.value(0));
     else output->append("Invalid cmd, type 'help' to see all commands");
 
 }
 
-void WorldTerminalView::help()
+void WorldTerminalView::help(QString command)
 {
-    output->append("List of commands:\n"
-                   "find protag\n"
-                   "status protag\n"
-                   "find enemy\n"
-                   "find healthpack\n"
-                   "move(x,y)");
-}
-
-void WorldTerminalView::findProtag()
-{
-    output->append("Protagonist is located at (" +
-                   QString::number(model->getProtagonist()->getXPos()) + "," +
-                   QString::number(model->getProtagonist()->getYPos()) + ")");
-}
-
-void WorldTerminalView::statusProtag()
-{
-    output->append("Health: " + QString::number(model->getProtagonist()->getHealth()) +
-                   " Energy: " + QString::number(model->getProtagonist()->getEnergy()));
-}
-
-void WorldTerminalView::findHealth()
-{
-    std::vector<float> hp = findNearestHealth();
-    output->append("Nearest healthpack found at (" +
-                   QString::number(hp.at(0)) + "," +
-                   QString::number(hp.at(1)) + "), " +
-                   "with value " +
-                   QString::number(hp.at(2)));
-}
-
-void WorldTerminalView::findEnemy()
-{
-    std::vector<float> enemy = findNearestEnemy();
-    output->append("Nearest enemy found at (" +
-                   QString::number(enemy.at(0)) + "," +
-                   QString::number(enemy.at(1)) + "), " +
-                   "with strength " +
-                   QString::number(enemy.at(2)));
-}
-
-void WorldTerminalView::move(std::string &cmd)
-{
-    cmd.erase(0, 5);
-    std::stringstream ss(cmd);
-    std::vector<int> coords;
-    int i;
-    while (ss >> i)
-    {
-        coords.push_back(i);
-
-        if (ss.peek() == ',' || ss.peek() == ')')
-            ss.ignore();
+    QString msg;
+    if(command.isEmpty()){
+        msg = QString("List of commands (type 'help [command]' to get more information):\n\n"
+                      "find <object> [ value ] \t Find enemy or health pack\n"
+                      "status <object> \t Get information about health packs, enemies and protagonist\n"
+                      "move <x> <y> \t Move protagonist to the position");
     }
-    if(coords.size() != 2) output->append("Invalid cmd, type 'help' to see all commands");
-    else /*if(model->move(coords.at(0), coords.at(1)))*/ output->append("Moved to (" +
-                                                                        QString::number(coords.at(0)) + "," +
-                                                                        QString::number(coords.at(1)) + ")");
-    /*else output->append("Location unreachable");*/
+    else if(command == "find") {
+        msg = QString("Search for the closest enemy or health pack:\n\n"
+                      "Syntax: find <object> [ value ]\n\n"
+                      "Option value is minimal(maximal in case of enemy) value of the object\n\n"
+                      "Objects:\n"
+                      "e    Any enemy\n"
+                      "re   Regular enemy\n"
+                      "pe   Posioned enemy\n"
+                      "h    Health pack"
+                      );
+    }
+    else if(command == "status") {
+        msg = QString("Print information about the object(objects):\n\n"
+                      "Syntax: status <object> \n\n"
+                      "Objects:\n"
+                      "p    Protagonist\n"
+                      "e    All enemies\n"
+                      "re   Regular enemies\n"
+                      "pe   Posioned enemies\n"
+                      "h    Health packs"
+                      );
+    }
+    else if(command == "move") {
+        msg = QString("Move protagonist to the position:\n\n"
+                      "Syntax: move <x> <y> \n\n"
+                      "Options:\n"
+                      "x    Horizontal position\n"
+                      "y    Vertical position\n"
+                      );
+    }
+    output->setTextColor(Qt::black);
+    output->append(msg);
 }
