@@ -79,6 +79,8 @@ class UWorld
 public:
     UWorld(QString filename);
     inline const std::vector<std::unique_ptr<Tile>> &getMap() const {return map_;}
+    inline int getCols() const {return world_.getCols();}
+    inline int getRows() const {return world_.getRows();}
     QVector<std::shared_ptr<Enemy>> createEnemies(unsigned int enemies);
     QVector<std::shared_ptr<UHealthPack> > createHealthpacks(unsigned int packs);
     std::unique_ptr<UProtagonist> createProtagonist();
