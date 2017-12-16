@@ -48,12 +48,20 @@ void WorldTerminalView::setModel(WorldModel *m)
 void WorldTerminalView::onReturnPressed()
 {
     QString txt = cmdLine->text();
-    output->setTextColor(Qt::darkGray);
-    output->append("\n>" + txt + "\n");
-    QStringList list = txt.split(' ', QString::SkipEmptyParts);
-    QString cmd = list.takeFirst();
-    executeCmd(cmd,list);
-    cmdLine->clear();
+    // if no command was specified, print help
+    if(txt.isEmpty()) {
+        help();
+    }
+    else {
+        // echo input
+        output->setTextColor(Qt::darkGray);
+        output->append("\n>" + txt + "\n");
+        // split the command and its arguments and execute it
+        QStringList list = txt.split(' ', QString::SkipEmptyParts);
+        QString cmd = list.takeFirst();
+        executeCmd(cmd,list);
+        cmdLine->clear();
+    }
 }
 
 void WorldTerminalView::onEnemyDefeated(int x, int y)
