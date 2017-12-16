@@ -137,7 +137,7 @@ void WorldTerminalView::help(QString command)
     if(command.isEmpty()){
         msg = QString("List of commands (type 'help [command]' to get more information):\n\n"
                       "find <object> [ value ] \t Find enemy or health pack\n"
-                      "info <object> \t Get information about health packs, enemies and protagonist\n"
+                      "info [ object ] \t Get information about health packs, enemies and protagonist\n"
                       "move <x> <y> \t Move protagonist to the position");
     }
     else if(command == "find") {
@@ -153,7 +153,7 @@ void WorldTerminalView::help(QString command)
     }
     else if(command == "info") {
         msg = QString("Print information about the object(objects):\n\n"
-                      "Syntax: status <object> \n\n"
+                      "Syntax: info [ object ] \n\n"
                       "Objects:\n"
                       "p    Protagonist\n"
                       "e    All enemies\n"
@@ -202,7 +202,7 @@ void WorldTerminalView::find(QString object, float value)
     else if(object == "h") {
         obj = QString("health pack");
         param = QString("HP");
-        t = model->getController()->findClosest(PoisonedEnemy,value,0.0f).get();
+        t = model->getController()->findClosest(HealthPack,value,100.0f).get();
     }
 
     // print info if an object was find
