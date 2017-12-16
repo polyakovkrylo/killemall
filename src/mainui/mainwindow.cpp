@@ -23,6 +23,17 @@ void MainWindow::setModel(WorldModel *m)
     tv->setModel(model);
     gv->setModel(model);
     connect(ui->speedSlider, SIGNAL(sliderMoved(int)), model->getController().get(), SLOT(setAnimationSpeed(int)));
+    connect(model->getProtagonist().get(), &UProtagonist::dead, this, [=](){
+        QMessageBox msg;
+        msg.setText("Protagonist is dead!\nGAME OVER");
+        msg.setStandardButtons(QMessageBox::Close | QMessageBox::Retry);
+        int ret = msg.exec();
+        switch(ret) {
+        case QMessageBox::Close: QCoreApplication::exit();
+            break;
+        case QMessageBox::Retry: loadWorld->exec();
+        }
+    });
 }
 
 MainWindow::~MainWindow()
