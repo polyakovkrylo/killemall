@@ -30,7 +30,7 @@ public:
     const std::shared_ptr<Tile> findClosest(ObjectType type, float minValue = 0.0f, float maxValue = 100.0f);
     virtual bool findPath(const QPoint &from, const QPoint& to, float maxCost = INFINITY) = 0;
     inline const Path &currentPath() {return path_;}
-    inline void setOptimizationLevel(float value){optimization_ = value;}
+    inline void setOptimizationLevel(float value){optimization_ = value/100.0f;}
     void stop();
 
 protected:
@@ -43,6 +43,7 @@ protected:
 
 public slots:
     virtual void init()=0;
+    void setAnimationSpeed(int value);
 
 private slots:
     void animatePath();

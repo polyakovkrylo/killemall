@@ -95,6 +95,11 @@ void WorldAbstractController::stop()
     path_.cost = 0.0f;
 }
 
+void WorldAbstractController::setAnimationSpeed(int value)
+{
+    animation_.setInterval(300/value);
+}
+
 void WorldAbstractController::animatePath()
 {
     // move protagonist along the path till the path is done
