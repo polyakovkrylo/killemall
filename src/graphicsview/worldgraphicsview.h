@@ -35,7 +35,7 @@ private:
 
 public slots:
     void onProtagonistPositionChanged(int x, int y);
-    void onReload();
+    void reloadScene();
 
 };
 
