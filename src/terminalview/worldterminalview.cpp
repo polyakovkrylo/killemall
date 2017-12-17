@@ -43,6 +43,7 @@ void WorldTerminalView::setModel(WorldModel *m)
     }
     model = m;
     reloadView();
+    connect(model,SIGNAL(reload()),this,SLOT(reloadView()));
 }
 
 void WorldTerminalView::onReturnPressed()
