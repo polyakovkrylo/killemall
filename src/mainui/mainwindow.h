@@ -7,8 +7,6 @@
 #include "model/worldmodel.h"
 #include "popup.h"
 
-enum Maps{maze1, maze2, maze3, worldmap};
-
 namespace Ui {
 class MainWindow;
 }
@@ -26,7 +24,6 @@ public:
 private:
     Ui::MainWindow *ui;
     Popup *loadWorld;
-    QString filename;
     WorldModel *model;
     WorldTerminalView *tv;
     WorldGraphicsView *gv;

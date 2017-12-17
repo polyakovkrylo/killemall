@@ -6,11 +6,15 @@ Popup::Popup(QDialog *parent) :
     ui(new Ui::Popup)
 {
     ui->setupUi(this);
+    QDir dir(":/img/");
+    for(QString f : dir.entryList()) {
+        ui->chooseWorld->addItem(f);
+    }
 }
 
 Values Popup::getValues()
 {
-    vals.map = ui->chooseWorld->currentIndex();
+    vals.map = ui->chooseWorld->currentText();
     vals.healthpacks = ui->nrHealth->value();
     vals.enemies = ui->nrEnemies->value();
     vals.optimization = ui->optimizationSlider->value();

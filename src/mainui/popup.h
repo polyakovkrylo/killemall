@@ -3,10 +3,11 @@
 
 #include <QWidget>
 #include <QDialog>
+#include <QDir>
 #include <string>
 
 struct Values {
-    int map;
+    QString map;
     int healthpacks;
     int enemies;
     int optimization;

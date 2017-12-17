@@ -3,7 +3,8 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    model{nullptr}
 {
     ui->setupUi(this);
     tv = findChild<WorldTerminalView*>("terminalView");
@@ -56,18 +57,10 @@ void MainWindow::on_switchViewBtn_clicked()
 void MainWindow::onPopupClosed()
 {
     Values vals = loadWorld->getValues();
-    Maps map = Maps(vals.map);
-
-    switch(map) {
-    case maze1: filename = ":/img/level1.png"; break;
-    case maze2: filename = ":/img/maze2.png"; break;
-    case maze3: filename = ":/img/maze3.png"; break;
-    case worldmap: filename = ":/img/worldmap4.png"; break;
-    default: filename = ":/img/worldmap4.png"; break;
-    }    
+    QString map(":/img/" + vals.map);
     //Destroy previous model?
     WorldModel *m = new WorldModel();
-    m->init(filename, vals.enemies, vals.healthpacks);
+    m->init(map, vals.enemies, vals.healthpacks);
     setModel(m);
     model->getController().get()->setOptimizationLevel(vals.optimization);
     tv->clearOutput();

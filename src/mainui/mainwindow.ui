@@ -44,6 +44,9 @@
         </item>
         <item>
          <widget class="QSlider" name="speedSlider">
+          <property name="minimum">
+           <number>1</number>
+          </property>
           <property name="singleStep">
            <number>10</number>
           </property>
@@ -60,9 +63,6 @@
      </layout>
     </item>
    </layout>
-   <zorder>graphicsView</zorder>
-   <zorder>terminalView</zorder>
-   <zorder>horizontalLayoutWidget</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

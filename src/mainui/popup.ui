@@ -38,26 +38,6 @@
      <height>25</height>
     </rect>
    </property>
-   <item>
-    <property name="text">
-     <string>Maze 1</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Maze 2</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Maze 3</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>World Map</string>
-    </property>
-   </item>
   </widget>
   <widget class="QSpinBox" name="nrHealth">
    <property name="geometry">
