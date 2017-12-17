@@ -31,6 +31,7 @@ public:
     virtual bool findPath(const QPoint &from, const QPoint& to, float maxCost = INFINITY) = 0;
     inline const Path &currentPath() {return path_;}
     inline void setOptimizationLevel(float value){optimization_ = value;}
+    void stop();
 
 protected:
     inline float calculateCost(float tile) {return !std::isinf(tile) ? (minCost_/tile) : 0;}

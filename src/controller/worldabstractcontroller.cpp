@@ -87,6 +87,13 @@ const shared_ptr<Tile> WorldAbstractController::findClosest(ObjectType type, flo
     return closest;
 }
 
+void WorldAbstractController::stop()
+{
+    animation_.stop();
+    path_.steps.clear();
+    path_.cost = 0.0f;
+}
+
 void WorldAbstractController::animatePath()
 {
     // move protagonist along the path till the path is done
