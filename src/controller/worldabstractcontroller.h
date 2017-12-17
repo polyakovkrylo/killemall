@@ -26,7 +26,7 @@ class WorldAbstractController : public QObject
     Q_OBJECT
 public:
     explicit WorldAbstractController(WorldModel *model);
-    void move(const QPoint &from, const QPoint& to);
+    bool move(const QPoint &from, const QPoint& to);
     const std::shared_ptr<Tile> findClosest(ObjectType type, float minValue = 0.0f, float maxValue = 100.0f);
     virtual bool findPath(const QPoint &from, const QPoint& to, float maxCost = INFINITY) = 0;
     inline const Path &currentPath() {return path_;}

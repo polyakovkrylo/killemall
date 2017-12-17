@@ -12,19 +12,20 @@ WorldAbstractController::WorldAbstractController(WorldModel *model) :
     connect(&animation_,SIGNAL(timeout()),SLOT(animatePath()));
 }
 
-void WorldAbstractController::move(const QPoint &from, const QPoint &to)
+bool WorldAbstractController::move(const QPoint &from, const QPoint &to)
 {
     bool scs = false;
     if(path_.steps.back() == to)
         // if it is the same path as last time, then just move
         scs = true;
     else
-        // otherwise try to find a path
-        scs =findPath(from, to);
+        // otherwise try to find a path such that protagonist has enough energy
+        scs =findPath(from, to, model_->getProtagonist()->getEnergy());
     if(scs) {
         model_->getProtagonist()->updateEnergy(-path_.cost);
         animatePath();
     }
+    return scs;
 }
 
 const shared_ptr<Tile> WorldAbstractController::findClosest(ObjectType type, float minValue, float maxValue)
