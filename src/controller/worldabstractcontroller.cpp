@@ -27,53 +27,53 @@ void WorldAbstractController::move(const QPoint &from, const QPoint &to)
     }
 }
 
-const shared_ptr<Tile> WorldAbstractController::findClosest(ObjectType type, float minValue, float maxValue)
+const Tile WorldAbstractController::findClosest(ObjectType type, float minValue, float maxValue)
 {
     // clear path and get starting pos
     path_.cost = INFINITY;
     QPoint from(model_->getProtagonist()->getXPos(),
                 model_->getProtagonist()->getYPos());
     // vector of objects under investigation
-    vector<shared_ptr<Tile>> objs;
+    vector<Tile> objs;
 
     // adding objects to vector
     switch(type) {
     case HealthPack:
         for(auto &h: model_->getHealthpacks()) {
-            objs.push_back(std::static_pointer_cast<Tile>(h));
+            objs.push_back(*h);
         }
         break;
     case RegularEnemy:
         for(auto &e: model_->getEnemies()) {
-            objs.push_back(std::static_pointer_cast<Tile>(e));
+            objs.push_back(*e);
         }
         break;
     case PoisonedEnemy:
         for(auto &e: model_->getPEnemies()) {
-            objs.push_back(std::static_pointer_cast<Tile>(e));
+            objs.push_back(*e);
         }
         break;
     case AnyEnemy:
         // adding both types for AnyEnemy
         for(auto &e: model_->getEnemies()) {
-            objs.push_back(std::static_pointer_cast<Tile>(e));
+            objs.push_back(*e);
         }
         for(auto &pe: model_->getPEnemies()) {
-            objs.push_back(std::static_pointer_cast<Tile>(pe));
+            objs.push_back(*pe);
         }
         break;
     default: break;
     }
 
-    shared_ptr<Tile> closest;
-    for(auto obj: objs) {
+    Tile *closest = nullptr;
+    for(auto &obj: objs) {
         // check if tile's value is within range
-        float val = obj->getValue();
+        float val = obj.getValue();
         if(val > maxValue || val < minValue)
             continue;
 
         // check if the object can ever be better than the closest found
-        QPoint to(obj->getXPos(), obj->getYPos());
+        QPoint to(obj.getXPos(), obj.getYPos());
         QPoint p = from - to;
         if(path_.cost < p.manhattanLength()*minCost_)
             continue;
@@ -81,10 +81,10 @@ const shared_ptr<Tile> WorldAbstractController::findClosest(ObjectType type, flo
         // check if the object is closer than the closest so far
         bool s = findPath(from,to,path_.cost);
         if(s)
-            closest = obj;
+            closest = &obj;
     }
 
-    return closest;
+    return *closest;
 }
 
 void WorldAbstractController::animatePath()
