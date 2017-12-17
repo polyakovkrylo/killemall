@@ -13,6 +13,11 @@ WorldModel::WorldModel(QObject *parent) :
 
 void WorldModel::init(QString filename, int enemies, int healthpacks)
 {
+    // clear previous objects
+    enemies_.clear();
+    pEnemies_.clear();
+    healthpacks_.clear();
+
     // If args were not set then set them to last values
     if(filename.isEmpty()) filename = level_;
     if(!enemies) enemies = numOfEnemies_;
