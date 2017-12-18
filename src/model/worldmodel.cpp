@@ -5,48 +5,66 @@ using std::unique_ptr;
 using std::shared_ptr;
 using std::dynamic_pointer_cast;
 
-WorldModel::WorldModel(QObject *parent) : QObject(parent)
+WorldModel::WorldModel(QObject *parent) :
+    QObject(parent), level_{":/img/level1.png"},
+    numOfEnemies_{20}, numOfHealthpacks_{20}, ready_{false}
 {
     controller_ = unique_ptr<WorldAbstractController>(WorldControllerFactory::createController(this));
 }
 
-void WorldModel::init(const QString &filename, int enemies, int healthpacks)
+void WorldModel::init(QString filename, int enemies, int healthpacks)
 {
-    world_ = unique_ptr<UWorld>(new UWorld(filename));
-    level_ = QImage(filename);
-    controller_->init();
+    // clear previous objects
+    enemies_.clear();
+    pEnemies_.clear();
+    healthpacks_.clear();
+
+    // If args were not set then set them to last values
+    if(filename.isEmpty()) filename = level_;
+    if(!enemies) enemies = numOfEnemies_;
+    if(!healthpacks) healthpacks = numOfHealthpacks_;
+
+    // Re-init the map if it's first time or if the map has changed
+    if(level_ != filename || !world_.get()) {
+        world_.reset(new UWorld(filename));
+        level_ = filename;
+        controller_->init();
+    }
+
+    // remember amount of enemies and healthpack for further restart
+    numOfEnemies_ = enemies;
+    numOfHealthpacks_ = healthpacks;
 
     for(auto &e: world_->createEnemies(enemies)) {
         // separate regular and posioned enemies and stroe them in different vectors
-        auto pe = dynamic_pointer_cast<UPEnemy>(e);
-        if(pe != nullptr) {
-            pEnemies_.push_back(std::move(pe));
+        Enemy *ptr = e.release();
+        if(dynamic_cast<UPEnemy*>(ptr) != nullptr) {
+            auto pe = unique_ptr<UPEnemy>(dynamic_cast<UPEnemy*>(ptr));
             connect(pe.get(),SIGNAL(areaPoisoned(int,QRect)), this, SLOT(poisonArea(int,QRect)));
-            connect(pe.get(),&UPEnemy::dead,[=](){
+            connect(pe.get(),&UPEnemy::dead,[&](){
                 protagonist_->restoreEnergy();
                 emit enemyDefeated(pe->getXPos(),pe->getYPos());
-                pEnemies_.removeOne(pe);
             });
+            pEnemies_.push_back(std::move(pe));
         } else {
-            auto re = dynamic_pointer_cast<UEnemy>(e);
-            enemies_.push_back(std::move(re));
-            connect(re.get(),&UEnemy::dead,[=](){
+            auto re = unique_ptr<UEnemy>(dynamic_cast<UEnemy*>(ptr));
+            connect(re.get(),&UEnemy::dead,[&](){
                 protagonist_->restoreEnergy();
                 emit enemyDefeated(re->getXPos(),re->getYPos());
-                enemies_.removeOne(re);
             });
+            enemies_.push_back(std::move(re));
         }
     }
 
-    healthpacks_ = (world_->createHealthpacks(healthpacks)).toList();
     // connect each healthpack to  healthpackUsed() signal
+    healthpacks_ = world_->createHealthpacks(healthpacks);
     for(auto &h: healthpacks_) {
-        connect(h.get(),&UHealthPack::used,[=](){
+        connect(h.get(),&UHealthPack::used,[&](){
             protagonist_->restoreEnergy();
             emit healthpackUsed(h->getXPos(),h->getYPos());
-            healthpacks_.removeOne(h);
         });
     }
+    protagonist_.reset();
     protagonist_ = world_->createProtagonist();
 
     // optional implementation is to attack enemies and get health packs only
