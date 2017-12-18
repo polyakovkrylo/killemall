@@ -35,25 +35,34 @@ void WorldModel::init(QString filename, int enemies, int healthpacks)
     numOfEnemies_ = enemies;
     numOfHealthpacks_ = healthpacks;
 
+    // separate regular and posioned enemies and store them in different vectors
     for(auto &e: world_->createEnemies(enemies)) {
-        // separate regular and posioned enemies and stroe them in different vectors
         Enemy *ptr = e.release();
-        if(dynamic_cast<UPEnemy*>(ptr) != nullptr) {
-            auto pe = unique_ptr<UPEnemy>(dynamic_cast<UPEnemy*>(ptr));
-            connect(pe.get(),SIGNAL(areaPoisoned(int,QRect)), this, SLOT(poisonArea(int,QRect)));
-            connect(pe.get(),&UPEnemy::dead,[&](){
-                protagonist_->restoreEnergy();
-                emit enemyDefeated(pe->getXPos(),pe->getYPos());
-            });
-            pEnemies_.push_back(std::move(pe));
-        } else {
-            auto re = unique_ptr<UEnemy>(dynamic_cast<UEnemy*>(ptr));
-            connect(re.get(),&UEnemy::dead,[&](){
-                protagonist_->restoreEnergy();
-                emit enemyDefeated(re->getXPos(),re->getYPos());
-            });
-            enemies_.push_back(std::move(re));
+        UPEnemy *pe = dynamic_cast<UPEnemy*>(ptr);
+        if(pe != nullptr) {
+            pEnemies_.push_back(std::move(unique_ptr<UPEnemy>(pe)));
         }
+        else {
+            UEnemy *re = dynamic_cast<UEnemy*>(ptr);
+            enemies_.push_back(std::move(unique_ptr<UEnemy>(re)));
+        }
+    }
+
+    // connect poisoned enemies
+    for(auto &e: pEnemies_) {
+        connect(e.get(),SIGNAL(areaPoisoned(int,QRect)), this, SLOT(poisonArea(int,QRect)));
+        connect(e.get(),&UPEnemy::dead,[&](){
+            protagonist_->restoreEnergy();
+            emit enemyDefeated(e->getXPos(),e->getYPos());
+        });
+    }
+
+    // connect regular enemies
+    for(auto &e: enemies_) {
+        connect(e.get(),&UEnemy::dead,[&](){
+            protagonist_->restoreEnergy();
+            emit enemyDefeated(e->getXPos(),e->getYPos());
+        });
     }
 
     // connect each healthpack to  healthpackUsed() signal
