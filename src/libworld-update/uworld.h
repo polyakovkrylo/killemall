@@ -67,7 +67,6 @@ private:
 signals:
     void healthLevelChanged(int value);
     void energyLevelChanged(int value);
-    void dead();
 
 public slots:
     void restoreEnergy();

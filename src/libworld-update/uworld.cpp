@@ -79,8 +79,6 @@ void UProtagonist::updateHealth(float diff)
     if(hp != getHealth()) {
         emit healthLevelChanged(hp);
         setHealth(hp);
-        if(hp == 0)
-            emit dead();
     }
 }
 
@@ -89,7 +87,6 @@ void UProtagonist::updateEnergy(float diff)
     float en = getEnergy() + diff;
     if(en < 0){
         en = 0;
-        emit dead();
     } else if(en > 100) {
         en = 100;
     }
