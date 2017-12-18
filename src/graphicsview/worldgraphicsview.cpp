@@ -102,7 +102,6 @@ void WorldGraphicsView::reloadScene()
     QImage back(model_->getLevel());
     scene_ = new QGraphicsScene(QRectF(0,0,back.width(),back.height()),this);
     scene_->setBackgroundBrush(back);
-    setMaximumSize(back.size());
 
     // draw enemies and connect them to lambda slot
     for(auto &e: model_->getEnemies()) {

@@ -31,6 +31,7 @@ private:
 public slots:    
     void onReturnPressed();
     void onEnemyDefeated(int x,int y);
+    void onAreaPosioned(int value, QRect rect);
     void onHealthpackUsed(int x,int y);
     void onHealthLevelChanged(int value);
     void onEnergyLevelChanged(int value);
