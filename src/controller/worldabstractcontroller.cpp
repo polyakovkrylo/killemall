@@ -12,54 +12,55 @@ WorldAbstractController::WorldAbstractController(WorldModel *model) :
     connect(&animation_,SIGNAL(timeout()),SLOT(animatePath()));
 }
 
-void WorldAbstractController::move(const QPoint &from, const QPoint &to)
+bool WorldAbstractController::move(const QPoint &from, const QPoint &to)
 {
     bool scs = false;
     if(path_.steps.back() == to)
         // if it is the same path as last time, then just move
         scs = true;
     else
-        // otherwise try to find a path
-        scs =findPath(from, to);
+        // otherwise try to find a path such that protagonist has enough energy
+        scs =findPath(from, to, model_->getProtagonist()->getEnergy());
     if(scs) {
         model_->getProtagonist()->updateEnergy(-path_.cost);
         animatePath();
     }
+    return scs;
 }
 
-const Tile WorldAbstractController::findClosest(ObjectType type, float minValue, float maxValue)
+Tile *WorldAbstractController::findClosest(ObjectType type, float minValue, float maxValue)
 {
     // clear path and get starting pos
     path_.cost = INFINITY;
     QPoint from(model_->getProtagonist()->getXPos(),
                 model_->getProtagonist()->getYPos());
     // vector of objects under investigation
-    vector<Tile> objs;
+    vector<Tile*> objs;
 
     // adding objects to vector
     switch(type) {
     case HealthPack:
         for(auto &h: model_->getHealthpacks()) {
-            objs.push_back(*h);
+            objs.push_back(h.get());
         }
         break;
     case RegularEnemy:
         for(auto &e: model_->getEnemies()) {
-            objs.push_back(*e);
+            objs.push_back(e.get());
         }
         break;
     case PoisonedEnemy:
         for(auto &e: model_->getPEnemies()) {
-            objs.push_back(*e);
+            objs.push_back(e.get());
         }
         break;
     case AnyEnemy:
         // adding both types for AnyEnemy
         for(auto &e: model_->getEnemies()) {
-            objs.push_back(*e);
+            objs.push_back(e.get());
         }
         for(auto &pe: model_->getPEnemies()) {
-            objs.push_back(*pe);
+            objs.push_back(pe.get());
         }
         break;
     default: break;
@@ -85,6 +86,18 @@ const Tile WorldAbstractController::findClosest(ObjectType type, float minValue,
     }
 
     return *closest;
+}
+
+void WorldAbstractController::stop()
+{
+    animation_.stop();
+    path_.steps.clear();
+    path_.cost = 0.0f;
+}
+
+void WorldAbstractController::setAnimationSpeed(int value)
+{
+    animation_.setInterval(300/value);
 }
 
 void WorldAbstractController::animatePath()
