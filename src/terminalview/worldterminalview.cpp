@@ -190,20 +190,20 @@ void WorldTerminalView::find(QString object, float value)
             value = 100.0f;
         if(object == "e"){
             obj = "enemy";
-            t = model->getController()->findClosest(AnyEnemy,0.0f,value).get();
+            t = model->getController()->findClosest(AnyEnemy,0.0f,value);
         } else if(object == "re"){
             obj = QString("regular enemy");
-            t = model->getController()->findClosest(RegularEnemy,0.0f,value).get();
+            t = model->getController()->findClosest(RegularEnemy,0.0f,value);
         } else if(object == "pe"){
             obj = QString("poisoned enemy");
-            t = model->getController()->findClosest(PoisonedEnemy,0.0f,value).get();
+            t = model->getController()->findClosest(PoisonedEnemy,0.0f,value);
         }
     }
     //if looking for a health pack
     else if(object == "h") {
         obj = QString("health pack");
         param = QString("HP");
-        t = model->getController()->findClosest(HealthPack,value,100.0f).get();
+        t = model->getController()->findClosest(HealthPack,value,100.0f);
     }
 
     // print info if an object was find
