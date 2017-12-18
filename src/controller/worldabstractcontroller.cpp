@@ -28,46 +28,46 @@ bool WorldAbstractController::move(const QPoint &from, const QPoint &to)
     return scs;
 }
 
-const shared_ptr<Tile> WorldAbstractController::findClosest(ObjectType type, float minValue, float maxValue)
+Tile *WorldAbstractController::findClosest(ObjectType type, float minValue, float maxValue)
 {
     // clear path and get starting pos
     path_.cost = INFINITY;
     QPoint from(model_->getProtagonist()->getXPos(),
                 model_->getProtagonist()->getYPos());
     // vector of objects under investigation
-    vector<shared_ptr<Tile>> objs;
+    vector<Tile*> objs;
 
     // adding objects to vector
     switch(type) {
     case HealthPack:
         for(auto &h: model_->getHealthpacks()) {
-            objs.push_back(std::static_pointer_cast<Tile>(h));
+            objs.push_back(h.get());
         }
         break;
     case RegularEnemy:
         for(auto &e: model_->getEnemies()) {
-            objs.push_back(std::static_pointer_cast<Tile>(e));
+            objs.push_back(e.get());
         }
         break;
     case PoisonedEnemy:
         for(auto &e: model_->getPEnemies()) {
-            objs.push_back(std::static_pointer_cast<Tile>(e));
+            objs.push_back(e.get());
         }
         break;
     case AnyEnemy:
         // adding both types for AnyEnemy
         for(auto &e: model_->getEnemies()) {
-            objs.push_back(std::static_pointer_cast<Tile>(e));
+            objs.push_back(e.get());
         }
         for(auto &pe: model_->getPEnemies()) {
-            objs.push_back(std::static_pointer_cast<Tile>(pe));
+            objs.push_back(pe.get());
         }
         break;
     default: break;
     }
 
-    shared_ptr<Tile> closest;
-    for(auto obj: objs) {
+    Tile *closest = nullptr;
+    for(auto &obj: objs) {
         // check if tile's value is within range
         float val = obj->getValue();
         if(val > maxValue || val < minValue)
