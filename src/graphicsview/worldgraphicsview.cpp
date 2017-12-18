@@ -31,7 +31,8 @@ void WorldGraphicsView::setModel(WorldModel *model)
         disconnect(model_->getProtagonist().get(),SIGNAL(energyLevelChanged(int)),energyBar_,SLOT(setValue(int)));
     }
     model_ = model;
-    reloadScene();
+    if(model_->ready())
+        reloadScene();
     // connect new model reload signal
     connect(model_, SIGNAL(reload()),this, SLOT(reloadScene()));
 }

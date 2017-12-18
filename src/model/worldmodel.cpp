@@ -72,6 +72,7 @@ void WorldModel::init(QString filename, int enemies, int healthpacks)
     connect(protagonist_.get(), SIGNAL(posChanged(int,int)), this, SLOT(attackEnemy(int,int)));
     connect(protagonist_.get(), SIGNAL(posChanged(int,int)), this, SLOT(useHealthpack(int,int)));
 
+    ready_ = true;
     emit reload();
 }
 

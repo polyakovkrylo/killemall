@@ -42,7 +42,8 @@ void WorldTerminalView::setModel(WorldModel *m)
         disconnect(model->getProtagonist().get(), SIGNAL(posChanged(int,int)), this, SLOT(onPositionChanged(int,int)));
     }
     model = m;
-    reloadView();
+    if(model->ready())
+        reloadView();
     connect(model,SIGNAL(reload()),this,SLOT(reloadView()));
 }
 
