@@ -1,6 +1,7 @@
 #ifndef UWORLD_H
 #define UWORLD_H
 
+#include <QVector>
 #include "world.h"
 
 class UHealthPack : public QObject, public Tile
@@ -43,6 +44,7 @@ public:
             int radius = 5, int poisonRadius = 10);
     inline const QRect &area() {return area_;}
     inline const QRect &poisonArea() {return poisonArea_;}
+    void attack();
 private:
     QRect area_;
     QRect poisonArea_;
@@ -55,8 +57,8 @@ class UProtagonist : public Protagonist
     Q_OBJECT
 public:
     UProtagonist(int radius = 5);
-    void updateHealth(int diff);
-    void updateEnergy(int diff);
+    void updateHealth(float diff);
+    void updateEnergy(float diff);
     inline const QRect &area() const {return area_;}
 
 private:
@@ -67,6 +69,8 @@ signals:
     void energyLevelChanged(int value);
     void dead();
 
+public slots:
+    void restoreEnergy();
 };
 
 
@@ -74,7 +78,10 @@ class UWorld
 {
 public:
     UWorld(QString filename);
-    std::vector<Enemy*> createEnemies(unsigned int enemies);
+    inline const std::vector<std::unique_ptr<Tile>> &getMap() const {return map_;}
+    inline int getCols() const {return world_.getCols();}
+    inline int getRows() const {return world_.getRows();}
+    std::vector<std::unique_ptr<Enemy>> createEnemies(unsigned int enemies);
     std::vector<std::unique_ptr<UHealthPack> > createHealthpacks(unsigned int packs);
     std::unique_ptr<UProtagonist> createProtagonist();
 

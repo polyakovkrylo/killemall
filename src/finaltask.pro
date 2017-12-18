@@ -59,3 +59,6 @@ RESOURCES += \
 FORMS += \
     mainui/mainwindow.ui \
     mainui/popup.ui
+
+QMAKE_CXXFLAGS += -fopenmp
+QMAKE_LFLAGS += -fopenmp
