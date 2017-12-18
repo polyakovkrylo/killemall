@@ -69,12 +69,12 @@ Tile *WorldAbstractController::findClosest(ObjectType type, float minValue, floa
     Tile *closest = nullptr;
     for(auto &obj: objs) {
         // check if tile's value is within range
-        float val = obj.getValue();
+        float val = obj->getValue();
         if(val > maxValue || val < minValue)
             continue;
 
         // check if the object can ever be better than the closest found
-        QPoint to(obj.getXPos(), obj.getYPos());
+        QPoint to(obj->getXPos(), obj->getYPos());
         QPoint p = from - to;
         if(path_.cost < p.manhattanLength()*minCost_)
             continue;
@@ -82,10 +82,10 @@ Tile *WorldAbstractController::findClosest(ObjectType type, float minValue, floa
         // check if the object is closer than the closest so far
         bool s = findPath(from,to,path_.cost);
         if(s)
-            closest = &obj;
+            closest = obj;
     }
 
-    return *closest;
+    return closest;
 }
 
 void WorldAbstractController::stop()
