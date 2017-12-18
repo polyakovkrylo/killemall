@@ -11,6 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
     gv = findChild<WorldGraphicsView*>("graphicsView");
     tv->hide();
 
+    setModel(new WorldModel());
+
     loadWorld = new Popup;
     connect(ui->actionLoad_world, SIGNAL(triggered(bool)), loadWorld, SLOT(exec()));
     connect(loadWorld, SIGNAL(accepted()), this, SLOT(onPopupClosed()));
@@ -24,7 +26,7 @@ void MainWindow::setModel(WorldModel *m)
     tv->setModel(model);
     gv->setModel(model);
     connect(ui->speedSlider, SIGNAL(sliderMoved(int)), model->getController().get(), SLOT(setAnimationSpeed(int)));
-    connect(model->getProtagonist().get(), &UProtagonist::dead, this, [=](){
+    connect(model, &WorldModel::protagonistDead, this, [=](){
         QMessageBox msg;
         msg.setText("Protagonist is dead!\nGAME OVER");
         msg.setStandardButtons(QMessageBox::Close | QMessageBox::Retry);
@@ -58,11 +60,6 @@ void MainWindow::onPopupClosed()
 {
     Values vals = loadWorld->getValues();
     QString map(":/img/" + vals.map);
-    //Destroy previous model?
-    WorldModel *m = new WorldModel();
-    m->init(map, vals.enemies, vals.healthpacks);
-    setModel(m);
+    model->init(map, vals.enemies, vals.healthpacks);
     model->getController().get()->setOptimizationLevel(vals.optimization);
-    tv->clearOutput();
-
 }
