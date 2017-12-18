@@ -109,13 +109,3 @@ void WorldAbstractController::animatePath()
         animation_.start();
     }
 }
-
-void WorldAbstractController::setAnimationSpeed(int)
-{
-    //TODO: implement setting animation speed
-}
-
-void WorldAbstractController::setOptimizationLevel(int)
-{
-    //TODO: implement setting of optimization level
-}
