@@ -18,6 +18,7 @@ float UHealthPack::use()
     float hp = getValue();
     if(hp)
         emit used();
+    // mark health pack as used
     setValue(0.0);
     return hp;
 }
@@ -85,6 +86,7 @@ void UProtagonist::updateHealth(float diff)
 void UProtagonist::updateEnergy(float diff)
 {
     float en = getEnergy() + diff;
+    // energy should be between 0 and 100
     if(en < 0){
         en = 0;
     } else if(en > 100) {

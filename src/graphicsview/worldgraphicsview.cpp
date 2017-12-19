@@ -24,6 +24,7 @@ WorldGraphicsView::WorldGraphicsView(QWidget *parent) :
 
 void WorldGraphicsView::setModel(WorldModel *model)
 {
+    // disconnect all slots from the previous model
     if(model_) {
         disconnect(model_, SIGNAL(reload()),this, SLOT(reloadScene()));
         disconnect(model_->getProtagonist().get(), SIGNAL(posChanged(int,int)), this, SLOT(onProtagonistPositionChanged(int,int)));

@@ -112,7 +112,9 @@ void WorldAbstractController::animatePath()
         QPoint pos(path_.steps.takeFirst());
         model_->getProtagonist()->setPos(pos.x(),pos.y());
         animation_.start();
-    } else {
+    }
+    // check for health packs and enemies when the movement is done
+    else {
         model_->useHealthpack();
         model_->attackEnemy();
     }
