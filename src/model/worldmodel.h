@@ -113,7 +113,25 @@ signals:
      * \param y vertical position of the defeated enemy
      */
     void enemyDefeated(int x, int y);
+    /*!
+     * \brief Area is poisoned signal
+     *
+     * Emited every time a certain area is poisoned
+     *
+     * \param value level of poison
+     * \param rect poisoned area
+     * \sa poisonArea
+     */
     void areaPoisoned(int value, QRect rect);
+    /*!
+     * \brief Protagonist is dead signal
+     *
+     * Protagonist can only die when attacking an enemy,
+     * or if he was deadly poisoned(level of poison became
+     * more than health level) on the last move. That means
+     * the hero still has one move to find a health pack even
+     * if he was killed by the poison
+     */
     void protagonistDead();
 
 public slots:

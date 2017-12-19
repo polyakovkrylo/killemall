@@ -32,6 +32,13 @@ class Tile;
  * automatically binded in the model
  */
 
+/*!
+ * \brief Object type enumeration
+ *
+ * Defines the type of object to search for
+ *
+ * \sa findClosest
+ */
 enum ObjectType {
     HealthPack,
     RegularEnemy,
@@ -79,6 +86,19 @@ public:
      * \param to destination
      */
     bool move(const QPoint &from, const QPoint& to);
+    /*!
+     * \brief Find the closest object of a given type
+     *
+     * Searches for the closest object, enemy or health pack,
+     * with a given max and min values.
+     *
+     * \param type type of object
+     * \param minValue minimal tile value(strength of the enemy or HP of health pack)
+     * \param maxValue maximal tile value(strength of the enemy or HP of health pack)
+     * \return Tile pointer to the object. If no object was found, returns nullptr
+     *
+     * \sa ObjectType
+     */
     Tile* findClosest(ObjectType type, float minValue = 0.0f, float maxValue = 100.0f);
     /*!
      * \brief Find the path to the position
@@ -92,10 +112,22 @@ public:
      * \brief Returns last calculated path
      */
     inline const Path &currentPath() {return path_;}
+    /*!
+     * \brief Set level of optimization, e.g. h weight in A* controller
+     * \param value level from 0 to 100
+     */
     inline void setOptimizationLevel(float value){optimization_ = value/100.0f;}
+    /*!
+     * \brief Stop the animation and clear the last path
+     */
     void stop();
 
 protected:
+    /*!
+     * \brief Translate tile value to energy cost
+     * \param tile tile value
+     * \return energy cost
+     */
     inline float calculateCost(float tile) {return !std::isinf(tile) ? (minCost_/tile) : 0;}
     /*!
      * \brief Owner of the controller
@@ -105,8 +137,18 @@ protected:
      * \brief Last calculated path
      */
     Path path_;
+    /*!
+     * \brief Animation timer
+     */
     QTimer animation_;
+    /*!
+     * \brief Optimization level
+     */
     float optimization_;
+    /*!
+     * \brief Minimal energy cost of a tile (white tile energy cost)
+     * \sa calculateCost
+     */
     const float minCost_{0.1f};
 
 public slots:
@@ -115,6 +157,12 @@ public slots:
      * \note This is a virtual function to be implemented by successors
      */
     virtual void init()=0;
+    /*!
+     * \brief Set animation speed
+     *
+     * Set animation speed between 100(fastest) and 1(slowest)
+     * \param value animation speed
+     */
     void setAnimationSpeed(int value);
 
 private slots:

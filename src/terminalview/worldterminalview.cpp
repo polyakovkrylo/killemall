@@ -1,3 +1,15 @@
+/*!
+ * \file worldterminalview.cpp
+ *
+ * WorldTerminalView class definition
+ *
+ * \version 1.0
+ *
+ * \author Vladimir Poliakov
+ * \author Brian Segers
+ * \author Kasper De Volder
+ */
+
 #include "worldterminalview.h"
 
 WorldTerminalView::WorldTerminalView(QWidget *parent) :

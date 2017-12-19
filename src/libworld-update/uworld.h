@@ -203,7 +203,13 @@ public:
      * \brief Return map tiles
      */
     inline const std::vector<std::unique_ptr<Tile>> &getMap() const {return map_;}
+    /*!
+     * \brief Return number of columns
+     */
     inline int getCols() const {return world_.getCols();}
+    /*!
+     * \brief Return number of rows
+     */
     inline int getRows() const {return world_.getRows();}
     /*!
      * \brief Generate enemies
