@@ -40,12 +40,12 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
+    ~MainWindow();
     /*!
      * \brief Set model for both views
      * \param m model
      */
     void setModel(WorldModel *m);
-    ~MainWindow();
 
 
 private:
