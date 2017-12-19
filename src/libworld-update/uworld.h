@@ -13,7 +13,8 @@
 #ifndef UWORLD_H
 #define UWORLD_H
 
-#include <QVector>
+#include <cmath>
+
 #include "world.h"
 
 /*!

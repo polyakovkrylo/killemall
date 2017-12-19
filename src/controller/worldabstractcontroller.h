@@ -14,8 +14,8 @@
 #define WORLDABSTRACTCONTROLLER_H
 
 #include <memory>
+#include <cmath>
 #include <QObject>
-#include <QVector>
 #include <QTimer>
 
 class WorldModel;
@@ -55,7 +55,7 @@ enum ObjectType {
  */
 struct Path {
     double cost;
-    QVector<QPoint> steps;
+    std::vector<QPoint> steps;
 };
 
 /*!
