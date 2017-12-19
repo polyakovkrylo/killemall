@@ -36,10 +36,12 @@ signals:
     void reload();
     void healthpackUsed(int x, int y);
     void enemyDefeated(int x, int y);
+    void areaPoisoned(int value, QRect rect);
+    void protagonistDead();
 
 public slots:
-    void attackEnemy(int x, int y);
-    void useHealthpack(int x, int y);
+    void attackEnemy();
+    void useHealthpack();
     void poisonArea(int value, QRect rect);
     void move(int x,int y);
     void move(const QPoint &pos);

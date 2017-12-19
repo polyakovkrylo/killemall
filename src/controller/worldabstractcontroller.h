@@ -47,6 +47,7 @@ public slots:
 
 private slots:
     void animatePath();
+
 };
 
 #endif // WORLDABSTRACTCONTROLLER_H

@@ -41,26 +41,31 @@ Tile *WorldAbstractController::findClosest(ObjectType type, float minValue, floa
     switch(type) {
     case HealthPack:
         for(auto &h: model_->getHealthpacks()) {
-            objs.push_back(h.get());
+            if(h->getValue())
+                objs.push_back(h.get());
         }
         break;
     case RegularEnemy:
         for(auto &e: model_->getEnemies()) {
-            objs.push_back(e.get());
+            if(!e->getDefeated())
+                objs.push_back(e.get());
         }
         break;
     case PoisonedEnemy:
         for(auto &e: model_->getPEnemies()) {
-            objs.push_back(e.get());
+            if(!e->getDefeated())
+                objs.push_back(e.get());
         }
         break;
     case AnyEnemy:
         // adding both types for AnyEnemy
         for(auto &e: model_->getEnemies()) {
-            objs.push_back(e.get());
+            if(!e->getDefeated())
+                objs.push_back(e.get());
         }
         for(auto &pe: model_->getPEnemies()) {
-            objs.push_back(pe.get());
+            if(!pe->getDefeated())
+                objs.push_back(pe.get());
         }
         break;
     default: break;
@@ -107,5 +112,10 @@ void WorldAbstractController::animatePath()
         QPoint pos(path_.steps.takeFirst());
         model_->getProtagonist()->setPos(pos.x(),pos.y());
         animation_.start();
+    }
+    // check for health packs and enemies when the movement is done
+    else {
+        model_->useHealthpack();
+        model_->attackEnemy();
     }
 }

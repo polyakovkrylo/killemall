@@ -24,6 +24,7 @@ WorldGraphicsView::WorldGraphicsView(QWidget *parent) :
 
 void WorldGraphicsView::setModel(WorldModel *model)
 {
+    // disconnect all slots from the previous model
     if(model_) {
         disconnect(model_, SIGNAL(reload()),this, SLOT(reloadScene()));
         disconnect(model_->getProtagonist().get(), SIGNAL(posChanged(int,int)), this, SLOT(onProtagonistPositionChanged(int,int)));
@@ -102,7 +103,6 @@ void WorldGraphicsView::reloadScene()
     QImage back(model_->getLevel());
     scene_ = new QGraphicsScene(QRectF(0,0,back.width(),back.height()),this);
     scene_->setBackgroundBrush(back);
-    setMaximumSize(back.size());
 
     // draw enemies and connect them to lambda slot
     for(auto &e: model_->getEnemies()) {
