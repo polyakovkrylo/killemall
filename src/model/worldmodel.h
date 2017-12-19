@@ -54,6 +54,7 @@ public:
     /*!
      * \brief Return World instance of the model
      */
+    inline const std::unique_ptr<UWorld> & getWorld() const {return world_;}
     /*!
      * \brief Returns vector of unique pointers to regular enemies
      */
@@ -74,12 +75,11 @@ public:
      * \brief Returns unique pointer to controller
      */
     inline const std::unique_ptr<WorldAbstractController> & getController() const {return controller_;}
-    inline const QString & getLevel() const {return level_;}
-    inline bool ready() const {return ready_;}
     /*!
      * \brief Returns level map image
      */
-    inline const QImage & getLevel() const {return level_;}
+    inline const QString & getLevel() const {return level_;}
+    inline bool ready() const {return ready_;}
 
 private:
     std::unique_ptr<UWorld> world_;

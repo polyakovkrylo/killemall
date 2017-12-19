@@ -154,13 +154,13 @@ public:
      * \sa healthLevelChanged
      * \param diff HP to be added
      */
-    void updateHealth(int diff);
+    void updateHealth(float diff);
     /*!
      * \brief Update energy
      * \sa energyLevelChanged
      * \param diff EP to be added
      */
-    void updateEnergy(int diff);
+    void updateEnergy(float diff);
     /*!
      * \brief Returns area occupied by the object
      */
