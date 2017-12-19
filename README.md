@@ -8,9 +8,45 @@
 
 ## Documentation
 
-Doxygen generated documentation is available in docs/html/index.html
+Doxygen generated documentation is available in
+docs/html/index.html
 
-## Description
+## Game description
+
+The point of the game is to defeat all enemies and stay
+alive. Protagonist can only move while his energy level is higher
+than zero. Protagonist will not move if the target point is
+further than he can afford with energy that he has at the
+moment. Every time protagonist moves according amount of energy
+is being spent. Every time protagonist interact with an object,
+e.g. picks up a health pack or attack the enemy, the energy level
+is restored.
+
+The hero can die because of two reasons:
+* The enemy that hero has attacked is stronger than the hero's
+health level
+* The hero has been poisoned with a poison level bigger than
+hero's health level. In that case the protagonist still has one
+move to pick a health pack before he will die.
+
+Before starting the game, player should pick the level, number
+of enemies and health packs in the world and a level of
+optimization for the model's controller:
+
+![img def](img/popup.png)
+
+Afterwards the main window will appear allowing player to move
+across the world and beat enemies:
+
+![img def](img/mainwindow.png)
+
+Player can switch between graphical and terminal view at any
+moment by clicking `Switch view` button. Speed of animation can
+also be changed using `Set animation speed` slider. Player can
+change or restart the world any time by clicking `World->Load
+world..`
+
+## Project description
 
 This project is an implementation of Media Processing course's
 final task. The purpose is to create a game in which the player
@@ -35,11 +71,19 @@ into packages. Each package reprsesents separate module.
 
 ![img def](uml/main.png)
 
-`libworld` is a third party library for generating the level and level objects: protagonist, health packs, enemies. `model` package represents the model component of the application. `terminalview` and `graphicsview` are view components of the system. `controller` package represents model controller component. Since different algorithms can be later implemented for path finding, abstract  class `WorldAbstractController` and factory class `WorldControllerFactory `are introduced.
+`libworld` is a third party library for generating the level and
+level objects: protagonist, health packs, enemies. `model`
+package represents the model component of the application.
+`terminalview` and `graphicsview` are view components of the
+system. `controller` package represents model controller
+component. Since different algorithms can be later implemented
+for path finding, abstract  class `WorldAbstractController` and
+factory class `WorldControllerFactory `are introduced.
 
 ## Model package
 
-`model` package is the implementation of the model component of the application. `model` package class diagram is shown below:
+`model` package is the implementation of the model component of
+the application. `model` package class diagram is shown below:
 
 ![img def](uml/model.png)
 
@@ -56,7 +100,9 @@ shortest path to the target.
 ## Controller package
 
 `controller` package includes abstract class
-`WorldAbstractController`, one its successor `AStarController`, and a factory class `WorldControllerFactory `. Following diagram visualizes their relations:
+`WorldAbstractController`, one its successor `AStarController`,
+and a factory class `WorldControllerFactory `. Following diagram
+visualizes their relations:
 
 ![img def](uml/controller.png)
 
@@ -70,15 +116,38 @@ demonstration purposes, only `AStarController` is implemented.
 ## Graphicsview package
 
 `graphicsview` package  includes `WorldGraphicsView` which is
-inherited from `QGraphcisView`. Following diagram shows members and relations of `WorldGraphicsView`:
+inherited from `QGraphcisView`. Following diagram shows members
+and relations of `WorldGraphicsView`:
 
 ![img def](uml/graphicsview.png)
 
-`WorldGraphicsView` class represents graphical view based on Qt's Model-Scene-View technology. Once `setModel()` is called, `WorldGraphicsView` draws level background and creates a graphical item `QGraphicsEllipse` for each object with appropriate collor, as well as it connects each graphical item to its model object's signals, so every change in the model is automatically impacts the view. Whenever model is reset or reloaded, old scene is being deleted along with its graphical items.
+`WorldGraphicsView` class represents graphical view based on Qt's
+Model-Scene-View technology. Once `setModel()` is called,
+`WorldGraphicsView` draws level background and creates a
+graphical item `QGraphicsEllipse` for each object with
+appropriate collor, as well as it connects each graphical item to
+its model object's signals, so every change in the model is
+automatically impacts the view. Whenever model is reset or
+reloaded, old scene is being deleted along with its graphical
+items.
 
 ## Terminalview package
 
-To be done
+`terminalview` package represents the terminal view of the game.
+Following diagram shows members and relations of
+`WorldTerminalView`:
+
+![img def](uml/terminalview.png)
+
+It has a text field for output, edit line for command input and a
+button to execute the command(optionally can be done with
+`Enter`). When `executeCmd()` is called, program reads the input
+and splits it into actual command and arguments. If no command
+was specified, help information is shown.
+Along with output for user commands, `WorldTerminalView`
+automatically prints information if some changes occur, e.g.
+change of health level, change of protagonist position, death of
+the enemy, etc.
 
 ## TODO
 
@@ -88,12 +157,15 @@ To be done
   * [x] Controller package
   * [x] View package
     * [x] GraphicsView
-    * [ ] TerminalView
-* [ ] Implementing
-  * [ ] Model package
-  * [ ] Controller package
+    * [x] TerminalView
+  * [ ] Strategy
+* [x] Implementing
+  * [x] Model package
+  * [x] Controller package
     * [x] AbstractController
-    * [ ] AStarController
-  * [ ] View package
+    * [x] AStarController
+  * [x] View package
     * [x] GraphicsView
-    * [ ] TerminalView
+    * [x] TerminalView
+  * [x] UI
+  * [ ] Strategy
