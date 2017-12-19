@@ -1,0 +1,44 @@
+\hypertarget{group__controller}{}\section{Controller}
+\label{group__controller}\index{Controller@{Controller}}
+
+
+Controller component implementation.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structNode}{Node}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{structNode}{Node} struct. \end{DoxyCompactList}\item 
+class \hyperlink{classCompareCost}{Compare\+Cost}
+\begin{DoxyCompactList}\small\item\em \hyperlink{structNode}{Node} comparison functor. \end{DoxyCompactList}\item 
+class \hyperlink{classAStarController}{A\+Star\+Controller}
+\begin{DoxyCompactList}\small\item\em A$\ast$ controller. \end{DoxyCompactList}\item 
+struct \hyperlink{structPath}{Path}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{structPath}{Path} struct. \end{DoxyCompactList}\item 
+class \hyperlink{classWorldAbstractController}{World\+Abstract\+Controller}
+\begin{DoxyCompactList}\small\item\em Abstract controller class. \end{DoxyCompactList}\item 
+class \hyperlink{classWorldControllerFactory}{World\+Controller\+Factory}
+\begin{DoxyCompactList}\small\item\em Controller factory class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{group__controller_ga81059b4122c9dd4608d347eb117ae8c9}{Controller\+Type} \{ {\bfseries A\+Star}
+ \}\begin{DoxyCompactList}\small\item\em The Controller\+Type enum. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Controller component implementation. 
+
+The controller is only responsible for path finding and animated movement of protagonist in space. All other object interaction are automatically binded in the model 
+
+\subsection{Enumeration Type Documentation}
+\index{Controller@{Controller}!Controller\+Type@{Controller\+Type}}
+\index{Controller\+Type@{Controller\+Type}!Controller@{Controller}}
+\subsubsection[{\texorpdfstring{Controller\+Type}{ControllerType}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Controller\+Type}}\hypertarget{group__controller_ga81059b4122c9dd4608d347eb117ae8c9}{}\label{group__controller_ga81059b4122c9dd4608d347eb117ae8c9}
+
+
+The Controller\+Type enum. 
+
+Defines the type of controller, i.\+e the path finding algorithm standing behind the controller 
