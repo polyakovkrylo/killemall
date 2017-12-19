@@ -1,0 +1,303 @@
+\hypertarget{classWorldModel}{}\section{World\+Model Class Reference}
+\label{classWorldModel}\index{World\+Model@{World\+Model}}
+
+
+Model component implementation.  
+
+
+
+
+{\ttfamily \#include $<$worldmodel.\+h$>$}
+
+
+
+Inheritance diagram for World\+Model\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=148pt]{de/d4d/classWorldModel__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for World\+Model\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=148pt]{da/dcc/classWorldModel__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classWorldModel_ae0cc05dba8df542709d08ece9d3412db}{attack\+Enemy} ()
+\begin{DoxyCompactList}\small\item\em Attack an enemy at the position. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldModel_a8cb4ca5355bd9825deefbf8cc86f067a}{use\+Healthpack} ()
+\begin{DoxyCompactList}\small\item\em Use a health pack at the position. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldModel_a68cdcbf4857f21bf0af3042d7a73cdc4}{poison\+Area} (int value, Q\+Rect rect)
+\begin{DoxyCompactList}\small\item\em Spead the poison slot. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldModel_ae02716d99230f6edb0f7caf5b469bc1c}{move} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Move the protagonist to a certain position. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldModel_add90c164136141295e968e9419b3f3a9}{move} (const Q\+Point \&pos)
+\begin{DoxyCompactList}\small\item\em Move the protagonist to a certain position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classWorldModel_a9ee97272fc756d45c411f578f98905af}{reload} ()\hypertarget{classWorldModel_a9ee97272fc756d45c411f578f98905af}{}\label{classWorldModel_a9ee97272fc756d45c411f578f98905af}
+
+\begin{DoxyCompactList}\small\item\em Reload signal Emited every time \hyperlink{classWorldModel_a9003814b10d3b533d3c4313613712493}{init()} is called. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldModel_a1f403da0540ae3e4fe55ea7262ee2fe8}{healthpack\+Used} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Health pack is used signal Emited every time one of health packs is used. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldModel_af66c7d6051c21a0933e9ac168096dd8b}{enemy\+Defeated} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Enemy is defeated signal Emited every time one of enemies is defeated. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldModel_aceb49c5514940947dbcacc97484aa4bd}{area\+Poisoned} (int value, Q\+Rect rect)
+\begin{DoxyCompactList}\small\item\em Area is poisoned signal. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldModel_a73bdac0d024fd7ae02f09b58e833cad3}{protagonist\+Dead} ()
+\begin{DoxyCompactList}\small\item\em Protagonist is dead signal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classWorldModel_a6787b97a5c8826279e9a31740819f277}{World\+Model} (Q\+Object $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em Class constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldModel_a9003814b10d3b533d3c4313613712493}{init} (Q\+String filename=\char`\"{}\char`\"{}, int enemies=0, int healthpacks=0)
+\begin{DoxyCompactList}\small\item\em Initialization of the model. \end{DoxyCompactList}\item 
+const std\+::unique\+\_\+ptr$<$ \hyperlink{classUWorld}{U\+World} $>$ \& \hyperlink{classWorldModel_a0b50ae0247e6c6553ab39f47e4dd54ca}{get\+World} () const \hypertarget{classWorldModel_a0b50ae0247e6c6553ab39f47e4dd54ca}{}\label{classWorldModel_a0b50ae0247e6c6553ab39f47e4dd54ca}
+
+\begin{DoxyCompactList}\small\item\em Return World instance of the model. \end{DoxyCompactList}\item 
+const std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \hyperlink{classUEnemy}{U\+Enemy} $>$ $>$ \& \hyperlink{classWorldModel_ad14d1117ade3ef9fbc16c0384c505e82}{get\+Enemies} () const \hypertarget{classWorldModel_ad14d1117ade3ef9fbc16c0384c505e82}{}\label{classWorldModel_ad14d1117ade3ef9fbc16c0384c505e82}
+
+\begin{DoxyCompactList}\small\item\em Returns vector of unique pointers to regular enemies. \end{DoxyCompactList}\item 
+const std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \hyperlink{classUPEnemy}{U\+P\+Enemy} $>$ $>$ \& \hyperlink{classWorldModel_a3a573fb0a631baa1b7eb788748181bb7}{get\+P\+Enemies} () const \hypertarget{classWorldModel_a3a573fb0a631baa1b7eb788748181bb7}{}\label{classWorldModel_a3a573fb0a631baa1b7eb788748181bb7}
+
+\begin{DoxyCompactList}\small\item\em Returns vector of unique pointers to poisoned enemies. \end{DoxyCompactList}\item 
+const std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \hyperlink{classUHealthPack}{U\+Health\+Pack} $>$ $>$ \& \hyperlink{classWorldModel_a81a07a89bb6f67371553656b1780f54d}{get\+Healthpacks} () const \hypertarget{classWorldModel_a81a07a89bb6f67371553656b1780f54d}{}\label{classWorldModel_a81a07a89bb6f67371553656b1780f54d}
+
+\begin{DoxyCompactList}\small\item\em Returns vector of unique pointers to health packs. \end{DoxyCompactList}\item 
+const std\+::unique\+\_\+ptr$<$ \hyperlink{classUProtagonist}{U\+Protagonist} $>$ \& \hyperlink{classWorldModel_ae77f38af10f91c3ce963633530f0644a}{get\+Protagonist} () const \hypertarget{classWorldModel_ae77f38af10f91c3ce963633530f0644a}{}\label{classWorldModel_ae77f38af10f91c3ce963633530f0644a}
+
+\begin{DoxyCompactList}\small\item\em Returns unique pointer to protagonist. \end{DoxyCompactList}\item 
+const std\+::unique\+\_\+ptr$<$ \hyperlink{classWorldAbstractController}{World\+Abstract\+Controller} $>$ \& \hyperlink{classWorldModel_a7cf1b1a42990ab40ccd638ae868f5f21}{get\+Controller} () const \hypertarget{classWorldModel_a7cf1b1a42990ab40ccd638ae868f5f21}{}\label{classWorldModel_a7cf1b1a42990ab40ccd638ae868f5f21}
+
+\begin{DoxyCompactList}\small\item\em Returns unique pointer to controller. \end{DoxyCompactList}\item 
+const Q\+String \& \hyperlink{classWorldModel_a1f4957f65c7b044dffe4d4c5e6886438}{get\+Level} () const \hypertarget{classWorldModel_a1f4957f65c7b044dffe4d4c5e6886438}{}\label{classWorldModel_a1f4957f65c7b044dffe4d4c5e6886438}
+
+\begin{DoxyCompactList}\small\item\em Returns level map image. \end{DoxyCompactList}\item 
+bool {\bfseries ready} () const \hypertarget{classWorldModel_a1ccf488139cdbfa6a25262d01a0401d5}{}\label{classWorldModel_a1ccf488139cdbfa6a25262d01a0401d5}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Model component implementation. 
+
+Stores all the objects created in the world and enables their interactions. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{World\+Model@{World\+Model}!World\+Model@{World\+Model}}
+\index{World\+Model@{World\+Model}!World\+Model@{World\+Model}}
+\subsubsection[{\texorpdfstring{World\+Model(\+Q\+Object $\ast$parent=0)}{WorldModel(QObject *parent=0)}}]{\setlength{\rightskip}{0pt plus 5cm}World\+Model\+::\+World\+Model (
+\begin{DoxyParamCaption}
+\item[{Q\+Object $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\hypertarget{classWorldModel_a6787b97a5c8826279e9a31740819f277}{}\label{classWorldModel_a6787b97a5c8826279e9a31740819f277}
+
+
+Class constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & parent object, passed to Q\+Object constructor \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{World\+Model@{World\+Model}!area\+Poisoned@{area\+Poisoned}}
+\index{area\+Poisoned@{area\+Poisoned}!World\+Model@{World\+Model}}
+\subsubsection[{\texorpdfstring{area\+Poisoned}{areaPoisoned}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Model\+::area\+Poisoned (
+\begin{DoxyParamCaption}
+\item[{int}]{value, }
+\item[{Q\+Rect}]{rect}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\hypertarget{classWorldModel_aceb49c5514940947dbcacc97484aa4bd}{}\label{classWorldModel_aceb49c5514940947dbcacc97484aa4bd}
+
+
+Area is poisoned signal. 
+
+Emited every time a certain area is poisoned
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & level of poison \\
+\hline
+{\em rect} & poisoned area \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classWorldModel_a68cdcbf4857f21bf0af3042d7a73cdc4}{poison\+Area} 
+\end{DoxySeeAlso}
+\index{World\+Model@{World\+Model}!attack\+Enemy@{attack\+Enemy}}
+\index{attack\+Enemy@{attack\+Enemy}!World\+Model@{World\+Model}}
+\subsubsection[{\texorpdfstring{attack\+Enemy}{attackEnemy}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Model\+::attack\+Enemy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\hypertarget{classWorldModel_ae0cc05dba8df542709d08ece9d3412db}{}\label{classWorldModel_ae0cc05dba8df542709d08ece9d3412db}
+
+
+Attack an enemy at the position. 
+
+Attacks any enemy that occupies the given position \index{World\+Model@{World\+Model}!enemy\+Defeated@{enemy\+Defeated}}
+\index{enemy\+Defeated@{enemy\+Defeated}!World\+Model@{World\+Model}}
+\subsubsection[{\texorpdfstring{enemy\+Defeated}{enemyDefeated}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Model\+::enemy\+Defeated (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\hypertarget{classWorldModel_af66c7d6051c21a0933e9ac168096dd8b}{}\label{classWorldModel_af66c7d6051c21a0933e9ac168096dd8b}
+
+
+Enemy is defeated signal Emited every time one of enemies is defeated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & horizontal position of the defeated enemy \\
+\hline
+{\em y} & vertical position of the defeated enemy \\
+\hline
+\end{DoxyParams}
+\index{World\+Model@{World\+Model}!healthpack\+Used@{healthpack\+Used}}
+\index{healthpack\+Used@{healthpack\+Used}!World\+Model@{World\+Model}}
+\subsubsection[{\texorpdfstring{healthpack\+Used}{healthpackUsed}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Model\+::healthpack\+Used (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\hypertarget{classWorldModel_a1f403da0540ae3e4fe55ea7262ee2fe8}{}\label{classWorldModel_a1f403da0540ae3e4fe55ea7262ee2fe8}
+
+
+Health pack is used signal Emited every time one of health packs is used. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & horizontal position of the used health pack \\
+\hline
+{\em y} & vertical position of the used health pack \\
+\hline
+\end{DoxyParams}
+\index{World\+Model@{World\+Model}!init@{init}}
+\index{init@{init}!World\+Model@{World\+Model}}
+\subsubsection[{\texorpdfstring{init(\+Q\+String filename="""", int enemies=0, int healthpacks=0)}{init(QString filename="", int enemies=0, int healthpacks=0)}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Model\+::init (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{filename = {\ttfamily \char`\"{}\char`\"{}}, }
+\item[{int}]{enemies = {\ttfamily 0}, }
+\item[{int}]{healthpacks = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\hypertarget{classWorldModel_a9003814b10d3b533d3c4313613712493}{}\label{classWorldModel_a9003814b10d3b533d3c4313613712493}
+
+
+Initialization of the model. 
+
+Creates the world, enemies, poisoned enemies, health packs and protagonist and stores it in separate containers, create level image and stores it in level\+\_\+
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & level image filename \\
+\hline
+{\em enemies} & number of enemies to create \\
+\hline
+{\em healthpacks} & number of healthpacks to create \\
+\hline
+\end{DoxyParams}
+\index{World\+Model@{World\+Model}!move@{move}}
+\index{move@{move}!World\+Model@{World\+Model}}
+\subsubsection[{\texorpdfstring{move}{move}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Model\+::move (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\hypertarget{classWorldModel_ae02716d99230f6edb0f7caf5b469bc1c}{}\label{classWorldModel_ae02716d99230f6edb0f7caf5b469bc1c}
+
+
+Move the protagonist to a certain position. 
+
+This is an overloaded function.
+
+\begin{DoxySeeAlso}{See also}
+move(const Q\+Pos \&pos)
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em x} & vertical coordinate of a new position \\
+\hline
+{\em y} & horizontal coordinate of a new position \\
+\hline
+\end{DoxyParams}
+\index{World\+Model@{World\+Model}!move@{move}}
+\index{move@{move}!World\+Model@{World\+Model}}
+\subsubsection[{\texorpdfstring{move}{move}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Model\+::move (
+\begin{DoxyParamCaption}
+\item[{const Q\+Point \&}]{pos}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\hypertarget{classWorldModel_add90c164136141295e968e9419b3f3a9}{}\label{classWorldModel_add90c164136141295e968e9419b3f3a9}
+
+
+Move the protagonist to a certain position. 
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classWorldModel_ae02716d99230f6edb0f7caf5b469bc1c}{move(int x,int y)}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & target position \\
+\hline
+\end{DoxyParams}
+\index{World\+Model@{World\+Model}!poison\+Area@{poison\+Area}}
+\index{poison\+Area@{poison\+Area}!World\+Model@{World\+Model}}
+\subsubsection[{\texorpdfstring{poison\+Area}{poisonArea}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Model\+::poison\+Area (
+\begin{DoxyParamCaption}
+\item[{int}]{value, }
+\item[{Q\+Rect}]{rect}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\hypertarget{classWorldModel_a68cdcbf4857f21bf0af3042d7a73cdc4}{}\label{classWorldModel_a68cdcbf4857f21bf0af3042d7a73cdc4}
+
+
+Spead the poison slot. 
+
+Decreases protagonist health if he is within connected to each poisoned enemy the poisoned area. This slot is automatically 
+\begin{DoxyParams}{Parameters}
+{\em value} & damage \\
+\hline
+{\em rect} & poisoned area \\
+\hline
+\end{DoxyParams}
+\index{World\+Model@{World\+Model}!protagonist\+Dead@{protagonist\+Dead}}
+\index{protagonist\+Dead@{protagonist\+Dead}!World\+Model@{World\+Model}}
+\subsubsection[{\texorpdfstring{protagonist\+Dead}{protagonistDead}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Model\+::protagonist\+Dead (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\hypertarget{classWorldModel_a73bdac0d024fd7ae02f09b58e833cad3}{}\label{classWorldModel_a73bdac0d024fd7ae02f09b58e833cad3}
+
+
+Protagonist is dead signal. 
+
+Protagonist can only die when attacking an enemy, or if he was deadly poisoned(level of poison became more than health level) on the last move. That means the hero still has one move to find a health pack even if he was killed by the poison \index{World\+Model@{World\+Model}!use\+Healthpack@{use\+Healthpack}}
+\index{use\+Healthpack@{use\+Healthpack}!World\+Model@{World\+Model}}
+\subsubsection[{\texorpdfstring{use\+Healthpack}{useHealthpack}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Model\+::use\+Healthpack (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\hypertarget{classWorldModel_a8cb4ca5355bd9825deefbf8cc86f067a}{}\label{classWorldModel_a8cb4ca5355bd9825deefbf8cc86f067a}
+
+
+Use a health pack at the position. 
+
+Uses any health pack that occupies the given position 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/bobiko/ku-\/leuven/media-\/processing/labs/finaltask/finaltask/src/model/\hyperlink{worldmodel_8h}{worldmodel.\+h}\item 
+/home/bobiko/ku-\/leuven/media-\/processing/labs/finaltask/finaltask/src/model/\hyperlink{worldmodel_8cpp}{worldmodel.\+cpp}\end{DoxyCompactItemize}

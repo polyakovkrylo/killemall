@@ -1,3 +1,15 @@
+/*!
+ * \file mainwindow.cpp
+ *
+ * MainWindow class definition
+ *
+ * \version 1.0
+ *
+ * \author Vladimir Poliakov
+ * \author Brian Segers
+ * \author Kasper De Volder
+ */
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 

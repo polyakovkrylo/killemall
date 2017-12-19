@@ -1,3 +1,15 @@
+/*!
+ * \file popup.cpp
+ *
+ * Startup dialog class definition
+ *
+ * \version 1.0
+ *
+ * \author Vladimir Poliakov
+ * \author Brian Segers
+ * \author Kasper De Volder
+ */
+
 #include "popup.h"
 #include "ui_popup.h"
 

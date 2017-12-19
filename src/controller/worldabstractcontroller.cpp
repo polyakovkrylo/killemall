@@ -1,3 +1,15 @@
+/*!
+ * \file worldabstractcontroller.cpp
+ *
+ * WorldAbstractController class definition
+ *
+ * \version 1.0
+ *
+ * \author Vladimir Poliakov
+ * \author Brian Segers
+ * \author Kasper De Volder
+ */
+
 #include "worldabstractcontroller.h"
 #include "model/worldmodel.h"
 
