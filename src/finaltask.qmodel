@@ -3929,7 +3929,7 @@
                             <qlist>
                              <item>
                               <MClassMember>
-                               <uid>{8371ed51-e906-4d49-b773-0952b1fe6bc5}</uid>
+                               <uid>{bce6f1be-0246-4dca-b766-5fd0216383e5}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <declaration>void setModel(WorldModel* model)</declaration>
@@ -3937,7 +3937,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{da1a3ca5-0c17-4304-9f27-290744f79f00}</uid>
+                               <uid>{4444704f-2e0b-4377-a83d-d7998af2e562}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>WorldModel* model_</declaration>
@@ -3945,25 +3945,32 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{5e01ea35-c4a7-4913-9e13-52e12e65ccdc}</uid>
+                               <uid>{0d34cca1-4d3a-46bd-bab4-dede016484c4}</uid>
                                <visibility>7</visibility>
                                <type>2</type>
-                               <properties>1</properties>
                                <declaration>void run()</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{de873464-e0f9-4985-8e01-9914b7f67a56}</uid>
+                               <uid>{4f2875a7-e92c-4209-9d0e-c1b7aa8fd57c}</uid>
                                <visibility>7</visibility>
                                <type>2</type>
-                               <properties>1</properties>
                                <declaration>void stop()</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{44f9d18e-c9d1-493f-8757-6ed039091b3c}</uid>
+                               <uid>{ec7db421-b84b-44b1-b4ee-8f32a9ab945a}</uid>
+                               <visibility>7</visibility>
+                               <type>2</type>
+                               <properties>1</properties>
+                               <declaration>void nextMove()</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{e4925ad0-8f39-46f4-8546-8636bed22f54}</uid>
                                <visibility>4</visibility>
                                <type>2</type>
                                <declaration>void finished()</declaration>
@@ -4009,7 +4016,7 @@
                                     <object>{c1d21f07-bb59-4fc4-a403-f6ee88b10174}</object>
                                     <name>WorldStrategy</name>
                                     <pos>x:195;y:215</pos>
-                                    <rect>x:-115;y:-65;w:230;h:130</rect>
+                                    <rect>x:-115;y:-70;w:230;h:140</rect>
                                     <visual-role>0</visual-role>
                                    </DObject>
                                   </base-DObject>

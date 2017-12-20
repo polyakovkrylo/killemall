@@ -4,6 +4,7 @@
 #include <QObject>
 
 #include "model/worldmodel.h"
+#include "controller/worldabstractcontroller.h"
 
 class WorldStrategy : public QObject
 {
@@ -16,8 +17,10 @@ private:
     WorldModel* model_;
 
 public slots:
-    virtual void run();
-    virtual void stop();
+    void run();
+    void run(bool b);
+    void stop();
+    virtual void nextMove();
 
 signals:
     void finished();
