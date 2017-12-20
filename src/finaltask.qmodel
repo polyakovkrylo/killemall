@@ -112,7 +112,7 @@
                          </base-DElement>
                          <object>{d1fdbbc4-13c9-4516-825b-7950374466b2}</object>
                          <name>controller</name>
-                         <pos>x:550;y:280</pos>
+                         <pos>x:550;y:275</pos>
                          <rect>x:-85;y:-125;w:170;h:250</rect>
                          <auto-sized>false</auto-sized>
                          <visual-role>0</visual-role>
@@ -134,7 +134,7 @@
                          <object>{4c9fb856-19f0-47f1-8107-b964a0a353f7}</object>
                          <context>controller</context>
                          <name>WorldAbstractController</name>
-                         <pos>x:550;y:235</pos>
+                         <pos>x:550;y:230</pos>
                          <rect>x:-75;y:-30;w:150;h:60</rect>
                          <visual-role>0</visual-role>
                         </DObject>
@@ -155,7 +155,7 @@
                          <object>{200e6824-75a6-4afd-814f-08ee8af9ecd3}</object>
                          <context>controller</context>
                          <name>WorldControllerFactory</name>
-                         <pos>x:550;y:350</pos>
+                         <pos>x:550;y:345</pos>
                          <rect>x:-75;y:-30;w:150;h:60</rect>
                          <visual-role>0</visual-role>
                         </DObject>
@@ -604,7 +604,7 @@
                     </item>
                    </qlist>
                   </elements>
-                  <last-modified>1513782726062</last-modified>
+                  <last-modified>1513793317412</last-modified>
                   <toolbarid>General</toolbarid>
                  </MDiagram>
                 </base-MDiagram>
@@ -1342,7 +1342,7 @@
                             <qlist>
                              <item>
                               <MClassMember>
-                               <uid>{3f005b4c-8517-4b75-b07d-e39e37132342}</uid>
+                               <uid>{c8a0eb36-e963-48e6-b692-c3e4b5c74b53}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <declaration>bool move(const QPoint &amp;from, const QPoint&amp; to)</declaration>
@@ -1350,7 +1350,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{c4310195-30c3-46cc-9860-689aee83aa3a}</uid>
+                               <uid>{34b62cf6-3156-48b4-afdd-71edd3551d51}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <declaration>Tile* findClosest(ObjectType type, float minValue = 0.0f, float maxValue = 100.0f)</declaration>
@@ -1358,7 +1358,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{4d83e91b-c401-4073-8c50-d75bfad44a02}</uid>
+                               <uid>{5ca131d9-3dbb-4956-a0b1-7647051a7971}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <properties>1</properties>
@@ -1367,7 +1367,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{98606c53-67a9-45e9-ad94-cdac151d5edd}</uid>
+                               <uid>{33561da6-8562-410f-9eec-f339123ef374}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <declaration>const Path &amp;currentPath()</declaration>
@@ -1375,7 +1375,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{29454328-6bec-41a5-892b-9b57b7974756}</uid>
+                               <uid>{f3322560-4cf2-4f69-bd77-b426d061ca78}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <declaration>void setOptimizationLevel(float value)</declaration>
@@ -1383,7 +1383,15 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{62b0158a-b0e9-4abc-8e2f-5fb0a3f4817e}</uid>
+                               <uid>{203c7843-da88-453c-8c17-436047e846c4}</uid>
+                               <visibility>1</visibility>
+                               <type>2</type>
+                               <declaration>void setMinCost(float value)</declaration>
+                              </MClassMember>
+                             </item>
+                             <item>
+                              <MClassMember>
+                               <uid>{854bff78-3fa6-426c-85cd-00d059f5af8a}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <declaration>void stop()</declaration>
@@ -1391,7 +1399,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{83aef016-4e2e-42ac-a903-d05fcc913aff}</uid>
+                               <uid>{4ce6c817-f706-4eec-a60b-ba7fbf3683a0}</uid>
                                <visibility>3</visibility>
                                <type>2</type>
                                <declaration>float calculateCost(float tile)</declaration>
@@ -1399,7 +1407,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{3d395220-0814-4271-a763-37be1e55ad41}</uid>
+                               <uid>{8f1f93ad-3e45-4fe9-a362-1388cf8a6cd5}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>WorldModel* model_</declaration>
@@ -1407,7 +1415,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{b7b38a2d-2889-47f0-8065-edeb35c9c765}</uid>
+                               <uid>{1c9d1dcb-9ade-489c-9a60-792bce0219a7}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>Path path_</declaration>
@@ -1415,7 +1423,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{f87bddd9-fadd-42e6-9811-323e3f5b9f9f}</uid>
+                               <uid>{061d6ebd-f8fd-41ac-a5b1-c500550f9027}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>QTimer animation_</declaration>
@@ -1423,7 +1431,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{3872519e-5db6-48c5-840b-c09a743dbb9d}</uid>
+                               <uid>{12c7fad3-6cea-4b3d-b617-d74da33c15e5}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>float optimization_</declaration>
@@ -1431,7 +1439,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{3b6933b2-eac5-485e-91f0-8650072aefe3}</uid>
+                               <uid>{6f424fe0-f172-47c0-b14a-c4a7adde184d}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
                                <declaration>const float minCost_</declaration>
@@ -1439,7 +1447,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{de23019d-1b36-4b93-80bc-f8f3bce5ec7e}</uid>
+                               <uid>{4ad9f211-12d2-40b4-b7f4-d5eb12d8cf06}</uid>
                                <visibility>7</visibility>
                                <type>2</type>
                                <declaration>void init()</declaration>
@@ -1447,7 +1455,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{724f1689-e8b0-43b5-924b-b59b50ec4d35}</uid>
+                               <uid>{0e5debd9-25bb-40b0-94ac-07af5ea16b1f}</uid>
                                <visibility>7</visibility>
                                <type>2</type>
                                <declaration>void setAnimationSpeed(int value)</declaration>
@@ -1455,7 +1463,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{804218ed-8289-4611-a21c-680f2ca4caf8}</uid>
+                               <uid>{d9014c62-acbd-40ee-9253-0ec825d0315b}</uid>
                                <visibility>5</visibility>
                                <type>2</type>
                                <declaration>void animatePath()</declaration>
@@ -1463,7 +1471,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{57e3376f-54c5-43ed-89ce-855d204cf93a}</uid>
+                               <uid>{a5804d48-5de5-40ca-a38d-fc72a07d76bc}</uid>
                                <visibility>4</visibility>
                                <type>2</type>
                                <declaration>void animationDone()</declaration>
@@ -1471,7 +1479,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{45beef55-17f9-4a86-8326-88856c4745a3}</uid>
+                               <uid>{cc50eb7f-2ee2-4a73-915b-1c0d08afb826}</uid>
                                <visibility>4</visibility>
                                <type>2</type>
                                <declaration>void protagonistDead()</declaration>
@@ -1479,7 +1487,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{29c93abd-2947-4a28-a401-91cb0cef5921}</uid>
+                               <uid>{1c6fea8c-b34e-4b76-963a-7329e53f55c5}</uid>
                                <visibility>4</visibility>
                                <type>2</type>
                                <declaration>void protagonistNoEnergy()</declaration>
@@ -1635,7 +1643,7 @@
                             <qlist>
                              <item>
                               <MClassMember>
-                               <uid>{36dd5991-dec3-426d-9f59-671be5fdbcfd}</uid>
+                               <uid>{3d8631fa-d75a-44d5-9474-4da25d4edde3}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <properties>1</properties>
@@ -1644,7 +1652,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{26582953-ad22-4898-9797-f3a2f40ea002}</uid>
+                               <uid>{b8d25c18-eb6e-4d1f-aaa5-c34c6d8b68f7}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <properties>1</properties>
@@ -1653,7 +1661,7 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{fd86dbdb-ce84-47ea-a402-69b76d8a988d}</uid>
+                               <uid>{940cd6f8-1125-44dc-8995-f6fe9f036956}</uid>
                                <visibility>1</visibility>
                                <type>2</type>
                                <declaration>void clearNodes()</declaration>
@@ -1661,15 +1669,15 @@
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{6b9aabbf-6d26-49c1-85e9-d3c4e61fe156}</uid>
+                               <uid>{8594a387-2c55-4673-a85a-e1d8d1f6cc6c}</uid>
                                <visibility>3</visibility>
                                <type>1</type>
-                               <declaration>std::vector&lt;std::vector&lt;std::shared_ptr&lt;Node&gt;&gt;&gt; nodes_</declaration>
+                               <declaration>std::vector&lt;std::vector&lt;std::unique_ptr&lt;Node&gt;&gt;&gt; nodes_</declaration>
                               </MClassMember>
                              </item>
                              <item>
                               <MClassMember>
-                               <uid>{5732eff1-eb2f-49d0-b05a-de1dcc46840e}</uid>
+                               <uid>{a5fdb629-680d-446d-94ff-fb0ab8095607}</uid>
                                <visibility>3</visibility>
                                <type>2</type>
                                <declaration>void addNeighbours(NodeQueue &amp;openNodes, Node *node, const QPoint &amp;destination)</declaration>
@@ -1715,7 +1723,7 @@
                                     <object>{4c9fb856-19f0-47f1-8107-b964a0a353f7}</object>
                                     <name>WorldAbstractController</name>
                                     <pos>x:505;y:320</pos>
-                                    <rect>x:-255;y:-150;w:510;h:300</rect>
+                                    <rect>x:-255;y:-155;w:510;h:310</rect>
                                     <visual-role>0</visual-role>
                                    </DObject>
                                   </base-DObject>
@@ -1992,7 +2000,7 @@
                                </item>
                               </qlist>
                              </elements>
-                             <last-modified>1513700647155</last-modified>
+                             <last-modified>1513797445634</last-modified>
                              <toolbarid>General</toolbarid>
                             </MDiagram>
                            </base-MDiagram>

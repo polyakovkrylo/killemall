@@ -74,6 +74,7 @@ void MainWindow::on_switchViewBtn_clicked()
 
 void MainWindow::onPopupClosed()
 {
+    ui->strategyBtn->setChecked(false);
     Values vals = loadWorld->getValues();
     QString map(":/img/" + vals.map);
     model->init(map, vals.enemies, vals.healthpacks);
