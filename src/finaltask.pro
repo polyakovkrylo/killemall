@@ -32,7 +32,8 @@ SOURCES += main.cpp \
     libworld-update/uworld.cpp \
     terminalview/worldterminalview.cpp \
     mainui/mainwindow.cpp \
-    mainui/popup.cpp
+    mainui/popup.cpp \
+    strategy/worldstrategy.cpp
 HEADERS += \
            ../libworld/world.h \
     model/worldmodel.h \
@@ -43,7 +44,8 @@ HEADERS += \
     libworld-update/uworld.h \
     terminalview/worldterminalview.h \
     mainui/mainwindow.h \
-    mainui/popup.h
+    mainui/popup.h \
+    strategy/worldstrategy.h
 
 
 LIBS += -L../libworld/ -lworld
