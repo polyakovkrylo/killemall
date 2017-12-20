@@ -14,8 +14,6 @@
 
 using std::vector;
 using std::unique_ptr;
-using std::shared_ptr;
-using std::dynamic_pointer_cast;
 
 WorldModel::WorldModel(QObject *parent) :
     QObject(parent), level_{":/img/level1.png"},
@@ -65,7 +63,6 @@ void WorldModel::init(QString filename, int enemies, int healthpacks)
     for(auto &e: pEnemies_) {
         connect(e.get(),SIGNAL(areaPoisoned(int,QRect)), this, SLOT(poisonArea(int,QRect)));
         connect(e.get(),&UPEnemy::dead,[&](){
-            protagonist_->restoreEnergy();
             emit enemyDefeated(e->getXPos(),e->getYPos());
         });
     }
@@ -109,6 +106,7 @@ void WorldModel::attackEnemy()
         if(pe->area().contains(x,y)) {
             // if the enemy is within the area, attack him
             pe->attack();
+            protagonist_->restoreEnergy();
         }
     }
 
