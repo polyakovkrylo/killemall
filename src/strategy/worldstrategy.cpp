@@ -1,3 +1,15 @@
+/*!
+ * \file worldstrategy.cpp
+ *
+ * WorldStrategy class definition
+ *
+ * \version 1.0
+ *
+ * \author Vladimir Poliakov
+ * \author Brian Segers
+ * \author Kasper De Volder
+ */
+
 #include "worldstrategy.h"
 
 WorldStrategy::WorldStrategy(QObject *parent) :
@@ -40,6 +52,8 @@ void WorldStrategy::nextMove()
     if(!tile) tile = model_->getController()->findClosest(HealthPack);
     if(tile)
         model_->move(tile->getXPos(), tile->getYPos());
-    else
+    else{
+        stop();
         emit finished();
+    }
 }
