@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['terminalview',['Terminalview',['../d5/d9e/group__terminalview.html',1,'']]]
+  ['strategy',['Strategy',['../db/da1/group__strategy.html',1,'']]]
 ];

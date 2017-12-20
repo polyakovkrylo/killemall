@@ -1,7 +1,12 @@
 var searchData=
 [
-  ['worldabstractcontroller',['WorldAbstractController',['../d9/ddc/classWorldAbstractController.html#a8f4be5436078c93733197d76809df45c',1,'WorldAbstractController']]],
-  ['worldgraphicsview',['WorldGraphicsView',['../d1/d6c/classWorldGraphicsView.html#aac181c5fb59c553a885afc62c9f58576',1,'WorldGraphicsView']]],
-  ['worldmodel',['WorldModel',['../dc/dd7/classWorldModel.html#a6787b97a5c8826279e9a31740819f277',1,'WorldModel']]],
-  ['worldterminalview',['WorldTerminalView',['../d7/d3c/classWorldTerminalView.html#a5cf7926b3cf66af1f036f976315fab99',1,'WorldTerminalView']]]
+  ['uenemy',['UEnemy',['../d8/db3/classUEnemy.html#a68c1fd174c1fafe929056d1899bdef49',1,'UEnemy']]],
+  ['uhealthpack',['UHealthPack',['../df/d72/classUHealthPack.html#aed2e7927c0dba616bcb89cbc47683233',1,'UHealthPack']]],
+  ['updateenergy',['updateEnergy',['../d7/d65/classUProtagonist.html#a56f48e2a59eca29575cac673a03cbd69',1,'UProtagonist']]],
+  ['updatehealth',['updateHealth',['../d7/d65/classUProtagonist.html#a453bac1fc034e1c15ad8d7bdac566421',1,'UProtagonist']]],
+  ['upenemy',['UPEnemy',['../d5/d01/classUPEnemy.html#a865c439af7c5fc9893eb9a95e08eae26',1,'UPEnemy']]],
+  ['uprotagonist',['UProtagonist',['../d7/d65/classUProtagonist.html#aecc46a5d2ad349f141f7d623b6454816',1,'UProtagonist']]],
+  ['use',['use',['../df/d72/classUHealthPack.html#a19dd8468b98963e293940db3020f9b9d',1,'UHealthPack']]],
+  ['usehealthpack',['useHealthpack',['../dc/dd7/classWorldModel.html#a8cb4ca5355bd9825deefbf8cc86f067a',1,'WorldModel']]],
+  ['uworld',['UWorld',['../dc/db2/classUWorld.html#a4336a8896885a7ce345b13a142902dd5',1,'UWorld']]]
 ];

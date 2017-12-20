@@ -124,6 +124,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <img src="/home/bobiko/ku-leuven/media-processing/labs/finaltask/finaltask/uml/controller.png"  alt="img def"/>
 </div>
 <p>Static method <code>createController()</code> is used by <a class="el" href="dc/dd7/classWorldModel.html" title="Model component implementation. ">WorldModel</a> in order to create a controller of a certain type.In order to implement a new controller, it should be inherited from <code>AbstractController</code>, <code>findPath()</code> function should be implemented, and its type should be added to <code>ControllerType</code>enumeration. For demonstration purposes, only <code><a class="el" href="dd/d9f/classAStarController.html" title="A* controller. ">AStarController</a></code> is implemented.</p>
+<h2>Strategy packages</h2>
+<p><code>strategy</code> package implements the AI component of the application. The diagram of the package is given below:</p>
+<div class="image">
+<img src="/home/bobiko/ku-leuven/media-processing/labs/finaltask/finaltask/uml/strategy.png"  alt="img def"/>
+</div>
+<p><code><a class="el" href="d9/da5/classWorldStrategy.html" title="AI implementation class. ">WorldStrategy</a></code> works on the following principle. At first, it checks if there is an enemy in the range of motion that has lower strength than hero's health level. If no such enemy was found, AI looks for any health pack nearby. If no health pack was found as well, AI signals that there is no moves left and stops. Nevertheless, this implementation can be upgraded. If this is the case, <code>nextMove()</code> function that defines the next target for the protagonist, should be re-implemented by the successor.</p>
 <h2>Graphicsview package</h2>
 <p><code>graphicsview</code> package includes <code><a class="el" href="d1/d6c/classWorldGraphicsView.html" title="Graphics view component class implementation. ">WorldGraphicsView</a></code> which is inherited from <code>QGraphcisView</code>. Following diagram shows members and relations of <code><a class="el" href="d1/d6c/classWorldGraphicsView.html" title="Graphics view component class implementation. ">WorldGraphicsView</a></code>:</p>
 <div class="image">
@@ -163,7 +169,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </ul>
 </li>
 <li>[x] UI</li>
-<li>[ ] Strategy </li>
+<li>[x] Strategy </li>
 </ul>
 </li>
 </ul>
