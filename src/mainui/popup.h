@@ -27,6 +27,7 @@ struct Values {
     int healthpacks;
     int enemies;
     int optimization;
+    int energyCost;
 };
 
 namespace Ui {

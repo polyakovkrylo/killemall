@@ -118,6 +118,13 @@ public:
      */
     inline void setOptimizationLevel(float value){optimization_ = value/100.0f;}
     /*!
+     * \brief Set minimal tile energy cost
+     *
+     * Defines the energy cost of white tile
+     * \param value energy cost multiplied by 1000
+     */
+    virtual void setMinCost(float value);
+    /*!
      * \brief Stop the animation and clear the last path
      */
     void stop();
@@ -149,7 +156,7 @@ protected:
      * \brief Minimal energy cost of a tile (white tile energy cost)
      * \sa calculateCost
      */
-    const float minCost_{0.1f};
+    float minCost_{0.01f};
 
 signals:
     /*!

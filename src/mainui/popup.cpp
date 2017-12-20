@@ -30,5 +30,6 @@ Values Popup::getValues()
     vals.healthpacks = ui->nrHealth->value();
     vals.enemies = ui->nrEnemies->value();
     vals.optimization = ui->optimizationSlider->value();
+    vals.energyCost = ui->energyCostSlider->value();
     return vals;
 }

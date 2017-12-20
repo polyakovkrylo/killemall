@@ -107,6 +107,14 @@ Tile *WorldAbstractController::findClosest(ObjectType type, float minValue, floa
     return closest;
 }
 
+void WorldAbstractController::setMinCost(float value)
+{
+    if(minCost_ != value){
+        minCost_ = value/1000.0f;
+        init();
+    }
+}
+
 void WorldAbstractController::stop()
 {
     animation_.stop();
