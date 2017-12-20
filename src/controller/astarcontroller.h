@@ -89,7 +89,7 @@ public:
      */
     void clearNodes();
 private:
-    std::vector<std::vector<std::shared_ptr<Node>>> nodes_;
+    std::vector<std::vector<std::unique_ptr<Node>>> nodes_;
     void addNeighbours(NodeQueue &openNodes, Node *node, const QPoint &destination);
 };
 
