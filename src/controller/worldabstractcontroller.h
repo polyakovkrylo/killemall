@@ -168,6 +168,8 @@ public slots:
 private slots:
     void animatePath();
 
+signals:
+    void animationDone();
 };
 
 #endif // WORLDABSTRACTCONTROLLER_H

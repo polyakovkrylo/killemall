@@ -133,5 +133,6 @@ void WorldAbstractController::animatePath()
     else {
         model_->useHealthpack();
         model_->attackEnemy();
+        emit animationDone();
     }
 }
