@@ -111,11 +111,6 @@ void WorldModel::attackEnemy()
             pe->attack();
         }
     }
-
-    // hero can only die if the deadly damage was done at
-    // moment of coming to the point. If the hero was poisoned,
-    // he still has one move to search for a health pack
-    if(protagonist_->getHealth() <= 0) emit protagonistDead();
 }
 
 void WorldModel::useHealthpack()

@@ -133,5 +133,15 @@ void WorldAbstractController::animatePath()
     else {
         model_->useHealthpack();
         model_->attackEnemy();
+
+        // hero can only die if the deadly damage was done at
+        // moment of coming to the point. If the hero was poisoned,
+        // he still has one move to search for a health pack
+        if(model_->getProtagonist()->getHealth() <= 0) emit protagonistDead();
+
+        // when the hero runs out of energy, he can no longer move.
+        // This means he can't attack any more enemies or pick up any
+        // more health packs
+        if(model_->getProtagonist()->getEnergy() <= minCost_) emit protagonistNoEnergy();
     }
 }
