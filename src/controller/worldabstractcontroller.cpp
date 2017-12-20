@@ -1,3 +1,15 @@
+/*!
+ * \file worldabstractcontroller.cpp
+ *
+ * WorldAbstractController class definition
+ *
+ * \version 1.0
+ *
+ * \author Vladimir Poliakov
+ * \author Brian Segers
+ * \author Kasper De Volder
+ */
+
 #include "worldabstractcontroller.h"
 #include "model/worldmodel.h"
 
@@ -5,7 +17,7 @@ using std::shared_ptr;
 using std::vector;
 
 WorldAbstractController::WorldAbstractController(WorldModel *model) :
-    QObject(model), model_{model}, path_{0,QVector<QPoint>()}
+    QObject(model), model_{model}, path_{0,std::vector<QPoint>()}
 {
     animation_.setSingleShot(true);
     animation_.setInterval(10);
@@ -15,7 +27,9 @@ WorldAbstractController::WorldAbstractController(WorldModel *model) :
 bool WorldAbstractController::move(const QPoint &from, const QPoint &to)
 {
     bool scs = false;
-    if(path_.steps.back() == to)
+    // check if 'to' point from the previous pathfinding is the same
+    QPoint prev = (!path_.steps.empty()) ? path_.steps.at(0) : QPoint();
+    if(prev == to)
         // if it is the same path as last time, then just move
         scs = true;
     else
@@ -41,26 +55,31 @@ Tile *WorldAbstractController::findClosest(ObjectType type, float minValue, floa
     switch(type) {
     case HealthPack:
         for(auto &h: model_->getHealthpacks()) {
-            objs.push_back(h.get());
+            if(h->getValue())
+                objs.push_back(h.get());
         }
         break;
     case RegularEnemy:
         for(auto &e: model_->getEnemies()) {
-            objs.push_back(e.get());
+            if(!e->getDefeated())
+                objs.push_back(e.get());
         }
         break;
     case PoisonedEnemy:
         for(auto &e: model_->getPEnemies()) {
-            objs.push_back(e.get());
+            if(!e->getDefeated())
+                objs.push_back(e.get());
         }
         break;
     case AnyEnemy:
         // adding both types for AnyEnemy
         for(auto &e: model_->getEnemies()) {
-            objs.push_back(e.get());
+            if(!e->getDefeated())
+                objs.push_back(e.get());
         }
         for(auto &pe: model_->getPEnemies()) {
-            objs.push_back(pe.get());
+            if(!pe->getDefeated())
+                objs.push_back(pe.get());
         }
         break;
     default: break;
@@ -104,8 +123,26 @@ void WorldAbstractController::animatePath()
 {
     // move protagonist along the path till the path is done
     if(!path_.steps.empty()) {
-        QPoint pos(path_.steps.takeFirst());
+        // the path vector is reversed('to' point is the first element in vector)
+        QPoint pos(path_.steps.back());
+        path_.steps.pop_back();
         model_->getProtagonist()->setPos(pos.x(),pos.y());
         animation_.start();
+    }
+    // check for health packs and enemies when the movement is done
+    else {
+        model_->useHealthpack();
+        model_->attackEnemy();
+        emit animationDone();
+
+        // hero can only die if the deadly damage was done at
+        // moment of coming to the point. If the hero was poisoned,
+        // he still has one move to search for a health pack
+        if(model_->getProtagonist()->getHealth() <= 0) emit protagonistDead();
+
+        // when the hero runs out of energy, he can no longer move.
+        // This means he can't attack any more enemies or pick up any
+        // more health packs
+        if(model_->getProtagonist()->getEnergy() <= minCost_) emit protagonistNoEnergy();
     }
 }

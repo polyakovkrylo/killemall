@@ -1,0 +1,295 @@
+\hypertarget{classWorldTerminalView}{}\section{World\+Terminal\+View Class Reference}
+\label{classWorldTerminalView}\index{World\+Terminal\+View@{World\+Terminal\+View}}
+
+
+The \hyperlink{classWorldTerminalView}{World\+Terminal\+View} class.  
+
+
+
+
+{\ttfamily \#include $<$worldterminalview.\+h$>$}
+
+
+
+Inheritance diagram for World\+Terminal\+View\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{d8/da5/classWorldTerminalView__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for World\+Terminal\+View\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{df/d82/classWorldTerminalView__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classWorldTerminalView_abca57ada64d0d466fad4e48b26283ee7}{on\+Return\+Pressed} ()\hypertarget{classWorldTerminalView_abca57ada64d0d466fad4e48b26283ee7}{}\label{classWorldTerminalView_abca57ada64d0d466fad4e48b26283ee7}
+
+\begin{DoxyCompactList}\small\item\em Read and execute the typed command. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldTerminalView_a39a7a5c66e6184474cf5e43182cca8df}{on\+Enemy\+Defeated} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Print info on enemy defeated signal. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldTerminalView_ab6ebb9b798c452dbb7bc6859e6c0082c}{on\+Area\+Posioned} (int value, Q\+Rect rect)
+\begin{DoxyCompactList}\small\item\em Print info on area\+Poisoned signal. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldTerminalView_a9d400f81edbf0b5f6f2779a71311dadf}{on\+Healthpack\+Used} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Print info on health\+Pack\+Used signal. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldTerminalView_a754cab62b8dbff71fce179c1307fefde}{on\+Health\+Level\+Changed} (int value)
+\begin{DoxyCompactList}\small\item\em Print info on health\+Level\+Changed signal. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldTerminalView_ad912a26b1ec36b4ddc92f98137b7823f}{on\+Energy\+Level\+Changed} (int value)
+\begin{DoxyCompactList}\small\item\em Print info on energy\+Level\+Changed signal. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldTerminalView_acce60911ae9ec49a2d25c9df3d0a4aa7}{on\+Position\+Changed} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Print info on protagonist position changed. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldTerminalView_ac2a90b7f75ef680dfc3acb5ee56e022a}{reload\+View} ()\hypertarget{classWorldTerminalView_ac2a90b7f75ef680dfc3acb5ee56e022a}{}\label{classWorldTerminalView_ac2a90b7f75ef680dfc3acb5ee56e022a}
+
+\begin{DoxyCompactList}\small\item\em Reload the view slot Reloads the view every time the model is reloaded. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classWorldTerminalView_a5cf7926b3cf66af1f036f976315fab99}{World\+Terminal\+View} (Q\+Widget $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em Class constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldTerminalView_ab9a76421814621d776d641e36946f0e4}{set\+Model} (\hyperlink{classWorldModel}{World\+Model} $\ast$m)
+\begin{DoxyCompactList}\small\item\em Set model for the view. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldTerminalView_a8a52d3ddd8cef89f14123eb7c8fdaa41}{execute\+Cmd} (Q\+String \&cmd, Q\+String\+List args)
+\begin{DoxyCompactList}\small\item\em Execute a command. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldTerminalView_a66913418f7408cb2d9abf989b1679163}{help} (Q\+String command=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Print help on a command. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldTerminalView_a3b716b8dc01872822824e41115153742}{find} (Q\+String object, float value)
+\begin{DoxyCompactList}\small\item\em Print information about a closest object. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldTerminalView_a549769ec34738ea2f4d39faddabeb0b3}{print\+Info} (Q\+String object)
+\begin{DoxyCompactList}\small\item\em Print info about all objects of a given type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classWorldTerminalView}{World\+Terminal\+View} class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{World\+Terminal\+View@{World\+Terminal\+View}!World\+Terminal\+View@{World\+Terminal\+View}}
+\index{World\+Terminal\+View@{World\+Terminal\+View}!World\+Terminal\+View@{World\+Terminal\+View}}
+\subsubsection[{\texorpdfstring{World\+Terminal\+View(\+Q\+Widget $\ast$parent=0)}{WorldTerminalView(QWidget *parent=0)}}]{\setlength{\rightskip}{0pt plus 5cm}World\+Terminal\+View\+::\+World\+Terminal\+View (
+\begin{DoxyParamCaption}
+\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\hypertarget{classWorldTerminalView_a5cf7926b3cf66af1f036f976315fab99}{}\label{classWorldTerminalView_a5cf7926b3cf66af1f036f976315fab99}
+
+
+Class constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & parent object \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{World\+Terminal\+View@{World\+Terminal\+View}!execute\+Cmd@{execute\+Cmd}}
+\index{execute\+Cmd@{execute\+Cmd}!World\+Terminal\+View@{World\+Terminal\+View}}
+\subsubsection[{\texorpdfstring{execute\+Cmd(\+Q\+String \&cmd, Q\+String\+List args)}{executeCmd(QString &cmd, QStringList args)}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Terminal\+View\+::execute\+Cmd (
+\begin{DoxyParamCaption}
+\item[{Q\+String \&}]{cmd, }
+\item[{Q\+String\+List}]{args}
+\end{DoxyParamCaption}
+)}\hypertarget{classWorldTerminalView_a8a52d3ddd8cef89f14123eb7c8fdaa41}{}\label{classWorldTerminalView_a8a52d3ddd8cef89f14123eb7c8fdaa41}
+
+
+Execute a command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmd} & Command string \\
+\hline
+{\em args} & Arguments \\
+\hline
+\end{DoxyParams}
+\index{World\+Terminal\+View@{World\+Terminal\+View}!find@{find}}
+\index{find@{find}!World\+Terminal\+View@{World\+Terminal\+View}}
+\subsubsection[{\texorpdfstring{find(\+Q\+String object, float value)}{find(QString object, float value)}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Terminal\+View\+::find (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{object, }
+\item[{float}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{classWorldTerminalView_a3b716b8dc01872822824e41115153742}{}\label{classWorldTerminalView_a3b716b8dc01872822824e41115153742}
+
+
+Print information about a closest object. 
+
+Print information about the closest object of a given type (e = any enemy, pe = poisoned enemy, re = regular enemy, h = health pack). 
+\begin{DoxyParams}{Parameters}
+{\em object} & type of object \\
+\hline
+{\em value} & threshold value of the object(minimal for health pack, maximal for enemy) \\
+\hline
+\end{DoxyParams}
+\index{World\+Terminal\+View@{World\+Terminal\+View}!help@{help}}
+\index{help@{help}!World\+Terminal\+View@{World\+Terminal\+View}}
+\subsubsection[{\texorpdfstring{help(\+Q\+String command="""")}{help(QString command="")}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Terminal\+View\+::help (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{command = {\ttfamily \char`\"{}\char`\"{}}}
+\end{DoxyParamCaption}
+)}\hypertarget{classWorldTerminalView_a66913418f7408cb2d9abf989b1679163}{}\label{classWorldTerminalView_a66913418f7408cb2d9abf989b1679163}
+
+
+Print help on a command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em command} & command name(print overall help if no command is sepcified) \\
+\hline
+\end{DoxyParams}
+\index{World\+Terminal\+View@{World\+Terminal\+View}!on\+Area\+Posioned@{on\+Area\+Posioned}}
+\index{on\+Area\+Posioned@{on\+Area\+Posioned}!World\+Terminal\+View@{World\+Terminal\+View}}
+\subsubsection[{\texorpdfstring{on\+Area\+Posioned}{onAreaPosioned}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Terminal\+View\+::on\+Area\+Posioned (
+\begin{DoxyParamCaption}
+\item[{int}]{value, }
+\item[{Q\+Rect}]{rect}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\hypertarget{classWorldTerminalView_ab6ebb9b798c452dbb7bc6859e6c0082c}{}\label{classWorldTerminalView_ab6ebb9b798c452dbb7bc6859e6c0082c}
+
+
+Print info on area\+Poisoned signal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & poison level \\
+\hline
+{\em rect} & poisoned area \\
+\hline
+\end{DoxyParams}
+\index{World\+Terminal\+View@{World\+Terminal\+View}!on\+Enemy\+Defeated@{on\+Enemy\+Defeated}}
+\index{on\+Enemy\+Defeated@{on\+Enemy\+Defeated}!World\+Terminal\+View@{World\+Terminal\+View}}
+\subsubsection[{\texorpdfstring{on\+Enemy\+Defeated}{onEnemyDefeated}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Terminal\+View\+::on\+Enemy\+Defeated (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\hypertarget{classWorldTerminalView_a39a7a5c66e6184474cf5e43182cca8df}{}\label{classWorldTerminalView_a39a7a5c66e6184474cf5e43182cca8df}
+
+
+Print info on enemy defeated signal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & horizontal position of the enemy \\
+\hline
+{\em y} & vertical position of the enemy \\
+\hline
+\end{DoxyParams}
+\index{World\+Terminal\+View@{World\+Terminal\+View}!on\+Energy\+Level\+Changed@{on\+Energy\+Level\+Changed}}
+\index{on\+Energy\+Level\+Changed@{on\+Energy\+Level\+Changed}!World\+Terminal\+View@{World\+Terminal\+View}}
+\subsubsection[{\texorpdfstring{on\+Energy\+Level\+Changed}{onEnergyLevelChanged}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Terminal\+View\+::on\+Energy\+Level\+Changed (
+\begin{DoxyParamCaption}
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\hypertarget{classWorldTerminalView_ad912a26b1ec36b4ddc92f98137b7823f}{}\label{classWorldTerminalView_ad912a26b1ec36b4ddc92f98137b7823f}
+
+
+Print info on energy\+Level\+Changed signal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & energy level \\
+\hline
+\end{DoxyParams}
+\index{World\+Terminal\+View@{World\+Terminal\+View}!on\+Health\+Level\+Changed@{on\+Health\+Level\+Changed}}
+\index{on\+Health\+Level\+Changed@{on\+Health\+Level\+Changed}!World\+Terminal\+View@{World\+Terminal\+View}}
+\subsubsection[{\texorpdfstring{on\+Health\+Level\+Changed}{onHealthLevelChanged}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Terminal\+View\+::on\+Health\+Level\+Changed (
+\begin{DoxyParamCaption}
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\hypertarget{classWorldTerminalView_a754cab62b8dbff71fce179c1307fefde}{}\label{classWorldTerminalView_a754cab62b8dbff71fce179c1307fefde}
+
+
+Print info on health\+Level\+Changed signal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & health level \\
+\hline
+\end{DoxyParams}
+\index{World\+Terminal\+View@{World\+Terminal\+View}!on\+Healthpack\+Used@{on\+Healthpack\+Used}}
+\index{on\+Healthpack\+Used@{on\+Healthpack\+Used}!World\+Terminal\+View@{World\+Terminal\+View}}
+\subsubsection[{\texorpdfstring{on\+Healthpack\+Used}{onHealthpackUsed}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Terminal\+View\+::on\+Healthpack\+Used (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\hypertarget{classWorldTerminalView_a9d400f81edbf0b5f6f2779a71311dadf}{}\label{classWorldTerminalView_a9d400f81edbf0b5f6f2779a71311dadf}
+
+
+Print info on health\+Pack\+Used signal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & horizontal position of the health pack \\
+\hline
+{\em y} & vertical position of the health pack \\
+\hline
+\end{DoxyParams}
+\index{World\+Terminal\+View@{World\+Terminal\+View}!on\+Position\+Changed@{on\+Position\+Changed}}
+\index{on\+Position\+Changed@{on\+Position\+Changed}!World\+Terminal\+View@{World\+Terminal\+View}}
+\subsubsection[{\texorpdfstring{on\+Position\+Changed}{onPositionChanged}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Terminal\+View\+::on\+Position\+Changed (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\hypertarget{classWorldTerminalView_acce60911ae9ec49a2d25c9df3d0a4aa7}{}\label{classWorldTerminalView_acce60911ae9ec49a2d25c9df3d0a4aa7}
+
+
+Print info on protagonist position changed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & horizontal position of the protagonist \\
+\hline
+{\em y} & vertical position of the protagonist \\
+\hline
+\end{DoxyParams}
+\index{World\+Terminal\+View@{World\+Terminal\+View}!print\+Info@{print\+Info}}
+\index{print\+Info@{print\+Info}!World\+Terminal\+View@{World\+Terminal\+View}}
+\subsubsection[{\texorpdfstring{print\+Info(\+Q\+String object)}{printInfo(QString object)}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Terminal\+View\+::print\+Info (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{object}
+\end{DoxyParamCaption}
+)}\hypertarget{classWorldTerminalView_a549769ec34738ea2f4d39faddabeb0b3}{}\label{classWorldTerminalView_a549769ec34738ea2f4d39faddabeb0b3}
+
+
+Print info about all objects of a given type. 
+
+
+\begin{DoxyItemize}
+\item Print information about all objects of a given type (e = all enemies, pe = poisoned enemies, re = regular enemies, h = health packs). 
+\begin{DoxyParams}{Parameters}
+{\em object} & type of object \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\index{World\+Terminal\+View@{World\+Terminal\+View}!set\+Model@{set\+Model}}
+\index{set\+Model@{set\+Model}!World\+Terminal\+View@{World\+Terminal\+View}}
+\subsubsection[{\texorpdfstring{set\+Model(\+World\+Model $\ast$m)}{setModel(WorldModel *m)}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Terminal\+View\+::set\+Model (
+\begin{DoxyParamCaption}
+\item[{{\bf World\+Model} $\ast$}]{m}
+\end{DoxyParamCaption}
+)}\hypertarget{classWorldTerminalView_ab9a76421814621d776d641e36946f0e4}{}\label{classWorldTerminalView_ab9a76421814621d776d641e36946f0e4}
+
+
+Set model for the view. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & model \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/bobiko/ku-\/leuven/media-\/processing/labs/finaltask/finaltask/src/terminalview/\hyperlink{worldterminalview_8h}{worldterminalview.\+h}\item 
+/home/bobiko/ku-\/leuven/media-\/processing/labs/finaltask/finaltask/src/terminalview/\hyperlink{worldterminalview_8cpp}{worldterminalview.\+cpp}\end{DoxyCompactItemize}

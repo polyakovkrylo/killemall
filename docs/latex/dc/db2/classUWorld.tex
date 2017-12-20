@@ -1,0 +1,114 @@
+\hypertarget{classUWorld}{}\section{U\+World Class Reference}
+\label{classUWorld}\index{U\+World@{U\+World}}
+
+
+Updated world class.  
+
+
+
+
+{\ttfamily \#include $<$uworld.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classUWorld_a4336a8896885a7ce345b13a142902dd5}{U\+World} (Q\+String filename)
+\begin{DoxyCompactList}\small\item\em Class constructor. \end{DoxyCompactList}\item 
+const std\+::vector$<$ std\+::unique\+\_\+ptr$<$ Tile $>$ $>$ \& \hyperlink{classUWorld_a5903b82b41401b80f6f0a7b10f4a7f9e}{get\+Map} () const \hypertarget{classUWorld_a5903b82b41401b80f6f0a7b10f4a7f9e}{}\label{classUWorld_a5903b82b41401b80f6f0a7b10f4a7f9e}
+
+\begin{DoxyCompactList}\small\item\em Return map tiles. \end{DoxyCompactList}\item 
+int \hyperlink{classUWorld_a4664a9e8e2b77b3f5be4674a81c09519}{get\+Cols} () const \hypertarget{classUWorld_a4664a9e8e2b77b3f5be4674a81c09519}{}\label{classUWorld_a4664a9e8e2b77b3f5be4674a81c09519}
+
+\begin{DoxyCompactList}\small\item\em Return number of columns. \end{DoxyCompactList}\item 
+int \hyperlink{classUWorld_a92045ebff66f4ddb7435cff51a9bd9e6}{get\+Rows} () const \hypertarget{classUWorld_a92045ebff66f4ddb7435cff51a9bd9e6}{}\label{classUWorld_a92045ebff66f4ddb7435cff51a9bd9e6}
+
+\begin{DoxyCompactList}\small\item\em Return number of rows. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ Enemy $>$ $>$ \hyperlink{classUWorld_a8f5381b4bfddca1da982ce1eb90a7dc8}{create\+Enemies} (unsigned int enemies)
+\begin{DoxyCompactList}\small\item\em Generate enemies. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \hyperlink{classUHealthPack}{U\+Health\+Pack} $>$ $>$ \hyperlink{classUWorld_a2fc65319ab83d0bcdab368a0e34a4e6c}{create\+Healthpacks} (unsigned int packs)
+\begin{DoxyCompactList}\small\item\em Generate health packs. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \hyperlink{classUProtagonist}{U\+Protagonist} $>$ \hyperlink{classUWorld_afad995be9c242f0624f1b20d27713fe5}{create\+Protagonist} ()
+\begin{DoxyCompactList}\small\item\em Create protagonist. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Updated world class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{U\+World@{U\+World}!U\+World@{U\+World}}
+\index{U\+World@{U\+World}!U\+World@{U\+World}}
+\subsubsection[{\texorpdfstring{U\+World(\+Q\+String filename)}{UWorld(QString filename)}}]{\setlength{\rightskip}{0pt plus 5cm}U\+World\+::\+U\+World (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{filename}
+\end{DoxyParamCaption}
+)}\hypertarget{classUWorld_a4336a8896885a7ce345b13a142902dd5}{}\label{classUWorld_a4336a8896885a7ce345b13a142902dd5}
+
+
+Class constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & path to map image \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{U\+World@{U\+World}!create\+Enemies@{create\+Enemies}}
+\index{create\+Enemies@{create\+Enemies}!U\+World@{U\+World}}
+\subsubsection[{\texorpdfstring{create\+Enemies(unsigned int enemies)}{createEnemies(unsigned int enemies)}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ unique\+\_\+ptr$<$ Enemy $>$ $>$ U\+World\+::create\+Enemies (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{enemies}
+\end{DoxyParamCaption}
+)}\hypertarget{classUWorld_a8f5381b4bfddca1da982ce1eb90a7dc8}{}\label{classUWorld_a8f5381b4bfddca1da982ce1eb90a7dc8}
+
+
+Generate enemies. 
+
+Generate enemies using World\+::get\+Enemies 
+\begin{DoxyParams}{Parameters}
+{\em enemies} & number of enemies \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector of unique pointers to enemies 
+\end{DoxyReturn}
+\index{U\+World@{U\+World}!create\+Healthpacks@{create\+Healthpacks}}
+\index{create\+Healthpacks@{create\+Healthpacks}!U\+World@{U\+World}}
+\subsubsection[{\texorpdfstring{create\+Healthpacks(unsigned int packs)}{createHealthpacks(unsigned int packs)}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ unique\+\_\+ptr$<$ {\bf U\+Health\+Pack} $>$ $>$ U\+World\+::create\+Healthpacks (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{packs}
+\end{DoxyParamCaption}
+)}\hypertarget{classUWorld_a2fc65319ab83d0bcdab368a0e34a4e6c}{}\label{classUWorld_a2fc65319ab83d0bcdab368a0e34a4e6c}
+
+
+Generate health packs. 
+
+Generate packs using World\+::get\+Health\+Packs 
+\begin{DoxyParams}{Parameters}
+{\em packs} & number of packs \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector of unique pointers to health packs 
+\end{DoxyReturn}
+\index{U\+World@{U\+World}!create\+Protagonist@{create\+Protagonist}}
+\index{create\+Protagonist@{create\+Protagonist}!U\+World@{U\+World}}
+\subsubsection[{\texorpdfstring{create\+Protagonist()}{createProtagonist()}}]{\setlength{\rightskip}{0pt plus 5cm}unique\+\_\+ptr$<$ {\bf U\+Protagonist} $>$ U\+World\+::create\+Protagonist (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classUWorld_afad995be9c242f0624f1b20d27713fe5}{}\label{classUWorld_afad995be9c242f0624f1b20d27713fe5}
+
+
+Create protagonist. 
+
+Create protagonist and moves it to a first available point in space \begin{DoxyReturn}{Returns}
+unique pointer to protagonist 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/bobiko/ku-\/leuven/media-\/processing/labs/finaltask/finaltask/src/libworld-\/update/\hyperlink{uworld_8h}{uworld.\+h}\item 
+/home/bobiko/ku-\/leuven/media-\/processing/labs/finaltask/finaltask/src/libworld-\/update/\hyperlink{uworld_8cpp}{uworld.\+cpp}\end{DoxyCompactItemize}
