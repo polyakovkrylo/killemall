@@ -17,6 +17,7 @@
 #include "terminalview/worldterminalview.h"
 #include "graphicsview/worldgraphicsview.h"
 #include "model/worldmodel.h"
+#include "strategy/worldstrategy.h"
 #include "popup.h"
 
 /*!
@@ -54,6 +55,7 @@ private:
     WorldModel *model;
     WorldTerminalView *tv;
     WorldGraphicsView *gv;
+    WorldStrategy* strategy;
 
 private slots:
     void on_switchViewBtn_clicked();

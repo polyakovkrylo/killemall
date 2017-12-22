@@ -12,6 +12,9 @@ var searchData=
   ['worldmodel',['WorldModel',['../dc/dd7/classWorldModel.html',1,'WorldModel'],['../dc/dd7/classWorldModel.html#a6787b97a5c8826279e9a31740819f277',1,'WorldModel::WorldModel()']]],
   ['worldmodel_2ecpp',['worldmodel.cpp',['../d2/d50/worldmodel_8cpp.html',1,'']]],
   ['worldmodel_2eh',['worldmodel.h',['../de/dc4/worldmodel_8h.html',1,'']]],
+  ['worldstrategy',['WorldStrategy',['../d9/da5/classWorldStrategy.html',1,'WorldStrategy'],['../d9/da5/classWorldStrategy.html#abccf2f8f4363a0623a29d4941f3568c8',1,'WorldStrategy::WorldStrategy()']]],
+  ['worldstrategy_2ecpp',['worldstrategy.cpp',['../d8/d9f/worldstrategy_8cpp.html',1,'']]],
+  ['worldstrategy_2eh',['worldstrategy.h',['../df/dc1/worldstrategy_8h.html',1,'']]],
   ['worldterminalview',['WorldTerminalView',['../d7/d3c/classWorldTerminalView.html',1,'WorldTerminalView'],['../d7/d3c/classWorldTerminalView.html#a5cf7926b3cf66af1f036f976315fab99',1,'WorldTerminalView::WorldTerminalView()']]],
   ['worldterminalview_2ecpp',['worldterminalview.cpp',['../dd/d19/worldterminalview_8cpp.html',1,'']]],
   ['worldterminalview_2eh',['worldterminalview.h',['../d6/d03/worldterminalview_8h.html',1,'']]]

@@ -166,6 +166,13 @@ public:
      * \brief Returns area occupied by the object
      */
     inline const QRect &area() const {return area_;}
+    /*!
+     * \brief Poison the enemy
+     *
+     * Decreases protagonist's health and emits poisoned() signal
+     * \param damage HP to decrease
+     */
+    void poison(float damage);
 
 private:
     QRect area_;
@@ -183,6 +190,10 @@ signals:
      * \param value current energy level
      */
     void energyLevelChanged(int value);
+    /*!
+     * \brief Signal to be emitted every time the hero is poisoned
+     */
+    void poisoned();
 
 public slots:
     void restoreEnergy();

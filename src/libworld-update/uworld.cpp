@@ -108,6 +108,12 @@ void UProtagonist::updateEnergy(float diff)
     emit energyLevelChanged(en);
 }
 
+void UProtagonist::poison(float damage)
+{
+    updateHealth(-damage);
+    emit poisoned();
+}
+
 void UProtagonist::restoreEnergy()
 {
     updateEnergy(100);

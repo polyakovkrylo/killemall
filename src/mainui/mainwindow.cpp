@@ -22,12 +22,15 @@ MainWindow::MainWindow(QWidget *parent) :
     tv = findChild<WorldTerminalView*>("terminalView");
     gv = findChild<WorldGraphicsView*>("graphicsView");
     tv->hide();
+    strategy = new WorldStrategy(this);
 
-    setModel(new WorldModel());
+    setModel(new WorldModel(this));
 
     loadWorld = new Popup;
     connect(ui->actionLoad_world, SIGNAL(triggered(bool)), loadWorld, SLOT(exec()));
     connect(loadWorld, SIGNAL(accepted()), this, SLOT(onPopupClosed()));
+
+    connect(ui->strategyBtn, SIGNAL(clicked(bool)), strategy, SLOT(run(bool)));
 
     emit ui->actionLoad_world->triggered(true);
 }
@@ -37,6 +40,7 @@ void MainWindow::setModel(WorldModel *m)
     model = m;
     tv->setModel(model);
     gv->setModel(model);
+    strategy->setModel(model);
     connect(ui->speedSlider, SIGNAL(sliderMoved(int)), model->getController().get(), SLOT(setAnimationSpeed(int)));
     connect(model->getController().get(), &WorldAbstractController::protagonistDead, this, [=](){
         QMessageBox msg;
@@ -81,6 +85,7 @@ void MainWindow::on_switchViewBtn_clicked()
 
 void MainWindow::onPopupClosed()
 {
+    ui->strategyBtn->setChecked(false);
     Values vals = loadWorld->getValues();
     QString map(":/img/" + vals.map);
     model->init(map, vals.enemies, vals.healthpacks);

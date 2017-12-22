@@ -63,6 +63,14 @@ Following diagram represents the model of the system divided into packages. Each
 
 Static method {\ttfamily create\+Controller()} is used by \hyperlink{classWorldModel}{World\+Model} in order to create a controller of a certain type.\+In order to implement a new controller, it should be inherited from {\ttfamily Abstract\+Controller}, {\ttfamily find\+Path()} function should be implemented, and its type should be added to {\ttfamily Controller\+Type}enumeration. For demonstration purposes, only {\ttfamily \hyperlink{classAStarController}{A\+Star\+Controller}} is implemented.
 
+\subsection*{Strategy packages}
+
+{\ttfamily strategy} package implements the AI component of the application. The diagram of the package is given below\+:
+
+
+
+{\ttfamily \hyperlink{classWorldStrategy}{World\+Strategy}} works on the following principle. At first, it checks if there is an enemy in the range of motion that has lower strength than hero\textquotesingle{}s health level. If no such enemy was found, AI looks for any health pack nearby. If no health pack was found as well, AI signals that there is no moves left and stops. Nevertheless, this implementation can be upgraded. If this is the case, {\ttfamily next\+Move()} function that defines the next target for the protagonist, should be re-\/implemented by the successor.
+
 \subsection*{Graphicsview package}
 
 {\ttfamily graphicsview} package includes {\ttfamily \hyperlink{classWorldGraphicsView}{World\+Graphics\+View}} which is inherited from {\ttfamily Q\+Graphcis\+View}. Following diagram shows members and relations of {\ttfamily \hyperlink{classWorldGraphicsView}{World\+Graphics\+View}}\+:
@@ -109,6 +117,6 @@ It has a text field for output, edit line for command input and a button to exec
 \item \mbox{[}x\mbox{]} Terminal\+View
 \end{DoxyItemize}
 \item \mbox{[}x\mbox{]} UI
-\item \mbox{[} \mbox{]} Strategy 
+\item \mbox{[}x\mbox{]} Strategy 
 \end{DoxyItemize}
 \end{DoxyItemize}

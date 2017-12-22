@@ -127,7 +127,7 @@ void WorldModel::poisonArea(int value, QRect rect)
 {
     // if the hero is inside the area, decrease his health level
     if(rect.contains(protagonist_->getXPos(),protagonist_->getYPos())) {
-        protagonist_->updateHealth(-value);
+        protagonist_->poison(value);
     }
     emit areaPoisoned(value, rect);
 }

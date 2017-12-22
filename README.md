@@ -113,6 +113,21 @@ new controller, it should be inherited from `AbstractController`,
 be added to `ControllerType `enumeration. For
 demonstration purposes, only `AStarController` is implemented.
 
+## Strategy packages
+`strategy` package implements the AI component of the application. The diagram of the package is given below:
+
+![img def](uml/strategy.png)
+
+`WorldStrategy` works on the following principle. At first,
+it checks if there is an enemy in the range of motion that has
+lower strength than hero's health level. If no such enemy was
+found, AI looks for any health pack nearby. If no health pack was
+found as well, AI signals that there is no moves left and stops.
+Nevertheless, this implementation can be upgraded. If this is the
+case, `nextMove()` function that defines the next
+target for the protagonist, should be re-implemented by the
+successor.
+
 ## Graphicsview package
 
 `graphicsview` package  includes `WorldGraphicsView` which is
@@ -151,14 +166,14 @@ the enemy, etc.
 
 ## TODO
 
-* [ ] Modeling
+* [x] Modeling
   * [x] Architechture
   * [x] Model package
   * [x] Controller package
   * [x] View package
     * [x] GraphicsView
     * [x] TerminalView
-  * [ ] Strategy
+  * [x] Strategy
 * [x] Implementing
   * [x] Model package
   * [x] Controller package
@@ -168,4 +183,4 @@ the enemy, etc.
     * [x] GraphicsView
     * [x] TerminalView
   * [x] UI
-  * [ ] Strategy
+  * [x] Strategy
