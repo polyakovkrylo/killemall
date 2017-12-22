@@ -1,3 +1,15 @@
+/*!
+ * \file astarcontroller.cpp
+ *
+ * WorldControllerFactory class definition
+ *
+ * \version 1.0
+ *
+ * \author Vladimir Poliakov
+ * \author Brian Segers
+ * \author Kasper De Volder
+ */
+
 #include "astarcontroller.h"
 #include "model/worldmodel.h"
 
@@ -62,7 +74,7 @@ bool AStarController::findPath(const QPoint &from, const QPoint &to, float maxCo
             path_.cost = node->g;
             // re-create path from the last node
             while(node->x!=from.x() || node->y!=from.y()){
-                path_.steps.push_front(QPoint(node->x,node->y));
+                path_.steps.push_back(QPoint(node->x,node->y));
                 node = node->prev;
             }
         }

@@ -1,0 +1,110 @@
+\hypertarget{classUPEnemy}{}\section{U\+P\+Enemy Class Reference}
+\label{classUPEnemy}\index{U\+P\+Enemy@{U\+P\+Enemy}}
+
+
+Updated poisoned enemy class.  
+
+
+
+
+{\ttfamily \#include $<$uworld.\+h$>$}
+
+
+
+Inheritance diagram for U\+P\+Enemy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=142pt]{da/dff/classUPEnemy__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for U\+P\+Enemy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=142pt]{d3/dfe/classUPEnemy__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classUPEnemy_ac021d11a175d2f07c2055a4c8aace52d}{area\+Poisoned} (int value, Q\+Rect \hyperlink{classUPEnemy_aa87ac038b30dccbad0a0966824d99382}{area})
+\begin{DoxyCompactList}\small\item\em Poison the area signal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classUPEnemy_a865c439af7c5fc9893eb9a95e08eae26}{U\+P\+Enemy} (int x, int y, float strength, int radius=5, int poison\+Radius=10)
+\begin{DoxyCompactList}\small\item\em Class constructor. \end{DoxyCompactList}\item 
+const Q\+Rect \& \hyperlink{classUPEnemy_aa87ac038b30dccbad0a0966824d99382}{area} ()\hypertarget{classUPEnemy_aa87ac038b30dccbad0a0966824d99382}{}\label{classUPEnemy_aa87ac038b30dccbad0a0966824d99382}
+
+\begin{DoxyCompactList}\small\item\em Returns area occupied by the object. \end{DoxyCompactList}\item 
+const Q\+Rect \& \hyperlink{classUPEnemy_a88cc91ecae7705053e6cfbab57f60503}{poison\+Area} ()\hypertarget{classUPEnemy_a88cc91ecae7705053e6cfbab57f60503}{}\label{classUPEnemy_a88cc91ecae7705053e6cfbab57f60503}
+
+\begin{DoxyCompactList}\small\item\em Returns poison area of the enemy. \end{DoxyCompactList}\item 
+void {\bfseries attack} ()\hypertarget{classUPEnemy_aa1145894e8e7c203796e653309fdb661}{}\label{classUPEnemy_aa1145894e8e7c203796e653309fdb661}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Updated poisoned enemy class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{U\+P\+Enemy@{U\+P\+Enemy}!U\+P\+Enemy@{U\+P\+Enemy}}
+\index{U\+P\+Enemy@{U\+P\+Enemy}!U\+P\+Enemy@{U\+P\+Enemy}}
+\subsubsection[{\texorpdfstring{U\+P\+Enemy(int x, int y, float strength, int radius=5, int poison\+Radius=10)}{UPEnemy(int x, int y, float strength, int radius=5, int poisonRadius=10)}}]{\setlength{\rightskip}{0pt plus 5cm}U\+P\+Enemy\+::\+U\+P\+Enemy (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{float}]{strength, }
+\item[{int}]{radius = {\ttfamily 5}, }
+\item[{int}]{poison\+Radius = {\ttfamily 10}}
+\end{DoxyParamCaption}
+)}\hypertarget{classUPEnemy_a865c439af7c5fc9893eb9a95e08eae26}{}\label{classUPEnemy_a865c439af7c5fc9893eb9a95e08eae26}
+
+
+Class constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & horizontal position \\
+\hline
+{\em y} & vertical position \\
+\hline
+{\em strength} & damage to be caused \\
+\hline
+{\em radius} & radius of occupied area in pixels \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{U\+P\+Enemy@{U\+P\+Enemy}!area\+Poisoned@{area\+Poisoned}}
+\index{area\+Poisoned@{area\+Poisoned}!U\+P\+Enemy@{U\+P\+Enemy}}
+\subsubsection[{\texorpdfstring{area\+Poisoned}{areaPoisoned}}]{\setlength{\rightskip}{0pt plus 5cm}void U\+P\+Enemy\+::area\+Poisoned (
+\begin{DoxyParamCaption}
+\item[{int}]{value, }
+\item[{Q\+Rect}]{area}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\hypertarget{classUPEnemy_ac021d11a175d2f07c2055a4c8aace52d}{}\label{classUPEnemy_ac021d11a175d2f07c2055a4c8aace52d}
+
+
+Poison the area signal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & poison level \\
+\hline
+{\em area} & poisoned area \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/bobiko/ku-\/leuven/media-\/processing/labs/finaltask/finaltask/src/libworld-\/update/\hyperlink{uworld_8h}{uworld.\+h}\item 
+/home/bobiko/ku-\/leuven/media-\/processing/labs/finaltask/finaltask/src/libworld-\/update/\hyperlink{uworld_8cpp}{uworld.\+cpp}\end{DoxyCompactItemize}

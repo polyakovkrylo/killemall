@@ -1,9 +1,19 @@
+/*!
+ * \file worldmodel.cpp
+ *
+ * WorldModel class definition
+ *
+ * \version 1.0
+ *
+ * \author Vladimir Poliakov
+ * \author Brian Segers
+ * \author Kasper De Volder
+ */
+
 #include "worldmodel.h"
 
 using std::vector;
 using std::unique_ptr;
-using std::shared_ptr;
-using std::dynamic_pointer_cast;
 
 WorldModel::WorldModel(QObject *parent) :
     QObject(parent), level_{":/img/level1.png"},
@@ -18,6 +28,7 @@ void WorldModel::init(QString filename, int enemies, int healthpacks)
     enemies_.clear();
     pEnemies_.clear();
     healthpacks_.clear();
+    controller_->stop();
 
     // If args were not set then set them to last values
     if(filename.isEmpty()) filename = level_;
@@ -52,7 +63,6 @@ void WorldModel::init(QString filename, int enemies, int healthpacks)
     for(auto &e: pEnemies_) {
         connect(e.get(),SIGNAL(areaPoisoned(int,QRect)), this, SLOT(poisonArea(int,QRect)));
         connect(e.get(),&UPEnemy::dead,[&](){
-            protagonist_->restoreEnergy();
             emit enemyDefeated(e->getXPos(),e->getYPos());
         });
     }
@@ -76,16 +86,14 @@ void WorldModel::init(QString filename, int enemies, int healthpacks)
     protagonist_.reset();
     protagonist_ = world_->createProtagonist();
 
-    // optional implementation is to attack enemies and get health packs only
-    // while standing (when movement is finished)
-    connect(protagonist_.get(), SIGNAL(posChanged(int,int)), this, SLOT(attackEnemy(int,int)));
-    connect(protagonist_.get(), SIGNAL(posChanged(int,int)), this, SLOT(useHealthpack(int,int)));
-
+    ready_ = true;
     emit reload();
 }
 
-void WorldModel::attackEnemy(int x, int y)
+void WorldModel::attackEnemy()
 {
+    int x = protagonist_->getXPos();
+    int y = protagonist_->getYPos();
     for(auto &e: enemies_){
         if(e->area().contains(x,y)) {
             // if the enemy is within the area, attack him
@@ -98,12 +106,15 @@ void WorldModel::attackEnemy(int x, int y)
         if(pe->area().contains(x,y)) {
             // if the enemy is within the area, attack him
             pe->attack();
+            protagonist_->restoreEnergy();
         }
     }
 }
 
-void WorldModel::useHealthpack(int x, int y)
+void WorldModel::useHealthpack()
 {
+    int x = protagonist_->getXPos();
+    int y = protagonist_->getYPos();
     for(auto &h: healthpacks_){
         // if the health pack is within the area, use it
         if(h->area().contains(x,y)) {
@@ -118,6 +129,7 @@ void WorldModel::poisonArea(int value, QRect rect)
     if(rect.contains(protagonist_->getXPos(),protagonist_->getYPos())) {
         protagonist_->updateHealth(-value);
     }
+    emit areaPoisoned(value, rect);
 }
 
 void WorldModel::move(int x, int y)
