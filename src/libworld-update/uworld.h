@@ -125,10 +125,11 @@ public:
      */
     inline const QRect &poisonArea() {return poisonArea_;}
     void attack();
+    inline bool isTriggered() const {return triggered_;}
 private:
     QRect area_;
     QRect poisonArea_;
-    bool active_;
+    bool triggered_;
 signals:
     /*!
      * \brief Poison the area signal

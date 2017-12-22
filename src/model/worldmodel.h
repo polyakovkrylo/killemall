@@ -80,6 +80,7 @@ public:
      */
     inline const QString & getLevel() const {return level_;}
     inline bool ready() const {return ready_;}
+    void checkIfWin();
 
 private:
     std::unique_ptr<UWorld> world_;
@@ -123,7 +124,12 @@ signals:
      * \sa poisonArea
      */
     void areaPoisoned(int value, QRect rect);
-
+    /*!
+     * \brief Win signal
+     *
+     * Emitted once all enemies are defeated
+     */
+    void win();
 
 public slots:
     /*!

@@ -70,8 +70,8 @@ UPEnemy::UPEnemy(int x, int y, float strength,
 
 void UPEnemy::attack()
 {
-    if(!active_) {
-        active_ = true;
+    if(!triggered_) {
+        triggered_ = true;
         poison();
     }
 }

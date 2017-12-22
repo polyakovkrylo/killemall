@@ -96,6 +96,22 @@ void WorldModel::init(QString filename, int enemies, int healthpacks)
     emit reload();
 }
 
+void WorldModel::checkIfWin()
+{
+    // check if every regular enemy is dead
+    bool w = enemies_.empty();
+    // check if every poisoned enemy has been attacked already
+    for(auto &e: pEnemies_) {
+        if(!e->isTriggered()) {
+            w = false;
+            break;
+        }
+    }
+    if(w) {
+        emit win();
+    }
+}
+
 void WorldModel::attackEnemy()
 {
     int x = protagonist_->getXPos();
@@ -129,6 +145,9 @@ void WorldModel::attackEnemy()
             protagonist_->restoreEnergy();
         }
     }
+
+    // check if enemies are defeated
+    checkIfWin();
 }
 
 void WorldModel::useHealthpack()
