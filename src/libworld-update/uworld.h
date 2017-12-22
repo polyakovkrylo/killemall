@@ -128,6 +128,7 @@ public:
 private:
     QRect area_;
     QRect poisonArea_;
+    bool active_;
 signals:
     /*!
      * \brief Poison the area signal

@@ -63,12 +63,15 @@ UPEnemy::UPEnemy(int x, int y, float strength,
     connect(this, &PEnemy::poisonLevelUpdated, [=] (int value) {
         emit areaPoisoned(value,poisonArea_);
     });
+    connect(this, &PEnemy::dead, [=](){
+        setDefeated(true);
+    });
 }
 
 void UPEnemy::attack()
 {
-    if(!getDefeated()) {
-        setDefeated(true);
+    if(!active_) {
+        active_ = true;
         poison();
     }
 }
