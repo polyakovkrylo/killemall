@@ -97,7 +97,7 @@ void WorldGraphicsView::reloadScene()
 
     // create scene and draw background
     QImage back(model_->getLevel());
-    scene_ = new QGraphicsScene(QRectF(0,0,back.width(),back.height()),this);
+    scene_ = new WorldGraphicsScene(back, QRectF(0,0,back.width(),back.height()),this);
     scene_->setBackgroundBrush(back);
 
     // draw enemies and connect them to lambda slot

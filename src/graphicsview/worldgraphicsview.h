@@ -20,6 +20,7 @@
 #include <QLabel>
 #include <QKeyEvent>
 
+#include "worldgraphicsscene.h"
 #include "model/worldmodel.h"
 
 /*!
@@ -85,7 +86,7 @@ public:
 
 private:
     WorldModel* model_;
-    QGraphicsScene* scene_;
+    WorldGraphicsScene* scene_;
     QGraphicsEllipseItem* protagonist_;
     QProgressBar* healthBar_;
     QProgressBar* energyBar_;
