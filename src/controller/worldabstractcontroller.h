@@ -55,7 +55,7 @@ enum ObjectType {
  */
 struct Path {
     double cost;
-    std::vector<QPoint> steps;
+    std::vector<QPair<QPoint,float>> steps;
 };
 
 /*!

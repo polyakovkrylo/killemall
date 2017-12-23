@@ -74,7 +74,8 @@ bool AStarController::findPath(const QPoint &from, const QPoint &to, float maxCo
             path_.cost = node->g;
             // re-create path from the last node
             while(node->x!=from.x() || node->y!=from.y()){
-                path_.steps.push_back(QPoint(node->x,node->y));
+                QPair<QPoint,float> p(QPoint(node->x,node->y),node->nodeCost);
+                path_.steps.push_back(p);
                 node = node->prev;
             }
         }

@@ -17,7 +17,7 @@ using std::shared_ptr;
 using std::vector;
 
 WorldAbstractController::WorldAbstractController(WorldModel *model) :
-    QObject(model), model_{model}, path_{0,std::vector<QPoint>()}
+    QObject(model), model_{model}, path_{0,std::vector<QPair<QPoint,float>>()}
 {
     animation_.setSingleShot(true);
     animation_.setInterval(10);
@@ -28,7 +28,7 @@ bool WorldAbstractController::move(const QPoint &from, const QPoint &to)
 {
     bool scs = false;
     // check if 'to' point from the previous pathfinding is the same
-    QPoint prev = (!path_.steps.empty()) ? path_.steps.at(0) : QPoint();
+    QPoint prev = (!path_.steps.empty()) ? path_.steps.at(0).first : QPoint();
     if(prev == to)
         // if it is the same path as last time, then just move
         scs = true;
@@ -36,7 +36,6 @@ bool WorldAbstractController::move(const QPoint &from, const QPoint &to)
         // otherwise try to find a path such that protagonist has enough energy
         scs =findPath(from, to, model_->getProtagonist()->getEnergy());
     if(scs) {
-        model_->getProtagonist()->updateEnergy(-path_.cost);
         animatePath();
     }
     return scs;
@@ -132,9 +131,11 @@ void WorldAbstractController::animatePath()
     // move protagonist along the path till the path is done
     if(!path_.steps.empty()) {
         // the path vector is reversed('to' point is the first element in vector)
-        QPoint pos(path_.steps.back());
-        path_.steps.pop_back();
+        QPoint pos(path_.steps.back().first);
         model_->getProtagonist()->setPos(pos.x(),pos.y());
+        // update energy after each step
+        model_->getProtagonist()->updateEnergy(-path_.steps.back().second);
+        path_.steps.pop_back();
         animation_.start();
     }
     // check for health packs and enemies when the movement is done
