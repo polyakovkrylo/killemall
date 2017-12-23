@@ -110,11 +110,6 @@ public slots:
      */
     void onHealthLevelChanged(int value);
     /*!
-     * \brief Print info on energyLevelChanged signal
-     * \param value energy level
-     */
-    void onEnergyLevelChanged(int value);
-    /*!
      * \brief Print info on protagonist position changed
      * \param x horizontal position of the protagonist
      * \param y vertical position of the protagonist
