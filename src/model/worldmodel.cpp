@@ -117,14 +117,14 @@ void WorldModel::attackEnemy()
     int x = protagonist_->getXPos();
     int y = protagonist_->getYPos();
     for(auto it = enemies_.begin(); it < enemies_.end(); ++it){
+        // garbage collection
+        if(it->get()->getDefeated()) {
+            enemies_.erase(it);
+            // return back cause the vector was shifted after erase
+            --it;
+            continue;
+        }
         if(it->get()->area().contains(x,y)) {
-            // garbage collection
-            if(it->get()->getDefeated()) {
-                enemies_.erase(it);
-                // return back cause the vector was shifted after erase
-                --it;
-                continue;
-            }
             // if the enemy is within the area, attack him
             float dmg = it->get()->attack();
             protagonist_->updateHealth(-dmg);

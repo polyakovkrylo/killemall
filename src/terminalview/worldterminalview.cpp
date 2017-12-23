@@ -265,6 +265,7 @@ void WorldTerminalView::printInfo(QString object)
         printInfo("p");
         printInfo("e");
         printInfo("h");
+        return;
     }
     output->setTextColor(Qt::black);
     output->append(message);

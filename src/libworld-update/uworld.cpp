@@ -58,7 +58,8 @@ UPEnemy::UPEnemy(int x, int y, float strength,
                  int radius, int poisonRadius) :
     PEnemy(x,y,strength),
     area_(x-radius, y-radius, radius*2, radius*2),
-    poisonArea_(x-poisonRadius, y-poisonRadius, poisonRadius*2, poisonRadius*2)
+    poisonArea_(x-poisonRadius, y-poisonRadius, poisonRadius*2, poisonRadius*2),
+    triggered_{false}
 {
     connect(this, &PEnemy::poisonLevelUpdated, [=] (int value) {
         emit areaPoisoned(value,poisonArea_);
