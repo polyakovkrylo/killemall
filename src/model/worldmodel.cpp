@@ -61,26 +61,32 @@ void WorldModel::init(QString filename, int enemies, int healthpacks)
 
     // connect poisoned enemies
     for(auto &e: pEnemies_) {
+        int x = e->getXPos();
+        int y = e->getYPos();
         connect(e.get(),SIGNAL(areaPoisoned(int,QRect)), this, SLOT(poisonArea(int,QRect)));
-        connect(e.get(),&UPEnemy::dead,[&](){
-            emit enemyDefeated(e->getXPos(),e->getYPos());
+        connect(e.get(),&UPEnemy::dead,[=](){
+            emit enemyDefeated(x,y);
         });
     }
 
     // connect regular enemies
     for(auto &e: enemies_) {
-        connect(e.get(),&UEnemy::dead,[&](){
+        int x = e->getXPos();
+        int y = e->getYPos();
+        connect(e.get(),&UEnemy::dead,[=](){
             protagonist_->restoreEnergy();
-            emit enemyDefeated(e->getXPos(),e->getYPos());
+            emit enemyDefeated(x,y);
         });
     }
 
     // connect each healthpack to  healthpackUsed() signal
     healthpacks_ = world_->createHealthpacks(healthpacks);
     for(auto &h: healthpacks_) {
-        connect(h.get(),&UHealthPack::used,[&](){
+        int x = h->getXPos();
+        int y = h->getYPos();
+        connect(h.get(),&UHealthPack::used,[=](){
             protagonist_->restoreEnergy();
-            emit healthpackUsed(h->getXPos(),h->getYPos());
+            emit healthpackUsed(x,y);
         });
     }
     protagonist_.reset();
@@ -90,35 +96,75 @@ void WorldModel::init(QString filename, int enemies, int healthpacks)
     emit reload();
 }
 
+void WorldModel::checkIfWin()
+{
+    // check if every regular enemy is dead
+    bool w = enemies_.empty();
+    // check if every poisoned enemy has been attacked already
+    for(auto &e: pEnemies_) {
+        if(!e->isTriggered()) {
+            w = false;
+            break;
+        }
+    }
+    if(w) {
+        emit win();
+    }
+}
+
 void WorldModel::attackEnemy()
 {
     int x = protagonist_->getXPos();
     int y = protagonist_->getYPos();
-    for(auto &e: enemies_){
-        if(e->area().contains(x,y)) {
+    for(auto it = enemies_.begin(); it < enemies_.end(); ++it){
+        if(it->get()->area().contains(x,y)) {
+            // garbage collection
+            if(it->get()->getDefeated()) {
+                enemies_.erase(it);
+                // return back cause the vector was shifted after erase
+                --it;
+                continue;
+            }
             // if the enemy is within the area, attack him
-            float dmg = e->attack();
+            float dmg = it->get()->attack();
             protagonist_->updateHealth(-dmg);
         }
     }
 
-    for(auto &pe: pEnemies_){
-        if(pe->area().contains(x,y)) {
-            // if the enemy is within the area, attack him
-            pe->attack();
+    for(auto it = pEnemies_.begin(); it < pEnemies_.end(); ++it){
+        // garbage collection
+        if(it->get()->getDefeated()) {
+            pEnemies_.erase(it);
+            // return back cause the vector was shifted after erase
+            --it;
+            continue;
+        }
+        // if the enemy is within the area, attack him
+        if(it->get()->area().contains(x,y)) {
             protagonist_->restoreEnergy();
+            it->get()->attack();
         }
     }
+
+    // check if enemies are defeated
+    checkIfWin();
 }
 
 void WorldModel::useHealthpack()
 {
     int x = protagonist_->getXPos();
     int y = protagonist_->getYPos();
-    for(auto &h: healthpacks_){
+    for(auto it = healthpacks_.begin(); it < healthpacks_.end(); ++it){
+        // garbage collection
+        if(!it->get()->getValue()) {
+            healthpacks_.erase(it);
+            // return back cause the vector was shifted after erase
+            --it;
+            continue;
+        }
         // if the health pack is within the area, use it
-        if(h->area().contains(x,y)) {
-            protagonist_->updateHealth(h->use());
+        if(it->get()->area().contains(x,y)) {
+            protagonist_->updateHealth(it->get()->use());
         }
     }
 }
@@ -142,4 +188,3 @@ void WorldModel::move(const QPoint &pos)
     QPoint from(protagonist_->getXPos(),protagonist_->getYPos());
     controller_->move(from,pos);
 }
-

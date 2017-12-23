@@ -67,7 +67,7 @@ Tile *WorldAbstractController::findClosest(ObjectType type, float minValue, floa
         break;
     case PoisonedEnemy:
         for(auto &e: model_->getPEnemies()) {
-            if(!e->getDefeated())
+            if(!e->isTriggered())
                 objs.push_back(e.get());
         }
         break;
@@ -78,7 +78,7 @@ Tile *WorldAbstractController::findClosest(ObjectType type, float minValue, floa
                 objs.push_back(e.get());
         }
         for(auto &pe: model_->getPEnemies()) {
-            if(!pe->getDefeated())
+            if(!pe->isTriggered())
                 objs.push_back(pe.get());
         }
         break;
