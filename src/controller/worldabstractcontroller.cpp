@@ -43,8 +43,9 @@ bool WorldAbstractController::move(const QPoint &from, const QPoint &to)
 
 Tile *WorldAbstractController::findClosest(ObjectType type, float minValue, float maxValue)
 {
+    stop();
     // clear path and get starting pos
-    path_.cost = INFINITY;
+    path_.cost = model_->getProtagonist()->getEnergy();
     QPoint from(model_->getProtagonist()->getXPos(),
                 model_->getProtagonist()->getYPos());
     // vector of objects under investigation
@@ -88,7 +89,7 @@ Tile *WorldAbstractController::findClosest(ObjectType type, float minValue, floa
     for(auto &obj: objs) {
         // check if tile's value is within range
         float val = obj->getValue();
-        if(val > maxValue || val < minValue)
+        if(val >= maxValue || val <= minValue)
             continue;
 
         // check if the object can ever be better than the closest found
