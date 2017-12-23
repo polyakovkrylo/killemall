@@ -93,7 +93,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>The enemy that hero has attacked is stronger than the hero's health level</li>
 <li>The hero has been poisoned with a poison level bigger than hero's health level. In that case the protagonist still has one move to pick a health pack before he will die.</li>
 </ul>
-<p>Before starting the game, player should pick the level, number of enemies and health packs in the world and a level of optimization for the model's controller:</p>
+<p>Before starting the game, player should pick the level, number of enemies and health packs in the world, minimal energy cost of moving through one tile and a level of optimization for the model's controller:</p>
 <div class="image">
 <img src="/home/bobiko/ku-leuven/media-processing/labs/finaltask/finaltask/img/popup.png"  alt="img def"/>
 </div>
@@ -101,7 +101,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="image">
 <img src="/home/bobiko/ku-leuven/media-processing/labs/finaltask/finaltask/img/mainwindow.png"  alt="img def"/>
 </div>
-<p>Player can switch between graphical and terminal view at any moment by clicking <code>Switch view</code> button. Speed of animation can also be changed using <code>Set animation speed</code> slider. Player can change or restart the world any time by clicking <code>World-&gt;Load world..</code></p>
+<p>Player can switch between graphical and terminal view at any moment by clicking <code>Switch view</code> button. Speed of animation can also be changed using <code>Set animation speed</code> slider. Player can change or restart the world any time by clicking <code>World-&gt;Load world..</code> or run an AI strategy by clicking <code>Run strategy</code>. The size of an object in the graphical representation shows the value of that object: the bigger it is, the stronger is that enemy(or the more HP will be restored by that health pack).</p>
 <h2>Project description</h2>
 <p>This project is an implementation of Media Processing course's final task. The purpose is to create a game in which the player can mode across labyrinth and defeat enemies. The game should be implemented with two views: graphical and terminal-like.</p>
 <p>In graphical view, the player can move with keyboard or mouse. Protagonist is displayed as blue circle, enemies are the red circles, poison area of the enemy is displayed as yellow circle, health packs are the green circles.</p>
@@ -124,7 +124,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <img src="/home/bobiko/ku-leuven/media-processing/labs/finaltask/finaltask/uml/controller.png"  alt="img def"/>
 </div>
 <p>Static method <code>createController()</code> is used by <a class="el" href="dc/dd7/classWorldModel.html" title="Model component implementation. ">WorldModel</a> in order to create a controller of a certain type.In order to implement a new controller, it should be inherited from <code>AbstractController</code>, <code>findPath()</code> function should be implemented, and its type should be added to <code>ControllerType</code>enumeration. For demonstration purposes, only <code><a class="el" href="dd/d9f/classAStarController.html" title="A* controller. ">AStarController</a></code> is implemented.</p>
-<h2>Strategy packages</h2>
+<h2>Strategy package</h2>
 <p><code>strategy</code> package implements the AI component of the application. The diagram of the package is given below:</p>
 <div class="image">
 <img src="/home/bobiko/ku-leuven/media-processing/labs/finaltask/finaltask/uml/strategy.png"  alt="img def"/>
@@ -144,7 +144,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>It has a text field for output, edit line for command input and a button to execute the command(optionally can be done with <code>Enter</code>). When <code>executeCmd()</code> is called, program reads the input and splits it into actual command and arguments. If no command was specified, help information is shown. Along with output for user commands, <code><a class="el" href="d7/d3c/classWorldTerminalView.html" title="The WorldTerminalView class. ">WorldTerminalView</a></code> automatically prints information if some changes occur, e.g. change of health level, change of protagonist position, death of the enemy, etc.</p>
 <h2>TODO</h2>
 <ul>
-<li>[ ] Modeling<ul>
+<li>[x] Modeling<ul>
 <li>[x] Architechture</li>
 <li>[x] Model package</li>
 <li>[x] Controller package</li>
@@ -153,7 +153,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>[x] TerminalView</li>
 </ul>
 </li>
-<li>[ ] Strategy</li>
+<li>[x] Strategy</li>
 </ul>
 </li>
 <li>[x] Implementing<ul>

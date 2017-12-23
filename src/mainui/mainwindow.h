@@ -58,7 +58,13 @@ private:
     WorldStrategy* strategy;
 
 private slots:
+    /*!
+     * \brief Switch the view
+     */
     void on_switchViewBtn_clicked();
+    /*!
+     * \brief Load the world with selected settings
+     */
     void onPopupClosed();
 };
 

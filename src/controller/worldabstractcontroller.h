@@ -176,6 +176,11 @@ private slots:
     void animatePath();
 
 signals:
+    /*!
+     * \brief Animation finished signal
+     *
+     * Emitted every time the path is performed completely
+     */
     void animationDone();
 };
 

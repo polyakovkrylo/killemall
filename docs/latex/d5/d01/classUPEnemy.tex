@@ -35,7 +35,7 @@ void \hyperlink{classUPEnemy_ac021d11a175d2f07c2055a4c8aace52d}{area\+Poisoned} 
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classUPEnemy_a865c439af7c5fc9893eb9a95e08eae26}{U\+P\+Enemy} (int x, int y, float strength, int radius=5, int poison\+Radius=10)
+\hyperlink{classUPEnemy_a118be97fa267047357fb56571eaef1ed}{U\+P\+Enemy} (int x, int y, float strength)
 \begin{DoxyCompactList}\small\item\em Class constructor. \end{DoxyCompactList}\item 
 const Q\+Rect \& \hyperlink{classUPEnemy_aa87ac038b30dccbad0a0966824d99382}{area} ()\hypertarget{classUPEnemy_aa87ac038b30dccbad0a0966824d99382}{}\label{classUPEnemy_aa87ac038b30dccbad0a0966824d99382}
 
@@ -43,9 +43,11 @@ const Q\+Rect \& \hyperlink{classUPEnemy_aa87ac038b30dccbad0a0966824d99382}{area
 const Q\+Rect \& \hyperlink{classUPEnemy_a88cc91ecae7705053e6cfbab57f60503}{poison\+Area} ()\hypertarget{classUPEnemy_a88cc91ecae7705053e6cfbab57f60503}{}\label{classUPEnemy_a88cc91ecae7705053e6cfbab57f60503}
 
 \begin{DoxyCompactList}\small\item\em Returns poison area of the enemy. \end{DoxyCompactList}\item 
-void {\bfseries attack} ()\hypertarget{classUPEnemy_aa1145894e8e7c203796e653309fdb661}{}\label{classUPEnemy_aa1145894e8e7c203796e653309fdb661}
+void \hyperlink{classUPEnemy_aa1145894e8e7c203796e653309fdb661}{attack} ()
+\begin{DoxyCompactList}\small\item\em Attack the enemy. \end{DoxyCompactList}\item 
+bool \hyperlink{classUPEnemy_a4a3e30df0c5f369a4859803970d5e69c}{is\+Triggered} () const \hypertarget{classUPEnemy_a4a3e30df0c5f369a4859803970d5e69c}{}\label{classUPEnemy_a4a3e30df0c5f369a4859803970d5e69c}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Check if the enemy has been already attacked. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -54,15 +56,13 @@ Updated poisoned enemy class.
 \subsection{Constructor \& Destructor Documentation}
 \index{U\+P\+Enemy@{U\+P\+Enemy}!U\+P\+Enemy@{U\+P\+Enemy}}
 \index{U\+P\+Enemy@{U\+P\+Enemy}!U\+P\+Enemy@{U\+P\+Enemy}}
-\subsubsection[{\texorpdfstring{U\+P\+Enemy(int x, int y, float strength, int radius=5, int poison\+Radius=10)}{UPEnemy(int x, int y, float strength, int radius=5, int poisonRadius=10)}}]{\setlength{\rightskip}{0pt plus 5cm}U\+P\+Enemy\+::\+U\+P\+Enemy (
+\subsubsection[{\texorpdfstring{U\+P\+Enemy(int x, int y, float strength)}{UPEnemy(int x, int y, float strength)}}]{\setlength{\rightskip}{0pt plus 5cm}U\+P\+Enemy\+::\+U\+P\+Enemy (
 \begin{DoxyParamCaption}
 \item[{int}]{x, }
 \item[{int}]{y, }
-\item[{float}]{strength, }
-\item[{int}]{radius = {\ttfamily 5}, }
-\item[{int}]{poison\+Radius = {\ttfamily 10}}
+\item[{float}]{strength}
 \end{DoxyParamCaption}
-)}\hypertarget{classUPEnemy_a865c439af7c5fc9893eb9a95e08eae26}{}\label{classUPEnemy_a865c439af7c5fc9893eb9a95e08eae26}
+)}\hypertarget{classUPEnemy_a118be97fa267047357fb56571eaef1ed}{}\label{classUPEnemy_a118be97fa267047357fb56571eaef1ed}
 
 
 Class constructor. 
@@ -100,7 +100,18 @@ Poison the area signal.
 {\em area} & poisoned area \\
 \hline
 \end{DoxyParams}
+\index{U\+P\+Enemy@{U\+P\+Enemy}!attack@{attack}}
+\index{attack@{attack}!U\+P\+Enemy@{U\+P\+Enemy}}
+\subsubsection[{\texorpdfstring{attack()}{attack()}}]{\setlength{\rightskip}{0pt plus 5cm}void U\+P\+Enemy\+::attack (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classUPEnemy_aa1145894e8e7c203796e653309fdb661}{}\label{classUPEnemy_aa1145894e8e7c203796e653309fdb661}
 
+
+Attack the enemy. 
+
+Triggers the posioning process 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

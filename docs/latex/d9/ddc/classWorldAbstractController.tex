@@ -37,9 +37,8 @@ void \hyperlink{classWorldAbstractController_ab271df7d1af98b87afc0d50a4156616a}{
 \subsection*{Signals}
 \begin{DoxyCompactItemize}
 \item 
-void {\bfseries animation\+Done} ()\hypertarget{classWorldAbstractController_ae967946c752a88d3e18a365389f349eb}{}\label{classWorldAbstractController_ae967946c752a88d3e18a365389f349eb}
-
-\end{DoxyCompactItemize}
+void \hyperlink{classWorldAbstractController_ae967946c752a88d3e18a365389f349eb}{animation\+Done} ()
+\begin{DoxyCompactList}\small\item\em Animation finished signal. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -56,6 +55,8 @@ const \hyperlink{structPath}{Path} \& \hyperlink{classWorldAbstractController_ad
 \begin{DoxyCompactList}\small\item\em Returns last calculated path. \end{DoxyCompactList}\item 
 void \hyperlink{classWorldAbstractController_ad7c83b4de6ee365ef241c0755faa6e0d}{set\+Optimization\+Level} (float value)
 \begin{DoxyCompactList}\small\item\em Set level of optimization, e.\+g. h weight in A$\ast$ controller. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classWorldAbstractController_a7e70e58d1a22f825034c7d583bf8d662}{set\+Min\+Cost} (float value)
+\begin{DoxyCompactList}\small\item\em Set minimal tile energy cost. \end{DoxyCompactList}\item 
 void \hyperlink{classWorldAbstractController_a803d78a89d8aa8644e6755d86cb55a5f}{stop} ()\hypertarget{classWorldAbstractController_a803d78a89d8aa8644e6755d86cb55a5f}{}\label{classWorldAbstractController_a803d78a89d8aa8644e6755d86cb55a5f}
 
 \begin{DoxyCompactList}\small\item\em Stop the animation and clear the last path. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -79,7 +80,7 @@ Q\+Timer \hyperlink{classWorldAbstractController_ad152162c39be7f44e48f5ab2de7fca
 float \hyperlink{classWorldAbstractController_abaf4fb0106d4f5ee475b609a1b3116dd}{optimization\+\_\+}\hypertarget{classWorldAbstractController_abaf4fb0106d4f5ee475b609a1b3116dd}{}\label{classWorldAbstractController_abaf4fb0106d4f5ee475b609a1b3116dd}
 
 \begin{DoxyCompactList}\small\item\em Optimization level. \end{DoxyCompactList}\item 
-const float \hyperlink{classWorldAbstractController_a4064e89beaf84bbaf8c018058c821c8a}{min\+Cost\+\_\+} \{0.\+1f\}
+float \hyperlink{classWorldAbstractController_ad6c2ffd420b9c691d372a8232ab128cc}{min\+Cost\+\_\+} \{0.\+01f\}
 \begin{DoxyCompactList}\small\item\em Minimal energy cost of a tile (white tile energy cost) \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -108,7 +109,18 @@ Class constructor.
 
 
 \subsection{Member Function Documentation}
-\index{World\+Abstract\+Controller@{World\+Abstract\+Controller}!calculate\+Cost@{calculate\+Cost}}
+\index{World\+Abstract\+Controller@{World\+Abstract\+Controller}!animation\+Done@{animation\+Done}}
+\index{animation\+Done@{animation\+Done}!World\+Abstract\+Controller@{World\+Abstract\+Controller}}
+\subsubsection[{\texorpdfstring{animation\+Done}{animationDone}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Abstract\+Controller\+::animation\+Done (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\hypertarget{classWorldAbstractController_ae967946c752a88d3e18a365389f349eb}{}\label{classWorldAbstractController_ae967946c752a88d3e18a365389f349eb}
+
+
+Animation finished signal. 
+
+Emitted every time the path is performed completely \index{World\+Abstract\+Controller@{World\+Abstract\+Controller}!calculate\+Cost@{calculate\+Cost}}
 \index{calculate\+Cost@{calculate\+Cost}!World\+Abstract\+Controller@{World\+Abstract\+Controller}}
 \subsubsection[{\texorpdfstring{calculate\+Cost(float tile)}{calculateCost(float tile)}}]{\setlength{\rightskip}{0pt plus 5cm}float World\+Abstract\+Controller\+::calculate\+Cost (
 \begin{DoxyParamCaption}
@@ -240,6 +252,22 @@ Set animation speed between 100(fastest) and 1(slowest)
 {\em value} & animation speed \\
 \hline
 \end{DoxyParams}
+\index{World\+Abstract\+Controller@{World\+Abstract\+Controller}!set\+Min\+Cost@{set\+Min\+Cost}}
+\index{set\+Min\+Cost@{set\+Min\+Cost}!World\+Abstract\+Controller@{World\+Abstract\+Controller}}
+\subsubsection[{\texorpdfstring{set\+Min\+Cost(float value)}{setMinCost(float value)}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Abstract\+Controller\+::set\+Min\+Cost (
+\begin{DoxyParamCaption}
+\item[{float}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classWorldAbstractController_a7e70e58d1a22f825034c7d583bf8d662}{}\label{classWorldAbstractController_a7e70e58d1a22f825034c7d583bf8d662}
+
+
+Set minimal tile energy cost. 
+
+Defines the energy cost of white tile 
+\begin{DoxyParams}{Parameters}
+{\em value} & energy cost multiplied by 1000 \\
+\hline
+\end{DoxyParams}
 \index{World\+Abstract\+Controller@{World\+Abstract\+Controller}!set\+Optimization\+Level@{set\+Optimization\+Level}}
 \index{set\+Optimization\+Level@{set\+Optimization\+Level}!World\+Abstract\+Controller@{World\+Abstract\+Controller}}
 \subsubsection[{\texorpdfstring{set\+Optimization\+Level(float value)}{setOptimizationLevel(float value)}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Abstract\+Controller\+::set\+Optimization\+Level (
@@ -261,7 +289,7 @@ Set level of optimization, e.\+g. h weight in A$\ast$ controller.
 \subsection{Member Data Documentation}
 \index{World\+Abstract\+Controller@{World\+Abstract\+Controller}!min\+Cost\+\_\+@{min\+Cost\+\_\+}}
 \index{min\+Cost\+\_\+@{min\+Cost\+\_\+}!World\+Abstract\+Controller@{World\+Abstract\+Controller}}
-\subsubsection[{\texorpdfstring{min\+Cost\+\_\+}{minCost_}}]{\setlength{\rightskip}{0pt plus 5cm}const float World\+Abstract\+Controller\+::min\+Cost\+\_\+ \{0.\+1f\}\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classWorldAbstractController_a4064e89beaf84bbaf8c018058c821c8a}{}\label{classWorldAbstractController_a4064e89beaf84bbaf8c018058c821c8a}
+\subsubsection[{\texorpdfstring{min\+Cost\+\_\+}{minCost_}}]{\setlength{\rightskip}{0pt plus 5cm}float World\+Abstract\+Controller\+::min\+Cost\+\_\+ \{0.\+01f\}\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classWorldAbstractController_ad6c2ffd420b9c691d372a8232ab128cc}{}\label{classWorldAbstractController_ad6c2ffd420b9c691d372a8232ab128cc}
 
 
 Minimal energy cost of a tile (white tile energy cost) 

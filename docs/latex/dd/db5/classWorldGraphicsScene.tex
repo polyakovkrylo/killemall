@@ -1,0 +1,94 @@
+\hypertarget{classWorldGraphicsScene}{}\section{World\+Graphics\+Scene Class Reference}
+\label{classWorldGraphicsScene}\index{World\+Graphics\+Scene@{World\+Graphics\+Scene}}
+
+
+Graphics scene class.  
+
+
+
+
+{\ttfamily \#include $<$worldgraphicsscene.\+h$>$}
+
+
+
+Inheritance diagram for World\+Graphics\+Scene\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=189pt]{de/d1b/classWorldGraphicsScene__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for World\+Graphics\+Scene\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=189pt]{db/dee/classWorldGraphicsScene__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classWorldGraphicsScene_aeb00b350e294a92dd7d3246a8759903e}{World\+Graphics\+Scene} (Q\+Image back, Q\+RectF rect, Q\+Object $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Class constructor. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classWorldGraphicsScene_aab1d02f526a4f33191079ebd6b32d24b}{draw\+Background} (Q\+Painter $\ast$painter, const Q\+RectF \&rect) override
+\begin{DoxyCompactList}\small\item\em Draw background image. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Graphics scene class. 
+
+This class is used as the scene for graphics view. The only function that is re-\/implemented is draw\+Background, in order to draw not tiled background. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{World\+Graphics\+Scene@{World\+Graphics\+Scene}!World\+Graphics\+Scene@{World\+Graphics\+Scene}}
+\index{World\+Graphics\+Scene@{World\+Graphics\+Scene}!World\+Graphics\+Scene@{World\+Graphics\+Scene}}
+\subsubsection[{\texorpdfstring{World\+Graphics\+Scene(\+Q\+Image back, Q\+Rect\+F rect, Q\+Object $\ast$parent=nullptr)}{WorldGraphicsScene(QImage back, QRectF rect, QObject *parent=nullptr)}}]{\setlength{\rightskip}{0pt plus 5cm}World\+Graphics\+Scene\+::\+World\+Graphics\+Scene (
+\begin{DoxyParamCaption}
+\item[{Q\+Image}]{back, }
+\item[{Q\+RectF}]{rect, }
+\item[{Q\+Object $\ast$}]{parent = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)}\hypertarget{classWorldGraphicsScene_aeb00b350e294a92dd7d3246a8759903e}{}\label{classWorldGraphicsScene_aeb00b350e294a92dd7d3246a8759903e}
+
+
+Class constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em back} & background image \\
+\hline
+{\em rect} & scene area \\
+\hline
+{\em parent} & parent object \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{World\+Graphics\+Scene@{World\+Graphics\+Scene}!draw\+Background@{draw\+Background}}
+\index{draw\+Background@{draw\+Background}!World\+Graphics\+Scene@{World\+Graphics\+Scene}}
+\subsubsection[{\texorpdfstring{draw\+Background(\+Q\+Painter $\ast$painter, const Q\+Rect\+F \&rect) override}{drawBackground(QPainter *painter, const QRectF &rect) override}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Graphics\+Scene\+::draw\+Background (
+\begin{DoxyParamCaption}
+\item[{Q\+Painter $\ast$}]{painter, }
+\item[{const Q\+RectF \&}]{rect}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{classWorldGraphicsScene_aab1d02f526a4f33191079ebd6b32d24b}{}\label{classWorldGraphicsScene_aab1d02f526a4f33191079ebd6b32d24b}
+
+
+Draw background image. 
+
+This re-\/implemented function allows to draw background only once 
+\begin{DoxyParams}{Parameters}
+{\em painter} & painter object \\
+\hline
+{\em rect} & view area (not used) \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/bobiko/ku-\/leuven/media-\/processing/labs/finaltask/finaltask/src/graphicsview/worldgraphicsscene.\+h\item 
+/home/bobiko/ku-\/leuven/media-\/processing/labs/finaltask/finaltask/src/graphicsview/worldgraphicsscene.\+cpp\end{DoxyCompactItemize}

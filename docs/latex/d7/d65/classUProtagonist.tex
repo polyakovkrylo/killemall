@@ -30,16 +30,19 @@ Collaboration diagram for U\+Protagonist\+:\nopagebreak
 \subsection*{Public Slots}
 \begin{DoxyCompactItemize}
 \item 
-void {\bfseries restore\+Energy} ()\hypertarget{classUProtagonist_aafceebba330665d6c8cf6943515526d5}{}\label{classUProtagonist_aafceebba330665d6c8cf6943515526d5}
+void \hyperlink{classUProtagonist_aafceebba330665d6c8cf6943515526d5}{restore\+Energy} ()\hypertarget{classUProtagonist_aafceebba330665d6c8cf6943515526d5}{}\label{classUProtagonist_aafceebba330665d6c8cf6943515526d5}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Completely restore the energy level. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Signals}
 \begin{DoxyCompactItemize}
 \item 
 void \hyperlink{classUProtagonist_a51cf4f46d0b8d841ac91fb26cd175f04}{health\+Level\+Changed} (int value)
 \begin{DoxyCompactList}\small\item\em Health changed signal. \end{DoxyCompactList}\item 
 void \hyperlink{classUProtagonist_a5f04fffdddf19813626e2676152425d9}{energy\+Level\+Changed} (int value)
-\begin{DoxyCompactList}\small\item\em Energy changed signal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Energy changed signal. \end{DoxyCompactList}\item 
+void \hyperlink{classUProtagonist_ade87a2c665976c4e46991e6aa9e41875}{poisoned} ()\hypertarget{classUProtagonist_ade87a2c665976c4e46991e6aa9e41875}{}\label{classUProtagonist_ade87a2c665976c4e46991e6aa9e41875}
+
+\begin{DoxyCompactList}\small\item\em Signal to be emitted every time the hero is poisoned. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -51,7 +54,9 @@ void \hyperlink{classUProtagonist_a56f48e2a59eca29575cac673a03cbd69}{update\+Ene
 \begin{DoxyCompactList}\small\item\em Update energy. \end{DoxyCompactList}\item 
 const Q\+Rect \& \hyperlink{classUProtagonist_ae564263d78b9c1e15a27392376b1c2b3}{area} () const \hypertarget{classUProtagonist_ae564263d78b9c1e15a27392376b1c2b3}{}\label{classUProtagonist_ae564263d78b9c1e15a27392376b1c2b3}
 
-\begin{DoxyCompactList}\small\item\em Returns area occupied by the object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns area occupied by the object. \end{DoxyCompactList}\item 
+void \hyperlink{classUProtagonist_a367f9c57f2b80bcc088d8cc2f88037a4}{poison} (float damage)
+\begin{DoxyCompactList}\small\item\em Poison the enemy. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -113,6 +118,22 @@ Health changed signal.
 
 \begin{DoxyParams}{Parameters}
 {\em value} & current health level \\
+\hline
+\end{DoxyParams}
+\index{U\+Protagonist@{U\+Protagonist}!poison@{poison}}
+\index{poison@{poison}!U\+Protagonist@{U\+Protagonist}}
+\subsubsection[{\texorpdfstring{poison(float damage)}{poison(float damage)}}]{\setlength{\rightskip}{0pt plus 5cm}void U\+Protagonist\+::poison (
+\begin{DoxyParamCaption}
+\item[{float}]{damage}
+\end{DoxyParamCaption}
+)}\hypertarget{classUProtagonist_a367f9c57f2b80bcc088d8cc2f88037a4}{}\label{classUProtagonist_a367f9c57f2b80bcc088d8cc2f88037a4}
+
+
+Poison the enemy. 
+
+Decreases protagonist\textquotesingle{}s health and emits \hyperlink{classUProtagonist_ade87a2c665976c4e46991e6aa9e41875}{poisoned()} signal 
+\begin{DoxyParams}{Parameters}
+{\em damage} & HP to decrease \\
 \hline
 \end{DoxyParams}
 \index{U\+Protagonist@{U\+Protagonist}!update\+Energy@{update\+Energy}}

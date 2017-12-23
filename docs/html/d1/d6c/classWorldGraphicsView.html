@@ -115,6 +115,14 @@ Public Slots</h2></td></tr>
 <tr class="memitem:a8bdead6606060dc49a5faa5464d94c8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d6c/classWorldGraphicsView.html#a8bdead6606060dc49a5faa5464d94c8d">reloadScene</a> ()</td></tr>
 <tr class="memdesc:a8bdead6606060dc49a5faa5464d94c8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reload the model slot.  <a href="#a8bdead6606060dc49a5faa5464d94c8d">More...</a><br /></td></tr>
 <tr class="separator:a8bdead6606060dc49a5faa5464d94c8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57c88f9c11bd3bc2df3aeba015d8ca67"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a57c88f9c11bd3bc2df3aeba015d8ca67"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d6c/classWorldGraphicsView.html#a57c88f9c11bd3bc2df3aeba015d8ca67">enlarge</a> ()</td></tr>
+<tr class="memdesc:a57c88f9c11bd3bc2df3aeba015d8ca67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scale the scene up. <br /></td></tr>
+<tr class="separator:a57c88f9c11bd3bc2df3aeba015d8ca67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87a8d6055562a76d6e7e3b61832497cf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a87a8d6055562a76d6e7e3b61832497cf"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d6c/classWorldGraphicsView.html#a87a8d6055562a76d6e7e3b61832497cf">shrink</a> ()</td></tr>
+<tr class="memdesc:a87a8d6055562a76d6e7e3b61832497cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scale the scene down. <br /></td></tr>
+<tr class="separator:a87a8d6055562a76d6e7e3b61832497cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -124,9 +132,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac9bfe6153b0106f0cb6591b511f9391a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d6c/classWorldGraphicsView.html#ac9bfe6153b0106f0cb6591b511f9391a">setModel</a> (<a class="el" href="../../dc/dd7/classWorldModel.html">WorldModel</a> *model)</td></tr>
 <tr class="memdesc:ac9bfe6153b0106f0cb6591b511f9391a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the data model.  <a href="#ac9bfe6153b0106f0cb6591b511f9391a">More...</a><br /></td></tr>
 <tr class="separator:ac9bfe6153b0106f0cb6591b511f9391a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb08a8e079c13070a66804da4476cb60"><td class="memItemLeft" align="right" valign="top">QGraphicsItem *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d6c/classWorldGraphicsView.html#afb08a8e079c13070a66804da4476cb60">itemAt</a> (QPoint itemCenter)</td></tr>
-<tr class="memdesc:afb08a8e079c13070a66804da4476cb60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns item at the position.  <a href="#afb08a8e079c13070a66804da4476cb60">More...</a><br /></td></tr>
-<tr class="separator:afb08a8e079c13070a66804da4476cb60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdb212ddc141fdc73054bab7b5320d51"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d6c/classWorldGraphicsView.html#abdb212ddc141fdc73054bab7b5320d51">keyPressEvent</a> (QKeyEvent *e) override</td></tr>
 <tr class="memdesc:abdb212ddc141fdc73054bab7b5320d51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Key press event handler.  <a href="#abdb212ddc141fdc73054bab7b5320d51">More...</a><br /></td></tr>
 <tr class="separator:abdb212ddc141fdc73054bab7b5320d51"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -166,31 +171,6 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="afb08a8e079c13070a66804da4476cb60"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">QGraphicsItem * WorldGraphicsView::itemAt </td>
-          <td>(</td>
-          <td class="paramtype">QPoint&#160;</td>
-          <td class="paramname"><em>itemCenter</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns item at the position. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">itemCenter</td><td>position of item's center </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>item at the position </dd></dl>
-
-</div>
-</div>
 <a class="anchor" id="abdb212ddc141fdc73054bab7b5320d51"></a>
 <div class="memitem">
 <div class="memproto">

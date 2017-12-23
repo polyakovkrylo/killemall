@@ -58,6 +58,9 @@ private:
     QRect area_;
 
 signals:
+    /*!
+     * \brief Healthpack was used signal
+     */
     void used();
 };
 
@@ -123,7 +126,15 @@ public:
      * \brief Returns poison area of the enemy
      */
     inline const QRect &poisonArea() {return poisonArea_;}
+    /*!
+     * \brief Attack the enemy
+     *
+     * Triggers the posioning process
+     */
     void attack();
+    /*!
+     * \brief Check if the enemy has been already attacked
+     */
     inline bool isTriggered() const {return triggered_;}
 private:
     QRect area_;
@@ -197,6 +208,9 @@ signals:
     void poisoned();
 
 public slots:
+    /*!
+     * \brief Completely restore the energy level
+     */
     void restoreEnergy();
 };
 

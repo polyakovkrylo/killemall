@@ -33,7 +33,13 @@ Collaboration diagram for World\+Graphics\+View\+:\nopagebreak
 void \hyperlink{classWorldGraphicsView_afe30c74f794ae1b385ca3a89cb9ede25}{on\+Protagonist\+Position\+Changed} (int x, int y)
 \begin{DoxyCompactList}\small\item\em Update protagonist position. \end{DoxyCompactList}\item 
 void \hyperlink{classWorldGraphicsView_a8bdead6606060dc49a5faa5464d94c8d}{reload\+Scene} ()
-\begin{DoxyCompactList}\small\item\em Reload the model slot. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Reload the model slot. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldGraphicsView_a57c88f9c11bd3bc2df3aeba015d8ca67}{enlarge} ()\hypertarget{classWorldGraphicsView_a57c88f9c11bd3bc2df3aeba015d8ca67}{}\label{classWorldGraphicsView_a57c88f9c11bd3bc2df3aeba015d8ca67}
+
+\begin{DoxyCompactList}\small\item\em Scale the scene up. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldGraphicsView_a87a8d6055562a76d6e7e3b61832497cf}{shrink} ()\hypertarget{classWorldGraphicsView_a87a8d6055562a76d6e7e3b61832497cf}{}\label{classWorldGraphicsView_a87a8d6055562a76d6e7e3b61832497cf}
+
+\begin{DoxyCompactList}\small\item\em Scale the scene down. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -41,8 +47,6 @@ void \hyperlink{classWorldGraphicsView_a8bdead6606060dc49a5faa5464d94c8d}{reload
 \begin{DoxyCompactList}\small\item\em Class constructor. \end{DoxyCompactList}\item 
 void \hyperlink{classWorldGraphicsView_ac9bfe6153b0106f0cb6591b511f9391a}{set\+Model} (\hyperlink{classWorldModel}{World\+Model} $\ast$model)
 \begin{DoxyCompactList}\small\item\em Set the data model. \end{DoxyCompactList}\item 
-Q\+Graphics\+Item $\ast$ \hyperlink{classWorldGraphicsView_afb08a8e079c13070a66804da4476cb60}{item\+At} (Q\+Point item\+Center)
-\begin{DoxyCompactList}\small\item\em Returns item at the position. \end{DoxyCompactList}\item 
 virtual void \hyperlink{classWorldGraphicsView_abdb212ddc141fdc73054bab7b5320d51}{key\+Press\+Event} (Q\+Key\+Event $\ast$e) override
 \begin{DoxyCompactList}\small\item\em Key press event handler. \end{DoxyCompactList}\item 
 virtual void \hyperlink{classWorldGraphicsView_af4b8a71cfd9f363c8056a506ef60344c}{mouse\+Press\+Event} (Q\+Mouse\+Event $\ast$e) override
@@ -76,25 +80,6 @@ Class constructor.
 
 
 \subsection{Member Function Documentation}
-\index{World\+Graphics\+View@{World\+Graphics\+View}!item\+At@{item\+At}}
-\index{item\+At@{item\+At}!World\+Graphics\+View@{World\+Graphics\+View}}
-\subsubsection[{\texorpdfstring{item\+At(\+Q\+Point item\+Center)}{itemAt(QPoint itemCenter)}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Graphics\+Item $\ast$ World\+Graphics\+View\+::item\+At (
-\begin{DoxyParamCaption}
-\item[{Q\+Point}]{item\+Center}
-\end{DoxyParamCaption}
-)}\hypertarget{classWorldGraphicsView_afb08a8e079c13070a66804da4476cb60}{}\label{classWorldGraphicsView_afb08a8e079c13070a66804da4476cb60}
-
-
-Returns item at the position. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em item\+Center} & position of item\textquotesingle{}s center \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-item at the position 
-\end{DoxyReturn}
 \index{World\+Graphics\+View@{World\+Graphics\+View}!key\+Press\+Event@{key\+Press\+Event}}
 \index{key\+Press\+Event@{key\+Press\+Event}!World\+Graphics\+View@{World\+Graphics\+View}}
 \subsubsection[{\texorpdfstring{key\+Press\+Event(\+Q\+Key\+Event $\ast$e) override}{keyPressEvent(QKeyEvent *e) override}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Graphics\+View\+::key\+Press\+Event (

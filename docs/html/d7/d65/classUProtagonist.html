@@ -111,7 +111,8 @@ Collaboration diagram for UProtagonist:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-slots"></a>
 Public Slots</h2></td></tr>
 <tr class="memitem:aafceebba330665d6c8cf6943515526d5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aafceebba330665d6c8cf6943515526d5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>restoreEnergy</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d65/classUProtagonist.html#aafceebba330665d6c8cf6943515526d5">restoreEnergy</a> ()</td></tr>
+<tr class="memdesc:aafceebba330665d6c8cf6943515526d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Completely restore the energy level. <br /></td></tr>
 <tr class="separator:aafceebba330665d6c8cf6943515526d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
@@ -122,6 +123,10 @@ Signals</h2></td></tr>
 <tr class="memitem:a5f04fffdddf19813626e2676152425d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d65/classUProtagonist.html#a5f04fffdddf19813626e2676152425d9">energyLevelChanged</a> (int value)</td></tr>
 <tr class="memdesc:a5f04fffdddf19813626e2676152425d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Energy changed signal.  <a href="#a5f04fffdddf19813626e2676152425d9">More...</a><br /></td></tr>
 <tr class="separator:a5f04fffdddf19813626e2676152425d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade87a2c665976c4e46991e6aa9e41875"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ade87a2c665976c4e46991e6aa9e41875"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d65/classUProtagonist.html#ade87a2c665976c4e46991e6aa9e41875">poisoned</a> ()</td></tr>
+<tr class="memdesc:ade87a2c665976c4e46991e6aa9e41875"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal to be emitted every time the hero is poisoned. <br /></td></tr>
+<tr class="separator:ade87a2c665976c4e46991e6aa9e41875"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -138,6 +143,9 @@ Public Member Functions</h2></td></tr>
 const QRect &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d65/classUProtagonist.html#ae564263d78b9c1e15a27392376b1c2b3">area</a> () const </td></tr>
 <tr class="memdesc:ae564263d78b9c1e15a27392376b1c2b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns area occupied by the object. <br /></td></tr>
 <tr class="separator:ae564263d78b9c1e15a27392376b1c2b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a367f9c57f2b80bcc088d8cc2f88037a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d65/classUProtagonist.html#a367f9c57f2b80bcc088d8cc2f88037a4">poison</a> (float damage)</td></tr>
+<tr class="memdesc:a367f9c57f2b80bcc088d8cc2f88037a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Poison the enemy.  <a href="#a367f9c57f2b80bcc088d8cc2f88037a4">More...</a><br /></td></tr>
+<tr class="separator:a367f9c57f2b80bcc088d8cc2f88037a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Updated protagonist class. </p>
@@ -227,6 +235,30 @@ const QRect &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="e
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">value</td><td>current health level </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a367f9c57f2b80bcc088d8cc2f88037a4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UProtagonist::poison </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>damage</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Poison the enemy. </p>
+<p>Decreases protagonist's health and emits <a class="el" href="../../d7/d65/classUProtagonist.html#ade87a2c665976c4e46991e6aa9e41875" title="Signal to be emitted every time the hero is poisoned. ">poisoned()</a> signal </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">damage</td><td>HP to decrease </td></tr>
   </table>
   </dd>
 </dl>

@@ -115,9 +115,9 @@ Signals</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a865c439af7c5fc9893eb9a95e08eae26"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d01/classUPEnemy.html#a865c439af7c5fc9893eb9a95e08eae26">UPEnemy</a> (int x, int y, float strength, int radius=5, int poisonRadius=10)</td></tr>
-<tr class="memdesc:a865c439af7c5fc9893eb9a95e08eae26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor.  <a href="#a865c439af7c5fc9893eb9a95e08eae26">More...</a><br /></td></tr>
-<tr class="separator:a865c439af7c5fc9893eb9a95e08eae26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a118be97fa267047357fb56571eaef1ed"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d01/classUPEnemy.html#a118be97fa267047357fb56571eaef1ed">UPEnemy</a> (int x, int y, float strength)</td></tr>
+<tr class="memdesc:a118be97fa267047357fb56571eaef1ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor.  <a href="#a118be97fa267047357fb56571eaef1ed">More...</a><br /></td></tr>
+<tr class="separator:a118be97fa267047357fb56571eaef1ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa87ac038b30dccbad0a0966824d99382"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa87ac038b30dccbad0a0966824d99382"></a>
 const QRect &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d01/classUPEnemy.html#aa87ac038b30dccbad0a0966824d99382">area</a> ()</td></tr>
 <tr class="memdesc:aa87ac038b30dccbad0a0966824d99382"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns area occupied by the object. <br /></td></tr>
@@ -126,14 +126,18 @@ const QRect &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="e
 const QRect &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d01/classUPEnemy.html#a88cc91ecae7705053e6cfbab57f60503">poisonArea</a> ()</td></tr>
 <tr class="memdesc:a88cc91ecae7705053e6cfbab57f60503"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns poison area of the enemy. <br /></td></tr>
 <tr class="separator:a88cc91ecae7705053e6cfbab57f60503"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1145894e8e7c203796e653309fdb661"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa1145894e8e7c203796e653309fdb661"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>attack</b> ()</td></tr>
+<tr class="memitem:aa1145894e8e7c203796e653309fdb661"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d01/classUPEnemy.html#aa1145894e8e7c203796e653309fdb661">attack</a> ()</td></tr>
+<tr class="memdesc:aa1145894e8e7c203796e653309fdb661"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attack the enemy.  <a href="#aa1145894e8e7c203796e653309fdb661">More...</a><br /></td></tr>
 <tr class="separator:aa1145894e8e7c203796e653309fdb661"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a3e30df0c5f369a4859803970d5e69c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4a3e30df0c5f369a4859803970d5e69c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d01/classUPEnemy.html#a4a3e30df0c5f369a4859803970d5e69c">isTriggered</a> () const </td></tr>
+<tr class="memdesc:a4a3e30df0c5f369a4859803970d5e69c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the enemy has been already attacked. <br /></td></tr>
+<tr class="separator:a4a3e30df0c5f369a4859803970d5e69c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Updated poisoned enemy class. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a865c439af7c5fc9893eb9a95e08eae26"></a>
+<a class="anchor" id="a118be97fa267047357fb56571eaef1ed"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -153,19 +157,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>attack</b> ()</td></t
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>strength</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>radius</em> = <code>5</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>poisonRadius</em> = <code>10</code>&#160;</td>
+          <td class="paramname"><em>strength</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -229,6 +221,24 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>attack</b> ()</td></t
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="aa1145894e8e7c203796e653309fdb661"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UPEnemy::attack </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Attack the enemy. </p>
+<p>Triggers the posioning process </p>
 
 </div>
 </div>

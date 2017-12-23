@@ -4,7 +4,7 @@ var searchData=
   ['mainwindow',['MainWindow',['../d6/d1a/classMainWindow.html',1,'']]],
   ['mainwindow_2ecpp',['mainwindow.cpp',['../d8/dd9/mainwindow_8cpp.html',1,'']]],
   ['mainwindow_2eh',['mainwindow.h',['../d9/d53/mainwindow_8h.html',1,'']]],
-  ['mincost_5f',['minCost_',['../d9/ddc/classWorldAbstractController.html#a4064e89beaf84bbaf8c018058c821c8a',1,'WorldAbstractController']]],
+  ['mincost_5f',['minCost_',['../d9/ddc/classWorldAbstractController.html#ad6c2ffd420b9c691d372a8232ab128cc',1,'WorldAbstractController']]],
   ['model',['Model',['../d5/d22/group__model.html',1,'']]],
   ['model_5f',['model_',['../d9/ddc/classWorldAbstractController.html#a45fe9595cbcc1eafe6f3f418a08f46c4',1,'WorldAbstractController']]],
   ['mousemoveevent',['mouseMoveEvent',['../d1/d6c/classWorldGraphicsView.html#a07a8843b73603a3eb71f768308aa5310',1,'WorldGraphicsView']]],

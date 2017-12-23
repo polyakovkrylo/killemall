@@ -1,6 +1,7 @@
 var searchData=
 [
   ['calculatecost',['calculateCost',['../d9/ddc/classWorldAbstractController.html#a556c8e2b55b017f5e837db2b58d3553e',1,'WorldAbstractController']]],
+  ['checkifwin',['checkIfWin',['../dc/dd7/classWorldModel.html#a83284690f9b21540528cf13d114a6dc9',1,'WorldModel']]],
   ['clearnodes',['clearNodes',['../dd/d9f/classAStarController.html#a002505340b1518995d830bc93e0ffd3d',1,'AStarController']]],
   ['comparecost',['CompareCost',['../d0/d70/classCompareCost.html',1,'']]],
   ['controller',['Controller',['../dc/dbf/group__controller.html',1,'']]],

@@ -141,9 +141,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../.
 <tr class="memitem:aceb49c5514940947dbcacc97484aa4bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dd7/classWorldModel.html#aceb49c5514940947dbcacc97484aa4bd">areaPoisoned</a> (int value, QRect rect)</td></tr>
 <tr class="memdesc:aceb49c5514940947dbcacc97484aa4bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Area is poisoned signal.  <a href="#aceb49c5514940947dbcacc97484aa4bd">More...</a><br /></td></tr>
 <tr class="separator:aceb49c5514940947dbcacc97484aa4bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a128eb886de920133792e1e26f1caf468"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dd7/classWorldModel.html#a128eb886de920133792e1e26f1caf468">win</a> ()</td></tr>
+<tr class="memdesc:a128eb886de920133792e1e26f1caf468"><td class="mdescLeft">&#160;</td><td class="mdescRight">Win signal.  <a href="#a128eb886de920133792e1e26f1caf468">More...</a><br /></td></tr>
+<tr class="separator:a128eb886de920133792e1e26f1caf468"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73bdac0d024fd7ae02f09b58e833cad3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dd7/classWorldModel.html#a73bdac0d024fd7ae02f09b58e833cad3">protagonistDead</a> ()</td></tr>
 <tr class="memdesc:a73bdac0d024fd7ae02f09b58e833cad3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Protagonist is dead signal.  <a href="#a73bdac0d024fd7ae02f09b58e833cad3">More...</a><br /></td></tr>
 <tr class="separator:a73bdac0d024fd7ae02f09b58e833cad3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad97bbf59d3714296882d2be9038e27bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dd7/classWorldModel.html#ad97bbf59d3714296882d2be9038e27bb">protagonistNoEnergy</a> ()</td></tr>
+<tr class="memdesc:ad97bbf59d3714296882d2be9038e27bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Protagonist ran out of energy signal.  <a href="#ad97bbf59d3714296882d2be9038e27bb">More...</a><br /></td></tr>
+<tr class="separator:ad97bbf59d3714296882d2be9038e27bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -182,8 +188,13 @@ const QString &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class=
 <tr class="memdesc:a1f4957f65c7b044dffe4d4c5e6886438"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns level map image. <br /></td></tr>
 <tr class="separator:a1f4957f65c7b044dffe4d4c5e6886438"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ccf488139cdbfa6a25262d01a0401d5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1ccf488139cdbfa6a25262d01a0401d5"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>ready</b> () const </td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dd7/classWorldModel.html#a1ccf488139cdbfa6a25262d01a0401d5">ready</a> () const </td></tr>
+<tr class="memdesc:a1ccf488139cdbfa6a25262d01a0401d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the model is initialized. <br /></td></tr>
 <tr class="separator:a1ccf488139cdbfa6a25262d01a0401d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83284690f9b21540528cf13d114a6dc9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a83284690f9b21540528cf13d114a6dc9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dd7/classWorldModel.html#a83284690f9b21540528cf13d114a6dc9">checkIfWin</a> ()</td></tr>
+<tr class="memdesc:a83284690f9b21540528cf13d114a6dc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if all enemies are dead. <br /></td></tr>
+<tr class="separator:a83284690f9b21540528cf13d114a6dc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Model component implementation. </p>
@@ -569,6 +580,32 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>ready</b> () const </
 
 </div>
 </div>
+<a class="anchor" id="ad97bbf59d3714296882d2be9038e27bb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void WorldModel::protagonistNoEnergy </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Protagonist ran out of energy signal. </p>
+<p>When the protagonist runs out of energy, he can no longer move. This means game over. </p>
+
+</div>
+</div>
 <a class="anchor" id="a8cb4ca5355bd9825deefbf8cc86f067a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -592,6 +629,32 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>ready</b> () const </
 
 <p>Use a health pack at the position. </p>
 <p>Uses any health pack that occupies the given position </p>
+
+</div>
+</div>
+<a class="anchor" id="a128eb886de920133792e1e26f1caf468"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void WorldModel::win </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Win signal. </p>
+<p>Emitted once all enemies are defeated </p>
 
 </div>
 </div>

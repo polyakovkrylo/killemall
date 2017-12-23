@@ -52,8 +52,12 @@ void \hyperlink{classWorldModel_af66c7d6051c21a0933e9ac168096dd8b}{enemy\+Defeat
 \begin{DoxyCompactList}\small\item\em Enemy is defeated signal Emited every time one of enemies is defeated. \end{DoxyCompactList}\item 
 void \hyperlink{classWorldModel_aceb49c5514940947dbcacc97484aa4bd}{area\+Poisoned} (int value, Q\+Rect rect)
 \begin{DoxyCompactList}\small\item\em Area is poisoned signal. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldModel_a128eb886de920133792e1e26f1caf468}{win} ()
+\begin{DoxyCompactList}\small\item\em Win signal. \end{DoxyCompactList}\item 
 void \hyperlink{classWorldModel_a73bdac0d024fd7ae02f09b58e833cad3}{protagonist\+Dead} ()
-\begin{DoxyCompactList}\small\item\em Protagonist is dead signal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Protagonist is dead signal. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldModel_ad97bbf59d3714296882d2be9038e27bb}{protagonist\+No\+Energy} ()
+\begin{DoxyCompactList}\small\item\em Protagonist ran out of energy signal. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -82,9 +86,12 @@ const std\+::unique\+\_\+ptr$<$ \hyperlink{classWorldAbstractController}{World\+
 const Q\+String \& \hyperlink{classWorldModel_a1f4957f65c7b044dffe4d4c5e6886438}{get\+Level} () const \hypertarget{classWorldModel_a1f4957f65c7b044dffe4d4c5e6886438}{}\label{classWorldModel_a1f4957f65c7b044dffe4d4c5e6886438}
 
 \begin{DoxyCompactList}\small\item\em Returns level map image. \end{DoxyCompactList}\item 
-bool {\bfseries ready} () const \hypertarget{classWorldModel_a1ccf488139cdbfa6a25262d01a0401d5}{}\label{classWorldModel_a1ccf488139cdbfa6a25262d01a0401d5}
+bool \hyperlink{classWorldModel_a1ccf488139cdbfa6a25262d01a0401d5}{ready} () const \hypertarget{classWorldModel_a1ccf488139cdbfa6a25262d01a0401d5}{}\label{classWorldModel_a1ccf488139cdbfa6a25262d01a0401d5}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Check if the model is initialized. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldModel_a83284690f9b21540528cf13d114a6dc9}{check\+If\+Win} ()\hypertarget{classWorldModel_a83284690f9b21540528cf13d114a6dc9}{}\label{classWorldModel_a83284690f9b21540528cf13d114a6dc9}
+
+\begin{DoxyCompactList}\small\item\em Check if all enemies are dead. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -282,7 +289,18 @@ Decreases protagonist health if he is within connected to each poisoned enemy th
 
 Protagonist is dead signal. 
 
-Protagonist can only die when attacking an enemy, or if he was deadly poisoned(level of poison became more than health level) on the last move. That means the hero still has one move to find a health pack even if he was killed by the poison \index{World\+Model@{World\+Model}!use\+Healthpack@{use\+Healthpack}}
+Protagonist can only die when attacking an enemy, or if he was deadly poisoned(level of poison became more than health level) on the last move. That means the hero still has one move to find a health pack even if he was killed by the poison \index{World\+Model@{World\+Model}!protagonist\+No\+Energy@{protagonist\+No\+Energy}}
+\index{protagonist\+No\+Energy@{protagonist\+No\+Energy}!World\+Model@{World\+Model}}
+\subsubsection[{\texorpdfstring{protagonist\+No\+Energy}{protagonistNoEnergy}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Model\+::protagonist\+No\+Energy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\hypertarget{classWorldModel_ad97bbf59d3714296882d2be9038e27bb}{}\label{classWorldModel_ad97bbf59d3714296882d2be9038e27bb}
+
+
+Protagonist ran out of energy signal. 
+
+When the protagonist runs out of energy, he can no longer move. This means game over. \index{World\+Model@{World\+Model}!use\+Healthpack@{use\+Healthpack}}
 \index{use\+Healthpack@{use\+Healthpack}!World\+Model@{World\+Model}}
 \subsubsection[{\texorpdfstring{use\+Healthpack}{useHealthpack}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Model\+::use\+Healthpack (
 \begin{DoxyParamCaption}
@@ -293,7 +311,18 @@ Protagonist can only die when attacking an enemy, or if he was deadly poisoned(l
 
 Use a health pack at the position. 
 
-Uses any health pack that occupies the given position 
+Uses any health pack that occupies the given position \index{World\+Model@{World\+Model}!win@{win}}
+\index{win@{win}!World\+Model@{World\+Model}}
+\subsubsection[{\texorpdfstring{win}{win}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Model\+::win (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\hypertarget{classWorldModel_a128eb886de920133792e1e26f1caf468}{}\label{classWorldModel_a128eb886de920133792e1e26f1caf468}
+
+
+Win signal. 
+
+Emitted once all enemies are defeated 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

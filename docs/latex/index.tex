@@ -21,7 +21,7 @@ The hero can die because of two reasons\+:
 \item The hero has been poisoned with a poison level bigger than hero\textquotesingle{}s health level. In that case the protagonist still has one move to pick a health pack before he will die.
 \end{DoxyItemize}
 
-Before starting the game, player should pick the level, number of enemies and health packs in the world and a level of optimization for the model\textquotesingle{}s controller\+:
+Before starting the game, player should pick the level, number of enemies and health packs in the world, minimal energy cost of moving through one tile and a level of optimization for the model\textquotesingle{}s controller\+:
 
 
 
@@ -29,7 +29,7 @@ Afterwards the main window will appear allowing player to move across the world 
 
 
 
-Player can switch between graphical and terminal view at any moment by clicking {\ttfamily Switch view} button. Speed of animation can also be changed using {\ttfamily Set animation speed} slider. Player can change or restart the world any time by clicking {\ttfamily World-\/$>$Load world..}
+Player can switch between graphical and terminal view at any moment by clicking {\ttfamily Switch view} button. Speed of animation can also be changed using {\ttfamily Set animation speed} slider. Player can change or restart the world any time by clicking {\ttfamily World-\/$>$Load world..} or run an AI strategy by clicking {\ttfamily Run strategy}. The size of an object in the graphical representation shows the value of that object\+: the bigger it is, the stronger is that enemy(or the more HP will be restored by that health pack).
 
 \subsection*{Project description}
 
@@ -63,7 +63,7 @@ Following diagram represents the model of the system divided into packages. Each
 
 Static method {\ttfamily create\+Controller()} is used by \hyperlink{classWorldModel}{World\+Model} in order to create a controller of a certain type.\+In order to implement a new controller, it should be inherited from {\ttfamily Abstract\+Controller}, {\ttfamily find\+Path()} function should be implemented, and its type should be added to {\ttfamily Controller\+Type}enumeration. For demonstration purposes, only {\ttfamily \hyperlink{classAStarController}{A\+Star\+Controller}} is implemented.
 
-\subsection*{Strategy packages}
+\subsection*{Strategy package}
 
 {\ttfamily strategy} package implements the AI component of the application. The diagram of the package is given below\+:
 
@@ -91,7 +91,7 @@ It has a text field for output, edit line for command input and a button to exec
 
 
 \begin{DoxyItemize}
-\item \mbox{[} \mbox{]} Modeling
+\item \mbox{[}x\mbox{]} Modeling
 \begin{DoxyItemize}
 \item \mbox{[}x\mbox{]} Architechture
 \item \mbox{[}x\mbox{]} Model package
@@ -101,7 +101,7 @@ It has a text field for output, edit line for command input and a button to exec
 \item \mbox{[}x\mbox{]} Graphics\+View
 \item \mbox{[}x\mbox{]} Terminal\+View
 \end{DoxyItemize}
-\item \mbox{[} \mbox{]} Strategy
+\item \mbox{[}x\mbox{]} Strategy
 \end{DoxyItemize}
 \item \mbox{[}x\mbox{]} Implementing
 \begin{DoxyItemize}

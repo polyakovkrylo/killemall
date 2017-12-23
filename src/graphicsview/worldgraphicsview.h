@@ -100,7 +100,13 @@ public slots:
      * with a given model.
      */
     void reloadScene();
+    /*!
+     * \brief Scale the scene up
+     */
     void enlarge();
+    /*!
+     * \brief Scale the scene down
+     */
     void shrink();
 };
 

@@ -30,7 +30,8 @@ hero's health level. In that case the protagonist still has one
 move to pick a health pack before he will die.
 
 Before starting the game, player should pick the level, number
-of enemies and health packs in the world and a level of
+of enemies and health packs in the world, minimal energy cost of
+moving through one tile and a level of
 optimization for the model's controller:
 
 ![img def](img/popup.png)
@@ -44,7 +45,10 @@ Player can switch between graphical and terminal view at any
 moment by clicking `Switch view` button. Speed of animation can
 also be changed using `Set animation speed` slider. Player can
 change or restart the world any time by clicking `World->Load
-world..`
+world..` or run an AI strategy by clicking `Run strategy`. The
+size of an object in the graphical representation shows the value
+of that object: the bigger it is, the stronger is that enemy(or
+the more HP will be restored by that health pack).
 
 ## Project description
 
@@ -113,7 +117,7 @@ new controller, it should be inherited from `AbstractController`,
 be added to `ControllerType `enumeration. For
 demonstration purposes, only `AStarController` is implemented.
 
-## Strategy packages
+## Strategy package
 `strategy` package implements the AI component of the application. The diagram of the package is given below:
 
 ![img def](uml/strategy.png)

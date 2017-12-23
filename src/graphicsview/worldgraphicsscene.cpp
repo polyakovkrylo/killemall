@@ -1,3 +1,15 @@
+/*!
+ * \file worldscene.cpp
+ *
+ * WorldGraphicsScene class definition
+ *
+ * \version 1.0
+ *
+ * \author Vladimir Poliakov
+ * \author Brian Segers
+ * \author Kasper De Volder
+ */
+
 #include "worldgraphicsscene.h"
 
 WorldGraphicsScene::WorldGraphicsScene(QImage back, QRectF rect, QObject* parent):

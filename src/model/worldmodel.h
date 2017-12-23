@@ -79,7 +79,13 @@ public:
      * \brief Returns level map image
      */
     inline const QString & getLevel() const {return level_;}
+    /*!
+     * \brief Check if the model is initialized
+     */
     inline bool ready() const {return ready_;}
+    /*!
+     * \brief Check if all enemies are dead
+     */
     void checkIfWin();
 
 private:
