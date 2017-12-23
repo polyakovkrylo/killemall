@@ -16,7 +16,7 @@ using std::vector;
 using std::unique_ptr;
 
 WorldModel::WorldModel(QObject *parent) :
-    QObject(parent), level_{":/img/level1.png"},
+    QObject(parent), level_{":/img/maps/level1.png"},
     numOfEnemies_{20}, numOfHealthpacks_{20}, ready_{false}
 {
     controller_ = unique_ptr<WorldAbstractController>(WorldControllerFactory::createController(this));

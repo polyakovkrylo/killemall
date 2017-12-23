@@ -59,14 +59,6 @@ public:
     void setModel(WorldModel *model);
 
     /*!
-     * \brief Returns item at the position
-     *
-     * \param itemCenter position of item's center
-     * \return item at the position
-     */
-    QGraphicsItem *itemAt(QPoint itemCenter);
-
-    /*!
      * \brief Key press event handler
      * \param e key event
      */
@@ -108,7 +100,8 @@ public slots:
      * with a given model.
      */
     void reloadScene();
-
+    void enlarge();
+    void shrink();
 };
 
 #endif // WORLDGRAPHICSVIEW_H

@@ -137,6 +137,7 @@ void WorldGraphicsView::reloadScene()
     //draw protagonist with the center at tile's x and y
     auto &p = model_->getProtagonist();
     protagonist_ = scene_->addEllipse(p->area(), QPen(), QBrush(Qt::blue));
+    protagonist_->setPos(p->getXPos(), p->getYPos());
 
     healthBar_->setValue(p->getHealth());
     energyBar_->setValue(p->getEnergy());
@@ -147,4 +148,14 @@ void WorldGraphicsView::reloadScene()
 
     setScene(scene_);
     centerOn(protagonist_);
+}
+
+void WorldGraphicsView::enlarge()
+{
+    scale(1.25f, 1.25f);
+}
+
+void WorldGraphicsView::shrink()
+{
+    scale(0.8f, 0.8f);
 }

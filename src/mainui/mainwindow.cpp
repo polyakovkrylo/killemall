@@ -23,13 +23,13 @@ MainWindow::MainWindow(QWidget *parent) :
     gv = findChild<WorldGraphicsView*>("graphicsView");
     tv->hide();
     strategy = new WorldStrategy(this);
-
     setModel(new WorldModel(this));
 
     loadWorld = new Popup;
     connect(ui->actionLoad_world, SIGNAL(triggered(bool)), loadWorld, SLOT(exec()));
     connect(loadWorld, SIGNAL(accepted()), this, SLOT(onPopupClosed()));
-
+    connect(ui->enlargeBtn, SIGNAL(clicked()), gv, SLOT(enlarge()));
+    connect(ui->shrinkBtn, SIGNAL(clicked()), gv, SLOT(shrink()));
     connect(ui->strategyBtn, SIGNAL(clicked(bool)), strategy, SLOT(run(bool)));
 
     emit ui->actionLoad_world->triggered(true);
@@ -98,7 +98,7 @@ void MainWindow::onPopupClosed()
 {
     ui->strategyBtn->setChecked(false);
     Values vals = loadWorld->getValues();
-    QString map(":/img/" + vals.map);
+    QString map(":/img/maps/" + vals.map);
     model->getController()->setMinCost(vals.energyCost);
     model->init(map, vals.enemies, vals.healthpacks);
     model->getController().get()->setOptimizationLevel(vals.optimization);
