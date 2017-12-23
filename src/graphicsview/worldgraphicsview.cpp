@@ -50,22 +50,6 @@ void WorldGraphicsView::setModel(WorldModel *model)
     connect(model_, SIGNAL(reload()),this, SLOT(reloadScene()));
 }
 
-QGraphicsItem *WorldGraphicsView::itemAt(QPoint itemCenter)
-{
-    //looking for an item with that fits the rectangle
-    QGraphicsItem* item = nullptr;
-    for(QGraphicsItem* it: items(mapFromScene(itemCenter))){
-        if(it == protagonist_) {
-            continue;
-        }
-        if(it->boundingRect().center() == itemCenter) {
-            item = it;
-            break;
-        }
-    }
-    return item;
-}
-
 void WorldGraphicsView::keyPressEvent(QKeyEvent *e)
 {
     int x = model_->getProtagonist()->getXPos();
@@ -102,7 +86,7 @@ void WorldGraphicsView::onProtagonistPositionChanged(int x, int y)
 {
     //move protagonist and center view
     protagonist_->setPos(x,y);
-    centerOn(protagonist_);
+    ensureVisible(protagonist_, 100, 100);
 }
 
 void WorldGraphicsView::reloadScene()
@@ -113,7 +97,7 @@ void WorldGraphicsView::reloadScene()
 
     // create scene and draw background
     QImage back(model_->getLevel());
-    scene_ = new QGraphicsScene(QRectF(0,0,back.width(),back.height()),this);
+    scene_ = new WorldGraphicsScene(back, QRectF(0,0,back.width(),back.height()),this);
     scene_->setBackgroundBrush(back);
 
     // draw enemies and connect them to lambda slot
@@ -153,6 +137,7 @@ void WorldGraphicsView::reloadScene()
     //draw protagonist with the center at tile's x and y
     auto &p = model_->getProtagonist();
     protagonist_ = scene_->addEllipse(p->area(), QPen(), QBrush(Qt::blue));
+    protagonist_->setPos(p->getXPos(), p->getYPos());
 
     healthBar_->setValue(p->getHealth());
     energyBar_->setValue(p->getEnergy());
@@ -163,4 +148,14 @@ void WorldGraphicsView::reloadScene()
 
     setScene(scene_);
     centerOn(protagonist_);
+}
+
+void WorldGraphicsView::enlarge()
+{
+    scale(1.25f, 1.25f);
+}
+
+void WorldGraphicsView::shrink()
+{
+    scale(0.8f, 0.8f);
 }

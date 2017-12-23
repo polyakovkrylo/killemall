@@ -18,7 +18,7 @@ Popup::Popup(QDialog *parent) :
     ui(new Ui::Popup)
 {
     ui->setupUi(this);
-    QDir dir(":/img/");
+    QDir dir(":/img/maps/");
     for(QString f : dir.entryList()) {
         ui->chooseWorld->addItem(f);
     }

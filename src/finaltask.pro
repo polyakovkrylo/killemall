@@ -33,7 +33,8 @@ SOURCES += main.cpp \
     terminalview/worldterminalview.cpp \
     mainui/mainwindow.cpp \
     mainui/popup.cpp \
-    strategy/worldstrategy.cpp
+    strategy/worldstrategy.cpp \
+    graphicsview/worldgraphicsscene.cpp
 HEADERS += \
            ../libworld/world.h \
     model/worldmodel.h \
@@ -45,7 +46,8 @@ HEADERS += \
     terminalview/worldterminalview.h \
     mainui/mainwindow.h \
     mainui/popup.h \
-    strategy/worldstrategy.h
+    strategy/worldstrategy.h \
+    graphicsview/worldgraphicsscene.h
 
 
 LIBS += -L../libworld/ -lworld
