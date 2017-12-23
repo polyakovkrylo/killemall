@@ -31,6 +31,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->enlargeBtn, SIGNAL(clicked()), gv, SLOT(enlarge()));
     connect(ui->shrinkBtn, SIGNAL(clicked()), gv, SLOT(shrink()));
     connect(ui->strategyBtn, SIGNAL(clicked(bool)), strategy, SLOT(run(bool)));
+    connect(strategy, SIGNAL(finished()), ui->strategyBtn, SLOT(toggle()));
 
     emit ui->actionLoad_world->triggered(true);
 }

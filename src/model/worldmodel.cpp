@@ -89,8 +89,13 @@ void WorldModel::init(QString filename, int enemies, int healthpacks)
             emit healthpackUsed(x,y);
         });
     }
+
+    // create the protagonist and set the starting positiom
     protagonist_.reset();
     protagonist_ = world_->createProtagonist();
+    if(level_.endsWith("level1.png")) protagonist_->setPos(5,490);
+    if(level_.endsWith("level2.png")) protagonist_->setPos(440,210);
+    if(level_.endsWith("level3.png")) protagonist_->setPos(1180,1180);
 
     ready_ = true;
     emit reload();
