@@ -1,3 +1,15 @@
+/*!
+ * \file worldgraphicsview.cpp
+ *
+ * WorldGraphicsView class definition
+ *
+ * \version 1.0
+ *
+ * \author Vladimir Poliakov
+ * \author Brian Segers
+ * \author Kasper De Volder
+ */
+
 #include "worldgraphicsview.h"
 
 WorldGraphicsView::WorldGraphicsView(QWidget *parent) :
@@ -24,7 +36,7 @@ WorldGraphicsView::WorldGraphicsView(QWidget *parent) :
 
 void WorldGraphicsView::setModel(WorldModel *model)
 {
-    // disconnect previous model's signals
+    // disconnect all slots from the previous model
     if(model_) {
         disconnect(model_, SIGNAL(reload()),this, SLOT(reloadScene()));
         disconnect(model_->getProtagonist().get(), SIGNAL(posChanged(int,int)), this, SLOT(onProtagonistPositionChanged(int,int)));
@@ -32,7 +44,8 @@ void WorldGraphicsView::setModel(WorldModel *model)
         disconnect(model_->getProtagonist().get(),SIGNAL(energyLevelChanged(int)),energyBar_,SLOT(setValue(int)));
     }
     model_ = model;
-    reloadScene();
+    if(model_->ready())
+        reloadScene();
     // connect new model reload signal
     connect(model_, SIGNAL(reload()),this, SLOT(reloadScene()));
 }
@@ -86,46 +99,39 @@ void WorldGraphicsView::reloadScene()
     QImage back(model_->getLevel());
     scene_ = new QGraphicsScene(QRectF(0,0,back.width(),back.height()),this);
     scene_->setBackgroundBrush(back);
-    setMaximumSize(back.size());
 
     // draw enemies and connect them to lambda slot
     for(auto &e: model_->getEnemies()) {
         QGraphicsEllipseItem *eIt = scene_->addEllipse(e->area(),QPen(),QBrush(Qt::red));
-        auto con = connect(e.get(), &UEnemy::dead, [=]() {
+        connect(e.get(), &UEnemy::dead, [=]() {
             // mark enemy as defeated
             eIt->setBrush(Qt::gray);
         } );
-        connect(scene_, &QGraphicsScene::destroyed, [=](){disconnect(con);});
     }
 
     // draw enemies and connect them to lambda slot for dead poisonLevelChanged slots
     for(auto &pe: model_->getPEnemies()) {
         QGraphicsEllipseItem *peIt = scene_->addEllipse(pe->area(),QPen(),QBrush(Qt::red));
-        auto con1 = connect(pe.get(), &UPEnemy::dead, [=]() {
+        connect(pe.get(), &UPEnemy::dead, [=]() {
             // mark enemy as defeated
             peIt->setBrush(Qt::gray);
         } );
         // draw poison area
         QGraphicsEllipseItem *pIt = scene_->addEllipse(pe->poisonArea(),
                                                        QPen(Qt::transparent),QBrush());
-        auto con2 = connect(pe.get(), &UPEnemy::poisonLevelUpdated, [=](int value) {
+        connect(pe.get(), &UPEnemy::poisonLevelUpdated, [=](int value) {
             // Set alpha channel as doubled poison level
             pIt->setBrush(QColor(230,230,0,value*2));
         } );
-        connect(scene_, &QGraphicsScene::destroyed, [=](){
-            disconnect(con1);
-            disconnect(con2);
-        });
     }
 
     //draw health packs with the center at tile's x and y
     for(auto &p: model_->getHealthpacks()) {
         QGraphicsEllipseItem *it = scene_->addEllipse(p->area(), QPen(), QBrush(Qt::green));
-        auto con = connect(p.get(), &UHealthPack::used, [=]() {
+        connect(p.get(), &UHealthPack::used, [=]() {
             // Delete used  health pack
             scene_->removeItem(it);
         } );
-        connect(scene_, &QGraphicsScene::destroyed, [=](){disconnect(con);});
     }
 
     //draw protagonist with the center at tile's x and y
@@ -136,8 +142,8 @@ void WorldGraphicsView::reloadScene()
     energyBar_->setValue(p->getEnergy());
 
     connect(p.get(), SIGNAL(posChanged(int,int)), this, SLOT(onProtagonistPositionChanged(int,int)));
-    connect(p.get(), SIGNAL(healthLevelChanged(int)), healthBar_, SLOT(setValue(int)));
-    connect(p.get(), SIGNAL(energyLevelChanged(int)), energyBar_, SLOT(setValue(int)));
+    connect(p.get(),SIGNAL(healthLevelChanged(int)),healthBar_,SLOT(setValue(int)));
+    connect(p.get(),SIGNAL(energyLevelChanged(int)),energyBar_,SLOT(setValue(int)));
 
     setScene(scene_);
     centerOn(protagonist_);

@@ -1,0 +1,136 @@
+\hypertarget{classWorldStrategy}{}\section{World\+Strategy Class Reference}
+\label{classWorldStrategy}\index{World\+Strategy@{World\+Strategy}}
+
+
+AI implementation class.  
+
+
+
+
+{\ttfamily \#include $<$worldstrategy.\+h$>$}
+
+
+
+Inheritance diagram for World\+Strategy\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=159pt]{d0/dc9/classWorldStrategy__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for World\+Strategy\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=159pt]{d2/de1/classWorldStrategy__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classWorldStrategy_a819fd63464c5816220868c0c4c2fb413}{run} ()
+\begin{DoxyCompactList}\small\item\em Run the AI strategy. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldStrategy_a674ac2dea0846db429bba274c3104ae3}{run} (bool b)
+\begin{DoxyCompactList}\small\item\em Run/stop the AI strategy. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldStrategy_a1393a72f34bbe7044efb9887985df1fa}{stop} ()\hypertarget{classWorldStrategy_a1393a72f34bbe7044efb9887985df1fa}{}\label{classWorldStrategy_a1393a72f34bbe7044efb9887985df1fa}
+
+\begin{DoxyCompactList}\small\item\em Stop running the AI strategy. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classWorldStrategy_abeaeccebfb752aa139a9551566417743}{next\+Move} ()
+\begin{DoxyCompactList}\small\item\em Perform a next move. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classWorldStrategy_ad84ca7c1936416ab4c5b7419349fc81e}{finished} ()
+\begin{DoxyCompactList}\small\item\em Strategy finished signal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classWorldStrategy_abccf2f8f4363a0623a29d4941f3568c8}{World\+Strategy} (Q\+Object $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em Class constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldStrategy_aecf0e40fec5debc8ac6c4a22703949c6}{set\+Model} (\hyperlink{classWorldModel}{World\+Model} $\ast$model)\hypertarget{classWorldStrategy_aecf0e40fec5debc8ac6c4a22703949c6}{}\label{classWorldStrategy_aecf0e40fec5debc8ac6c4a22703949c6}
+
+\begin{DoxyCompactList}\small\item\em Set the model to control. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+AI implementation class. 
+
+This class can be used as a base class for other strategies, in that case next\+Move should be re-\/implemented 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{World\+Strategy@{World\+Strategy}!World\+Strategy@{World\+Strategy}}
+\index{World\+Strategy@{World\+Strategy}!World\+Strategy@{World\+Strategy}}
+\subsubsection[{\texorpdfstring{World\+Strategy(\+Q\+Object $\ast$parent=0)}{WorldStrategy(QObject *parent=0)}}]{\setlength{\rightskip}{0pt plus 5cm}World\+Strategy\+::\+World\+Strategy (
+\begin{DoxyParamCaption}
+\item[{Q\+Object $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\hypertarget{classWorldStrategy_abccf2f8f4363a0623a29d4941f3568c8}{}\label{classWorldStrategy_abccf2f8f4363a0623a29d4941f3568c8}
+
+
+Class constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & parent object \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{World\+Strategy@{World\+Strategy}!finished@{finished}}
+\index{finished@{finished}!World\+Strategy@{World\+Strategy}}
+\subsubsection[{\texorpdfstring{finished}{finished}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Strategy\+::finished (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\hypertarget{classWorldStrategy_ad84ca7c1936416ab4c5b7419349fc81e}{}\label{classWorldStrategy_ad84ca7c1936416ab4c5b7419349fc81e}
+
+
+Strategy finished signal. 
+
+Whenever AI has no more moves this signal is emitted \index{World\+Strategy@{World\+Strategy}!next\+Move@{next\+Move}}
+\index{next\+Move@{next\+Move}!World\+Strategy@{World\+Strategy}}
+\subsubsection[{\texorpdfstring{next\+Move}{nextMove}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Strategy\+::next\+Move (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}\hypertarget{classWorldStrategy_abeaeccebfb752aa139a9551566417743}{}\label{classWorldStrategy_abeaeccebfb752aa139a9551566417743}
+
+
+Perform a next move. 
+
+When the strategy is running, each move is performed after the previous step is done, shat is indicated with animation\+Done signal \index{World\+Strategy@{World\+Strategy}!run@{run}}
+\index{run@{run}!World\+Strategy@{World\+Strategy}}
+\subsubsection[{\texorpdfstring{run}{run}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Strategy\+::run (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\hypertarget{classWorldStrategy_a819fd63464c5816220868c0c4c2fb413}{}\label{classWorldStrategy_a819fd63464c5816220868c0c4c2fb413}
+
+
+Run the AI strategy. 
+
+When no moves left, finished is emitted \index{World\+Strategy@{World\+Strategy}!run@{run}}
+\index{run@{run}!World\+Strategy@{World\+Strategy}}
+\subsubsection[{\texorpdfstring{run}{run}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Strategy\+::run (
+\begin{DoxyParamCaption}
+\item[{bool}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\hypertarget{classWorldStrategy_a674ac2dea0846db429bba274c3104ae3}{}\label{classWorldStrategy_a674ac2dea0846db429bba274c3104ae3}
+
+
+Run/stop the AI strategy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & run on true, stop on false \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/bobiko/ku-\/leuven/media-\/processing/labs/finaltask/finaltask/src/strategy/\hyperlink{worldstrategy_8h}{worldstrategy.\+h}\item 
+/home/bobiko/ku-\/leuven/media-\/processing/labs/finaltask/finaltask/src/strategy/\hyperlink{worldstrategy_8cpp}{worldstrategy.\+cpp}\end{DoxyCompactItemize}

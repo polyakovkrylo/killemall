@@ -1,6 +1,19 @@
+/*!
+ * \file worldterminalview.cpp
+ *
+ * WorldTerminalView class definition
+ *
+ * \version 1.0
+ *
+ * \author Vladimir Poliakov
+ * \author Brian Segers
+ * \author Kasper De Volder
+ */
+
 #include "worldterminalview.h"
 
-WorldTerminalView::WorldTerminalView(QWidget *parent) : QWidget(parent)
+WorldTerminalView::WorldTerminalView(QWidget *parent) :
+    QWidget(parent), model{nullptr}
 {        
     output = new QTextEdit;
     output->setReadOnly(true);
@@ -29,130 +42,231 @@ WorldTerminalView::WorldTerminalView(QWidget *parent) : QWidget(parent)
     cmdLine->setFocus();
 }
 
-void WorldTerminalView::setModel(const WorldModel *m)
+void WorldTerminalView::setModel(WorldModel *m)
 {
+    // disconnect old model's signals
+    if(model) {
+        disconnect(model,SIGNAL(reload()),this,SLOT(reloadView()));
+        disconnect(model, SIGNAL(enemyDefeated(int,int)), this, SLOT(onEnemyDefeated(int,int)));
+        disconnect(model, SIGNAL(healthpackUsed(int,int)), this, SLOT(onHealthpackUsed(int,int)));
+        disconnect(model, SIGNAL(areaPoisoned(int,QRect)), this, SLOT(onAreaPosioned(int,QRect)));
+        disconnect(model->getProtagonist().get(), SIGNAL(healthLevelChanged(int)), this, SLOT(onHealthLevelChanged(int)));
+        disconnect(model->getProtagonist().get(), SIGNAL(posChanged(int,int)), this, SLOT(onPositionChanged(int,int)));
+    }
     model = m;
     connect(model, SIGNAL(enemyDefeated(int,int)), this, SLOT(onEnemyDefeated(int,int)));
     connect(model, SIGNAL(healthpackUsed(int,int)), this, SLOT(onHealthpackUsed(int,int)));
-
-}
-
-std::vector<float> WorldTerminalView::findNearestEnemy()
-{
-    //for testing
-    std::vector<float> enemy = {45, 39, 13.6};    
-    return enemy;
-}
-
-std::vector<float> WorldTerminalView::findNearestHealth()
-{
-    //for testing
-    std::vector<float> hp = {103, 8, 55.5};    
-    return hp;
+    connect(model, SIGNAL(areaPoisoned(int,QRect)), this, SLOT(onAreaPosioned(int,QRect)));
+    if(model->ready())
+        reloadView();
+    connect(model,SIGNAL(reload()),this,SLOT(reloadView()));
 }
 
 void WorldTerminalView::onReturnPressed()
 {
-    std::string strCommand = "";
-    strCommand += cmdLine->text().toStdString();
-    executeCmd(strCommand);
-    cmdLine->clear();
+    message = cmdLine->text();
+    // if no command was specified, print help
+    if(message.isEmpty()) {
+        help();
+    }
+    else {
+        // echo input
+        output->setTextColor(Qt::darkGray);
+        output->append("\n>" + message + "\n");
+        // split the command and its arguments and execute it
+        QStringList list = message.split(' ', QString::SkipEmptyParts);
+        QString cmd = list.takeFirst();
+        executeCmd(cmd,list);
+        cmdLine->clear();
+    }
 }
 
 void WorldTerminalView::onEnemyDefeated(int x, int y)
 {
     output->setTextColor(QColor(255,0,0));
-    output->append("Enemy defeated at (" +
-                   QString::number(x) + "," +
-                   QString::number(y) +
-                   "), protagonist health: " +
-                   QString::number(model->getProtagonist()->getHealth()));
+    message = QString("Enemy defeated at (" +
+                      QString::number(x) + "," +
+                      QString::number(y) +
+                      ")");
+    output->append(message);
+}
+
+void WorldTerminalView::onAreaPosioned(int value, QRect rect)
+{
+    output->setTextColor(Qt::darkYellow);
+    message = QString("Area ((%1,%2),(%3,%4)) is poisoned with %5 value")
+            .arg(rect.topLeft().x()).arg(rect.topLeft().y())
+            .arg(rect.bottomLeft().x()).arg(rect.bottomLeft().y())
+            .arg(value);
+    output->append(message);
 }
 
 void WorldTerminalView::onHealthpackUsed(int x, int y)
 {
     output->setTextColor(QColor(255,0,0));
-    output->append("Healthpack picked up at (" +
-                   QString::number(x) + "," +
-                   QString::number(y) +
-                   "), protagonist health: " +
-                   QString::number(model->getProtagonist()->getHealth()));
+    message = QString("Healthpack picked up at (" +
+                      QString::number(x) + "," +
+                      QString::number(y) +
+                      ")");
+    output->append(message);
 }
 
-void WorldTerminalView::executeCmd(std::string &cmd)
-{    
-    output->setTextColor(QColor(0,0,0));
-    output->append(">" + QString::fromStdString(cmd));
-    output->setTextColor(QColor(255,0,0));
-    if(cmd == "help") help();
-    else if(cmd == "find protag") findProtag();
-    else if(cmd == "status protag") statusProtag();
-    else if(cmd.compare(0, 5, "move(", 5) == 0) move(cmd);
-    else if(cmd == "find enemy") findEnemy();
-    else if(cmd == "find healthpack") findHealth();
-    else output->append("Invalid cmd, type 'help' to see all commands");
-
-}
-
-void WorldTerminalView::help()
+void WorldTerminalView::onHealthLevelChanged(int value)
 {
-    output->append("List of commands:\n"
-                   "find protag\n"
-                   "status protag\n"
-                   "find enemy\n"
-                   "find healthpack\n"
-                   "move(x,y)");
+    output->setTextColor(QColor(0,155,0));
+    message = QString("Health updated: %1 HP").arg(value);
+    output->append(message);
 }
 
-void WorldTerminalView::findProtag()
+void WorldTerminalView::onPositionChanged(int x, int y)
 {
-    output->append("Protagonist is located at (" +
-                   QString::number(model->getProtagonist()->getXPos()) + "," +
-                   QString::number(model->getProtagonist()->getYPos()) + ")");
-}
-
-void WorldTerminalView::statusProtag()
-{
-    output->append("Health: " + QString::number(model->getProtagonist()->getHealth()) +
-                   " Energy: " + QString::number(model->getProtagonist()->getEnergy()));
-}
-
-void WorldTerminalView::findHealth()
-{
-    std::vector<float> hp = findNearestHealth();
-    output->append("Nearest healthpack found at (" +
-                   QString::number(hp.at(0)) + "," +
-                   QString::number(hp.at(1)) + "), " +
-                   "with value " +
-                   QString::number(hp.at(2)));
-}
-
-void WorldTerminalView::findEnemy()
-{
-    std::vector<float> enemy = findNearestEnemy();
-    output->append("Nearest enemy found at (" +
-                   QString::number(enemy.at(0)) + "," +
-                   QString::number(enemy.at(1)) + "), " +
-                   "with strength " +
-                   QString::number(enemy.at(2)));
-}
-
-void WorldTerminalView::move(std::string &cmd)
-{
-    cmd.erase(0, 5);
-    std::stringstream ss(cmd);
-    std::vector<int> coords;
-    int i;
-    while (ss >> i)
-    {
-        coords.push_back(i);
-
-        if (ss.peek() == ',' || ss.peek() == ')')
-            ss.ignore();
+    // clear the previous line if it's about the protagonist position
+    if(message.contains("Protagonist position changed:")) {
+        output->moveCursor(QTextCursor::End, QTextCursor::MoveAnchor);
+        output->moveCursor(QTextCursor::StartOfLine, QTextCursor::KeepAnchor);
+        output->textCursor().removeSelectedText();
+        output->textCursor().deletePreviousChar();
     }
-    if(coords.size() != 2) output->append("Invalid cmd, type 'help' to see all commands");
-    else /*if(model->move(coords.at(0), coords.at(1)))*/ output->append("Moved to (" +
-                                                                        QString::number(coords.at(0)) + "," +
-                                                                        QString::number(coords.at(1)) + ")");
-    /*else output->append("Location unreachable");*/
+    output->setTextColor(QColor(0,0,255));
+    message = QString("Protagonist position changed: (%1,%2)").arg(x).arg(y);
+    output->append(message);
+}
+
+void WorldTerminalView::reloadView()
+{
+    output->clear();
+    connect(model->getProtagonist().get(), SIGNAL(healthLevelChanged(int)), this, SLOT(onHealthLevelChanged(int)));
+    connect(model->getProtagonist().get(), SIGNAL(posChanged(int,int)), this, SLOT(onPositionChanged(int,int)));
+}
+
+void WorldTerminalView::executeCmd(QString &cmd, QStringList args)
+{    
+    output->setTextColor(Qt::black);
+    if(cmd == "help") help(args.value(0));
+    else if(cmd == "find") find(args.value(0),args.value(1).toFloat());
+    else if(cmd == "info") printInfo(args.value(0));
+    else if(cmd == "move") model->move(args.value(0).toInt(),args.value(1).toInt());
+    else {
+        message = QString("Invalid cmd, type 'help' to see all commands");
+        output->append(message);
+    }
+
+}
+
+void WorldTerminalView::help(QString command)
+{
+    if(command.isEmpty()){
+        message = QString("List of commands (type 'help [command]' to get more information):\n\n"
+                      "find <object> [ value ] \t Find enemy or health pack\n"
+                      "info [ object ] \t Get information about health packs, enemies and protagonist\n"
+                      "move <x> <y> \t Move protagonist to the position");
+    }
+    else if(command == "find") {
+        message = QString("Search for the closest enemy or health pack:\n\n"
+                      "Syntax: find <object> [ value ]\n\n"
+                      "Option value is minimal(maximal in case of enemy) value of the object\n\n"
+                      "Objects:\n"
+                      "e    Any enemy\n"
+                      "re   Regular enemy\n"
+                      "pe   Posioned enemy\n"
+                      "h    Health pack"
+                      );
+    }
+    else if(command == "info") {
+        message = QString("Print information about the object(objects):\n\n"
+                      "Syntax: info [ object ] \n\n"
+                      "Objects:\n"
+                      "p    Protagonist\n"
+                      "e    All enemies\n"
+                      "re   Regular enemies\n"
+                      "pe   Posioned enemies\n"
+                      "h    Health packs"
+                      );
+    }
+    else if(command == "move") {
+        message = QString("Move protagonist to the position:\n\n"
+                      "Syntax: move <x> <y> \n\n"
+                      "Options:\n"
+                      "x    Horizontal position\n"
+                      "y    Vertical position\n"
+                      );
+    }
+    output->setTextColor(Qt::black);
+    output->append(message);
+}
+
+void WorldTerminalView::find(QString object, float value)
+{
+    Tile* t = nullptr;
+    QString obj;
+    QString param;
+
+    // if looking for an enemy
+    if(object.endsWith("e")) {
+        // set strength to max if it was not set
+        param = QString("strength");
+        if(value == 0)
+            value = 100.0f;
+        if(object == "e"){
+            obj = "enemy";
+            t = model->getController()->findClosest(AnyEnemy,0.0f,value);
+        } else if(object == "re"){
+            obj = QString("regular enemy");
+            t = model->getController()->findClosest(RegularEnemy,0.0f,value);
+        } else if(object == "pe"){
+            obj = QString("poisoned enemy");
+            t = model->getController()->findClosest(PoisonedEnemy,0.0f,value);
+        }
+    }
+    //if looking for a health pack
+    else if(object == "h") {
+        obj = QString("health pack");
+        param = QString("HP");
+        t = model->getController()->findClosest(HealthPack,value,100.0f);
+    }
+
+    // print info if an object was find
+    if(t) {
+        message = QString("Closest %1 with %2 %3 at position (%4,%5)")
+                .arg(obj).arg(param).arg(t->getValue()).arg(t->getXPos()).arg(t->getYPos());
+    }
+    else {
+        message = QString("Could not find a suitible object");
+    }
+
+    output->setTextColor(Qt::black);
+    output->append(message);
+}
+
+void WorldTerminalView::printInfo(QString object)
+{
+    if(object == "p"){
+        auto &p = model->getProtagonist();
+        message = QString("Protagonist is at (%1,%2)\n"
+                      "Health level: %3\n"
+                      "Energy level: %4")
+                .arg(p->getXPos()).arg(p->getYPos())
+                .arg(p->getHealth()).arg(p->getEnergy());
+    }
+    else if(object == "e") {
+        message = QString("Number of enemies alive: %1")
+                .arg(model->getEnemies().size() + model->getPEnemies().size());
+    }
+    else if(object == "pe") {
+        message = QString("Number of poisoned enemies alive: %1").arg(model->getPEnemies().size());
+    }
+    else if(object == "re") {
+        message = QString("Number of regular enemies alive: %1").arg(model->getEnemies().size());
+    }
+    else if(object == "h") {
+        message = QString("Number of health packs left: %1").arg(model->getHealthpacks().size());
+    }
+    else {
+        printInfo("p");
+        printInfo("e");
+        printInfo("h");
+        return;
+    }
+    output->setTextColor(Qt::black);
+    output->append(message);
 }

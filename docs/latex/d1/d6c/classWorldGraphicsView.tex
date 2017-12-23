@@ -1,0 +1,199 @@
+\hypertarget{classWorldGraphicsView}{}\section{World\+Graphics\+View Class Reference}
+\label{classWorldGraphicsView}\index{World\+Graphics\+View@{World\+Graphics\+View}}
+
+
+Graphics view component class implementation.  
+
+
+
+
+{\ttfamily \#include $<$worldgraphicsview.\+h$>$}
+
+
+
+Inheritance diagram for World\+Graphics\+View\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=183pt]{d8/d05/classWorldGraphicsView__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for World\+Graphics\+View\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=183pt]{d9/d69/classWorldGraphicsView__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classWorldGraphicsView_afe30c74f794ae1b385ca3a89cb9ede25}{on\+Protagonist\+Position\+Changed} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Update protagonist position. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldGraphicsView_a8bdead6606060dc49a5faa5464d94c8d}{reload\+Scene} ()
+\begin{DoxyCompactList}\small\item\em Reload the model slot. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classWorldGraphicsView_aac181c5fb59c553a885afc62c9f58576}{World\+Graphics\+View} (Q\+Widget $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em Class constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldGraphicsView_ac9bfe6153b0106f0cb6591b511f9391a}{set\+Model} (\hyperlink{classWorldModel}{World\+Model} $\ast$model)
+\begin{DoxyCompactList}\small\item\em Set the data model. \end{DoxyCompactList}\item 
+Q\+Graphics\+Item $\ast$ \hyperlink{classWorldGraphicsView_afb08a8e079c13070a66804da4476cb60}{item\+At} (Q\+Point item\+Center)
+\begin{DoxyCompactList}\small\item\em Returns item at the position. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classWorldGraphicsView_abdb212ddc141fdc73054bab7b5320d51}{key\+Press\+Event} (Q\+Key\+Event $\ast$e) override
+\begin{DoxyCompactList}\small\item\em Key press event handler. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classWorldGraphicsView_af4b8a71cfd9f363c8056a506ef60344c}{mouse\+Press\+Event} (Q\+Mouse\+Event $\ast$e) override
+\begin{DoxyCompactList}\small\item\em Mouse press event handler. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classWorldGraphicsView_a07a8843b73603a3eb71f768308aa5310}{mouse\+Move\+Event} (Q\+Mouse\+Event $\ast$e) override
+\begin{DoxyCompactList}\small\item\em Mouse move event handler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Graphics view component class implementation. 
+
+The class is based on Q\+Graphics\+View and uses Q\+Graphics\+Scene as a graphical model(scene), and a \hyperlink{classWorldModel}{World\+Model} instance as a data model for the scene. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{World\+Graphics\+View@{World\+Graphics\+View}!World\+Graphics\+View@{World\+Graphics\+View}}
+\index{World\+Graphics\+View@{World\+Graphics\+View}!World\+Graphics\+View@{World\+Graphics\+View}}
+\subsubsection[{\texorpdfstring{World\+Graphics\+View(\+Q\+Widget $\ast$parent=0)}{WorldGraphicsView(QWidget *parent=0)}}]{\setlength{\rightskip}{0pt plus 5cm}World\+Graphics\+View\+::\+World\+Graphics\+View (
+\begin{DoxyParamCaption}
+\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\hypertarget{classWorldGraphicsView_aac181c5fb59c553a885afc62c9f58576}{}\label{classWorldGraphicsView_aac181c5fb59c553a885afc62c9f58576}
+
+
+Class constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & visual parent of the view \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{World\+Graphics\+View@{World\+Graphics\+View}!item\+At@{item\+At}}
+\index{item\+At@{item\+At}!World\+Graphics\+View@{World\+Graphics\+View}}
+\subsubsection[{\texorpdfstring{item\+At(\+Q\+Point item\+Center)}{itemAt(QPoint itemCenter)}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Graphics\+Item $\ast$ World\+Graphics\+View\+::item\+At (
+\begin{DoxyParamCaption}
+\item[{Q\+Point}]{item\+Center}
+\end{DoxyParamCaption}
+)}\hypertarget{classWorldGraphicsView_afb08a8e079c13070a66804da4476cb60}{}\label{classWorldGraphicsView_afb08a8e079c13070a66804da4476cb60}
+
+
+Returns item at the position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em item\+Center} & position of item\textquotesingle{}s center \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+item at the position 
+\end{DoxyReturn}
+\index{World\+Graphics\+View@{World\+Graphics\+View}!key\+Press\+Event@{key\+Press\+Event}}
+\index{key\+Press\+Event@{key\+Press\+Event}!World\+Graphics\+View@{World\+Graphics\+View}}
+\subsubsection[{\texorpdfstring{key\+Press\+Event(\+Q\+Key\+Event $\ast$e) override}{keyPressEvent(QKeyEvent *e) override}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Graphics\+View\+::key\+Press\+Event (
+\begin{DoxyParamCaption}
+\item[{Q\+Key\+Event $\ast$}]{e}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{classWorldGraphicsView_abdb212ddc141fdc73054bab7b5320d51}{}\label{classWorldGraphicsView_abdb212ddc141fdc73054bab7b5320d51}
+
+
+Key press event handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & key event \\
+\hline
+\end{DoxyParams}
+\index{World\+Graphics\+View@{World\+Graphics\+View}!mouse\+Move\+Event@{mouse\+Move\+Event}}
+\index{mouse\+Move\+Event@{mouse\+Move\+Event}!World\+Graphics\+View@{World\+Graphics\+View}}
+\subsubsection[{\texorpdfstring{mouse\+Move\+Event(\+Q\+Mouse\+Event $\ast$e) override}{mouseMoveEvent(QMouseEvent *e) override}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Graphics\+View\+::mouse\+Move\+Event (
+\begin{DoxyParamCaption}
+\item[{Q\+Mouse\+Event $\ast$}]{e}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{classWorldGraphicsView_a07a8843b73603a3eb71f768308aa5310}{}\label{classWorldGraphicsView_a07a8843b73603a3eb71f768308aa5310}
+
+
+Mouse move event handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & mouse event \\
+\hline
+\end{DoxyParams}
+\index{World\+Graphics\+View@{World\+Graphics\+View}!mouse\+Press\+Event@{mouse\+Press\+Event}}
+\index{mouse\+Press\+Event@{mouse\+Press\+Event}!World\+Graphics\+View@{World\+Graphics\+View}}
+\subsubsection[{\texorpdfstring{mouse\+Press\+Event(\+Q\+Mouse\+Event $\ast$e) override}{mousePressEvent(QMouseEvent *e) override}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Graphics\+View\+::mouse\+Press\+Event (
+\begin{DoxyParamCaption}
+\item[{Q\+Mouse\+Event $\ast$}]{e}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{classWorldGraphicsView_af4b8a71cfd9f363c8056a506ef60344c}{}\label{classWorldGraphicsView_af4b8a71cfd9f363c8056a506ef60344c}
+
+
+Mouse press event handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & mouse event \\
+\hline
+\end{DoxyParams}
+\index{World\+Graphics\+View@{World\+Graphics\+View}!on\+Protagonist\+Position\+Changed@{on\+Protagonist\+Position\+Changed}}
+\index{on\+Protagonist\+Position\+Changed@{on\+Protagonist\+Position\+Changed}!World\+Graphics\+View@{World\+Graphics\+View}}
+\subsubsection[{\texorpdfstring{on\+Protagonist\+Position\+Changed}{onProtagonistPositionChanged}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Graphics\+View\+::on\+Protagonist\+Position\+Changed (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\hypertarget{classWorldGraphicsView_afe30c74f794ae1b385ca3a89cb9ede25}{}\label{classWorldGraphicsView_afe30c74f794ae1b385ca3a89cb9ede25}
+
+
+Update protagonist position. 
+
+Move protagonist item to a given point and centers the view on this position 
+\begin{DoxyParams}{Parameters}
+{\em x} & horizontal coordinate \\
+\hline
+{\em y} & vertical coordinate \\
+\hline
+\end{DoxyParams}
+\index{World\+Graphics\+View@{World\+Graphics\+View}!reload\+Scene@{reload\+Scene}}
+\index{reload\+Scene@{reload\+Scene}!World\+Graphics\+View@{World\+Graphics\+View}}
+\subsubsection[{\texorpdfstring{reload\+Scene}{reloadScene}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Graphics\+View\+::reload\+Scene (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\hypertarget{classWorldGraphicsView_a8bdead6606060dc49a5faa5464d94c8d}{}\label{classWorldGraphicsView_a8bdead6606060dc49a5faa5464d94c8d}
+
+
+Reload the model slot. 
+
+Re-\/initializes the scene in accordance with a given model. \index{World\+Graphics\+View@{World\+Graphics\+View}!set\+Model@{set\+Model}}
+\index{set\+Model@{set\+Model}!World\+Graphics\+View@{World\+Graphics\+View}}
+\subsubsection[{\texorpdfstring{set\+Model(\+World\+Model $\ast$model)}{setModel(WorldModel *model)}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Graphics\+View\+::set\+Model (
+\begin{DoxyParamCaption}
+\item[{{\bf World\+Model} $\ast$}]{model}
+\end{DoxyParamCaption}
+)}\hypertarget{classWorldGraphicsView_ac9bfe6153b0106f0cb6591b511f9391a}{}\label{classWorldGraphicsView_ac9bfe6153b0106f0cb6591b511f9391a}
+
+
+Set the data model. 
+
+Every time a new model is set, the view re-\/initializes the scene in accordance with a given model.
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & model to be set \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/bobiko/ku-\/leuven/media-\/processing/labs/finaltask/finaltask/src/graphicsview/\hyperlink{worldgraphicsview_8h}{worldgraphicsview.\+h}\item 
+/home/bobiko/ku-\/leuven/media-\/processing/labs/finaltask/finaltask/src/graphicsview/\hyperlink{worldgraphicsview_8cpp}{worldgraphicsview.\+cpp}\end{DoxyCompactItemize}

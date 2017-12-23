@@ -1,0 +1,99 @@
+\hypertarget{classUHealthPack}{}\section{U\+Health\+Pack Class Reference}
+\label{classUHealthPack}\index{U\+Health\+Pack@{U\+Health\+Pack}}
+
+
+Updated health pack class.  
+
+
+
+
+{\ttfamily \#include $<$uworld.\+h$>$}
+
+
+
+Inheritance diagram for U\+Health\+Pack\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{d5/dd8/classUHealthPack__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for U\+Health\+Pack\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{df/da1/classUHealthPack__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries used} ()\hypertarget{classUHealthPack_a1f5645d92da31de8300ad6885875cf92}{}\label{classUHealthPack_a1f5645d92da31de8300ad6885875cf92}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classUHealthPack_aed2e7927c0dba616bcb89cbc47683233}{U\+Health\+Pack} (int x, int y, float health\+Points, int radius=5)
+\begin{DoxyCompactList}\small\item\em Class constructor. \end{DoxyCompactList}\item 
+float \hyperlink{classUHealthPack_a19dd8468b98963e293940db3020f9b9d}{use} ()
+\begin{DoxyCompactList}\small\item\em Use healthpack. \end{DoxyCompactList}\item 
+const Q\+Rect \& \hyperlink{classUHealthPack_a375be70224cbeb112cbcfe9ff76ed700}{area} () const \hypertarget{classUHealthPack_a375be70224cbeb112cbcfe9ff76ed700}{}\label{classUHealthPack_a375be70224cbeb112cbcfe9ff76ed700}
+
+\begin{DoxyCompactList}\small\item\em Returns area occupied by the object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Updated health pack class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{U\+Health\+Pack@{U\+Health\+Pack}!U\+Health\+Pack@{U\+Health\+Pack}}
+\index{U\+Health\+Pack@{U\+Health\+Pack}!U\+Health\+Pack@{U\+Health\+Pack}}
+\subsubsection[{\texorpdfstring{U\+Health\+Pack(int x, int y, float health\+Points, int radius=5)}{UHealthPack(int x, int y, float healthPoints, int radius=5)}}]{\setlength{\rightskip}{0pt plus 5cm}U\+Health\+Pack\+::\+U\+Health\+Pack (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{float}]{health\+Points, }
+\item[{int}]{radius = {\ttfamily 5}}
+\end{DoxyParamCaption}
+)}\hypertarget{classUHealthPack_aed2e7927c0dba616bcb89cbc47683233}{}\label{classUHealthPack_aed2e7927c0dba616bcb89cbc47683233}
+
+
+Class constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & horizontal position \\
+\hline
+{\em y} & vertical position \\
+\hline
+{\em health\+Points} & HP to be restored \\
+\hline
+{\em radius} & radius of occupied area in pixels \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{U\+Health\+Pack@{U\+Health\+Pack}!use@{use}}
+\index{use@{use}!U\+Health\+Pack@{U\+Health\+Pack}}
+\subsubsection[{\texorpdfstring{use()}{use()}}]{\setlength{\rightskip}{0pt plus 5cm}float U\+Health\+Pack\+::use (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classUHealthPack_a19dd8468b98963e293940db3020f9b9d}{}\label{classUHealthPack_a19dd8468b98963e293940db3020f9b9d}
+
+
+Use healthpack. 
+
+Emits the signal that the health pack is used and returns HP to be restored \begin{DoxyReturn}{Returns}
+HP to be restored 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/bobiko/ku-\/leuven/media-\/processing/labs/finaltask/finaltask/src/libworld-\/update/\hyperlink{uworld_8h}{uworld.\+h}\item 
+/home/bobiko/ku-\/leuven/media-\/processing/labs/finaltask/finaltask/src/libworld-\/update/\hyperlink{uworld_8cpp}{uworld.\+cpp}\end{DoxyCompactItemize}

@@ -1,49 +1,82 @@
+/*!
+ * \file uworld.cpp
+ *
+ * libworld-update classes definition
+ *
+ * \version 1.0
+ *
+ * \author Vladimir Poliakov
+ * \author Brian Segers
+ * \author Kasper De Volder
+ */
+
 #include "uworld.h"
 
 using std::unique_ptr;
 using std::shared_ptr;
-using std::vector;
 using std::isinf;
+using std::dynamic_pointer_cast;
+using std::vector;
 
 //=============== Health pack =============================
-UHealthPack::UHealthPack(int x, int y, float healthPoints, int radius):
-    Tile(x,y,healthPoints), area_(x-radius, y-radius, radius*2, radius*2)
+UHealthPack::UHealthPack(int x, int y, float healthPoints):
+    Tile(x,y,healthPoints)
 {
-
+    int radius = 2 + healthPoints/20;
+    area_ = QRect(x-radius, y-radius, radius*2, radius*2);
 }
 
 float UHealthPack::use()
 {
     float hp = getValue();
+    if(hp)
+        emit used();
+    // mark health pack as used
     setValue(0.0);
-    emit used();
     return hp;
 }
 
 //===================== Enemy =============================
-UEnemy::UEnemy(int x, int y, float strength, int radius) :
-    Enemy(x,y,strength), area_(x-radius, y-radius, radius*2, radius*2)
+UEnemy::UEnemy(int x, int y, float strength) :
+    Enemy(x,y,strength)
 {
-
+    int radius = 2 + strength/20;
+    area_ = QRect(x-radius, y-radius, radius*2, radius*2);
 }
 
 float UEnemy::attack()
 {
-    setDefeated(true);
-    emit dead();
-    return getValue();
+    if(!getDefeated()) {
+        setDefeated(true);
+        emit dead();
+        return getValue();
+    } else {
+        return 0.0f;
+    }
 }
 
 //==================== PEnemy =============================
-UPEnemy::UPEnemy(int x, int y, float strength,
-                 int radius, int poisonRadius) :
+UPEnemy::UPEnemy(int x, int y, float strength) :
     PEnemy(x,y,strength),
-    area_(x-radius, y-radius, radius*2, radius*2),
-    poisonArea_(x-poisonRadius, y-poisonRadius, poisonRadius*2, poisonRadius*2)
+    triggered_{false}
 {
+    int radius = 2 + strength/20;
+    area_ = QRect(x-radius, y-radius, radius*2, radius*2);
+    poisonArea_ = QRect(x-radius*2, y-radius*2, radius*4, radius*4);
     connect(this, &PEnemy::poisonLevelUpdated, [=] (int value) {
         emit areaPoisoned(value,poisonArea_);
     });
+    connect(this, &PEnemy::dead, [=](){
+        setDefeated(true);
+    });
+}
+
+void UPEnemy::attack()
+{
+    if(!triggered_) {
+        triggered_ = true;
+        poison();
+    }
 }
 
 //================== Protagonist ==========================
@@ -53,25 +86,43 @@ UProtagonist::UProtagonist(int radius):
 
 }
 
-void UProtagonist::updateHealth(int diff)
+void UProtagonist::updateHealth(float diff)
 {
     float hp = getHealth() + diff;
     // health should be between 0 and 100
     if(hp < 0){
         hp = 0;
-        emit dead();
     } else if(hp > 100) {
         hp = 100;
     }
-    setHealth(hp);
-    emit healthLevelChanged(hp);
+    if(hp != getHealth()) {
+        emit healthLevelChanged(hp);
+        setHealth(hp);
+    }
 }
 
-void UProtagonist::updateEnergy(int diff)
+void UProtagonist::updateEnergy(float diff)
 {
     float en = getEnergy() + diff;
+    // energy should be between 0 and 100
+    if(en < 0){
+        en = 0;
+    } else if(en > 100) {
+        en = 100;
+    }
     setEnergy(en);
-    emit healthLevelChanged(en);
+    emit energyLevelChanged(en);
+}
+
+void UProtagonist::poison(float damage)
+{
+    updateHealth(-damage);
+    emit poisoned();
+}
+
+void UProtagonist::restoreEnergy()
+{
+    updateEnergy(100);
 }
 
 //===================== World =============================
@@ -82,34 +133,29 @@ UWorld::UWorld(QString filename)
     }
 }
 
-vector<Enemy*> UWorld::createEnemies(unsigned int enemies)
+vector<unique_ptr<Enemy> > UWorld::createEnemies(unsigned int enemies)
 {
-    vector<Enemy*> v;
+    vector<unique_ptr<Enemy>> v;
     v.reserve(enemies);
     for(auto &e: world_.getEnemies(enemies)) {
-        Enemy* ptr;
-        // get not release, these instances should be deleted
-        Enemy* re = e.get();
-        PEnemy* pe = dynamic_cast<PEnemy*>(re);
-        if(pe != nullptr) {
+        if(dynamic_cast<PEnemy*>((Enemy*)e.get())) {
             // create UPEnemy for each PEnemy
-            ptr = new UPEnemy(pe->getXPos(), pe->getYPos(), pe->getValue());
+            v.push_back(unique_ptr<Enemy>(new UPEnemy(e->getXPos(), e->getYPos(), e->getValue())));
         } else {
             // create UEnemy for each Enemy
-            ptr = new UEnemy(re->getXPos(), re->getYPos(), re->getValue());
+            v.push_back(unique_ptr<Enemy>(new UEnemy(e->getXPos(), e->getYPos(), e->getValue())));
         }
-        v.push_back(ptr);
     }
     return v;
 }
 
-vector<shared_ptr<UHealthPack>> UWorld::createHealthpacks(unsigned int packs)
+vector<unique_ptr<UHealthPack> > UWorld::createHealthpacks(unsigned int packs)
 {
-    vector<shared_ptr<UHealthPack>> v;
+    vector<unique_ptr<UHealthPack>> v;
     v.reserve(packs);
     for(auto &h: world_.getHealthPacks(packs)) {
         // create UHealthPack for each health pack
-        v.push_back(shared_ptr<UHealthPack>(new UHealthPack(h->getXPos(), h->getYPos(), h->getValue())));
+        v.push_back(unique_ptr<UHealthPack>(new UHealthPack(h->getXPos(), h->getYPos(), h->getValue())));
     }
     return v;
 }

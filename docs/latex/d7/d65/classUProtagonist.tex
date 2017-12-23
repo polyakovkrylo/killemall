@@ -1,0 +1,161 @@
+\hypertarget{classUProtagonist}{}\section{U\+Protagonist Class Reference}
+\label{classUProtagonist}\index{U\+Protagonist@{U\+Protagonist}}
+
+
+Updated protagonist class.  
+
+
+
+
+{\ttfamily \#include $<$uworld.\+h$>$}
+
+
+
+Inheritance diagram for U\+Protagonist\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=154pt]{d8/da2/classUProtagonist__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for U\+Protagonist\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=154pt]{df/d4d/classUProtagonist__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries restore\+Energy} ()\hypertarget{classUProtagonist_aafceebba330665d6c8cf6943515526d5}{}\label{classUProtagonist_aafceebba330665d6c8cf6943515526d5}
+
+\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classUProtagonist_a51cf4f46d0b8d841ac91fb26cd175f04}{health\+Level\+Changed} (int value)
+\begin{DoxyCompactList}\small\item\em Health changed signal. \end{DoxyCompactList}\item 
+void \hyperlink{classUProtagonist_a5f04fffdddf19813626e2676152425d9}{energy\+Level\+Changed} (int value)
+\begin{DoxyCompactList}\small\item\em Energy changed signal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classUProtagonist_aecc46a5d2ad349f141f7d623b6454816}{U\+Protagonist} (int radius=5)
+\begin{DoxyCompactList}\small\item\em Class constructor. \end{DoxyCompactList}\item 
+void \hyperlink{classUProtagonist_a453bac1fc034e1c15ad8d7bdac566421}{update\+Health} (float diff)
+\begin{DoxyCompactList}\small\item\em Update health. \end{DoxyCompactList}\item 
+void \hyperlink{classUProtagonist_a56f48e2a59eca29575cac673a03cbd69}{update\+Energy} (float diff)
+\begin{DoxyCompactList}\small\item\em Update energy. \end{DoxyCompactList}\item 
+const Q\+Rect \& \hyperlink{classUProtagonist_ae564263d78b9c1e15a27392376b1c2b3}{area} () const \hypertarget{classUProtagonist_ae564263d78b9c1e15a27392376b1c2b3}{}\label{classUProtagonist_ae564263d78b9c1e15a27392376b1c2b3}
+
+\begin{DoxyCompactList}\small\item\em Returns area occupied by the object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Updated protagonist class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{U\+Protagonist@{U\+Protagonist}!U\+Protagonist@{U\+Protagonist}}
+\index{U\+Protagonist@{U\+Protagonist}!U\+Protagonist@{U\+Protagonist}}
+\subsubsection[{\texorpdfstring{U\+Protagonist(int radius=5)}{UProtagonist(int radius=5)}}]{\setlength{\rightskip}{0pt plus 5cm}U\+Protagonist\+::\+U\+Protagonist (
+\begin{DoxyParamCaption}
+\item[{int}]{radius = {\ttfamily 5}}
+\end{DoxyParamCaption}
+)}\hypertarget{classUProtagonist_aecc46a5d2ad349f141f7d623b6454816}{}\label{classUProtagonist_aecc46a5d2ad349f141f7d623b6454816}
+
+
+Class constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em radius} & radius occupied by the object \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{U\+Protagonist@{U\+Protagonist}!energy\+Level\+Changed@{energy\+Level\+Changed}}
+\index{energy\+Level\+Changed@{energy\+Level\+Changed}!U\+Protagonist@{U\+Protagonist}}
+\subsubsection[{\texorpdfstring{energy\+Level\+Changed}{energyLevelChanged}}]{\setlength{\rightskip}{0pt plus 5cm}void U\+Protagonist\+::energy\+Level\+Changed (
+\begin{DoxyParamCaption}
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\hypertarget{classUProtagonist_a5f04fffdddf19813626e2676152425d9}{}\label{classUProtagonist_a5f04fffdddf19813626e2676152425d9}
+
+
+Energy changed signal. 
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classUProtagonist_a56f48e2a59eca29575cac673a03cbd69}{update\+Energy} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & current energy level \\
+\hline
+\end{DoxyParams}
+\index{U\+Protagonist@{U\+Protagonist}!health\+Level\+Changed@{health\+Level\+Changed}}
+\index{health\+Level\+Changed@{health\+Level\+Changed}!U\+Protagonist@{U\+Protagonist}}
+\subsubsection[{\texorpdfstring{health\+Level\+Changed}{healthLevelChanged}}]{\setlength{\rightskip}{0pt plus 5cm}void U\+Protagonist\+::health\+Level\+Changed (
+\begin{DoxyParamCaption}
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\hypertarget{classUProtagonist_a51cf4f46d0b8d841ac91fb26cd175f04}{}\label{classUProtagonist_a51cf4f46d0b8d841ac91fb26cd175f04}
+
+
+Health changed signal. 
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classUProtagonist_a453bac1fc034e1c15ad8d7bdac566421}{update\+Health} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & current health level \\
+\hline
+\end{DoxyParams}
+\index{U\+Protagonist@{U\+Protagonist}!update\+Energy@{update\+Energy}}
+\index{update\+Energy@{update\+Energy}!U\+Protagonist@{U\+Protagonist}}
+\subsubsection[{\texorpdfstring{update\+Energy(float diff)}{updateEnergy(float diff)}}]{\setlength{\rightskip}{0pt plus 5cm}void U\+Protagonist\+::update\+Energy (
+\begin{DoxyParamCaption}
+\item[{float}]{diff}
+\end{DoxyParamCaption}
+)}\hypertarget{classUProtagonist_a56f48e2a59eca29575cac673a03cbd69}{}\label{classUProtagonist_a56f48e2a59eca29575cac673a03cbd69}
+
+
+Update energy. 
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classUProtagonist_a5f04fffdddf19813626e2676152425d9}{energy\+Level\+Changed} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em diff} & EP to be added \\
+\hline
+\end{DoxyParams}
+\index{U\+Protagonist@{U\+Protagonist}!update\+Health@{update\+Health}}
+\index{update\+Health@{update\+Health}!U\+Protagonist@{U\+Protagonist}}
+\subsubsection[{\texorpdfstring{update\+Health(float diff)}{updateHealth(float diff)}}]{\setlength{\rightskip}{0pt plus 5cm}void U\+Protagonist\+::update\+Health (
+\begin{DoxyParamCaption}
+\item[{float}]{diff}
+\end{DoxyParamCaption}
+)}\hypertarget{classUProtagonist_a453bac1fc034e1c15ad8d7bdac566421}{}\label{classUProtagonist_a453bac1fc034e1c15ad8d7bdac566421}
+
+
+Update health. 
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classUProtagonist_a51cf4f46d0b8d841ac91fb26cd175f04}{health\+Level\+Changed} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em diff} & HP to be added \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/bobiko/ku-\/leuven/media-\/processing/labs/finaltask/finaltask/src/libworld-\/update/\hyperlink{uworld_8h}{uworld.\+h}\item 
+/home/bobiko/ku-\/leuven/media-\/processing/labs/finaltask/finaltask/src/libworld-\/update/\hyperlink{uworld_8cpp}{uworld.\+cpp}\end{DoxyCompactItemize}

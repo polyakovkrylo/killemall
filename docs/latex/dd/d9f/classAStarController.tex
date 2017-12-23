@@ -1,0 +1,117 @@
+\hypertarget{classAStarController}{}\section{A\+Star\+Controller Class Reference}
+\label{classAStarController}\index{A\+Star\+Controller@{A\+Star\+Controller}}
+
+
+A$\ast$ controller.  
+
+
+
+
+{\ttfamily \#include $<$astarcontroller.\+h$>$}
+
+
+
+Inheritance diagram for A\+Star\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=201pt]{d5/dde/classAStarController__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for A\+Star\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{d1/dda/classAStarController__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classAStarController_a098891ef3d828d56392e2e2ff48153b1}{A\+Star\+Controller} (\hyperlink{classWorldModel}{World\+Model} $\ast$model)
+\begin{DoxyCompactList}\small\item\em Class constructor. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classAStarController_aa230f8e80731d01daa502af943fe350e}{find\+Path} (const Q\+Point \&from, const Q\+Point \&to, float max\+Cost=I\+N\+F\+I\+N\+I\+TY) override
+\begin{DoxyCompactList}\small\item\em Find the path to the position. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classAStarController_a228a9bd549dbae704ed6663ed726053e}{init} () override
+\begin{DoxyCompactList}\small\item\em Initialization function. \end{DoxyCompactList}\item 
+void \hyperlink{classAStarController_a002505340b1518995d830bc93e0ffd3d}{clear\+Nodes} ()\hypertarget{classAStarController_a002505340b1518995d830bc93e0ffd3d}{}\label{classAStarController_a002505340b1518995d830bc93e0ffd3d}
+
+\begin{DoxyCompactList}\small\item\em Marks each node in node vector matrix as not visited. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A$\ast$ controller. 
+
+This is the controller based on A$\ast$ path finding algorithm 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{A\+Star\+Controller@{A\+Star\+Controller}!A\+Star\+Controller@{A\+Star\+Controller}}
+\index{A\+Star\+Controller@{A\+Star\+Controller}!A\+Star\+Controller@{A\+Star\+Controller}}
+\subsubsection[{\texorpdfstring{A\+Star\+Controller(\+World\+Model $\ast$model)}{AStarController(WorldModel *model)}}]{\setlength{\rightskip}{0pt plus 5cm}A\+Star\+Controller\+::\+A\+Star\+Controller (
+\begin{DoxyParamCaption}
+\item[{{\bf World\+Model} $\ast$}]{model}
+\end{DoxyParamCaption}
+)}\hypertarget{classAStarController_a098891ef3d828d56392e2e2ff48153b1}{}\label{classAStarController_a098891ef3d828d56392e2e2ff48153b1}
+
+
+Class constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & owner of the controller \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{A\+Star\+Controller@{A\+Star\+Controller}!find\+Path@{find\+Path}}
+\index{find\+Path@{find\+Path}!A\+Star\+Controller@{A\+Star\+Controller}}
+\subsubsection[{\texorpdfstring{find\+Path(const Q\+Point \&from, const Q\+Point \&to, float max\+Cost=\+I\+N\+F\+I\+N\+I\+T\+Y) override}{findPath(const QPoint &from, const QPoint &to, float maxCost=INFINITY) override}}]{\setlength{\rightskip}{0pt plus 5cm}bool A\+Star\+Controller\+::find\+Path (
+\begin{DoxyParamCaption}
+\item[{const Q\+Point \&}]{from, }
+\item[{const Q\+Point \&}]{to, }
+\item[{float}]{max\+Cost = {\ttfamily INFINITY}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{classAStarController_aa230f8e80731d01daa502af943fe350e}{}\label{classAStarController_aa230f8e80731d01daa502af943fe350e}
+
+
+Find the path to the position. 
+
+Find a path to the position using A$\ast$ algorithm 
+\begin{DoxyParams}{Parameters}
+{\em from} & starting point \\
+\hline
+{\em to} & destination \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the path was find, false otherwise 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classWorldAbstractController_a7716b59b6e3cbd086485e7012ae7d4f0}{World\+Abstract\+Controller}.
+
+\index{A\+Star\+Controller@{A\+Star\+Controller}!init@{init}}
+\index{init@{init}!A\+Star\+Controller@{A\+Star\+Controller}}
+\subsubsection[{\texorpdfstring{init() override}{init() override}}]{\setlength{\rightskip}{0pt plus 5cm}void A\+Star\+Controller\+::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}\hypertarget{classAStarController_a228a9bd549dbae704ed6663ed726053e}{}\label{classAStarController_a228a9bd549dbae704ed6663ed726053e}
+
+
+Initialization function. 
+
+Creates a node vector matrix from world\textquotesingle{}s tiles 
+
+Implements \hyperlink{classWorldAbstractController_af2ab5103153a68f66dcdf75d6c9a4d93}{World\+Abstract\+Controller}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/bobiko/ku-\/leuven/media-\/processing/labs/finaltask/finaltask/src/controller/\hyperlink{astarcontroller_8h}{astarcontroller.\+h}\item 
+/home/bobiko/ku-\/leuven/media-\/processing/labs/finaltask/finaltask/src/controller/\hyperlink{astarcontroller_8cpp}{astarcontroller.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,52 @@
+\hypertarget{classWorldControllerFactory}{}\section{World\+Controller\+Factory Class Reference}
+\label{classWorldControllerFactory}\index{World\+Controller\+Factory@{World\+Controller\+Factory}}
+
+
+Controller factory class.  
+
+
+
+
+{\ttfamily \#include $<$worldcontrollerfactory.\+h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classWorldAbstractController}{World\+Abstract\+Controller} $\ast$ \hyperlink{classWorldControllerFactory_a90d9c0f2d0b6a58b2ad4336e539057d0}{create\+Controller} (\hyperlink{classWorldModel}{World\+Model} $\ast$model, \hyperlink{group__controller_ga81059b4122c9dd4608d347eb117ae8c9}{Controller\+Type} type=A\+Star)
+\begin{DoxyCompactList}\small\item\em Create a controller for the model. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Controller factory class. 
+
+This class is an implementation of factory pattern. Factory is needed since different algorythms can be used for path finding, thus it is sufficient to have a unified interface, in this case \hyperlink{classWorldAbstractController}{World\+Abstract\+Controller} 
+
+\subsection{Member Function Documentation}
+\index{World\+Controller\+Factory@{World\+Controller\+Factory}!create\+Controller@{create\+Controller}}
+\index{create\+Controller@{create\+Controller}!World\+Controller\+Factory@{World\+Controller\+Factory}}
+\subsubsection[{\texorpdfstring{create\+Controller(\+World\+Model $\ast$model, Controller\+Type type=\+A\+Star)}{createController(WorldModel *model, ControllerType type=AStar)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf World\+Abstract\+Controller} $\ast$ World\+Controller\+Factory\+::create\+Controller (
+\begin{DoxyParamCaption}
+\item[{{\bf World\+Model} $\ast$}]{model, }
+\item[{{\bf Controller\+Type}}]{type = {\ttfamily AStar}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classWorldControllerFactory_a90d9c0f2d0b6a58b2ad4336e539057d0}{}\label{classWorldControllerFactory_a90d9c0f2d0b6a58b2ad4336e539057d0}
+
+
+Create a controller for the model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & pointer to owner of the controller \\
+\hline
+{\em type} & type of controller \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+created controller 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/bobiko/ku-\/leuven/media-\/processing/labs/finaltask/finaltask/src/controller/\hyperlink{worldcontrollerfactory_8h}{worldcontrollerfactory.\+h}\item 
+/home/bobiko/ku-\/leuven/media-\/processing/labs/finaltask/finaltask/src/controller/\hyperlink{worldcontrollerfactory_8cpp}{worldcontrollerfactory.\+cpp}\end{DoxyCompactItemize}
