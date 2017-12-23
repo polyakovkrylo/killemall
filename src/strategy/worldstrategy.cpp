@@ -21,8 +21,9 @@ WorldStrategy::WorldStrategy(QObject *parent) :
 void WorldStrategy::setModel(WorldModel *model)
 {
     model_ = model;
-    // stop the strategy if protagonist is dead
+    // stop the strategy if protagonist is dead or won
     connect(model_, SIGNAL(protagonistDead()), this,SLOT(stop()));
+    connect(model_, SIGNAL(win()), this,SLOT(stop()));
 }
 
 void WorldStrategy::run()
@@ -48,6 +49,7 @@ void WorldStrategy::run(bool b)
 
 void WorldStrategy::stop()
 {
+    model_->getController()->stop();
     // see WorldStrategy::run()
     disconnect(model_->getController().get(),SIGNAL(animationDone()),
                this, SLOT(nextMove()));

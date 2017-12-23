@@ -64,6 +64,17 @@ void MainWindow::setModel(WorldModel *m)
         case QMessageBox::Retry: loadWorld->exec();
         }
     });
+    connect(model, &WorldModel::win, this, [=](){
+        QMessageBox msg;
+        msg.setText("YOU WON!");
+        msg.setStandardButtons(QMessageBox::Close | QMessageBox::Retry);
+        int ret = msg.exec();
+        switch(ret) {
+        case QMessageBox::Close: QCoreApplication::exit();
+            break;
+        case QMessageBox::Retry: loadWorld->exec();
+        }
+    });
 }
 
 MainWindow::~MainWindow()
