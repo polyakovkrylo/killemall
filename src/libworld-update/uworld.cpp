@@ -19,10 +19,11 @@ using std::dynamic_pointer_cast;
 using std::vector;
 
 //=============== Health pack =============================
-UHealthPack::UHealthPack(int x, int y, float healthPoints, int radius):
-    Tile(x,y,healthPoints), area_(x-radius, y-radius, radius*2, radius*2)
+UHealthPack::UHealthPack(int x, int y, float healthPoints):
+    Tile(x,y,healthPoints)
 {
-
+    int radius = 2 + healthPoints/20;
+    area_ = QRect(x-radius, y-radius, radius*2, radius*2);
 }
 
 float UHealthPack::use()
@@ -36,10 +37,11 @@ float UHealthPack::use()
 }
 
 //===================== Enemy =============================
-UEnemy::UEnemy(int x, int y, float strength, int radius) :
-    Enemy(x,y,strength), area_(x-radius, y-radius, radius*2, radius*2)
+UEnemy::UEnemy(int x, int y, float strength) :
+    Enemy(x,y,strength)
 {
-
+    int radius = 2 + strength/20;
+    area_ = QRect(x-radius, y-radius, radius*2, radius*2);
 }
 
 float UEnemy::attack()
@@ -54,13 +56,13 @@ float UEnemy::attack()
 }
 
 //==================== PEnemy =============================
-UPEnemy::UPEnemy(int x, int y, float strength,
-                 int radius, int poisonRadius) :
+UPEnemy::UPEnemy(int x, int y, float strength) :
     PEnemy(x,y,strength),
-    area_(x-radius, y-radius, radius*2, radius*2),
-    poisonArea_(x-poisonRadius, y-poisonRadius, poisonRadius*2, poisonRadius*2),
     triggered_{false}
 {
+    int radius = 2 + strength/20;
+    area_ = QRect(x-radius, y-radius, radius*2, radius*2);
+    poisonArea_ = QRect(x-radius*2, y-radius*2, radius*4, radius*4);
     connect(this, &PEnemy::poisonLevelUpdated, [=] (int value) {
         emit areaPoisoned(value,poisonArea_);
     });

@@ -40,7 +40,7 @@ public:
      * \param healthPoints HP to be restored
      * \param radius radius of occupied area in pixels
      */
-    UHealthPack(int x, int y, float healthPoints, int radius = 5);
+    UHealthPack(int x, int y, float healthPoints);
     /*!
      * \brief Use healthpack
      *
@@ -76,7 +76,7 @@ public:
      * \param strength damage to be caused
      * \param radius radius of occupied area in pixels
      */
-    explicit UEnemy(int xPosition, int yPosition, float strength, int radius = 5);
+    explicit UEnemy(int xPosition, int yPosition, float strength);
     /*!
      * \brief Attack the enemy
      *
@@ -114,8 +114,7 @@ public:
      * \param strength damage to be caused
      * \param radius radius of occupied area in pixels
      */
-    UPEnemy(int x, int y, float strength,
-            int radius = 5, int poisonRadius = 10);
+    UPEnemy(int x, int y, float strength);
     /*!
      * \brief Returns area occupied by the object
      */
