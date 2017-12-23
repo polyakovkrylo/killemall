@@ -88,6 +88,7 @@ void MainWindow::onPopupClosed()
     ui->strategyBtn->setChecked(false);
     Values vals = loadWorld->getValues();
     QString map(":/img/" + vals.map);
+    model->getController()->setMinCost(vals.energyCost);
     model->init(map, vals.enemies, vals.healthpacks);
     model->getController().get()->setOptimizationLevel(vals.optimization);
 }

@@ -15,7 +15,7 @@
 
 using std::vector;
 using std::priority_queue;
-using std::shared_ptr;
+using std::unique_ptr;
 using std::make_shared;
 using std::isinf;
 
@@ -74,7 +74,8 @@ bool AStarController::findPath(const QPoint &from, const QPoint &to, float maxCo
             path_.cost = node->g;
             // re-create path from the last node
             while(node->x!=from.x() || node->y!=from.y()){
-                path_.steps.push_back(QPoint(node->x,node->y));
+                QPair<QPoint,float> p(QPoint(node->x,node->y),node->nodeCost);
+                path_.steps.push_back(p);
                 node = node->prev;
             }
         }
@@ -85,6 +86,8 @@ bool AStarController::findPath(const QPoint &from, const QPoint &to, float maxCo
 
 void AStarController::init()
 {
+    if(!model_->getWorld())
+        return;
     auto &tiles = model_->getWorld()->getMap();
     // clear vector from previous map nodes
     nodes_.clear();
@@ -93,12 +96,12 @@ void AStarController::init()
     // iterate through columns
     for(int i = 0; i < model_->getWorld()->getCols();++i) {
         // add column vector
-        vector<shared_ptr<Node>> vec;
+        vector<unique_ptr<Node>> vec;
         vec.reserve(model_->getWorld()->getRows());
         nodes_.push_back(std::move(vec));
         for(int j = 0; j < model_->getWorld()->getRows(); ++j) {
             // create node for each map tile
-            nodes_.back().push_back(make_shared<Node>(Node()));
+            nodes_.back().emplace_back(unique_ptr<Node>(new Node()));
         }
     }
 
