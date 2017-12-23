@@ -1,3 +1,15 @@
+/*!
+ * \file worldterminalview.cpp
+ *
+ * WorldTerminalView class definition
+ *
+ * \version 1.0
+ *
+ * \author Vladimir Poliakov
+ * \author Brian Segers
+ * \author Kasper De Volder
+ */
+
 #include "worldterminalview.h"
 
 WorldTerminalView::WorldTerminalView(QWidget *parent) :
@@ -37,12 +49,17 @@ void WorldTerminalView::setModel(WorldModel *m)
         disconnect(model,SIGNAL(reload()),this,SLOT(reloadView()));
         disconnect(model, SIGNAL(enemyDefeated(int,int)), this, SLOT(onEnemyDefeated(int,int)));
         disconnect(model, SIGNAL(healthpackUsed(int,int)), this, SLOT(onHealthpackUsed(int,int)));
+        disconnect(model, SIGNAL(areaPoisoned(int,QRect)), this, SLOT(onAreaPosioned(int,QRect)));
         disconnect(model->getProtagonist().get(), SIGNAL(healthLevelChanged(int)), this, SLOT(onHealthLevelChanged(int)));
         disconnect(model->getProtagonist().get(), SIGNAL(energyLevelChanged(int)), this, SLOT(onEnergyLevelChanged(int)));
         disconnect(model->getProtagonist().get(), SIGNAL(posChanged(int,int)), this, SLOT(onPositionChanged(int,int)));
     }
     model = m;
-    reloadView();
+    connect(model, SIGNAL(enemyDefeated(int,int)), this, SLOT(onEnemyDefeated(int,int)));
+    connect(model, SIGNAL(healthpackUsed(int,int)), this, SLOT(onHealthpackUsed(int,int)));
+    connect(model, SIGNAL(areaPoisoned(int,QRect)), this, SLOT(onAreaPosioned(int,QRect)));
+    if(model->ready())
+        reloadView();
     connect(model,SIGNAL(reload()),this,SLOT(reloadView()));
 }
 
@@ -74,6 +91,15 @@ void WorldTerminalView::onEnemyDefeated(int x, int y)
                    ")");
 }
 
+void WorldTerminalView::onAreaPosioned(int value, QRect rect)
+{
+    output->setTextColor(Qt::darkYellow);
+    output->append(QString("Area ((%1,%2),(%3,%4)) is poisoned with %5 value")
+                   .arg(rect.topLeft().x()).arg(rect.topLeft().y())
+                   .arg(rect.bottomLeft().x()).arg(rect.bottomLeft().y())
+                   .arg(value));
+}
+
 void WorldTerminalView::onHealthpackUsed(int x, int y)
 {
     output->setTextColor(QColor(255,0,0));
@@ -92,7 +118,7 @@ void WorldTerminalView::onHealthLevelChanged(int value)
 
 void WorldTerminalView::onEnergyLevelChanged(int value)
 {
-    output->setTextColor(QColor(155,155,0));
+    output->setTextColor(Qt::darkCyan);
     message = QString("Energy updated: %1 EP").arg(value);
     output->append(message);
 }
@@ -114,8 +140,6 @@ void WorldTerminalView::onPositionChanged(int x, int y)
 void WorldTerminalView::reloadView()
 {
     output->clear();
-    connect(model, SIGNAL(enemyDefeated(int,int)), this, SLOT(onEnemyDefeated(int,int)));
-    connect(model, SIGNAL(healthpackUsed(int,int)), this, SLOT(onHealthpackUsed(int,int)));
     connect(model->getProtagonist().get(), SIGNAL(healthLevelChanged(int)), this, SLOT(onHealthLevelChanged(int)));
     connect(model->getProtagonist().get(), SIGNAL(energyLevelChanged(int)), this, SLOT(onEnergyLevelChanged(int)));
     connect(model->getProtagonist().get(), SIGNAL(posChanged(int,int)), this, SLOT(onPositionChanged(int,int)));
@@ -190,20 +214,20 @@ void WorldTerminalView::find(QString object, float value)
             value = 100.0f;
         if(object == "e"){
             obj = "enemy";
-            t = model->getController()->findClosest(AnyEnemy,0.0f,value).get();
+            t = model->getController()->findClosest(AnyEnemy,0.0f,value);
         } else if(object == "re"){
             obj = QString("regular enemy");
-            t = model->getController()->findClosest(RegularEnemy,0.0f,value).get();
+            t = model->getController()->findClosest(RegularEnemy,0.0f,value);
         } else if(object == "pe"){
             obj = QString("poisoned enemy");
-            t = model->getController()->findClosest(PoisonedEnemy,0.0f,value).get();
+            t = model->getController()->findClosest(PoisonedEnemy,0.0f,value);
         }
     }
     //if looking for a health pack
     else if(object == "h") {
         obj = QString("health pack");
         param = QString("HP");
-        t = model->getController()->findClosest(HealthPack,value,100.0f).get();
+        t = model->getController()->findClosest(HealthPack,value,100.0f);
     }
 
     // print info if an object was find

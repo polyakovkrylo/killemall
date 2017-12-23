@@ -1,0 +1,277 @@
+\hypertarget{classWorldAbstractController}{}\section{World\+Abstract\+Controller Class Reference}
+\label{classWorldAbstractController}\index{World\+Abstract\+Controller@{World\+Abstract\+Controller}}
+
+
+Abstract controller class.  
+
+
+
+
+{\ttfamily \#include $<$worldabstractcontroller.\+h$>$}
+
+
+
+Inheritance diagram for World\+Abstract\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=201pt]{d9/d94/classWorldAbstractController__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for World\+Abstract\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{d1/d39/classWorldAbstractController__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classWorldAbstractController_af2ab5103153a68f66dcdf75d6c9a4d93}{init} ()=0
+\begin{DoxyCompactList}\small\item\em Initialization of the controller. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldAbstractController_ab271df7d1af98b87afc0d50a4156616a}{set\+Animation\+Speed} (int value)
+\begin{DoxyCompactList}\small\item\em Set animation speed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries animation\+Done} ()\hypertarget{classWorldAbstractController_ae967946c752a88d3e18a365389f349eb}{}\label{classWorldAbstractController_ae967946c752a88d3e18a365389f349eb}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classWorldAbstractController_a8f4be5436078c93733197d76809df45c}{World\+Abstract\+Controller} (\hyperlink{classWorldModel}{World\+Model} $\ast$model)
+\begin{DoxyCompactList}\small\item\em Class constructor. \end{DoxyCompactList}\item 
+bool \hyperlink{classWorldAbstractController_a6fdee5689b6fd4b2e8f69d26c0181840}{move} (const Q\+Point \&from, const Q\+Point \&to)
+\begin{DoxyCompactList}\small\item\em Move protagonist to the position. \end{DoxyCompactList}\item 
+Tile $\ast$ \hyperlink{classWorldAbstractController_ac5789c244d880519632c14c073773389}{find\+Closest} (\hyperlink{worldabstractcontroller_8h_a842c5e2e69277690b064bf363c017980}{Object\+Type} type, float min\+Value=0.\+0f, float max\+Value=100.\+0f)
+\begin{DoxyCompactList}\small\item\em Find the closest object of a given type. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{classWorldAbstractController_a7716b59b6e3cbd086485e7012ae7d4f0}{find\+Path} (const Q\+Point \&from, const Q\+Point \&to, float max\+Cost=I\+N\+F\+I\+N\+I\+TY)=0
+\begin{DoxyCompactList}\small\item\em Find the path to the position. \end{DoxyCompactList}\item 
+const \hyperlink{structPath}{Path} \& \hyperlink{classWorldAbstractController_ad3c7531df375e1a5b97e0532acb9c28e}{current\+Path} ()\hypertarget{classWorldAbstractController_ad3c7531df375e1a5b97e0532acb9c28e}{}\label{classWorldAbstractController_ad3c7531df375e1a5b97e0532acb9c28e}
+
+\begin{DoxyCompactList}\small\item\em Returns last calculated path. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldAbstractController_ad7c83b4de6ee365ef241c0755faa6e0d}{set\+Optimization\+Level} (float value)
+\begin{DoxyCompactList}\small\item\em Set level of optimization, e.\+g. h weight in A$\ast$ controller. \end{DoxyCompactList}\item 
+void \hyperlink{classWorldAbstractController_a803d78a89d8aa8644e6755d86cb55a5f}{stop} ()\hypertarget{classWorldAbstractController_a803d78a89d8aa8644e6755d86cb55a5f}{}\label{classWorldAbstractController_a803d78a89d8aa8644e6755d86cb55a5f}
+
+\begin{DoxyCompactList}\small\item\em Stop the animation and clear the last path. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+float \hyperlink{classWorldAbstractController_a556c8e2b55b017f5e837db2b58d3553e}{calculate\+Cost} (float tile)
+\begin{DoxyCompactList}\small\item\em Translate tile value to energy cost. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classWorldModel}{World\+Model} $\ast$ \hyperlink{classWorldAbstractController_a45fe9595cbcc1eafe6f3f418a08f46c4}{model\+\_\+}\hypertarget{classWorldAbstractController_a45fe9595cbcc1eafe6f3f418a08f46c4}{}\label{classWorldAbstractController_a45fe9595cbcc1eafe6f3f418a08f46c4}
+
+\begin{DoxyCompactList}\small\item\em Owner of the controller. \end{DoxyCompactList}\item 
+\hyperlink{structPath}{Path} \hyperlink{classWorldAbstractController_a8e42846e0e46245149339a79758c8a4b}{path\+\_\+}\hypertarget{classWorldAbstractController_a8e42846e0e46245149339a79758c8a4b}{}\label{classWorldAbstractController_a8e42846e0e46245149339a79758c8a4b}
+
+\begin{DoxyCompactList}\small\item\em Last calculated path. \end{DoxyCompactList}\item 
+Q\+Timer \hyperlink{classWorldAbstractController_ad152162c39be7f44e48f5ab2de7fcafa}{animation\+\_\+}\hypertarget{classWorldAbstractController_ad152162c39be7f44e48f5ab2de7fcafa}{}\label{classWorldAbstractController_ad152162c39be7f44e48f5ab2de7fcafa}
+
+\begin{DoxyCompactList}\small\item\em Animation timer. \end{DoxyCompactList}\item 
+float \hyperlink{classWorldAbstractController_abaf4fb0106d4f5ee475b609a1b3116dd}{optimization\+\_\+}\hypertarget{classWorldAbstractController_abaf4fb0106d4f5ee475b609a1b3116dd}{}\label{classWorldAbstractController_abaf4fb0106d4f5ee475b609a1b3116dd}
+
+\begin{DoxyCompactList}\small\item\em Optimization level. \end{DoxyCompactList}\item 
+const float \hyperlink{classWorldAbstractController_a4064e89beaf84bbaf8c018058c821c8a}{min\+Cost\+\_\+} \{0.\+1f\}
+\begin{DoxyCompactList}\small\item\em Minimal energy cost of a tile (white tile energy cost) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Abstract controller class. 
+
+Defines the basic functionality of the world model controller. In order to implement a new controller, this class should be inherited, its type should be added to Controller\+Type, init and find\+Path should be re-\/implemented 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{World\+Abstract\+Controller@{World\+Abstract\+Controller}!World\+Abstract\+Controller@{World\+Abstract\+Controller}}
+\index{World\+Abstract\+Controller@{World\+Abstract\+Controller}!World\+Abstract\+Controller@{World\+Abstract\+Controller}}
+\subsubsection[{\texorpdfstring{World\+Abstract\+Controller(\+World\+Model $\ast$model)}{WorldAbstractController(WorldModel *model)}}]{\setlength{\rightskip}{0pt plus 5cm}World\+Abstract\+Controller\+::\+World\+Abstract\+Controller (
+\begin{DoxyParamCaption}
+\item[{{\bf World\+Model} $\ast$}]{model}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\hypertarget{classWorldAbstractController_a8f4be5436078c93733197d76809df45c}{}\label{classWorldAbstractController_a8f4be5436078c93733197d76809df45c}
+
+
+Class constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & owner of the controller \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{World\+Abstract\+Controller@{World\+Abstract\+Controller}!calculate\+Cost@{calculate\+Cost}}
+\index{calculate\+Cost@{calculate\+Cost}!World\+Abstract\+Controller@{World\+Abstract\+Controller}}
+\subsubsection[{\texorpdfstring{calculate\+Cost(float tile)}{calculateCost(float tile)}}]{\setlength{\rightskip}{0pt plus 5cm}float World\+Abstract\+Controller\+::calculate\+Cost (
+\begin{DoxyParamCaption}
+\item[{float}]{tile}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}\hypertarget{classWorldAbstractController_a556c8e2b55b017f5e837db2b58d3553e}{}\label{classWorldAbstractController_a556c8e2b55b017f5e837db2b58d3553e}
+
+
+Translate tile value to energy cost. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tile} & tile value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+energy cost 
+\end{DoxyReturn}
+\index{World\+Abstract\+Controller@{World\+Abstract\+Controller}!find\+Closest@{find\+Closest}}
+\index{find\+Closest@{find\+Closest}!World\+Abstract\+Controller@{World\+Abstract\+Controller}}
+\subsubsection[{\texorpdfstring{find\+Closest(\+Object\+Type type, float min\+Value=0.\+0f, float max\+Value=100.\+0f)}{findClosest(ObjectType type, float minValue=0.0f, float maxValue=100.0f)}}]{\setlength{\rightskip}{0pt plus 5cm}Tile $\ast$ World\+Abstract\+Controller\+::find\+Closest (
+\begin{DoxyParamCaption}
+\item[{{\bf Object\+Type}}]{type, }
+\item[{float}]{min\+Value = {\ttfamily 0.0f}, }
+\item[{float}]{max\+Value = {\ttfamily 100.0f}}
+\end{DoxyParamCaption}
+)}\hypertarget{classWorldAbstractController_ac5789c244d880519632c14c073773389}{}\label{classWorldAbstractController_ac5789c244d880519632c14c073773389}
+
+
+Find the closest object of a given type. 
+
+Searches for the closest object, enemy or health pack, with a given max and min values.
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & type of object \\
+\hline
+{\em min\+Value} & minimal tile value(strength of the enemy or H\+P of health pack) \\
+\hline
+{\em max\+Value} & maximal tile value(strength of the enemy or H\+P of health pack) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tile pointer to the object. If no object was found, returns nullptr
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{worldabstractcontroller_8h_a842c5e2e69277690b064bf363c017980}{Object\+Type} 
+\end{DoxySeeAlso}
+\index{World\+Abstract\+Controller@{World\+Abstract\+Controller}!find\+Path@{find\+Path}}
+\index{find\+Path@{find\+Path}!World\+Abstract\+Controller@{World\+Abstract\+Controller}}
+\subsubsection[{\texorpdfstring{find\+Path(const Q\+Point \&from, const Q\+Point \&to, float max\+Cost=\+I\+N\+F\+I\+N\+I\+T\+Y)=0}{findPath(const QPoint &from, const QPoint &to, float maxCost=INFINITY)=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool World\+Abstract\+Controller\+::find\+Path (
+\begin{DoxyParamCaption}
+\item[{const Q\+Point \&}]{from, }
+\item[{const Q\+Point \&}]{to, }
+\item[{float}]{max\+Cost = {\ttfamily INFINITY}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{classWorldAbstractController_a7716b59b6e3cbd086485e7012ae7d4f0}{}\label{classWorldAbstractController_a7716b59b6e3cbd086485e7012ae7d4f0}
+
+
+Find the path to the position. 
+
+\begin{DoxyNote}{Note}
+This is a virtual function to be implemented by successors 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em from} & starting point \\
+\hline
+{\em to} & destination \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the path was find, false otherwise 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classAStarController_aa230f8e80731d01daa502af943fe350e}{A\+Star\+Controller}.
+
+\index{World\+Abstract\+Controller@{World\+Abstract\+Controller}!init@{init}}
+\index{init@{init}!World\+Abstract\+Controller@{World\+Abstract\+Controller}}
+\subsubsection[{\texorpdfstring{init}{init}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void World\+Abstract\+Controller\+::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [slot]}}\hypertarget{classWorldAbstractController_af2ab5103153a68f66dcdf75d6c9a4d93}{}\label{classWorldAbstractController_af2ab5103153a68f66dcdf75d6c9a4d93}
+
+
+Initialization of the controller. 
+
+\begin{DoxyNote}{Note}
+This is a virtual function to be implemented by successors 
+\end{DoxyNote}
+
+
+Implemented in \hyperlink{classAStarController_a228a9bd549dbae704ed6663ed726053e}{A\+Star\+Controller}.
+
+\index{World\+Abstract\+Controller@{World\+Abstract\+Controller}!move@{move}}
+\index{move@{move}!World\+Abstract\+Controller@{World\+Abstract\+Controller}}
+\subsubsection[{\texorpdfstring{move(const Q\+Point \&from, const Q\+Point \&to)}{move(const QPoint &from, const QPoint &to)}}]{\setlength{\rightskip}{0pt plus 5cm}bool World\+Abstract\+Controller\+::move (
+\begin{DoxyParamCaption}
+\item[{const Q\+Point \&}]{from, }
+\item[{const Q\+Point \&}]{to}
+\end{DoxyParamCaption}
+)}\hypertarget{classWorldAbstractController_a6fdee5689b6fd4b2e8f69d26c0181840}{}\label{classWorldAbstractController_a6fdee5689b6fd4b2e8f69d26c0181840}
+
+
+Move protagonist to the position. 
+
+Finds the path to a given point and animates the movement to it 
+\begin{DoxyParams}{Parameters}
+{\em from} & starting point \\
+\hline
+{\em to} & destination \\
+\hline
+\end{DoxyParams}
+\index{World\+Abstract\+Controller@{World\+Abstract\+Controller}!set\+Animation\+Speed@{set\+Animation\+Speed}}
+\index{set\+Animation\+Speed@{set\+Animation\+Speed}!World\+Abstract\+Controller@{World\+Abstract\+Controller}}
+\subsubsection[{\texorpdfstring{set\+Animation\+Speed}{setAnimationSpeed}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Abstract\+Controller\+::set\+Animation\+Speed (
+\begin{DoxyParamCaption}
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\hypertarget{classWorldAbstractController_ab271df7d1af98b87afc0d50a4156616a}{}\label{classWorldAbstractController_ab271df7d1af98b87afc0d50a4156616a}
+
+
+Set animation speed. 
+
+Set animation speed between 100(fastest) and 1(slowest) 
+\begin{DoxyParams}{Parameters}
+{\em value} & animation speed \\
+\hline
+\end{DoxyParams}
+\index{World\+Abstract\+Controller@{World\+Abstract\+Controller}!set\+Optimization\+Level@{set\+Optimization\+Level}}
+\index{set\+Optimization\+Level@{set\+Optimization\+Level}!World\+Abstract\+Controller@{World\+Abstract\+Controller}}
+\subsubsection[{\texorpdfstring{set\+Optimization\+Level(float value)}{setOptimizationLevel(float value)}}]{\setlength{\rightskip}{0pt plus 5cm}void World\+Abstract\+Controller\+::set\+Optimization\+Level (
+\begin{DoxyParamCaption}
+\item[{float}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classWorldAbstractController_ad7c83b4de6ee365ef241c0755faa6e0d}{}\label{classWorldAbstractController_ad7c83b4de6ee365ef241c0755faa6e0d}
+
+
+Set level of optimization, e.\+g. h weight in A$\ast$ controller. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & level from 0 to 100 \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\index{World\+Abstract\+Controller@{World\+Abstract\+Controller}!min\+Cost\+\_\+@{min\+Cost\+\_\+}}
+\index{min\+Cost\+\_\+@{min\+Cost\+\_\+}!World\+Abstract\+Controller@{World\+Abstract\+Controller}}
+\subsubsection[{\texorpdfstring{min\+Cost\+\_\+}{minCost_}}]{\setlength{\rightskip}{0pt plus 5cm}const float World\+Abstract\+Controller\+::min\+Cost\+\_\+ \{0.\+1f\}\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classWorldAbstractController_a4064e89beaf84bbaf8c018058c821c8a}{}\label{classWorldAbstractController_a4064e89beaf84bbaf8c018058c821c8a}
+
+
+Minimal energy cost of a tile (white tile energy cost) 
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classWorldAbstractController_a556c8e2b55b017f5e837db2b58d3553e}{calculate\+Cost} 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/bobiko/ku-\/leuven/media-\/processing/labs/finaltask/finaltask/src/controller/\hyperlink{worldabstractcontroller_8h}{worldabstractcontroller.\+h}\item 
+/home/bobiko/ku-\/leuven/media-\/processing/labs/finaltask/finaltask/src/controller/\hyperlink{worldabstractcontroller_8cpp}{worldabstractcontroller.\+cpp}\end{DoxyCompactItemize}
