@@ -38,7 +38,7 @@ void MainWindow::setModel(WorldModel *m)
     tv->setModel(model);
     gv->setModel(model);
     connect(ui->speedSlider, SIGNAL(sliderMoved(int)), model->getController().get(), SLOT(setAnimationSpeed(int)));
-    connect(model->getController().get(), &WorldAbstractController::protagonistDead, this, [=](){
+    connect(model, &WorldModel::protagonistDead, this, [=](){
         QMessageBox msg;
         msg.setText("Protagonist is dead!\nGAME OVER");
         msg.setStandardButtons(QMessageBox::Close | QMessageBox::Retry);
@@ -49,7 +49,7 @@ void MainWindow::setModel(WorldModel *m)
         case QMessageBox::Retry: loadWorld->exec();
         }
     });
-    connect(model->getController().get(), &WorldAbstractController::protagonistNoEnergy, this, [=](){
+    connect(model, &WorldModel::protagonistNoEnergy, this, [=](){
         QMessageBox msg;
         msg.setText("Protagonist ran out of energy!\nGAME OVER");
         msg.setStandardButtons(QMessageBox::Close | QMessageBox::Retry);

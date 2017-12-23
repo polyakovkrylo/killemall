@@ -141,8 +141,8 @@ void WorldModel::attackEnemy()
         }
         // if the enemy is within the area, attack him
         if(it->get()->area().contains(x,y)) {
-            it->get()->attack();
             protagonist_->restoreEnergy();
+            it->get()->attack();
         }
     }
 
