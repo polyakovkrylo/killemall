@@ -115,11 +115,11 @@ void AStarController::init()
         n->nodeCost = calculateCost((*it)->getValue());
         // check and add neighbours
         try{n->neighbours[0] = nodes_.at(n->x+1).at(n->y).get();}
-        catch(std::out_of_range){n->neighbours[3] = nullptr;}
+        catch(std::out_of_range){n->neighbours[0] = nullptr;}
         try{n->neighbours[1] = nodes_.at(n->x-1).at(n->y).get();}
-        catch(std::out_of_range){n->neighbours[3] = nullptr;}
+        catch(std::out_of_range){n->neighbours[1] = nullptr;}
         try{n->neighbours[2] = nodes_.at(n->x).at(n->y+1).get();}
-        catch(std::out_of_range){n->neighbours[3] = nullptr;}
+        catch(std::out_of_range){n->neighbours[2] = nullptr;}
         try{n->neighbours[3] = nodes_.at(n->x).at(n->y-1).get();}
         catch(std::out_of_range){n->neighbours[3] = nullptr;}
     }
